@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCitiesTable extends Migration
+class CreateCompanySizesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateCitiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('cities', function (Blueprint $table) {
-            $table->integer('city_id')->autoIncrement();
-            $table->string('city_name');
-            $table->integer('total_companies');
-            $table->integer('total_jobs');
-            $table->timestamps();
+        Schema::create('company_sizes', function (Blueprint $table) {
+            $table->integer('size_id')->autoIncrement();
+            $table->string('size');
         });
     }
 
@@ -29,6 +26,6 @@ class CreateCitiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cities');
+        Schema::dropIfExists('company_sizes');
     }
 }
