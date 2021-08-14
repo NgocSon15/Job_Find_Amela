@@ -1,11 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-<<<<<<< HEAD
+
 use App\Http\Controllers\JobController;
-=======
 use App\Http\Controllers\HomeController;
->>>>>>> b797e6d71720a7a2217f7412434a083566cd2f9f
 
 /*
 |--------------------------------------------------------------------------
@@ -18,13 +16,7 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-<<<<<<< HEAD
-Route::get('/', function () {
-    return view('home');
-})->name('home');
-
-
-Route::prefix('admin')->group(function() { 
+Route::prefix('admin')->group(function() {
     Route::get('/', function () {
         return view('admin.home');
     })->name('admin.home');
@@ -41,6 +33,6 @@ Route::prefix('admin')->group(function() {
         Route::get('/search', [JobController::class, 'search'])->name('admin.job.search');
     });
 });
-=======
+
 Route::get('/', [HomeController::class, 'getHome'])->name('home');
->>>>>>> b797e6d71720a7a2217f7412434a083566cd2f9f
+
