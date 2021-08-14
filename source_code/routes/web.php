@@ -15,3 +15,4 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::get('/', [HomeController::class, 'getHome'])->name('home');
+Route::get('/job_list', [HomeController::class, 'getListJob'])->name('job_list');
