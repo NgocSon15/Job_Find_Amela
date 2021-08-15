@@ -17,6 +17,7 @@ class CreateCitiesTable extends Migration
             $table->integer('city_id')->autoIncrement();
             $table->string('city_name');
             $table->integer('total_companies');
+            $table->integer('total_jobs');
             $table->timestamps();
         });
     }
