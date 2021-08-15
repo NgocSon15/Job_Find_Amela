@@ -16,6 +16,8 @@ class CitiesTableSeeder extends Seeder
     {
         $city = new City;
         $city->city_name = 'Hà Nội';
+        $city->total_companies = 1;
+        $city->total_jobs = 5;
         $city->save();
 
         $city = new City;

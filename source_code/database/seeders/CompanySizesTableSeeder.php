@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Models\CompanySize;
+use Illuminate\Database\Seeder;
 
 class CompanySizesTableSeeder extends Seeder
 {

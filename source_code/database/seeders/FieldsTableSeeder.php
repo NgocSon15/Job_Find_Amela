@@ -14,12 +14,10 @@ class FieldsTableSeeder extends Seeder
      */
     public function run()
     {
-        $field = new Field;
-        $field->field_name = 'Công nghệ';
-        $field->save();
-
-        $field = new Field;
-        $field->field_name = 'Bất động sản';
+        $field = new Field();
+        $field->field_name = 'IT';
+        $field->total_companies = 1;
+        $field->timestamps = false;
         $field->save();
     }
 }
