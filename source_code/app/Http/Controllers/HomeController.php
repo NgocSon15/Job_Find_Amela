@@ -9,9 +9,9 @@ class HomeController extends Controller
 {
     public function getHome()
     {
-        $jobs = Job::limit(5)->get();
+        $jobs = Job::orderByDesc('created_at')->limit(5)->get();
 
-        return view('home', compact('jobs'));
+        return view('frontend.home', compact('jobs'));
     }
 
     public function getListJob()
