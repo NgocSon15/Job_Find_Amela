@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="{{ asset('jobfinderportal-master/assets/css/themify-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('jobfinderportal-master/assets/css/slick.css') }}">
     <link rel="stylesheet" href="{{ asset('jobfinderportal-master/assets/css/nice-select.css') }}">
+<link rel="stylesheet" href="{{ asset('jobfinderportal-master/assets/css/register.css') }}">
     <link rel="stylesheet" href="{{ asset('jobfinderportal-master/assets/css/style.css') }}">
     @yield('link')
 </head>
@@ -59,17 +60,18 @@
                             <div class="main-menu">
                                 <nav class="d-none d-lg-block">
                                     <ul id="navigation">
-                                        <li><a href="{{ route('frontend.home') }}">Home</a></li>
+                                        <li><a href="#">Home</a></li>
                                         <li><a href="job_listing.html">Find a Jobs </a></li>
-                                        <li><a href="{{ route('frontend.job.create') }}">Add New Job</a></li>
+                                        <li><a href="#">Add New Job</a></li>
                                         <li><a href="contact.html">Contact</a></li>
                                     </ul>
                                 </nav>
                             </div>
                             <!-- Header-btn -->
                             <div class="header-btn d-none f-right d-lg-block">
-                                <a href="#" class="btn head-btn1">Register</a>
-                                <a href="#" class="btn head-btn2">Login</a>
+                                <a href="{{route('register-customer')}}" class="btn head-btn2 medium genric-btn circle">Register</a>
+                                <a href="{{route('register-company')}}" class="btn head-btn2 medium genric-btn circle">Company</a>
+                                <a href="{{route('login')}}" class="btn head-btn2 medium genric-btn circle">Login</a>
                             </div>
                         </div>
                     </div>

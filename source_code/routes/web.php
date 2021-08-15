@@ -39,6 +39,7 @@ Route::prefix('admin')->group(function() {
         Route::get('/search', [JobController::class, 'search'])->name('admin.job.search');
     });
 });
+
 Route::get('/register', [RegisterController::class, 'showRegisterCustomer']);
 Route::post('/register', [RegisterController::class, 'registerCustomer'])->name('register-customer');
 Route::get('/register/company', [RegisterController::class, 'showRegisterCompany']);

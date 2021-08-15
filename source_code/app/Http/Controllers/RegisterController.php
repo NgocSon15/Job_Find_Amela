@@ -21,7 +21,7 @@ class RegisterController extends Controller
 {
     public function showRegisterCustomer()
     {
-        return view('register.register_customer');
+        return view('frontend.register.register_customer');
     }
     public function registerCustomer(StoreCustomer $request)
     {
@@ -39,7 +39,7 @@ class RegisterController extends Controller
         $customer->email = $request->email;
         $customer->save();
         Mail::to($user->email)->send(new NotifySuccess($user, $request->password));
-        return view('register.register_success');
+        return view('frontend.register.register_success');
     }
 
     public function showRegisterCompany()
@@ -47,7 +47,7 @@ class RegisterController extends Controller
         $cities = City::all();
         $companySizes = CompanySize::all();
         $fields = Field::all();
-        return view('register.register_company', compact('cities', 'companySizes', 'fields'));
+        return view('frontend.register.register_company', compact('cities', 'companySizes', 'fields'));
     }
     public function registerCompany(Request $request)
     {
@@ -92,6 +92,6 @@ class RegisterController extends Controller
 
         Mail::to($user->email)->send(new NotifySuccess($user, $password));
         session()->flash('companySuccess', true);
-        return view('register.register_success');
+        return view('frontend.register.register_success');
     }
 }
