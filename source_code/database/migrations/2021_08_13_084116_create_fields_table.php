@@ -16,7 +16,7 @@ class CreateFieldsTable extends Migration
         Schema::create('fields', function (Blueprint $table) {
             $table->integer('field_id')->autoIncrement();
             $table->string('field_name');
-            $table->integer('total_companies');
+            $table->integer('total_companies')->default(0);
         });
     }
 
