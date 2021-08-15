@@ -19,10 +19,6 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/', [HomeController::class, 'getHome'])->name('frontend.home');
 
-Route::prefix('job')->group(function() {
-    Route::get('/create', [JobController::class, 'FECreate'])->name('frontend.job.create');
-});
-
 Route::prefix('admin')->group(function() {
     Route::get('/', function () {
         return view('admin.home');

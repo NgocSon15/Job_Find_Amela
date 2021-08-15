@@ -16,11 +16,6 @@ class JobController extends Controller
         return view('admin.job.list', compact('jobs'));
     }
 
-    public function FECreate()
-    {
-        return view('frontend.job.create');
-    }
-
     public function create()
     {
         return view('admin.job.create');
