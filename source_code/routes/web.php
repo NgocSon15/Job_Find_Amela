@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\JobController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,4 +15,8 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', [HomeController::class, 'getHome'])->name('home');
+Route::get('/', [HomeController::class, 'getHome'])->name('frontend.home');
+
+Route::prefix('job')->group(function() {
+    Route::get('/create', [JobController::class, 'FECreate'])->name('frontend.job.create');
+});
