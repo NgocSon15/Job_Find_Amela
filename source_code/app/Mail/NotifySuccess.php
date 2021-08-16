@@ -33,6 +33,6 @@ class NotifySuccess extends Mailable
         return $this->from('jobfinder@gmail.com', 'Job Finder')
                     ->subject('Thông báo đăng ký thành công')
                     ->replyTo('JobFinder@gmail.com', 'tim viec')
-                    ->view('mails.notify-success');
+                    ->view('frontend.mails.notify-success');
     }
 }

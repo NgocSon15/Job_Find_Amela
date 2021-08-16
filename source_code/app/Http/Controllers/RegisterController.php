@@ -82,7 +82,7 @@ class RegisterController extends Controller
         }
 
         $user = new User;
-        $user->user_id = $company_id;
+        $user->company_id = $company_id;
         $user->email = $request->email;
         $password = Str::random(8);
         $user->password = md5($password);
