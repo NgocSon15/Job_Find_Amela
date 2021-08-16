@@ -23,16 +23,25 @@
                             <div class="col-xl-8">
                                 <!-- form -->
                                 <form action=" {{route('frontend.search')}} "  method = "get" class="search-box">
-                                    @csrf
                                     <div class="input-form">
                                         <input type="text" name = "keyWord" placeholder="Job Tittle or keyword">
                                     </div>
                                     <div class="select-form">
                                         <div class="select-itms">
                                             <select name="city_id" id="select1">
-                                                <option disabled>City</option>
+                                                <option value="">City: all</option>
                                                 @foreach($cities as $city)
-                                                <option value="{{ $city->city_id }}">{{ $city->city_name }}</option>
+                                                <option value="{{ $city->city_id }}">City: {{ $city->city_name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="select-form">
+                                        <div class="select-itms">
+                                            <select name="category_id" id="select1">
+                                                <option value="1">Category: IT</option>
+                                                @foreach($categories as $category)
+                                                <option value="{{ $category->cat_id }}">{{ $category->cat_name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
