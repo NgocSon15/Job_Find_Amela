@@ -34,7 +34,6 @@ class HomeController extends Controller
         $jobs = Job::whereIn('company_id', $company_ids)
                     ->where('job_title', 'like', $newKeyWord)
                     ->paginate(20);
-        // dd($jobs[1]);
         return view('frontend.jobs-list', compact('jobs'));
     }
 }
