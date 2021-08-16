@@ -207,6 +207,7 @@ Tìm kiếm
                             </div>
                             <!-- Count of Job list End -->
                             <!-- single-job-content -->
+                        @if($jobs->total()>0)
                             @foreach($jobs as $job)
                             <div class="single-job-items mb-30">
                                 <div class="job-items">
@@ -234,6 +235,7 @@ Tìm kiếm
                                 </div>
                             </div>
                             @endforeach
+                        @endif
                         </div>
                     </section>
                     <!-- Featured_job_end -->
