@@ -27,7 +27,7 @@ class CreateCompaniesTable extends Migration
             $table->tinyInteger('city_id')->nullable();
             $table->tinyInteger('size_id')->nullable();
             $table->string('website')->nullable();
-            $table->string('phone');
+            $table->string('phone')->nullable();
             $table->tinyInteger('status')->default('0');
             $table->integer('total_jobs')->default('0');
             $table->integer('total_employee')->default('0');
