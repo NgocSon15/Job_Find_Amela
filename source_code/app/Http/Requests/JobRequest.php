@@ -47,31 +47,31 @@ class JobRequest extends FormRequest
         ];
     }
 
-    public function messages()
-    {
-        $messages = [
-            'company_id.required' => 'Hãy nhập ',
-            'job_title.required' => 'Hãy nhập ',
-            'job_description.required' => 'Hãy nhập ',
-            'skill_id.required' => 'Hãy nhập ',
-            'job_code.required' => 'Hãy nhập ',
-            'category_id.required' => 'Hãy nhập ',
-            'min_salary.required' => 'Hãy nhập ',
-            'max_salary.required' => 'Hãy nhập ',
-            'work_location.required' => 'Hãy nhập ',
-            'job_type.required' => 'Hãy nhập ',
-            'experiences.required' => 'Hãy nhập ',
-            'expiration.required' => 'Hãy nhập ',
-            'position_id.required' => 'Hãy nhập ',
-            'gender.required' => 'Hãy nhập ',
-            'quantity.required' => 'Hãy nhập ',
-            'status.required' => 'Hãy nhập ',
-            'is_hot.required' => 'Hãy nhập ',
-            'is_suggest.required' => 'Hãy nhập ',
-            'view.required' => 'Hãy nhập ',
-            'reference_ids.required' => 'Hãy nhập '
+    // public function messages()
+    // {
+    //     $messages = [
+    //         'company_id.required' => 'Hãy nhập ',
+    //         'job_title.required' => 'Hãy nhập ',
+    //         'job_description.required' => 'Hãy nhập ',
+    //         'skill_id.required' => 'Hãy nhập ',
+    //         'job_code.required' => 'Hãy nhập ',
+    //         'category_id.required' => 'Hãy nhập ',
+    //         'min_salary.required' => 'Hãy nhập ',
+    //         'max_salary.required' => 'Hãy nhập ',
+    //         'work_location.required' => 'Hãy nhập ',
+    //         'job_type.required' => 'Hãy nhập ',
+    //         'experiences.required' => 'Hãy nhập ',
+    //         'expiration.required' => 'Hãy nhập ',
+    //         'position_id.required' => 'Hãy nhập ',
+    //         'gender.required' => 'Hãy nhập ',
+    //         'quantity.required' => 'Hãy nhập ',
+    //         'status.required' => 'Hãy nhập ',
+    //         'is_hot.required' => 'Hãy nhập ',
+    //         'is_suggest.required' => 'Hãy nhập ',
+    //         'view.required' => 'Hãy nhập ',
+    //         'reference_ids.required' => 'Hãy nhập '
   
-        ];
-        return $messages;
-    }
+    //     ];
+    //     return $messages;
+    // }
 }
