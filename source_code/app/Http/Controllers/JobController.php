@@ -30,23 +30,23 @@ class JobController extends Controller
         return view('admin.job.create');
     }
 
-    public function store(JobRequest $request)
+    public function store(Request $request)
     {
         $job = new Job();
-        $job->company_id = $request->input('company_id');
+        $job->company_id = $request->session()->has('user') ? $request->session()->get('user')->company_id : $request->input('company_id');
         $job->job_title = $request->input('job_title');
         $job->job_description = $request->input('job_description');
         $job->category_id = $request->input('category_id');
         $job->min_salary = $request->input('min_salary');
         $job->max_salary = $request->input('max_salary');
         $job->work_location = $request->input('work_location');
-        $job->job_level = $request->input('job_level');
+        $job->job_type = $request->input('job_type');
         $job->experiences = $request->input('experiences');
         $job->expiration = $request->input('expiration');
-        $job->position_type = $request->input('position_type');
+        $job->position_id = $request->input('position_id');
         $job->gender = $request->input('gender');
         $job->status = $request->input('status');
-        $job->hot_job = $request->input('hot_job');
+        $job->is_hot = $request->input('is_hot');
         $job->is_suggest = $request->input('is_suggest');
         $job->view = $request->input('view');
 

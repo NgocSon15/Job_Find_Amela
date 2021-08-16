@@ -22,7 +22,7 @@
     <div style="margin: 30px 0;">
         <div class="page-wrapper container">
             <div class="wrapper">
-                <form method="POST" class="row" action="" enctype="multipart/form-data">
+                <form method="POST" class="row" action="{{ route('frontend.job.store') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="col-lg-6">
                         <div class="form-row" style="display: block;">
