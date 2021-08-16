@@ -16,8 +16,8 @@ class CreateCitiesTable extends Migration
         Schema::create('cities', function (Blueprint $table) {
             $table->integer('city_id')->autoIncrement();
             $table->string('city_name');
-            $table->integer('total_companies');
-            $table->integer('total_jobs');
+            $table->integer('total_companies')->default(0);
+            $table->integer('total_jobs')->default(0);
             $table->timestamps();
         });
     }

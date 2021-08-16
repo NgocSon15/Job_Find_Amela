@@ -7,6 +7,8 @@ use App\Models\Job;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\JobRequest;
+use App\Models\Category;
+use App\Models\Position;
 
 class JobController extends Controller
 {
@@ -14,6 +16,13 @@ class JobController extends Controller
     {
         $jobs = Job::all();
         return view('admin.job.list', compact('jobs'));
+    }
+
+    public function FECreate()
+    {
+        $categories = Category::all();
+        $positions = Position::all();
+        return view('frontend.job.create', compact('categories', 'positions'));
     }
 
     public function create()

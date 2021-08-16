@@ -11,6 +11,6 @@ class HomeController extends Controller
     {
         $jobs = Job::orderByDesc('created_at')->limit(5)->get();
 
-        return view('home', compact('jobs'));
+        return view('frontend.home', compact('jobs'));
     }
 }
