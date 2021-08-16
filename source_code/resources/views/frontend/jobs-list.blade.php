@@ -190,9 +190,9 @@ Tìm kiếm
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="count-job mb-35">
-                                        <span>39, 782 Jobs found</span>
+                                        <span>{{ $jobs->total()}} Jobs found</span>
                                         <!-- Select job items start -->
-                                        <div class="select-job-items">
+                                        <!-- <div class="select-job-items">
                                             <span>Sort by</span>
                                             <select name="select">
                                                 <option value="">None</option>
@@ -200,7 +200,7 @@ Tìm kiếm
                                                 <option value="">job list</option>
                                                 <option value="">job list</option>
                                             </select>
-                                        </div>
+                                        </div> -->
                                         <!--  Select job items End-->
                                     </div>
                                 </div>
