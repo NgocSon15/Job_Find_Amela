@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('frontend.layout')
 @section('title')
     Trang danh sách tin tuyển dụng
 @endsection
@@ -42,147 +42,144 @@
                             </div>
                         </div>
                         <!-- Job Category Listing start -->
-                        <div class="job-category-listing mb-50">
+                        <form action="" method="get">
+                            @csrf
+                            <div class="job-category-listing mb-50">
                             <!-- single one -->
                             <div class="single-listing">
                                 <div class="small-section-tittle2">
-                                    <h4>Job Category</h4>
+                                    <h4>Job Skill</h4>
                                 </div>
                                 <!-- Select job items start -->
                                 <div class="select-job-items2">
                                     <select name="select">
-                                        <option value="">All Category</option>
-                                        <option value="">Category 1</option>
-                                        <option value="">Category 2</option>
-                                        <option value="">Category 3</option>
-                                        <option value="">Category 4</option>
+                                        <option value="">All Skill</option>
+                                        @foreach($skills as $key => $val)
+                                        <option value="{{$val->skill_id}}">{{$val->skill}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <!--  Select job items End-->
                                 <!-- select-Categories start -->
-                                <div class="select-Categories pt-80 pb-50">
+                                <div class="select-Categories pt-80 pb-40">
                                     <div class="small-section-tittle2">
                                         <h4>Job Type</h4>
                                     </div>
                                     <label class="container">Full Time
-                                        <input type="checkbox" >
+                                        <input type="checkbox" name="full_time" value="1">
                                         <span class="checkmark"></span>
                                     </label>
                                     <label class="container">Part Time
-                                        <input type="checkbox" checked="checked active">
+                                        <input type="checkbox" name="part_time" value="0">
                                         <span class="checkmark"></span>
                                     </label>
-                                    <label class="container">Remote
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <label class="container">Freelance
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
+
                                 </div>
                                 <!-- select-Categories End -->
                             </div>
                             <!-- single two -->
                             <div class="single-listing">
-                                <div class="small-section-tittle2">
-                                    <h4>Job Location</h4>
-                                </div>
+{{--                                <div class="small-section-tittle2">--}}
+{{--                                    <h4>Job Location</h4>--}}
+{{--                                </div>--}}
                                 <!-- Select job items start -->
-                                <div class="select-job-items2">
-                                    <select name="select">
-                                        <option value="">Anywhere</option>
-                                        <option value="">Category 1</option>
-                                        <option value="">Category 2</option>
-                                        <option value="">Category 3</option>
-                                        <option value="">Category 4</option>
-                                    </select>
-                                </div>
+{{--                                <div class="select-job-items2">--}}
+{{--                                    <select name="select">--}}
+{{--                                        <option value="">Anywhere</option>--}}
+{{--                                        <option value="">Category 1</option>--}}
+{{--                                        <option value="">Category 2</option>--}}
+{{--                                        <option value="">Category 3</option>--}}
+{{--                                        <option value="">Category 4</option>--}}
+{{--                                    </select>--}}
+{{--                                </div>--}}
                                 <!--  Select job items End-->
                                 <!-- select-Categories start -->
-                                <div class="select-Categories pt-80 pb-50">
+                                <div class="select-Categories pt-10 pb-30" name >
                                     <div class="small-section-tittle2">
                                         <h4>Experience</h4>
                                     </div>
-                                    <label class="container">1-2 Years
-                                        <input type="checkbox" >
+                                    <label class="container">1 Years
+                                        <input type="checkbox" value="1" name="one">
                                         <span class="checkmark"></span>
                                     </label>
-                                    <label class="container">2-3 Years
-                                        <input type="checkbox" checked="checked active">
+                                    <label class="container">2 Years
+                                        <input type="checkbox" value="2" name="two">
                                         <span class="checkmark"></span>
                                     </label>
-                                    <label class="container">3-6 Years
-                                        <input type="checkbox">
+                                    <label class="container">3-more
+                                        <input type="checkbox" value="3" name="three">
                                         <span class="checkmark"></span>
                                     </label>
-                                    <label class="container">6-more..
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
+{{--                                    <label class="container">6-more..--}}
+{{--                                        <input type="checkbox">--}}
+{{--                                        <span class="checkmark"></span>--}}
+{{--                                    </label>--}}
                                 </div>
                                 <!-- select-Categories End -->
                             </div>
                             <!-- single three -->
-                            <div class="single-listing">
-                                <!-- select-Categories start -->
-                                <div class="select-Categories pb-50">
-                                    <div class="small-section-tittle2">
-                                        <h4>Posted Within</h4>
-                                    </div>
-                                    <label class="container">Any
-                                        <input type="checkbox" >
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <label class="container">Today
-                                        <input type="checkbox" checked="checked active">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <label class="container">Last 2 days
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <label class="container">Last 3 days
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <label class="container">Last 5 days
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <label class="container">Last 10 days
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </div>
-                                <!-- select-Categories End -->
-                            </div>
-                            <div class="single-listing">
-                                <!-- Range Slider Start -->
-                                <aside class="left_widgets p_filter_widgets price_rangs_aside sidebar_box_shadow">
-                                    <div class="small-section-tittle2">
-                                        <h4>Filter Jobs</h4>
-                                    </div>
-                                    <div class="widgets_inner">
-                                        <div class="range_item">
-                                            <!-- <div id="slider-range"></div> -->
-                                            <input type="text" class="js-range-slider" value="" />
-                                            <div class="d-flex align-items-center">
-                                                <div class="price_text">
-                                                    <p>Price :</p>
-                                                </div>
-                                                <div class="price_value d-flex justify-content-center">
-                                                    <input type="text" class="js-input-from" id="amount" readonly />
-                                                    <span>to</span>
-                                                    <input type="text" class="js-input-to" id="amount" readonly />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </aside>
-                                <!-- Range Slider End -->
-                            </div>
+{{--                            <div class="single-listing">--}}
+{{--                                <!-- select-Categories start -->--}}
+{{--                                <div class="select-Categories pb-50">--}}
+{{--                                    <div class="small-section-tittle2">--}}
+{{--                                        <h4>Posted Within</h4>--}}
+{{--                                    </div>--}}
+{{--                                    <label class="container">Any--}}
+{{--                                        <input type="checkbox" >--}}
+{{--                                        <span class="checkmark"></span>--}}
+{{--                                    </label>--}}
+{{--                                    <label class="container">Today--}}
+{{--                                        <input type="checkbox" checked="checked active">--}}
+{{--                                        <span class="checkmark"></span>--}}
+{{--                                    </label>--}}
+{{--                                    <label class="container">Last 2 days--}}
+{{--                                        <input type="checkbox">--}}
+{{--                                        <span class="checkmark"></span>--}}
+{{--                                    </label>--}}
+{{--                                    <label class="container">Last 3 days--}}
+{{--                                        <input type="checkbox">--}}
+{{--                                        <span class="checkmark"></span>--}}
+{{--                                    </label>--}}
+{{--                                    <label class="container">Last 5 days--}}
+{{--                                        <input type="checkbox">--}}
+{{--                                        <span class="checkmark"></span>--}}
+{{--                                    </label>--}}
+{{--                                    <label class="container">Last 10 days--}}
+{{--                                        <input type="checkbox">--}}
+{{--                                        <span class="checkmark"></span>--}}
+{{--                                    </label>--}}
+{{--                                </div>--}}
+{{--                                <!-- select-Categories End -->--}}
+{{--                            </div>--}}
+{{--                            <div class="single-listing">--}}
+{{--                                <!-- Range Slider Start -->--}}
+{{--                                <aside class="left_widgets p_filter_widgets price_rangs_aside sidebar_box_shadow">--}}
+{{--                                    <div class="small-section-tittle2">--}}
+{{--                                        <h4>Filter Jobs</h4>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="widgets_inner">--}}
+{{--                                        <div class="range_item">--}}
+{{--                                            <!-- <div id="slider-range"></div> -->--}}
+{{--                                            <input type="text" class="js-range-slider" value="" />--}}
+{{--                                            <div class="d-flex align-items-center">--}}
+{{--                                                <div class="price_text">--}}
+{{--                                                    <p>Price :</p>--}}
+{{--                                                </div>--}}
+{{--                                                <div class="price_value d-flex justify-content-center">--}}
+{{--                                                    <input type="text" class="js-input-from" id="amount" readonly />--}}
+{{--                                                    <span>to</span>--}}
+{{--                                                    <input type="text" class="js-input-to" id="amount" readonly />--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </aside>--}}
+{{--                                <!-- Range Slider End -->--}}
+{{--                            </div>--}}
+                                <a href="#" class="btn head-btn1">Lọc</a>
                         </div>
+
+                        </form>
                         <!-- Job Category Listing End -->
                     </div>
                     <!-- Right content -->
@@ -194,176 +191,182 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="count-job mb-35">
-                                            <span>39, 782 Jobs found</span>
+{{--                                            <span>39, 782 Jobs found</span>--}}
                                             <!-- Select job items start -->
-                                            <div class="select-job-items">
-                                                <span>Sort by</span>
-                                                <select name="select">
-                                                    <option value="">None</option>
-                                                    <option value="">job list</option>
-                                                    <option value="">job list</option>
-                                                    <option value="">job list</option>
-                                                </select>
-                                            </div>
+{{--                                            <div class="select-job-items">--}}
+{{--                                                <span>Sort by</span>--}}
+{{--                                                <select name="select">--}}
+{{--                                                    <option value="">None</option>--}}
+{{--                                                    <option value="">job list</option>--}}
+{{--                                                    <option value="">job list</option>--}}
+{{--                                                    <option value="">job list</option>--}}
+{{--                                                </select>--}}
+{{--                                            </div>--}}
                                             <!--  Select job items End-->
                                         </div>
                                     </div>
                                 </div>
                                 <!-- Count of Job list End -->
                                 <!-- single-job-content -->
+                                @foreach($jobs as $key => $val)
                                 <div class="single-job-items mb-30">
                                     <div class="job-items">
                                         <div class="company-img">
-                                            <a href="#"><img src="{{asset('jobfinderportal-master/assets/img/icon/job-list1.png')}}" alt=""></a>
+                                            <a href="#"><img src="{{asset('jobfinderportal-master/assets/img/icon/'.$val->company->logo)}}" alt=""></a>
                                         </div>
                                         <div class="job-tittle job-tittle2">
                                             <a href="#">
-                                                <h4>Digital Marketer</h4>
+                                                <h4>{{$val->job_title}}</h4>
                                             </a>
                                             <ul>
                                                 <li>Creative Agency</li>
-                                                <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                                <li>$3500 - $4000</li>
+                                                <li><i class="fas fa-map-marker-alt"></i>{{$val->work_location}}</li>
+                                                <li>${{$val->min_salary}} - ${{$val->max_salary}}</li>
                                             </ul>
                                         </div>
                                     </div>
                                     <div class="items-link items-link2 f-right">
-                                        <a href="job_details.html">Full Time</a>
-                                        <span>7 hours ago</span>
+                                        @if($val->job_type == 1)
+                                            <a href="#">Full Time</a>
+                                        @elseif($val->job_type == 0)
+                                            <a href="#">Part Time</a>
+                                        @endif
+                                        <span>{{$val->created_at->diffForHumans($now)}}</span>
                                     </div>
                                 </div>
-                                <!-- single-job-content -->
-                                <div class="single-job-items mb-30">
-                                    <div class="job-items">
-                                        <div class="company-img">
-                                            <a href="#"><img src="{{asset('jobfinderportal-master/assets/img/icon/job-list2.png')}}" alt=""></a>
-                                        </div>
-                                        <div class="job-tittle job-tittle2">
-                                            <a href="#">
-                                                <h4>Digital Marketer</h4>
-                                            </a>
-                                            <ul>
-                                                <li>Creative Agency</li>
-                                                <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                                <li>$3500 - $4000</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="items-link items-link2 f-right">
-                                        <a href="job_details.html">Full Time</a>
-                                        <span>7 hours ago</span>
-                                    </div>
-                                </div>
-                                <!-- single-job-content -->
-                                <div class="single-job-items mb-30">
-                                    <div class="job-items">
-                                        <div class="company-img">
-                                            <a href="#"><img src="{{asset('jobfinderportal-master/assets/img/icon/job-list3.png')}}" alt=""></a>
-                                        </div>
-                                        <div class="job-tittle job-tittle2">
-                                            <a href="#">
-                                                <h4>Digital Marketer</h4>
-                                            </a>
-                                            <ul>
-                                                <li>Creative Agency</li>
-                                                <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                                <li>$3500 - $4000</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="items-link items-link2 f-right">
-                                        <a href="job_details.html">Full Time</a>
-                                        <span>7 hours ago</span>
-                                    </div>
-                                </div>
-                                <!-- single-job-content -->
-                                <div class="single-job-items mb-30">
-                                    <div class="job-items">
-                                        <div class="company-img">
-                                            <a href="#"><img src="{{asset('jobfinderportal-master/assets/img/icon/job-list4.png')}}" alt=""></a>
-                                        </div>
-                                        <div class="job-tittle job-tittle2">
-                                            <a href="#">
-                                                <h4>Digital Marketer</h4>
-                                            </a>
-                                            <ul>
-                                                <li>Creative Agency</li>
-                                                <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                                <li>$3500 - $4000</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="items-link items-link2 f-right">
-                                        <a href="job_details.html">Full Time</a>
-                                        <span>7 hours ago</span>
-                                    </div>
-                                </div>
-                                <!-- single-job-content -->
-                                <div class="single-job-items mb-30">
-                                    <div class="job-items">
-                                        <div class="company-img">
-                                            <a href="#"><img src="{{asset('jobfinderportal-master/assets/img/icon/job-list1.png')}}" alt=""></a>
-                                        </div>
-                                        <div class="job-tittle job-tittle2">
-                                            <a href="#">
-                                                <h4>Digital Marketer</h4>
-                                            </a>
-                                            <ul>
-                                                <li>Creative Agency</li>
-                                                <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                                <li>$3500 - $4000</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="items-link items-link2 f-right">
-                                        <a href="job_details.html">Full Time</a>
-                                        <span>7 hours ago</span>
-                                    </div>
-                                </div>
-                                <!-- single-job-content -->
-                                <div class="single-job-items mb-30">
-                                    <div class="job-items">
-                                        <div class="company-img">
-                                            <a href="#"><img src="{{asset('jobfinderportal-master/assets/img/icon/job-list3.png')}}" alt=""></a>
-                                        </div>
-                                        <div class="job-tittle job-tittle2">
-                                            <a href="#">
-                                                <h4>Digital Marketer</h4>
-                                            </a>
-                                            <ul>
-                                                <li>Creative Agency</li>
-                                                <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                                <li>$3500 - $4000</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="items-link items-link2 f-right">
-                                        <a href="job_details.html">Full Time</a>
-                                        <span>7 hours ago</span>
-                                    </div>
-                                </div>
-                                <!-- single-job-content -->
-                                <div class="single-job-items mb-30">
-                                    <div class="job-items">
-                                        <div class="company-img">
-                                            <a href="#"><img src="{{asset('jobfinderportal-master/assets/img/icon/job-list4.png')}}" alt=""></a>
-                                        </div>
-                                        <div class="job-tittle job-tittle2">
-                                            <a href="#">
-                                                <h4>Digital Marketer</h4>
-                                            </a>
-                                            <ul>
-                                                <li>Creative Agency</li>
-                                                <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                                <li>$3500 - $4000</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="items-link items-link2 f-right">
-                                        <a href="job_details.html">Full Time</a>
-                                        <span>7 hours ago</span>
-                                    </div>
-                                </div>
+                                @endforeach
+{{--                                <!-- single-job-content -->--}}
+{{--                                <div class="single-job-items mb-30">--}}
+{{--                                    <div class="job-items">--}}
+{{--                                        <div class="company-img">--}}
+{{--                                            <a href="#"><img src="{{asset('jobfinderportal-master/assets/img/icon/job-list2.png')}}" alt=""></a>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="job-tittle job-tittle2">--}}
+{{--                                            <a href="#">--}}
+{{--                                                <h4>Digital Marketer</h4>--}}
+{{--                                            </a>--}}
+{{--                                            <ul>--}}
+{{--                                                <li>Creative Agency</li>--}}
+{{--                                                <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>--}}
+{{--                                                <li>$3500 - $4000</li>--}}
+{{--                                            </ul>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="items-link items-link2 f-right">--}}
+{{--                                        <a href="job_details.html">Full Time</a>--}}
+{{--                                        <span>7 hours ago</span>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <!-- single-job-content -->--}}
+{{--                                <div class="single-job-items mb-30">--}}
+{{--                                    <div class="job-items">--}}
+{{--                                        <div class="company-img">--}}
+{{--                                            <a href="#"><img src="{{asset('jobfinderportal-master/assets/img/icon/job-list3.png')}}" alt=""></a>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="job-tittle job-tittle2">--}}
+{{--                                            <a href="#">--}}
+{{--                                                <h4>Digital Marketer</h4>--}}
+{{--                                            </a>--}}
+{{--                                            <ul>--}}
+{{--                                                <li>Creative Agency</li>--}}
+{{--                                                <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>--}}
+{{--                                                <li>$3500 - $4000</li>--}}
+{{--                                            </ul>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="items-link items-link2 f-right">--}}
+{{--                                        <a href="job_details.html">Full Time</a>--}}
+{{--                                        <span>7 hours ago</span>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <!-- single-job-content -->--}}
+{{--                                <div class="single-job-items mb-30">--}}
+{{--                                    <div class="job-items">--}}
+{{--                                        <div class="company-img">--}}
+{{--                                            <a href="#"><img src="{{asset('jobfinderportal-master/assets/img/icon/job-list4.png')}}" alt=""></a>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="job-tittle job-tittle2">--}}
+{{--                                            <a href="#">--}}
+{{--                                                <h4>Digital Marketer</h4>--}}
+{{--                                            </a>--}}
+{{--                                            <ul>--}}
+{{--                                                <li>Creative Agency</li>--}}
+{{--                                                <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>--}}
+{{--                                                <li>$3500 - $4000</li>--}}
+{{--                                            </ul>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="items-link items-link2 f-right">--}}
+{{--                                        <a href="job_details.html">Full Time</a>--}}
+{{--                                        <span>7 hours ago</span>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <!-- single-job-content -->--}}
+{{--                                <div class="single-job-items mb-30">--}}
+{{--                                    <div class="job-items">--}}
+{{--                                        <div class="company-img">--}}
+{{--                                            <a href="#"><img src="{{asset('jobfinderportal-master/assets/img/icon/job-list1.png')}}" alt=""></a>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="job-tittle job-tittle2">--}}
+{{--                                            <a href="#">--}}
+{{--                                                <h4>Digital Marketer</h4>--}}
+{{--                                            </a>--}}
+{{--                                            <ul>--}}
+{{--                                                <li>Creative Agency</li>--}}
+{{--                                                <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>--}}
+{{--                                                <li>$3500 - $4000</li>--}}
+{{--                                            </ul>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="items-link items-link2 f-right">--}}
+{{--                                        <a href="job_details.html">Full Time</a>--}}
+{{--                                        <span>7 hours ago</span>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <!-- single-job-content -->--}}
+{{--                                <div class="single-job-items mb-30">--}}
+{{--                                    <div class="job-items">--}}
+{{--                                        <div class="company-img">--}}
+{{--                                            <a href="#"><img src="{{asset('jobfinderportal-master/assets/img/icon/job-list3.png')}}" alt=""></a>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="job-tittle job-tittle2">--}}
+{{--                                            <a href="#">--}}
+{{--                                                <h4>Digital Marketer</h4>--}}
+{{--                                            </a>--}}
+{{--                                            <ul>--}}
+{{--                                                <li>Creative Agency</li>--}}
+{{--                                                <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>--}}
+{{--                                                <li>$3500 - $4000</li>--}}
+{{--                                            </ul>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="items-link items-link2 f-right">--}}
+{{--                                        <a href="job_details.html">Full Time</a>--}}
+{{--                                        <span>7 hours ago</span>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <!-- single-job-content -->--}}
+{{--                                <div class="single-job-items mb-30">--}}
+{{--                                    <div class="job-items">--}}
+{{--                                        <div class="company-img">--}}
+{{--                                            <a href="#"><img src="{{asset('jobfinderportal-master/assets/img/icon/job-list4.png')}}" alt=""></a>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="job-tittle job-tittle2">--}}
+{{--                                            <a href="#">--}}
+{{--                                                <h4>Digital Marketer</h4>--}}
+{{--                                            </a>--}}
+{{--                                            <ul>--}}
+{{--                                                <li>Creative Agency</li>--}}
+{{--                                                <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>--}}
+{{--                                                <li>$3500 - $4000</li>--}}
+{{--                                            </ul>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="items-link items-link2 f-right">--}}
+{{--                                        <a href="job_details.html">Full Time</a>--}}
+{{--                                        <span>7 hours ago</span>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
                             </div>
                         </section>
                         <!-- Featured_job_end -->
@@ -380,10 +383,11 @@
                         <div class="single-wrap d-flex justify-content-center">
                             <nav aria-label="Page navigation example">
                                 <ul class="pagination justify-content-start">
-                                    <li class="page-item active"><a class="page-link" href="#">01</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">02</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">03</a></li>
-                                    <li class="page-item"><a class="page-link" href="#"><span class="ti-angle-right"></span></a></li>
+                                    {{ $jobs->appends(request()->query()) }}
+{{--                                    <li class="page-item active"><a class="page-link" href="#">01</a></li>--}}
+{{--                                    <li class="page-item"><a class="page-link" href="#">02</a></li>--}}
+{{--                                    <li class="page-item"><a class="page-link" href="#">03</a></li>--}}
+{{--                                    <li class="page-item"><a class="page-link" href="#"><span class="ti-angle-right"></span></a></li>--}}
                                 </ul>
                             </nav>
                         </div>
