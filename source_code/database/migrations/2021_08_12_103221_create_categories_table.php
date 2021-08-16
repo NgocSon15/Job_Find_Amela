@@ -16,6 +16,7 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->integer('cat_id')->autoIncrement();
             $table->string('cat_name');
+            $table->string('image');
             $table->integer('total_jobs');
             $table->timestamps();
         });
