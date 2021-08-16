@@ -17,7 +17,7 @@ class CreateCustomersTable extends Migration
             $table->integer('customer_id')->autoIncrement();
             $table->integer('user_id');
             $table->string('fullname');
-            $table->string('phone');
+            $table->string('phone')->nullable();
             $table->string('email');
         });
     }
