@@ -195,7 +195,7 @@ Trang chủ
                     <div class="single-job-items mb-30">
                         <div class="job-items">
                             <div class="company-img">
-                                <a href="job_details.html"><img src="{{ asset('storage/' . $job->company->logo) }}" style="max-height: 85px; max-width: 85px;" alt=""></a>
+                                <a href="job_details.html"><img src="{{ asset('jobfinderportal-master/assets/img/logo-company/' . $job->company->logo) }}" style="max-height: 85px; max-width: 85px;" alt=""></a>
                             </div>
                             <div class="job-tittle">
                                 <a href="job_details.html">
@@ -214,48 +214,6 @@ Trang chủ
                         </div>
                     </div>
                     @endforeach
-                    <div class="single-job-items mb-30">
-                        <div class="job-items">
-                            <div class="company-img">
-                                <a href="job_details.html"><img src="" style="max-height: 85px; max-width: 85px;" alt=""></a>
-                            </div>
-                            <div class="job-tittle">
-                                <a href="job_details.html">
-                                    <h4> Tuyển dụng </h4>
-                                </a>
-                                <ul>
-                                    <li>Mô tả</li>
-                                    <li><i class="fas fa-map-marker-alt"></i>Hà nội</li>
-                                    <li>10.000.000 - 15.000.000</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="items-link f-right">
-                            <a href="job_details.html">Fulltime</a>
-                            <span>7 hours ago</span>
-                        </div>
-                    </div>
-                    <div class="single-job-items mb-30">
-                        <div class="job-items">
-                            <div class="company-img">
-                                <a href="job_details.html"><img src="" style="max-height: 85px; max-width: 85px;" alt=""></a>
-                            </div>
-                            <div class="job-tittle">
-                                <a href="job_details.html">
-                                    <h4> Tuyển dụng </h4>
-                                </a>
-                                <ul>
-                                    <li>Mô tả</li>
-                                    <li><i class="fas fa-map-marker-alt"></i>Hà nội</li>
-                                    <li>10.000.000 - 15.000.000</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="items-link f-right">
-                            <a href="job_details.html">Fulltime</a>
-                            <span>7 hours ago</span>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
