@@ -6,7 +6,7 @@
     <title>@yield('title')</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="manifest" href="site.webmanifest">
+    <link rel="manifest" href="manifest.json">
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('jobfinderportal-master/assets/img/favicon.ico') }}">
 
     <!-- CSS here -->
@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="{{ asset('jobfinderportal-master/assets/css/themify-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('jobfinderportal-master/assets/css/slick.css') }}">
     <link rel="stylesheet" href="{{ asset('jobfinderportal-master/assets/css/nice-select.css') }}">
-<link rel="stylesheet" href="{{ asset('jobfinderportal-master/assets/css/register.css') }}">
+    <link rel="stylesheet" href="{{ asset('jobfinderportal-master/assets/css/register.css') }}">
     <link rel="stylesheet" href="{{ asset('jobfinderportal-master/assets/css/style.css') }}">
     @yield('link')
 </head>
@@ -51,7 +51,7 @@
                     <div class="col-lg-3 col-md-2">
                         <!-- Logo -->
                         <div class="logo">
-                            <a href="index.html"><img src="{{ asset('jobfinderportal-master/assets/img/logo/logo.png') }}" alt=""></a>
+                            <a href="{{ route('frontend.home') }}"><img src="{{ asset('jobfinderportal-master/assets/img/logo/logo.png') }}" alt=""></a>
                         </div>
                     </div>
                     <div class="col-lg-9 col-md-9">
@@ -60,8 +60,8 @@
                             <div class="main-menu">
                                 <nav class="d-none d-lg-block">
                                     <ul id="navigation">
-                                        <li><a href="#">Home</a></li>
-                                        <li><a href="job_listing.html">Find a Jobs </a></li>
+                                        <li><a href="{{ route('frontend.home') }}">Home</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">Find a Jobs </a></li>
                                         <li><a href="#">Add New Job</a></li>
                                         <li><a href="contact.html">Contact</a></li>
                                     </ul>

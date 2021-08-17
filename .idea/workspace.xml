@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="097011e4-7987-4579-851d-cf933c741605" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source_code/app/Http/Controllers/JobController.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/app/Http/Controllers/JobController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source_code/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source_code/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/database/seeders/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source_code/resources/views/frontend/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/resources/views/frontend/home.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,11 +149,14 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../car_seller" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/source_code/vendor/laravel/framework/src/Illuminate/Http/Middleware" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\job_find\source_code\vendor\laravel\framework\src\Illuminate\Http\Middleware" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\job_find\source_code\resources\views\frontend" />
     </key>
@@ -168,7 +173,9 @@
       <workItem from="1628842754960" duration="10246000" />
       <workItem from="1628863028170" duration="3413000" />
       <workItem from="1628911291623" duration="4113000" />
-      <workItem from="1628997483367" duration="14396000" />
+      <workItem from="1628997483367" duration="14540000" />
+      <workItem from="1629080716150" duration="13193000" />
+      <workItem from="1629162835562" duration="10448000" />
     </task>
     <servers />
   </component>

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CompanyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,9 +21,24 @@ use App\Http\Controllers\HomeController;
 */
 
 
-Route::get('/', [HomeController::class, 'getHome'])->name('frontend.home');
 
-Route::get('/job', [JobController::class, 'FECreate'])->name('frontend.job.create');
+Route::get('/job_list', [HomeController::class, 'getListJob'])->name('job_list');
+Route::get('/job_list/filter', [HomeController::class, 'filterJob'])->name('filter');
+
+Route::get('/', [HomeController::class, 'getHome'])->name('frontend.home');
+Route::get('/search', [HomeController::class, 'homeSearch'])->name('frontend.search');
+
+Route::prefix('job')->group(function() {
+    Route::get('/', [JobController::class, 'feCreate'])->name('frontend.job.create')->middleware('checkLogin');
+    Route::post('/', [JobController::class, 'store'])->name('frontend.job.store')->middleware('checkLogin');
+});
+
+Route::prefix('company')->group(function() {
+    Route::get('/', [CompanyController::class, 'feIndex'])->name('frontend.company.index');
+    Route::get('/show/{id}', [CompanyController::class, 'feShow'])->name('frontend.company.show');
+    Route::post('/filter', [CompanyController::class, 'filter'])->name('frontend.company.filter');
+});
+
 
 Route::prefix('admin')->group(function() {
     Route::get('/', function () {

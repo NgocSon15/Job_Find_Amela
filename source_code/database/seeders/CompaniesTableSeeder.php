@@ -15,8 +15,8 @@ class CompaniesTableSeeder extends Seeder
     public function run()
     {
         $company = new Company();
-        $company->user_id = 1;
         $company->fullname = 'Amela Technology';
+        $company->shortname = 'Amela';
         $company->tax_code = '1234567890';
         $company->company_code = 'AME010001';
         $company->email = 'contact@amela.vn';
@@ -33,6 +33,104 @@ class CompaniesTableSeeder extends Seeder
         $company->total_jobs = 5;
         $company->total_employee = 50;
         $company->is_suggest = 1;
+        $company->timestamps = false;
+        $company->save();
+
+        $company = new Company();
+        $company->fullname = 'Công ty cổ phần CodeGym';
+        $company->shortname = 'CodeGym';
+        $company->tax_code = '1234567891';
+        $company->company_code = 'COD020001';
+        $company->email = 'codegym@example.com';
+        $company->address = 'Hà Nội';
+        $company->logo = 'images/logo-codegym.png';
+        $company->description = 'Công ty cổ phần Code Gym';
+        $company->phone = '1234567891';
+        $company->total_jobs = 10;
+        $company->timestamps = false;
+        $company->save();
+
+        $company = new Company();
+        $company->fullname = 'Google LLC';
+        $company->shortname = 'Google';
+        $company->tax_code = '1234567892';
+        $company->company_code = 'GOO030001';
+        $company->email = 'google@example.com';
+        $company->address = 'California';
+        $company->logo = 'images/logo-google.png';
+        $company->description = 'Google';
+        $company->phone = '1234567892';
+        $company->total_jobs = 15;
+        $company->timestamps = false;
+        $company->save();
+
+        $company = new Company();
+        $company->fullname = 'Apple Inc.';
+        $company->shortname = 'Apple';
+        $company->tax_code = '1234567893';
+        $company->company_code = 'APP040001';
+        $company->email = 'apple@example.com';
+        $company->address = 'Mỹ';
+        $company->logo = 'images/logo-apple.png';
+        $company->description = 'Apple';
+        $company->phone = '1234567893';
+        $company->total_jobs = 7;
+        $company->timestamps = false;
+        $company->save();
+
+        $company = new Company();
+        $company->fullname = 'Samsung Electronics co. ltd';
+        $company->shortname = 'Samsung';
+        $company->tax_code = '1234567894';
+        $company->company_code = 'SAM050001';
+        $company->email = 'samsung@example.com';
+        $company->address = 'Hàn Quốc';
+        $company->logo = 'images/logo-samsung.jpg';
+        $company->description = 'Samsung';
+        $company->phone = '1234567894';
+        $company->total_jobs = 12;
+        $company->timestamps = false;
+        $company->save();
+
+        $company = new Company();
+        $company->fullname = 'Tập đoàn viễn thông quân đội Viettel';
+        $company->shortname = 'Viettel';
+        $company->tax_code = '1234567895';
+        $company->company_code = 'VIE060001';
+        $company->email = 'viettel@example.com';
+        $company->address = 'Việt Nam';
+        $company->logo = 'images/logo-viettel.png';
+        $company->description = 'Viettel';
+        $company->phone = '1234567895';
+        $company->total_jobs = 15;
+        $company->timestamps = false;
+        $company->save();
+
+        $company = new Company();
+        $company->fullname = 'Tập đoàn Vingroup';
+        $company->shortname = 'Vingroup';
+        $company->tax_code = '1234567896';
+        $company->company_code = 'VIN070001';
+        $company->email = 'vingroup@example.com';
+        $company->address = 'Việt Nam';
+        $company->logo = 'images/logo-vingroup.png';
+        $company->description = 'Vingroup';
+        $company->phone = '1234567896';
+        $company->total_jobs = 12;
+        $company->timestamps = false;
+        $company->save();
+
+        $company = new Company();
+        $company->fullname = 'Công ty TNHH phần mềm FPT';
+        $company->shortname = 'FPT Software';
+        $company->tax_code = '1234567897';
+        $company->company_code = 'FPT080001';
+        $company->email = 'fsoft@example.com';
+        $company->address = 'Việt Nam';
+        $company->logo = 'images/logo-fpt.png';
+        $company->description = 'FPT';
+        $company->phone = '1234567897';
+        $company->total_jobs = 6;
         $company->timestamps = false;
         $company->save();
     }
