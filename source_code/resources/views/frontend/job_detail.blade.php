@@ -30,7 +30,7 @@
                         <div class="single-job-items mb-50">
                             <div class="job-items">
                                 <div class="company-img company-img-details">
-                                    <a href="#"><img src="{{asset('jobfinderportal-master/assets/img/icon/job-list1.png')}}" alt=""></a>
+                                    <a href="#"><img src="{{asset('jobfinderportal-master/assets/img/icon/'.$job->company->logo)}}" alt=""></a>
 
                                 </div>
                                 <div class="job-tittle">
@@ -62,7 +62,7 @@
                                 </div>
                                 <ul>
                                     <li>System Software Development</li>
-                                    <li>Mobile Applicationin iOS/Android/Tizen or other platform</li>
+                                    <li>{{$job->skill->skill}}</li>
                                     <li>Research and code , libraries, APIs and frameworks</li>
                                     <li>Strong knowledge on software development life cycle</li>
                                     <li>Strong problem solving and debugging skills</li>
@@ -74,7 +74,7 @@
                                     <h4>Education + Experience</h4>
                                 </div>
                                 <ul>
-                                    <li>3 or more years of professional design experience</li>
+                                    <li>{{$job->experiences}} or more years of professional design experience</li>
                                     <li>Direct response email experience</li>
                                     <li>Ecommerce website design experience</li>
                                     <li>Familiarity with mobile and web apps preferred</li>
@@ -93,11 +93,16 @@
                             </div>
                             <ul>
                                 <li>Posted date : <span>12 Aug 2019</span></li>
-                                <li>Location : <span>New York</span></li>
-                                <li>Vacancy : <span>02</span></li>
-                                <li>Job nature : <span>Full time</span></li>
-                                <li>Salary :  <span>$7,800 yearly</span></li>
-                                <li>Application date : <span>12 Sep 2020</span></li>
+                                <li>Location : <span>{{$job->work_location}}</span></li>
+                                <li>Vacancy : <span>{{$job->quantity}}</span></li>
+                                @if($job->job_type == 1)
+                                    <li>Job nature : <span>Full time</span></li>
+                                @elseif($job->job_type == 0)
+                                    <li>Job nature : <span>Part time</span></li>
+                                @endif
+
+                                <li>Salary :  <span> ${{$job->min_salary}} - ${{$job->max_salary}}</span></li>
+                                <li>Application date : <span>{{$job->expiration}}</span></li>
                             </ul>
                             <div class="apply-btn2">
                                 <a href="#" class="btn">Apply Now</a>
@@ -108,12 +113,11 @@
                             <div class="small-section-tittle">
                                 <h4>Company Information</h4>
                             </div>
-                            <span>Colorlib</span>
+                            <span>{{$job->company->fullname}}</span>
                             <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
                             <ul>
-                                <li>Name: <span>Colorlib </span></li>
-                                <li>Web : <span> colorlib.com</span></li>
-                                <li>Email: <span>carrier.colorlib@gmail.com</span></li>
+                                <li>Web : <span> {{$job->company->website}}</span></li>
+                                <li>Email: <span>{{$job->company->email}}</span></li>
                             </ul>
                         </div>
                     </div>
