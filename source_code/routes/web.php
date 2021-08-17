@@ -21,7 +21,6 @@ use App\Http\Controllers\HomeController;
 
 
 Route::get('/', [HomeController::class, 'getHome'])->name('frontend.home');
-// Route::get('/search', [HomeController::class, 'showSearch'])->name('frontend.show-search');
 Route::get('/search', [HomeController::class, 'homeSearch'])->name('frontend.search');
 
 Route::get('/job', [JobController::class, 'FECreate'])->name('frontend.job.create');

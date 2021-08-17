@@ -16,7 +16,8 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->integer('cat_id')->autoIncrement();
             $table->string('cat_name');
-            $table->integer('total_jobs');
+            $table->string('icon')->nullable();
+            $table->integer('total_jobs')->default(0);
             $table->timestamps();
         });
     }
