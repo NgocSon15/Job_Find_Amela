@@ -127,7 +127,8 @@
                                 <div class="single-job-items mb-30">
                                     <div class="job-items">
                                         <div class="company-img">
-                                            <a href="{{route('detail', $val->job_id)}}"><img src="{{asset('jobfinderportal-master/assets/img/icon/'.$val->company->logo)}}" alt=""></a>
+                                            <a href="{{route('detail', $val->job_id)}}"><img src="{{asset('storage/'.$val->company->logo)}}" alt=""></a>
+
                                         </div>
                                         <div class="job-tittle job-tittle2">
                                             <a href="{{route('detail', $val->job_id)}}">
@@ -167,7 +168,11 @@
                         <div class="single-wrap d-flex justify-content-center">
                             <nav aria-label="Page navigation example">
                                 <ul class="pagination justify-content-start">
+<<<<<<< HEAD
+
+=======
                                     {{ $jobs->appends(request()->query()) }}
+>>>>>>> d3cbd6dbdc3d5198dfce552d6b791d433c358acc
                                 </ul>
                             </nav>
                         </div>

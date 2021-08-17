@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="097011e4-7987-4579-851d-cf933c741605" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source_code/app/Http/Controllers/JobController.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/app/Http/Controllers/JobController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source_code/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/database/seeders/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source_code/resources/views/frontend/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/resources/views/frontend/home.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source_code/resources/views/frontend/job_detail.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source_code/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source_code/resources/views/job_listing.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/resources/views/job_listing.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source_code/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,12 +149,13 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/source_code/vendor/laravel/framework/src/Illuminate/Http/Middleware" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.idea" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\job_find\.idea" />
       <recent name="C:\xampp\htdocs\job_find\source_code\vendor\laravel\framework\src\Illuminate\Http\Middleware" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
