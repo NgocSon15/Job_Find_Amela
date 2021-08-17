@@ -15,9 +15,9 @@ use App\Models\CompanySize;
 class Company extends Model
 {
     use HasFactory;
+
     protected $primaryKey = 'id';
     public $timestamps = false;
-<<<<<<< HEAD
     protected $table = 'companies';
 
     public function jobs()
@@ -39,9 +39,5 @@ class Company extends Model
     {
         return $this->belongsTo(CompanySize::class, 'size_id', 'size_id');
     }
-=======
 
-    protected $primaryKey = 'id';
-    protected $table = 'companies';
->>>>>>> dev
 }
