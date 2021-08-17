@@ -93,5 +93,12 @@ class HomeController extends Controller
 
     }
 
+    public function getDetailJob($id)
+    {
+        $job = Job::where('job_id', $id)->firstOrFail();
+        return view('frontend.job_detail', compact('job'));
+//        findOrFail($id);
+    }
+
 
 }
