@@ -18,7 +18,7 @@
             @endif
         </div>
         <div class="form-group">
-            <label for="tax_code">Mã só thuế:</label>
+            <label for="tax_code">Mã số thuế:</label>
             <input type="text" class="form-control" id="tax_code" name="tax_code" placeholder="Nhập mã só thuế">
             @if($errors->has('tax_code'))
                 @foreach($errors->get('tax_code') as $message)
@@ -61,27 +61,6 @@
                 @endforeach
             @endif
         </div>
-
-        {{-- <div class="form-group">
-            <label for="exampleInputFile">Ảnh:</label>
-            <div class="input-group">
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="exampleInputFile" name="image" value="{{ old('image') }}">
-                    <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                </div>
-                <div class="input-group-append">
-                    <span class="input-group-text">Upload</span>
-                </div>
-            </div>
-            @if($errors->has('image'))
-                @foreach($errors->get('image') as $message)
-                    <p class="text-danger">
-                        {{ $message }}
-                    </p>
-                @endforeach
-            @endif
-
-        </div> --}}
 
         <div class="form-group">
             <label for="description">Mô tả:</label>

@@ -24,26 +24,20 @@ class JobRequest extends FormRequest
     public function rules()
     {
         return [
-            'company_id' => 'required',
-            'job_title' => 'required',
-            'job_description' => 'required',
-            'skill_id' => 'required',
-            'job_code' => 'required',
-            'category_id' => 'required',
-            'min_salary' => 'required',
-            'max_salary' => 'required',
+            'company_id' => 'required|exists:companies,id',
+            'job_title' => 'required|min:4',
+            'job_description' => 'required|min:8',
+            'skill_id' => 'required|exists:skills,skill_id',
+            'category_id' => 'required|exists:categories,cat_id',
+            'min_salary' => 'required|integer|min:0',
+            'max_salary' => 'required|integer|gt:min_salary',
             'work_location' => 'required',
-            'job_type' => 'required',
-            'experiences' => 'required',
+            'job_type' => 'required|integer|min:0|max:1',
+            'experiences' => 'required|integer|min:0',
             'expiration' => 'required',
-            'position_id' => 'required',
-            'gender' => 'required',
-            'quantity' => 'required',
-            'status' => 'required',
-            'is_hot' => 'required',
-            'is_suggest' => 'required',
-            'view' => 'required',
-            'reference_ids' => 'required'
+            'position_id' => 'required|exists:positions,position_id',
+            'gender' => 'integer|min:0|max:2',
+            'quantity' => 'required|integer|min:0',
         ];
     }
 
@@ -70,7 +64,7 @@ class JobRequest extends FormRequest
     //         'is_suggest.required' => 'Hãy nhập ',
     //         'view.required' => 'Hãy nhập ',
     //         'reference_ids.required' => 'Hãy nhập '
-  
+
     //     ];
     //     return $messages;
     // }

@@ -80,7 +80,7 @@ class RegisterController extends Controller
             $company->city_id = $request->city_id;
             $company->size_id = $request->size_id;
             $company->save();
-            $company_id = Company::orderBy('company_id', 'desc')->first()->company_id;
+            $company_id = Company::orderBy('id', 'desc')->first()->id;
         }
 
         if($company->city_id != null){

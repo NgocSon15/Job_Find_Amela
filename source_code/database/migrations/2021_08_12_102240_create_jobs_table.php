@@ -30,11 +30,11 @@ class CreateJobsTable extends Migration
             $table->tinyInteger('position_id');
             $table->tinyInteger('gender')->nullable();
             $table->integer('quantity');
-            $table->tinyInteger('status');
-            $table->tinyInteger('is_hot');
-            $table->tinyInteger('is_suggest');
-            $table->integer('view');
-            $table->string('reference_ids');
+            $table->tinyInteger('status')->default(0);
+            $table->tinyInteger('is_hot')->default(0);
+            $table->tinyInteger('is_suggest')->default(0);
+            $table->integer('view')->default(0);
+            $table->string('reference_ids')->nullable();
             $table->timestamps();
         });
     }

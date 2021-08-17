@@ -2,11 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="097011e4-7987-4579-851d-cf933c741605" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/source_code/app/Models/Company.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/app/Models/Company.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source_code/app/Models/Job.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/app/Models/Job.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source_code/storage/app/public/images/AME1023.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source_code/storage/app/public/images/AME5574.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source_code/storage/app/public/images/AME6007.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source_code/app/Http/Controllers/JobController.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/app/Http/Controllers/JobController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source_code/app/Http/Controllers/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/app/Http/Controllers/RegisterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source_code/app/Http/Requests/JobRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/app/Http/Requests/JobRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source_code/database/migrations/2021_08_12_102240_create_jobs_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/database/migrations/2021_08_12_102240_create_jobs_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source_code/resources/views/admin/company/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/resources/views/admin/company/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source_code/resources/views/admin/company/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/resources/views/admin/company/list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source_code/resources/views/admin/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/resources/views/admin/layout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source_code/resources/views/admin/job/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/resources/views/admin/job/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source_code/resources/views/frontend/job/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/resources/views/frontend/job/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source_code/resources/views/frontend/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/resources/views/frontend/layout.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -198,5 +205,16 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/source_code/resources/views/admin/company/create.blade.php</url>
+          <line>8</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

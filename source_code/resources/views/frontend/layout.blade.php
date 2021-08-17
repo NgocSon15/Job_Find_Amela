@@ -63,8 +63,7 @@
                                         <ul id="navigation">
                                             <li><a href="{{ route('frontend.home') }}">Home</a></li>
                                             <li><a href="{{ route('job_list') }}">Find a Jobs </a></li>
-                                            <li><a href="#">Add New Job</a></li>
-                                            <li><a href="contact.html">Contact</a></li>
+                                            <li><a href={{ route('frontend.job.create') }}>Add New Job</a></li>
                                         </ul>
                                     </nav>
                                 </div>

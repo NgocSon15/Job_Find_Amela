@@ -24,6 +24,7 @@
             <div class="wrapper">
                 <form method="POST" class="row" action="{{ route('frontend.job.store') }}" enctype="multipart/form-data">
                     @csrf
+                    <input type="text" name="company_id" value="@if(Session::has('user') && Session::get('user')->role == 'company'){{ Session::get('user')->company->id }}@else{{1}}@endif" hidden>
                     <div class="col-lg-6">
                         <div class="form-row" style="display: block;">
                             <div class="name">Job Title <span style="color: #e83e8c">*</span></div>
@@ -53,6 +54,9 @@
                                             @endforeach
                                         </ul>
                                     </div>
+                                    @if($errors->has('category_id'))
+                                        <p class="text-danger">{{ $errors->first('category_id') }}</p>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -71,7 +75,7 @@
                             <div class="name">Max Salary <span style="color: #e83e8c">*</span></div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input type="text" name="max_salary" placeholder="Max Salary" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Max Salary'" required="" class="single-input" value="{{ old('max_salary') }}">
+                                    <input type="number" name="max_salary" placeholder="Max Salary" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Max Salary'" required="" class="single-input" value="{{ old('max_salary') }}">
                                     @if($errors->has('max_salary'))
                                         <p class="text-danger">{{ $errors->first('max_salary') }}</p>
                                     @endif
@@ -94,7 +98,7 @@
                             <div class="value">
                                 <div class="default-select" id="default-select" style="width: 100%">
                                     <select name="position_id" style="display: none;">
-                                        @foreach($categories as $position)
+                                        @foreach($positions as $position)
                                             <option value="{{ $position->position_id }}"> {{ $position->position_name }} </option>
                                         @endforeach
                                     </select>
@@ -106,6 +110,32 @@
                                             @endforeach
                                         </ul>
                                     </div>
+                                    @if($errors->has('position_id'))
+                                        <p class="text-danger">{{ $errors->first('position_id') }}</p>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row" style="display: block;">
+                            <div class="name">Skill <span style="color: #e83e8c">*</span></div>
+                            <div class="value">
+                                <div class="default-select" id="default-select" style="width: 100%">
+                                    <select name="skill_id" style="display: none;">
+                                        @foreach($skills as $skill)
+                                            <option value="{{ $skill->skill_id }}"> {{ $skill->skill_name }} </option>
+                                        @endforeach
+                                    </select>
+                                    <div class="nice-select" tabindex="0" style="width: 100%">
+                                        <span class="current">Choose Skill</span>
+                                        <ul class="list">
+                                            @foreach($skills as $skill)
+                                                <li data-value="{{ $skill->skill_id }}" class="option">{{ $skill->skill }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                    @if($errors->has('skill_id'))
+                                        <p class="text-danger">{{ $errors->first('skill_id') }}</p>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -115,9 +145,9 @@
                             <div class="name">Year Of Experience <span style="color: #e83e8c">*</span></div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input type="text" name="experience" placeholder="Experience" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Experience'" required="" class="single-input" value="{{ old('job_title') }}">
-                                    @if($errors->has('experience'))
-                                        <p class="text-danger">{{ $errors->first('experience') }}</p>
+                                    <input type="text" name="experiences" placeholder="Experience" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Experience'" required="" class="single-input" value="{{ old('experiences') }}">
+                                    @if($errors->has('experiences'))
+                                        <p class="text-danger">{{ $errors->first('experiences') }}</p>
                                     @endif
                                 </div>
                             </div>
@@ -137,6 +167,9 @@
                                             <li data-value="1" class="option">Fulltime</li>
                                         </ul>
                                     </div>
+                                    @if($errors->has('job_type'))
+                                        <p class="text-danger">{{ $errors->first('job_type') }}</p>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -190,11 +223,14 @@
                                             <li data-value="2" class="option">Khác</li>
                                         </ul>
                                     </div>
+                                    @if($errors->has('gender'))
+                                        <p class="text-danger">{{ $errors->first('gender') }}</p>
+                                    @endif
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class = "col-lg-12">
+                    <div class = "col-lg-12 mt-20">
                         <button class="btn head-btn2 genric-btn circle" type="submit">Add</button>
                     </div>
                 </form>
