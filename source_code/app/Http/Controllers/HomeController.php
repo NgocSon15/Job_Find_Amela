@@ -59,7 +59,7 @@ class HomeController extends Controller
         $jobs = Job::paginate(5);
         $skills = Skill::all();
         $now = Carbon::now();
-        return view('job_listing', compact('jobs', 'now', 'skills'));
+        return view('frontend.job.job_listing', compact('jobs', 'now', 'skills'));
 
     }
     public function filterJob(Request $request)
@@ -89,13 +89,13 @@ class HomeController extends Controller
         $skills = Skill::all();
         Carbon::setLocale('vi');
         $now = Carbon::now();
-        return view('job_listing', compact('jobs', 'now', 'skills'));
+        return view('frontend.job.job_listing', compact('jobs', 'now', 'skills'));
     }
 
     public function getDetailJob($id)
     {
         $job = Job::where('job_id', $id)->firstOrFail();
-        return view('frontend.job_detail', compact('job'));
+        return view('frontend.job.job_detail', compact('job'));
 //        findOrFail($id);
     }
 
