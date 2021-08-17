@@ -15,12 +15,14 @@ use App\Models\CompanySize;
 class Company extends Model
 {
     use HasFactory;
-    protected $primaryKey = 'company_id';
+    protected $primaryKey = 'id';
     public $timestamps = false;
+<<<<<<< HEAD
+    protected $table = 'companies';
 
     public function jobs()
     {
-        return $this->hasMany(Job::class, 'company_id', 'company_id');
+        return $this->hasMany(Job::class, 'id', 'id');
     }
 
     public function field()
@@ -37,4 +39,9 @@ class Company extends Model
     {
         return $this->belongsTo(CompanySize::class, 'size_id', 'size_id');
     }
+=======
+
+    protected $primaryKey = 'id';
+    protected $table = 'companies';
+>>>>>>> dev
 }

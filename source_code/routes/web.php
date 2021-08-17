@@ -57,6 +57,17 @@ Route::prefix('admin')->group(function() {
         Route::post('delete/{id}', [JobController::class, 'destroy'])->name('admin.job.destroy');
         Route::get('/search', [JobController::class, 'search'])->name('admin.job.search');
     });
+
+    Route::prefix('company')->group(function () {
+        Route::get('/', [CompanyController::class, 'index'])->name('admin.company.index');
+        Route::get('/create', [CompanyController::class, 'create'])->name('admin.company.create');
+        Route::post('/create', [CompanyController::class, 'store'])->name('admin.company.store');
+        Route::get('show/{id}', [CompanyController::class, 'show'])->name('admin.company.show');
+        Route::get('edit/{id}', [CompanyController::class, 'edit'])->name('admin.company.edit');
+        Route::post('edit/{id}', [CompanyController::class, 'update'])->name('admin.company.update');
+        Route::get('delete/{id}', [CompanyController::class, 'delete'])->name('admin.company.delete');
+        Route::post('delete/{id}', [CompanyController::class, 'destroy'])->name('admin.company.destroy');
+    });
 });
 
 Route::get('/register', [RegisterController::class, 'showRegisterCustomer']);
