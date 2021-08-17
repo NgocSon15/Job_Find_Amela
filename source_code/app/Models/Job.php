@@ -12,8 +12,9 @@ class Job extends Model
     protected $table = 'jobs';
     public function company()
     {
-        return $this->belongsTo(Company::class, 'company_id', 'company_id');
+        return $this->belongsTo(Company::class, 'company_id', 'id');
     }
+
     public function skill()
     {
         return $this->belongsTo(Skill::class, 'skill_id', 'skill_id');

@@ -253,7 +253,7 @@ Trang chủ
                                 <img src="{{ asset('storage/' . $company->logo) }}" style="max-height: 80px;">
                             </div>
                             <div class="services-cap">
-                                <h5><a href="{{ route('frontend.company.show', $company->company_id) }}">{{ $company->shortname }}</a></h5>
+                                <h5><a href="{{ route('frontend.company.show', $company->id) }}">{{ $company->shortname }}</a></h5>
                                 <span>({{ $company->total_jobs }})</span>
                             </div>
                         </div>
@@ -266,9 +266,7 @@ Trang chủ
                 <div class="col-lg-12">
                     <div class="browse-btn2 text-center mt-50">
                         <a href="{{ route('frontend.company.index') }}" class="border-btn2">Browse All Companies</a>
-
                     </div>
-                    </a>
                 </div>
 
             </div>

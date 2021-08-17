@@ -132,10 +132,10 @@
                                     <div class="single-job-items mb-30">
                                         <div class="job-items d-flex">
                                             <div class="company-img">
-                                                <a href="{{ route('frontend.company.show', $company->company_id) }}"><img src="{{ asset('storage/' . $company->logo) }}" alt="" style="max-height: 85px; max-width: 85px;"></a>
+                                                <a href="{{ route('frontend.company.show', $company->id) }}"><img src="{{ asset('storage/' . $company->logo) }}" alt="" style="max-height: 85px; max-width: 85px;"></a>
                                             </div>
                                             <div class="job-tittle job-tittle2">
-                                                <a href="{{ route('frontend.company.show', $company->company_id) }}">
+                                                <a href="{{ route('frontend.company.show', $company->id) }}">
                                                     <h4>{{ $company->fullname }}</h4>
                                                 </a>
                                                 <ul class="d-flex">
@@ -167,7 +167,7 @@
                         <div class="single-wrap d-flex justify-content-center">
                             <nav aria-label="Page navigation example">
                                 <ul class="pagination justify-content-start">
-                                    {{ $companies->links() }}
+                                    {{ $companies->appends(request()->query()) }}
                                 </ul>
                             </nav>
                         </div>

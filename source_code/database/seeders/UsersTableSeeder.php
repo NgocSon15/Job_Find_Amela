@@ -14,6 +14,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+
         $user = new User();
         $user->company_id = 1;
         $user->email = 'contact@amela.vn';
@@ -21,5 +22,6 @@ class UsersTableSeeder extends Seeder
         $user->password = '12345678';
         $user->role = 'company';
         $user->save();
+
     }
 }
