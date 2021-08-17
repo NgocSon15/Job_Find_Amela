@@ -127,7 +127,7 @@
                                 <div class="single-job-items mb-30">
                                     <div class="job-items">
                                         <div class="company-img">
-                                            <a href="{{route('detail', $val->id)}}"><img src="{{asset('storage/'.$val->company->logo)}}" alt="" style="max-width: 85px;"></a>
+                                            <a href="{{route('detail', $val->id)}}"><img src="{{asset('storage/images'.$val->company->logo)}}" alt="" style="max-width: 85px;"></a>
 
                                         </div>
                                         <div class="job-tittle job-tittle2">
