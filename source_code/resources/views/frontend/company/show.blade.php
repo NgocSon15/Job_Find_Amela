@@ -90,7 +90,7 @@
                                 <li>Total Employee Hiring :  <span>{{ $company->total_employees }}</span></li>
                             </ul>
                             <div class="apply-btn2">
-                                <a href="#" class="btn">All jobs</a>
+                                <a href="{{ route('frontend.company.joblist', $company->id) }}" class="btn">All jobs</a>
                             </div>
                         </div>
                     </div>

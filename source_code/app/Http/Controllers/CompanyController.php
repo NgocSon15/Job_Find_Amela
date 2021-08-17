@@ -121,7 +121,7 @@ class CompanyController extends Controller
 
     public function feShow($id)
     {
-        $company = Company::where('company_id', $id)->first();
+        $company = Company::where('id', $id)->first();
 
         return view('frontend.company.show', compact('company'));
     }
@@ -150,5 +150,11 @@ class CompanyController extends Controller
         $sizes = CompanySize::all();
 
         return view('frontend.company.list', compact('companies', 'total_companies', 'fields', 'cities', 'sizes'));
+    }
+
+    public function getJobList($id)
+    {
+        $company = Company::findOrFail($id);
+        $jobs = $company->jobs;
     }
 }

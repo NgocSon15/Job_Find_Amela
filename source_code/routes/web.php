@@ -38,6 +38,7 @@ Route::prefix('company')->group(function() {
     Route::get('/', [CompanyController::class, 'feIndex'])->name('frontend.company.index');
     Route::get('/show/{id}', [CompanyController::class, 'feShow'])->name('frontend.company.show');
     Route::post('/filter', [CompanyController::class, 'filter'])->name('frontend.company.filter');
+    Route::get('/{id}/job', [CompanyController::class, 'getJobList'])->name('frontend.company.joblist');
 });
 
 

@@ -63,7 +63,8 @@
                                         <ul id="navigation">
                                             <li><a href="{{ route('frontend.home') }}">Home</a></li>
                                             <li><a href="{{ route('job_list') }}">Find a Jobs </a></li>
-                                            <li><a href={{ route('frontend.job.create') }}>Add New Job</a></li>
+                                            <li><a href="{{ route('frontend.job.create') }}">Add New Job</a></li>
+                                            <li><a href="contact.html">Contact</a></li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -76,13 +77,13 @@
                                                 <i class="far fa-user"></i>
                                                 @if(session()->get('user')->role == 'customer')
                                                 {{session()->get('user')->customer->fullname}} <span class="caret"></span></a>
-                                                @endif
-                                                @if(session()->get('user')->role == 'company')
-                                                {{session()->get('user')->company->fullname}} <span class="caret"></span></a>
-                                                @endif
-                                                @if(session()->get('user')->role == 'admin')
-                                                {{session()->get('user')->company->email}} <span class="caret"></span></a>
-                                                @endif
+                                            @endif
+                                            @if(session()->get('user')->role == 'company')
+                                            {{session()->get('user')->company->fullname}} <span class="caret"></span></a>
+                                            @endif
+                                            @if(session()->get('user')->role == 'admin')
+                                            {{session()->get('user')->company->email}} <span class="caret"></span></a>
+                                            @endif
                                             <ul class="dropdown-menu" role="menu">
                                                 <li><a href="#" style="color: #635c5c">
                                                         <i class="far fa-user"></i>

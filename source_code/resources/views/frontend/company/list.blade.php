@@ -132,7 +132,7 @@
                                     <div class="single-job-items mb-30">
                                         <div class="job-items d-flex">
                                             <div class="company-img">
-                                                <a href="{{ route('frontend.company.show', $company->id) }}"><img src="{{ asset('storage/' . $company->logo) }}" alt="" style="max-height: 85px; max-width: 85px;"></a>
+                                                <a href="{{ route('frontend.company.show', $company->id) }}"><img src="{{ asset('storage/images/' . $company->logo) }}" alt="" style="max-height: 85px; max-width: 85px;"></a>
                                             </div>
                                             <div class="job-tittle job-tittle2">
                                                 <a href="{{ route('frontend.company.show', $company->id) }}">

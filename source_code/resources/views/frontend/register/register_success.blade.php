@@ -1,6 +1,6 @@
 @extends('frontend.layout')
 @section('title')
-    Login
+    Register Success
 @endsection
 
 @section('content')
