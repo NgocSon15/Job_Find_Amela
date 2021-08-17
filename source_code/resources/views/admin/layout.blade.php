@@ -97,14 +97,12 @@
                             <li class="nav-item">
                                 <a href="{{ route('admin.company.index') }}" class="nav-link @yield('active2')">
                                     <p>Danh sách doanh nghiệp</p>
-<<<<<<< HEAD
+
                                 </a>
                             </li>
                             {{-- <li class="nav-item">
                                 <a href="{{ route('admin.brand.index') }}" class="nav-link @yield('active2')">
                                     <p>Hãng quần áo</p>
-=======
->>>>>>> dev
                                 </a>
                             </li>
                             {{-- <li class="nav-item">
