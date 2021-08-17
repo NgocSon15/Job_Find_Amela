@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Field extends Model
 {
-    public $timestamps = false;
     use HasFactory;
+    protected $primaryKey = 'field_id';
+    public $timestamps = false;
 }

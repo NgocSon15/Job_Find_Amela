@@ -136,8 +136,8 @@ Trang chủ
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-tittle text-center">
-                        <span>Recent Job</span>
-                        <h2>Featured Jobs</h2>
+                        <!-- <span>Recent Job</span> -->
+                        <h2>New Jobs</h2>
                     </div>
                 </div>
             </div>
@@ -160,7 +160,11 @@ Trang chủ
                                             <li>Parttime</li>
                                             @endif
                                             <li><i class="fas fa-map-marker-alt"></i>{{ $job->work_location}}</li>
+                                            @if(session()->has('user'))
                                             <li>{{ number_format($job->min_salary) }}đ - {{ number_format($job->max_salary) }}đ</li>
+                                            @else
+                                            <li><a href="{{ route('login') }}" style="color: #635c5c">Salary: đăng nhập để xem mức lương</a></li>
+                                            @endif
                                         </ul>
                                     </div>
                                 </div>

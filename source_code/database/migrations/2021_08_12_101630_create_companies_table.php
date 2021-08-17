@@ -20,7 +20,7 @@ class CreateCompaniesTable extends Migration
             $table->string('tax_code');
             $table->string('company_code');
             $table->string('email');
-            $table->string('address');
+            $table->string('address')->nullable();
             $table->string('map')->nullable();
             $table->string('logo');
             $table->tinyInteger('field_id')->nullable();

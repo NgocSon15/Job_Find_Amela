@@ -17,6 +17,7 @@ class UsersTableSeeder extends Seeder
         $user = new User();
         $user->company_id = 1;
         $user->email = 'contact@amela.vn';
+        $user->fullname = 'Amela';
         $user->password = '12345678';
         $user->role = 'company';
         $user->save();

@@ -2,11 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="097011e4-7987-4579-851d-cf933c741605" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/source_code/app/Http/Middleware/CheckLogged.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source_code/storage/app/public/images/GOO6481.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source_code/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source_code/resources/views/frontend/job_detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/resources/views/frontend/job_detail.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source_code/app/Http/Controllers/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/app/Http/Controllers/RegisterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source_code/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/app/Http/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source_code/app/Models/Field.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/app/Models/Field.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source_code/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source_code/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source_code/database/migrations/2021_08_12_101630_create_companies_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/database/migrations/2021_08_12_101630_create_companies_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source_code/database/seeders/JobsTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/database/seeders/JobsTableSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source_code/database/seeders/UsersTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/database/seeders/UsersTableSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source_code/public/jobfinderportal-master/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/public/jobfinderportal-master/assets/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source_code/resources/views/admin/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/resources/views/admin/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source_code/resources/views/frontend/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/resources/views/frontend/home.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source_code/resources/views/frontend/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/resources/views/frontend/layout.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source_code/resources/views/job_listing.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/resources/views/job_listing.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source_code/resources/views/frontend/register/register_company.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/resources/views/frontend/register/register_company.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source_code/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
