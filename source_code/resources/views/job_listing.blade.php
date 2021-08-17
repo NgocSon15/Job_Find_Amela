@@ -127,10 +127,10 @@
                                 <div class="single-job-items mb-30">
                                     <div class="job-items">
                                         <div class="company-img">
-                                            <a href="#"><img src="{{asset('jobfinderportal-master/assets/img/icon/'.$val->company->logo)}}" alt=""></a>
+                                            <a href="{{route('detail', $val->job_id)}}"><img src="{{asset('jobfinderportal-master/assets/img/icon/'.$val->company->logo)}}" alt=""></a>
                                         </div>
                                         <div class="job-tittle job-tittle2">
-                                            <a href="#">
+                                            <a href="{{route('detail', $val->job_id)}}">
                                                 <h4>{{$val->job_title}}</h4>
                                             </a>
                                             <ul>

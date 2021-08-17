@@ -35,12 +35,12 @@
                                 </div>
                                 <div class="job-tittle">
                                     <a href="#">
-                                        <h4>Digital Marketer</h4>
+                                        <h4>{{$job->job_title}}</h4>
                                     </a>
                                     <ul>
                                         <li>Creative Agency</li>
                                         <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                        <li>$3500 - $4000</li>
+                                        <li>${{$job->min_salary}} - ${{$job->max_salary}}</li>
                                     </ul>
                                 </div>
                             </div>
@@ -53,7 +53,7 @@
                                 <div class="small-section-tittle">
                                     <h4>Job Description</h4>
                                 </div>
-                                <p>It is a long established fact that a reader will beff distracted by vbthe creadable content of a page when looking at its layout. The pointf of using Lorem Ipsum is that it has ahf mcore or-lgess normal distribution of letters, as opposed to using, Content here content here making it look like readable.</p>
+                                <p>{{$job->job_description}}</p>
                             </div>
                             <div class="post-details2  mb-50">
                                 <!-- Small Section Tittle -->
