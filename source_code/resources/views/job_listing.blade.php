@@ -42,7 +42,7 @@
                             </div>
                         </div>
                         <!-- Job Category Listing start -->
-                        <form action="" method="get">
+                        <form action="{{route('filter')}}" method="get">
                             @csrf
                             <div class="job-category-listing mb-50">
                             <!-- single one -->
@@ -52,7 +52,7 @@
                                 </div>
                                 <!-- Select job items start -->
                                 <div class="select-job-items2">
-                                    <select name="select">
+                                    <select name="skill">
                                         <option value="">All Skill</option>
                                         @foreach($skills as $key => $val)
                                         <option value="{{$val->skill_id}}">{{$val->skill}}</option>
@@ -63,57 +63,37 @@
                                 <!-- select-Categories start -->
                                 <div class="select-Categories pt-80 pb-40">
                                     <div class="small-section-tittle2">
-                                        <h4>Job Type</h4>
+                                        <h4>Time</h4>
                                     </div>
-                                    <label class="container">Full Time
-                                        <input type="checkbox" name="full_time" value="1">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <label class="container">Part Time
-                                        <input type="checkbox" name="part_time" value="0">
-                                        <span class="checkmark"></span>
-                                    </label>
+                                    <div class="select-job-items2">
+                                        <select name="time">
+                                            <option value="">All time</option>
+                                            <option value="1">Full time</option>
+                                            <option value="0">Part time</option>
+                                        </select>
+                                    </div>
 
                                 </div>
                                 <!-- select-Categories End -->
                             </div>
                             <!-- single two -->
                             <div class="single-listing">
-{{--                                <div class="small-section-tittle2">--}}
-{{--                                    <h4>Job Location</h4>--}}
-{{--                                </div>--}}
-                                <!-- Select job items start -->
-{{--                                <div class="select-job-items2">--}}
-{{--                                    <select name="select">--}}
-{{--                                        <option value="">Anywhere</option>--}}
-{{--                                        <option value="">Category 1</option>--}}
-{{--                                        <option value="">Category 2</option>--}}
-{{--                                        <option value="">Category 3</option>--}}
-{{--                                        <option value="">Category 4</option>--}}
-{{--                                    </select>--}}
-{{--                                </div>--}}
+
                                 <!--  Select job items End-->
                                 <!-- select-Categories start -->
-                                <div class="select-Categories pt-10 pb-30" name >
+                                <div class="select-Categories pt-40 pb-40" >
                                     <div class="small-section-tittle2">
-                                        <h4>Experience</h4>
+                                        <h4>EXP</h4>
                                     </div>
-                                    <label class="container">1 Years
-                                        <input type="checkbox" value="1" name="one">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <label class="container">2 Years
-                                        <input type="checkbox" value="2" name="two">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <label class="container">3-more
-                                        <input type="checkbox" value="3" name="three">
-                                        <span class="checkmark"></span>
-                                    </label>
-{{--                                    <label class="container">6-more..--}}
-{{--                                        <input type="checkbox">--}}
-{{--                                        <span class="checkmark"></span>--}}
-{{--                                    </label>--}}
+                                    <div class="select-job-items2">
+                                        <select name="exp">
+                                            <option value="">All exp</option>
+                                            <option value="1">1 Y</option>
+                                            <option value="2">2 Y</option>
+                                            <option value="3">3 Y +</option>
+                                        </select>
+                                    </div>
+
                                 </div>
                                 <!-- select-Categories End -->
                             </div>
@@ -176,7 +156,12 @@
 {{--                                </aside>--}}
 {{--                                <!-- Range Slider End -->--}}
 {{--                            </div>--}}
-                                <a href="#" class="btn head-btn1">Lọc</a>
+{{--                                <a type="submit" class="btn head-btn1">Lọc</a>--}}
+
+                                <div class="select-Categories pt-40 pb-40" >
+                                    <button type="submit"  class="btn head-btn1" >Chọn</button>
+
+                                </div>
                         </div>
 
                         </form>
