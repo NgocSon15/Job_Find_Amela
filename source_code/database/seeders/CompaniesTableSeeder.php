@@ -85,7 +85,7 @@ class CompaniesTableSeeder extends Seeder
         $company->company_code = 'SAM050001';
         $company->email = 'samsung@example.com';
         $company->address = 'Hàn Quốc';
-        $company->logo = 'images/logo-samsung.png';
+        $company->logo = 'images/logo-samsung.jpg';
         $company->description = 'Samsung';
         $company->phone = '1234567894';
         $company->total_jobs = 12;
@@ -125,20 +125,6 @@ class CompaniesTableSeeder extends Seeder
         $company->shortname = 'FPT Software';
         $company->tax_code = '1234567897';
         $company->company_code = 'FPT080001';
-        $company->email = 'fsoft@example.com';
-        $company->address = 'Việt Nam';
-        $company->logo = 'images/logo-fpt.png';
-        $company->description = 'FPT';
-        $company->phone = '1234567897';
-        $company->total_jobs = 6;
-        $company->timestamps = false;
-        $company->save();
-
-        $company = new Company();
-        $company->fullname = '';
-        $company->shortname = 'FPT Software';
-        $company->tax_code = '1234567897';
-        $company->company_code = 'FPT090001';
         $company->email = 'fsoft@example.com';
         $company->address = 'Việt Nam';
         $company->logo = 'images/logo-fpt.png';

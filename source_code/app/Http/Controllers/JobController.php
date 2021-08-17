@@ -18,7 +18,7 @@ class JobController extends Controller
         return view('admin.job.list', compact('jobs'));
     }
 
-    public function FECreate()
+    public function feCreate()
     {
         $categories = Category::all();
         $positions = Position::all();

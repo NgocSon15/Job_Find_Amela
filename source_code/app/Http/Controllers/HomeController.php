@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\Job;
 use App\Models\Skill;
 use Carbon\Carbon;
-use Symfony\Component\Console\Input\Input;
 use App\Models\Category;
 use App\Models\City;
 use App\Models\Company;
@@ -18,8 +17,10 @@ class HomeController extends Controller
         $cities = City::all();
         $categories = Category::all();
         $jobs = Job::orderByDesc('created_at')->limit(5)->get();
+        $most_hired_companies = Company::orderByDesc('total_jobs')->limit(8)->get();
 
-        return view('frontend.home', compact('jobs', 'cities', 'categories'));
+        return view('frontend.home', compact('jobs', 'most_hired_companies', 'cities', 'categories'));
+
     }
 
     public function homeSearch(Request $request)
@@ -35,7 +36,7 @@ class HomeController extends Controller
             $newKeyWord .= "$word%";
         }
         $category_id = $request->category_id;
-        
+
         $city_id = $request->city_id;
         $companies = Company::where('city_id', $city_id)->get();
         if($city_id == null){

@@ -7,7 +7,7 @@
     <title>@yield('title')</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="manifest" href="site.webmanifest">
+    <link rel="manifest" href="manifest.json">
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('jobfinderportal-master/assets/img/favicon.ico') }}">
 
     <!-- CSS here -->

@@ -2,7 +2,6 @@
 @section('title')
 Register Company
 @endsection
-
 @section('content')
 <main>
     <div class="register-form" style="margin: 30px 0;">
