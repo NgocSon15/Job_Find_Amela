@@ -50,7 +50,7 @@ class HomeController extends Controller
                     ->where('job_title', 'like', $newKeyWord)
                     ->where('category_id', 'like', "%$category_id%")
                     ->paginate(20);
-        return view('frontend.jobs-list', compact('jobs'));
+        return view('frontend.jobs-listing', compact('jobs'));
     }
 
     public function getListJob()
@@ -90,7 +90,6 @@ class HomeController extends Controller
         Carbon::setLocale('vi');
         $now = Carbon::now();
         return view('job_listing', compact('jobs', 'now', 'skills'));
-
     }
 
     public function getDetailJob($id)
