@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="097011e4-7987-4579-851d-cf933c741605" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source_code/app/Http/Controllers/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/app/Http/Controllers/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source_code/storage/app/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/storage/app/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source_code/resources/views/job_listing.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/resources/views/job_listing.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,6 +153,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\job_find\.idea" />
       <recent name="C:\xampp\htdocs\job_find\source_code\vendor\laravel\framework\src\Illuminate\Http\Middleware" />
     </key>
     <key name="MoveFile.RECENT_KEYS">

@@ -129,7 +129,7 @@
                                 <div class="single-job-items mb-30">
                                     <div class="job-items">
                                         <div class="company-img">
-                                            <a href="#"><img src="{{asset('jobfinderportal-master/assets/img/icon/'.$val->company->logo)}}" alt=""></a>
+                                            <a href="#"><img src="{{asset('storage/'.$val->company->logo)}}" alt="" style="max-width: 85px;"></a>
                                         </div>
                                         <div class="job-tittle job-tittle2">
                                             <a href="#">
@@ -169,7 +169,7 @@
                         <div class="single-wrap d-flex justify-content-center">
                             <nav aria-label="Page navigation example">
                                 <ul class="pagination justify-content-start">
-                                    
+
                                 </ul>
                             </nav>
                         </div>
