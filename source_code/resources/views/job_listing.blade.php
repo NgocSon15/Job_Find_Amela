@@ -99,7 +99,6 @@
                             </div>
                             <!-- single three -->
 
-
                                 <div class="select-Categories pt-40 pb-40" >
                                     <button type="submit"  class="btn head-btn1" >Chọn</button>
 
@@ -119,7 +118,6 @@
                                     <div class="col-lg-12">
                                         <div class="count-job mb-35">
 
-                                            <!--  Select job items End-->
                                         </div>
                                     </div>
                                 </div>
@@ -129,10 +127,11 @@
                                 <div class="single-job-items mb-30">
                                     <div class="job-items">
                                         <div class="company-img">
-                                            <a href="#"><img src="{{asset('storage/'.$val->company->logo)}}" alt="" style="max-width: 85px;"></a>
+                                            <a href="{{route('detail', $val->job_id)}}"><img src="{{asset('storage/'.$val->company->logo)}}" alt=""></a>
+
                                         </div>
                                         <div class="job-tittle job-tittle2">
-                                            <a href="#">
+                                            <a href="{{route('detail', $val->job_id)}}">
                                                 <h4>{{$val->job_title}}</h4>
                                             </a>
                                             <ul>
@@ -169,7 +168,11 @@
                         <div class="single-wrap d-flex justify-content-center">
                             <nav aria-label="Page navigation example">
                                 <ul class="pagination justify-content-start">
+<<<<<<< HEAD
 
+=======
+                                    {{ $jobs->appends(request()->query()) }}
+>>>>>>> d3cbd6dbdc3d5198dfce552d6b791d433c358acc
                                 </ul>
                             </nav>
                         </div>
