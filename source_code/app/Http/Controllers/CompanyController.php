@@ -31,27 +31,28 @@ class CompanyController extends Controller
 
     public function filter(Request $request)
     {
-        $companies = Company::paginate(7);
+        $query = Company::query();
+
         if(isset($request->field_id))
         {
-            $field_id = $request->field_id;
-            $companies = $companies->where('field_id', $field_id);
+            $query->where('field_id', $request->field_id);
         }
         if(isset($request->city_id))
         {
-            $city_id = $request->city_id;
-            $companies = $companies->where('city_id', $city_id);
+            $query->where('city_id', $request->city_id);
         }
         if(isset($request->size_id))
         {
-            $size_id = $request->size_id;
-            $companies = $companies->where('size_id', $size_id);
+            $query->where('size_id', $request->size_id);
         }
+
+        $companies = $query->paginate(7);
+        $total_companies = $query->count();
         $fields = Field::all();
         $cities = City::all();
         $sizes = CompanySize::all();
-        $total_companies = Company::count();
 
         return view('frontend.company.list', compact('companies', 'total_companies', 'fields', 'cities', 'sizes'));
+
     }
 }
