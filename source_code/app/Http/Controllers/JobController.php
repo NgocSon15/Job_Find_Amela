@@ -30,10 +30,10 @@ class JobController extends Controller
         return view('admin.job.create');
     }
 
-    public function store(Request $request)
+    public function store(JobRequest $request)
     {
         $job = new Job();
-        $job->company_id = $request->session()->has('user') ? $request->session()->get('user')->company_id : $request->input('company_id');
+        $job->company_id = $request->input('company_id');
         $job->job_title = $request->input('job_title');
         $job->job_description = $request->input('job_description');
         $job->skill_id = $request->input('skill_id');

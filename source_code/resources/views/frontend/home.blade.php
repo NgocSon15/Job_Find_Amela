@@ -253,7 +253,7 @@ Trang chủ
                                 <img src="{{ asset('storage/' . $company->logo) }}" style="max-height: 80px;">
                             </div>
                             <div class="services-cap">
-                                <h5><a href="job_listing.html">{{ $company->shortname }}</a></h5>
+                                <h5><a href="{{ route('frontend.company.show', $company->company_id) }}">{{ $company->shortname }}</a></h5>
                                 <span>({{ $company->total_jobs }})</span>
                             </div>
                         </div>
