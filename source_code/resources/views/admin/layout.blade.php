@@ -94,12 +94,12 @@
                                     <p>Danh sách tin tuyển dụng</p>
                                 </a>
                             </li>
-                            {{-- <li class="nav-item">
-                                <a href="{{ route('admin.brand.index') }}" class="nav-link @yield('active2')">
-                                    <p>Hãng quần áo</p>
+                            <li class="nav-item">
+                                <a href="{{ route('admin.company.index') }}" class="nav-link @yield('active2')">
+                                    <p>Danh sách doanh nghiệp</p>
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a href="" class="nav-link">
                                     <p>Cửa hàng</p>
                                 </a>
@@ -151,7 +151,7 @@
     <!-- /.content-wrapper -->
 
 
-    @section('footer')
+    {{-- @section('footer')
         <footer class="main-footer">
         <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
         All rights reserved.
@@ -159,7 +159,7 @@
             <b>Version</b> 3.1.0
         </div>
     </footer>
-    @show
+    @show --}}
 
 </div>
 <!-- ./wrapper -->

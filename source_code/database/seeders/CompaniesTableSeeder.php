@@ -15,7 +15,7 @@ class CompaniesTableSeeder extends Seeder
     public function run()
     {
         $company = new Company();
-        $company->user_id = 1;
+        // $company->user_id = 1;
         $company->fullname = 'Amela Technology';
         $company->tax_code = '1234567890';
         $company->company_code = 'AME010001';
