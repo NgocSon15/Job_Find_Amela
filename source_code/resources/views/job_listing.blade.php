@@ -98,65 +98,6 @@
                                 <!-- select-Categories End -->
                             </div>
                             <!-- single three -->
-{{--                            <div class="single-listing">--}}
-{{--                                <!-- select-Categories start -->--}}
-{{--                                <div class="select-Categories pb-50">--}}
-{{--                                    <div class="small-section-tittle2">--}}
-{{--                                        <h4>Posted Within</h4>--}}
-{{--                                    </div>--}}
-{{--                                    <label class="container">Any--}}
-{{--                                        <input type="checkbox" >--}}
-{{--                                        <span class="checkmark"></span>--}}
-{{--                                    </label>--}}
-{{--                                    <label class="container">Today--}}
-{{--                                        <input type="checkbox" checked="checked active">--}}
-{{--                                        <span class="checkmark"></span>--}}
-{{--                                    </label>--}}
-{{--                                    <label class="container">Last 2 days--}}
-{{--                                        <input type="checkbox">--}}
-{{--                                        <span class="checkmark"></span>--}}
-{{--                                    </label>--}}
-{{--                                    <label class="container">Last 3 days--}}
-{{--                                        <input type="checkbox">--}}
-{{--                                        <span class="checkmark"></span>--}}
-{{--                                    </label>--}}
-{{--                                    <label class="container">Last 5 days--}}
-{{--                                        <input type="checkbox">--}}
-{{--                                        <span class="checkmark"></span>--}}
-{{--                                    </label>--}}
-{{--                                    <label class="container">Last 10 days--}}
-{{--                                        <input type="checkbox">--}}
-{{--                                        <span class="checkmark"></span>--}}
-{{--                                    </label>--}}
-{{--                                </div>--}}
-{{--                                <!-- select-Categories End -->--}}
-{{--                            </div>--}}
-{{--                            <div class="single-listing">--}}
-{{--                                <!-- Range Slider Start -->--}}
-{{--                                <aside class="left_widgets p_filter_widgets price_rangs_aside sidebar_box_shadow">--}}
-{{--                                    <div class="small-section-tittle2">--}}
-{{--                                        <h4>Filter Jobs</h4>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="widgets_inner">--}}
-{{--                                        <div class="range_item">--}}
-{{--                                            <!-- <div id="slider-range"></div> -->--}}
-{{--                                            <input type="text" class="js-range-slider" value="" />--}}
-{{--                                            <div class="d-flex align-items-center">--}}
-{{--                                                <div class="price_text">--}}
-{{--                                                    <p>Price :</p>--}}
-{{--                                                </div>--}}
-{{--                                                <div class="price_value d-flex justify-content-center">--}}
-{{--                                                    <input type="text" class="js-input-from" id="amount" readonly />--}}
-{{--                                                    <span>to</span>--}}
-{{--                                                    <input type="text" class="js-input-to" id="amount" readonly />--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </aside>--}}
-{{--                                <!-- Range Slider End -->--}}
-{{--                            </div>--}}
-{{--                                <a type="submit" class="btn head-btn1">Lọc</a>--}}
 
                                 <div class="select-Categories pt-40 pb-40" >
                                     <button type="submit"  class="btn head-btn1" >Chọn</button>
@@ -176,18 +117,7 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="count-job mb-35">
-{{--                                            <span>39, 782 Jobs found</span>--}}
-                                            <!-- Select job items start -->
-{{--                                            <div class="select-job-items">--}}
-{{--                                                <span>Sort by</span>--}}
-{{--                                                <select name="select">--}}
-{{--                                                    <option value="">None</option>--}}
-{{--                                                    <option value="">job list</option>--}}
-{{--                                                    <option value="">job list</option>--}}
-{{--                                                    <option value="">job list</option>--}}
-{{--                                                </select>--}}
-{{--                                            </div>--}}
-                                            <!--  Select job items End-->
+
                                         </div>
                                     </div>
                                 </div>
@@ -220,138 +150,7 @@
                                     </div>
                                 </div>
                                 @endforeach
-{{--                                <!-- single-job-content -->--}}
-{{--                                <div class="single-job-items mb-30">--}}
-{{--                                    <div class="job-items">--}}
-{{--                                        <div class="company-img">--}}
-{{--                                            <a href="#"><img src="{{asset('jobfinderportal-master/assets/img/icon/job-list2.png')}}" alt=""></a>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="job-tittle job-tittle2">--}}
-{{--                                            <a href="#">--}}
-{{--                                                <h4>Digital Marketer</h4>--}}
-{{--                                            </a>--}}
-{{--                                            <ul>--}}
-{{--                                                <li>Creative Agency</li>--}}
-{{--                                                <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>--}}
-{{--                                                <li>$3500 - $4000</li>--}}
-{{--                                            </ul>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="items-link items-link2 f-right">--}}
-{{--                                        <a href="job_details.html">Full Time</a>--}}
-{{--                                        <span>7 hours ago</span>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                                <!-- single-job-content -->--}}
-{{--                                <div class="single-job-items mb-30">--}}
-{{--                                    <div class="job-items">--}}
-{{--                                        <div class="company-img">--}}
-{{--                                            <a href="#"><img src="{{asset('jobfinderportal-master/assets/img/icon/job-list3.png')}}" alt=""></a>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="job-tittle job-tittle2">--}}
-{{--                                            <a href="#">--}}
-{{--                                                <h4>Digital Marketer</h4>--}}
-{{--                                            </a>--}}
-{{--                                            <ul>--}}
-{{--                                                <li>Creative Agency</li>--}}
-{{--                                                <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>--}}
-{{--                                                <li>$3500 - $4000</li>--}}
-{{--                                            </ul>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="items-link items-link2 f-right">--}}
-{{--                                        <a href="job_details.html">Full Time</a>--}}
-{{--                                        <span>7 hours ago</span>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                                <!-- single-job-content -->--}}
-{{--                                <div class="single-job-items mb-30">--}}
-{{--                                    <div class="job-items">--}}
-{{--                                        <div class="company-img">--}}
-{{--                                            <a href="#"><img src="{{asset('jobfinderportal-master/assets/img/icon/job-list4.png')}}" alt=""></a>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="job-tittle job-tittle2">--}}
-{{--                                            <a href="#">--}}
-{{--                                                <h4>Digital Marketer</h4>--}}
-{{--                                            </a>--}}
-{{--                                            <ul>--}}
-{{--                                                <li>Creative Agency</li>--}}
-{{--                                                <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>--}}
-{{--                                                <li>$3500 - $4000</li>--}}
-{{--                                            </ul>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="items-link items-link2 f-right">--}}
-{{--                                        <a href="job_details.html">Full Time</a>--}}
-{{--                                        <span>7 hours ago</span>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                                <!-- single-job-content -->--}}
-{{--                                <div class="single-job-items mb-30">--}}
-{{--                                    <div class="job-items">--}}
-{{--                                        <div class="company-img">--}}
-{{--                                            <a href="#"><img src="{{asset('jobfinderportal-master/assets/img/icon/job-list1.png')}}" alt=""></a>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="job-tittle job-tittle2">--}}
-{{--                                            <a href="#">--}}
-{{--                                                <h4>Digital Marketer</h4>--}}
-{{--                                            </a>--}}
-{{--                                            <ul>--}}
-{{--                                                <li>Creative Agency</li>--}}
-{{--                                                <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>--}}
-{{--                                                <li>$3500 - $4000</li>--}}
-{{--                                            </ul>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="items-link items-link2 f-right">--}}
-{{--                                        <a href="job_details.html">Full Time</a>--}}
-{{--                                        <span>7 hours ago</span>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                                <!-- single-job-content -->--}}
-{{--                                <div class="single-job-items mb-30">--}}
-{{--                                    <div class="job-items">--}}
-{{--                                        <div class="company-img">--}}
-{{--                                            <a href="#"><img src="{{asset('jobfinderportal-master/assets/img/icon/job-list3.png')}}" alt=""></a>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="job-tittle job-tittle2">--}}
-{{--                                            <a href="#">--}}
-{{--                                                <h4>Digital Marketer</h4>--}}
-{{--                                            </a>--}}
-{{--                                            <ul>--}}
-{{--                                                <li>Creative Agency</li>--}}
-{{--                                                <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>--}}
-{{--                                                <li>$3500 - $4000</li>--}}
-{{--                                            </ul>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="items-link items-link2 f-right">--}}
-{{--                                        <a href="job_details.html">Full Time</a>--}}
-{{--                                        <span>7 hours ago</span>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                                <!-- single-job-content -->--}}
-{{--                                <div class="single-job-items mb-30">--}}
-{{--                                    <div class="job-items">--}}
-{{--                                        <div class="company-img">--}}
-{{--                                            <a href="#"><img src="{{asset('jobfinderportal-master/assets/img/icon/job-list4.png')}}" alt=""></a>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="job-tittle job-tittle2">--}}
-{{--                                            <a href="#">--}}
-{{--                                                <h4>Digital Marketer</h4>--}}
-{{--                                            </a>--}}
-{{--                                            <ul>--}}
-{{--                                                <li>Creative Agency</li>--}}
-{{--                                                <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>--}}
-{{--                                                <li>$3500 - $4000</li>--}}
-{{--                                            </ul>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="items-link items-link2 f-right">--}}
-{{--                                        <a href="job_details.html">Full Time</a>--}}
-{{--                                        <span>7 hours ago</span>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
+
                             </div>
                         </section>
                         <!-- Featured_job_end -->
@@ -369,10 +168,6 @@
                             <nav aria-label="Page navigation example">
                                 <ul class="pagination justify-content-start">
                                     {{ $jobs->appends(request()->query()) }}
-{{--                                    <li class="page-item active"><a class="page-link" href="#">01</a></li>--}}
-{{--                                    <li class="page-item"><a class="page-link" href="#">02</a></li>--}}
-{{--                                    <li class="page-item"><a class="page-link" href="#">03</a></li>--}}
-{{--                                    <li class="page-item"><a class="page-link" href="#"><span class="ti-angle-right"></span></a></li>--}}
                                 </ul>
                             </nav>
                         </div>
