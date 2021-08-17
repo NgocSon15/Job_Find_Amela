@@ -49,7 +49,7 @@ class RegisterController extends Controller
         $fields = Field::all();
         return view('frontend.register.register_company', compact('cities', 'companySizes', 'fields'));
     }
-    public function registerCompany(Request $request)
+    public function registerCompany(StoreCompany $request)
     {
         $tax_code = $request->tax_code;
         $company = Company::where('tax_code', $tax_code)->first();
@@ -59,7 +59,7 @@ class RegisterController extends Controller
             $company = new Company;
             $company->email = $request->email;
             $company->fullname = $request->fullname;
-            $company->shortname = $request->shortname;
+            $company->shortname = $request->short_name;
             $company->company_code = strtoupper(substr($request->short_name, 0, 3)) . $company->user_id . rand(1000, 9999);
             $file = $request->logo;
             $originName = pathinfo($file->getClientOriginalName());
