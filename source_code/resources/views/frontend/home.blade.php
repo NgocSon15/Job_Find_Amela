@@ -147,10 +147,10 @@ Trang chủ
                             <div class="single-job-items mb-30">
                                 <div class="job-items">
                                     <div class="company-img">
-                                        <a href="#"><img src="{{ asset('storage/' .$job->company->logo) }}" alt="" style="max-width: 84px;"></a>
+                                        <a href="{{route('detail', $job->job_id)}}"><img src="{{ asset('storage/' .$job->company->logo) }}" alt="" style="max-width: 84px;"></a>
                                     </div>
                                     <div class="job-tittle job-tittle2">
-                                        <a href="#">
+                                        <a href="{{route('detail', $job->job_id)}}">
                                             <h4>{{ $job->job_title }}</h4>
                                         </a>
                                         <ul>

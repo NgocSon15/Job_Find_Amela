@@ -29,6 +29,7 @@ class HomeController extends Controller
           'city_id' => 'nullable|exists:cities,city_id',
           'category_id' => 'exists:categories,cat_id',
         ]);
+        $skills = Skill::all();
         $keyWord = $request->keyWord;
         $keyWord = explode(' ', $keyWord);
         $newKeyWord = '%';
@@ -44,13 +45,13 @@ class HomeController extends Controller
         }
         $company_ids = [];
         foreach($companies as $company){
-            $company_ids[] = $company->company_id;
+            $company_ids[] = $company->id;
         }
         $jobs = Job::whereIn('company_id', $company_ids)
                     ->where('job_title', 'like', $newKeyWord)
                     ->where('category_id', 'like', "%$category_id%")
-                    ->paginate(20);
-        return view('frontend.jobs-listing', compact('jobs'));
+                    ->paginate(10);
+        return view('frontend.jobs-listing', compact('jobs', 'skills'));
     }
 
     public function getListJob()
@@ -59,7 +60,7 @@ class HomeController extends Controller
         $jobs = Job::paginate(5);
         $skills = Skill::all();
         $now = Carbon::now();
-        return view('frontend.job.job_listing', compact('jobs', 'now', 'skills'));
+        return view('frontend.jobs-listing', compact('jobs', 'now', 'skills'));
     }
 
     public function filterJob(Request $request)
@@ -89,7 +90,7 @@ class HomeController extends Controller
         $skills = Skill::all();
         Carbon::setLocale('vi');
         $now = Carbon::now();
-        return view('frontend.job.job_listing', compact('jobs', 'now', 'skills'));
+        return view('frontend.jobs-listing', compact('jobs', 'now', 'skills'));
     }
 
     public function getDetailJob($id)
