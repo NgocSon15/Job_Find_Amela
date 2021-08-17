@@ -63,7 +63,6 @@
         </div>
 
         {{-- <div class="form-group">
-
             <label for="exampleInputFile">Ảnh:</label>
             <div class="input-group">
                 <div class="custom-file">
