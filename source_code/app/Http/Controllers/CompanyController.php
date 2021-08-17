@@ -35,15 +35,11 @@ class CompanyController extends Controller
         $company->address = $request->input('address');
         
         if ($request->hasFile('image')) {
-            $currentImg = $company->logo;
-            if($currentImg)
-            {
-                Storage::delete('/public/'.$currentImg);
-            }
-
             $image = $request->file('image');
             $path = $image->store('images', 'public');
             $company->logo = $path;
+        } else{
+            $company->logo = "";
         }
 
         $company->description = $request->input('description');

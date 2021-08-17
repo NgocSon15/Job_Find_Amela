@@ -15,13 +15,13 @@ use App\Models\CompanySize;
 class Company extends Model
 {
     use HasFactory;
-    protected $primaryKey = 'company_id';
+    protected $primaryKey = 'id';
     public $timestamps = false;
     protected $table = 'companies';
 
     public function jobs()
     {
-        return $this->hasMany(Job::class, 'company_id', 'company_id');
+        return $this->hasMany(Job::class, 'id', 'id');
     }
 
     public function field()
