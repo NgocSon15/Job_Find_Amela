@@ -94,12 +94,20 @@
                                     <p>Danh sách tin tuyển dụng</p>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{ route('admin.company.index') }}" class="nav-link @yield('active2')">
+                                    <p>Danh sách doanh nghiệp</p>
+<<<<<<< HEAD
+                                </a>
+                            </li>
                             {{-- <li class="nav-item">
                                 <a href="{{ route('admin.brand.index') }}" class="nav-link @yield('active2')">
                                     <p>Hãng quần áo</p>
+=======
+>>>>>>> dev
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a href="" class="nav-link">
                                     <p>Cửa hàng</p>
                                 </a>

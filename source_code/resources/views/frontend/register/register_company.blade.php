@@ -184,8 +184,10 @@ Register Company
                                     <div class="name" style="width: 100%;">About the company <span style="color: #e83e8c">*</span></div>
                                     <div class="value">
                                         <div class="input-group">
-                                            <textarea name="description" style="width: 100%;" class="input--style-5" cols="30" rows="5">{{ old('description')}}</textarea>
-                                            <!-- <input class="input--style-5" type="text" name="description"> -->
+                                            <textarea name="description" style="width: 100%;" class="input--style-5" cols="30" rows="5">{{ old('description') }}</textarea>
+                                            @if($errors->has('description'))
+                                            <p class="text-danger">{{ $errors->first('description') }}</p>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
