@@ -168,11 +168,9 @@
                         <div class="single-wrap d-flex justify-content-center">
                             <nav aria-label="Page navigation example">
                                 <ul class="pagination justify-content-start">
-<<<<<<< HEAD
 
-=======
                                     {{ $jobs->appends(request()->query()) }}
->>>>>>> d3cbd6dbdc3d5198dfce552d6b791d433c358acc
+
                                 </ul>
                             </nav>
                         </div>
