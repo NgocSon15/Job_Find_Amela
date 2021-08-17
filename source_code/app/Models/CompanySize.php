@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class CompanySize extends Model
 {
     use HasFactory;
+    public $timestamps = false;
 }

@@ -28,7 +28,7 @@ class CreateJobsTable extends Migration
             $table->tinyInteger('experiences');
             $table->date('expiration');
             $table->tinyInteger('position_id');
-            $table->tinyInteger('gender');
+            $table->tinyInteger('gender')->nullable();
             $table->integer('quantity');
             $table->tinyInteger('status');
             $table->tinyInteger('is_hot');

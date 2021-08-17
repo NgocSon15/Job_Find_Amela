@@ -60,8 +60,8 @@
                         <td>{{ $job->quantity }}</td>
                         <td class="d-flex">
                             <a href="{{ route('admin.job.show', $job->id) }}" class="btn-sm btn-info mr-1">Xem</a>
-                            {{-- <a href="{{ route('admin.job.edit', $job->id) }}" class="btn-sm btn-secondary mr-1">Sửa</a>
-                            <a href="{{ route('admin.job.delete', $job->id) }}" class="btn-sm btn-danger">Xóa</a> --}}
+                            <a href="{{ route('admin.job.edit', $job->id) }}" class="btn-sm btn-secondary mr-1">Sửa</a>
+                            <a href="{{ route('admin.job.delete', $job->id) }}" class="btn-sm btn-danger">Xóa</a>
                         </td>
                     </tr>
                 @endforeach

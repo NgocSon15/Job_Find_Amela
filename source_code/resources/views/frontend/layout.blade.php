@@ -16,11 +16,12 @@
     <link rel="stylesheet" href="{{ asset('jobfinderportal-master/assets/css/price_rangs.css') }}">
     <link rel="stylesheet" href="{{ asset('jobfinderportal-master/assets/css/slicknav.css') }}">
     <link rel="stylesheet" href="{{ asset('jobfinderportal-master/assets/css/animate.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('jobfinderportal-master/assets/css/magnific-popup.css') }}'">
+    <link rel="stylesheet" href="{{ asset('jobfinderportal-master/assets/css/magnific-popup.css') }}">
     <link rel="stylesheet" href="{{ asset('jobfinderportal-master/assets/css/fontawesome-all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('jobfinderportal-master/assets/css/themify-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('jobfinderportal-master/assets/css/slick.css') }}">
     <link rel="stylesheet" href="{{ asset('jobfinderportal-master/assets/css/nice-select.css') }}">
+    <link rel="stylesheet" href="{{ asset('jobfinderportal-master/assets/css/register.css') }}">
     <link rel="stylesheet" href="{{ asset('jobfinderportal-master/assets/css/style.css') }}">
     @yield('link')
 </head>
@@ -68,8 +69,9 @@
                             </div>
                             <!-- Header-btn -->
                             <div class="header-btn d-none f-right d-lg-block">
-                                <a href="#" class="btn head-btn1">Register</a>
-                                <a href="#" class="btn head-btn2">Login</a>
+                                <a href="{{route('register-customer')}}" class="btn head-btn2 medium genric-btn circle">Register</a>
+                                <a href="{{route('register-company')}}" class="btn head-btn2 medium genric-btn circle">Company</a>
+                                <a href="{{route('login')}}" class="btn head-btn2 medium genric-btn circle">Login</a>
                             </div>
                         </div>
                     </div>
@@ -151,7 +153,7 @@
                                                onblur="this.placeholder = ' Email Address '">
                                         <div class="form-icon">
                                             <button type="submit" name="submit" id="newsletter-submit"
-                                                    class="email_icon newsletter-submit button-contactForm"><img src="assets/img/icon/form.png" alt=""></button>
+                                                    class="email_icon newsletter-submit button-contactForm"><img src="{{ asset('jobfinderportal-master/assets/img/icon/form.png') }}" alt=""></button>
                                         </div>
                                         <div class="mt-10 info"></div>
                                     </form>
@@ -166,7 +168,7 @@
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
                     <!-- logo -->
                     <div class="footer-logo mb-20">
-                        <a href="index.html"><img src="assets/img/logo/logo2_footer.png" alt=""></a>
+                        <a href="index.html"><img src="{{ asset('jobfinderportal-master/assets/img/logo/logo2_footer.png') }}" alt=""></a>
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
@@ -236,7 +238,7 @@
 
 <!-- One Page, Animated-HeadLin -->
 <script src="{{ asset('jobfinderportal-master/assets/js/wow.min.js') }}"></script>
-<script src="{{ asset('jobfinderportal-master/assets/js/animated.headline.js') }}'"></script>
+<script src="{{ asset('jobfinderportal-master/assets/js/animated.headline.js') }}"></script>
 <script src="{{ asset('jobfinderportal-master/assets/js/jquery.magnific-popup.js') }}"></script>
 
 <!-- Scrollup, nice-select, sticky -->

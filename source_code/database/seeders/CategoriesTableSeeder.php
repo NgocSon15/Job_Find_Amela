@@ -16,6 +16,7 @@ class CategoriesTableSeeder extends Seeder
     {
         $category = new Category();
         $category->cat_name = 'IT';
+        $category->icon = 'cms';
         $category->total_jobs = 5;
         $category->save();
     }

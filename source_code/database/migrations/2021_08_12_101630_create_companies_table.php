@@ -15,24 +15,24 @@ class CreateCompaniesTable extends Migration
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->integer('company_id')->autoIncrement();
-            $table->integer('user_id');
             $table->string('fullname');
+            $table->string('shortname');
             $table->string('tax_code');
             $table->string('company_code');
             $table->string('email');
             $table->string('address');
-            $table->string('map');
+            $table->string('map')->nullable();
             $table->string('logo');
-            $table->integer('field_id');
-            $table->string('description');
-            $table->integer('city_id');
-            $table->integer('size_id');
-            $table->string('website');
+            $table->tinyInteger('field_id')->nullable();
+            $table->longText('description');
+            $table->tinyInteger('city_id')->nullable();
+            $table->tinyInteger('size_id')->nullable();
+            $table->string('website')->nullable();
             $table->string('phone');
-            $table->tinyInteger('status');
-            $table->integer('total_jobs');
-            $table->integer('total_employee');
-            $table->tinyInteger('is_suggest');
+            $table->tinyInteger('status')->default('0');
+            $table->integer('total_jobs')->default('0');
+            $table->integer('total_employee')->default('0');
+            $table->tinyInteger('is_suggest')->default('0');
         });
     }
 

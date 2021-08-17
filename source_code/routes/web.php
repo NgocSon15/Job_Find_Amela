@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LoginController;
+use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\HomeController;
@@ -23,6 +26,9 @@ Route::get('/job_list/filter', [HomeController::class, 'filterJob'])->name('filt
 
 Route::get('/', [HomeController::class, 'getHome'])->name('frontend.home');
 
+Route::get('/job', [JobController::class, 'FECreate'])->name('frontend.job.create')->middleware('checkLogin');
+Route::post('/job', [JobController::class, 'store'])->name('frontend.job.store')->middleware('checkLogin');
+
 Route::prefix('admin')->group(function() {
     Route::get('/', function () {
         return view('admin.home');
@@ -41,3 +47,12 @@ Route::prefix('admin')->group(function() {
     });
 });
 
+Route::get('/register', [RegisterController::class, 'showRegisterCustomer']);
+Route::post('/register', [RegisterController::class, 'registerCustomer'])->name('register-customer');
+Route::get('/register/company', [RegisterController::class, 'showRegisterCompany']);
+Route::post('/register/company', [RegisterController::class, 'registerCompany'])->name('register-company');
+Route::get('/login', [LoginController::class, 'showLogin'])->name('show-login');
+Route::post('/login', [LoginController::class, 'login'])->name('login');
+Route::get('/forgot-password', [LoginController::class, 'showForgotPass'])->name('forgot-password');
+Route::post('/reset-password', [LoginController::class, 'resetPass'])->name('reset-password');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
