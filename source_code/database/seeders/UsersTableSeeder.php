@@ -15,8 +15,9 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         $user = new User();
+        $user->company_id = 1;
         $user->email = 'contact@amela.vn';
-        $user->password = '123456';
+        $user->password = '12345678';
         $user->role = 'company';
         $user->save();
     }

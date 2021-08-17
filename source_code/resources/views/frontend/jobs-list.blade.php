@@ -224,14 +224,18 @@ Tìm kiếm
                                             @else
                                             <li>Parttime</li>
                                             @endif
-                                            <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
+                                            <li><i class="fas fa-map-marker-alt"></i>{{ $job->work_location}}</li>
                                             <li>{{ number_format($job->min_salary) }}đ - {{ number_format($job->max_salary) }}đ</li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="items-link items-link2 f-right">
                                     <a href="job_details.html">Apply</a>
-                                    <span>7 hours ago</span>
+                                    @if(ceil((time() - strtotime($job->created_at))/3600) < 24)
+                                    <span>{{ ceil((time() - strtotime($job->created_at))/3600)}} hour ago</span>
+                                    @else
+                                    <span>{{ ceil((time() - strtotime($job->created_at))/8400)}} day ago</span>
+                                    @endif
                                 </div>
                             </div>
                             @endforeach

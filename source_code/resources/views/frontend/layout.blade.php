@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="{{ asset('jobfinderportal-master/assets/css/themify-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('jobfinderportal-master/assets/css/slick.css') }}">
     <link rel="stylesheet" href="{{ asset('jobfinderportal-master/assets/css/nice-select.css') }}">
-<link rel="stylesheet" href="{{ asset('jobfinderportal-master/assets/css/register.css') }}">
+    <link rel="stylesheet" href="{{ asset('jobfinderportal-master/assets/css/register.css') }}">
     <link rel="stylesheet" href="{{ asset('jobfinderportal-master/assets/css/style.css') }}">
     @yield('link')
 </head>

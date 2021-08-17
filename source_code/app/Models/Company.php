@@ -15,4 +15,9 @@ class Company extends Model
     {
         return $this->hasMany(Job::class, 'company_id');
     }
+
+    public function city()
+    {
+        return $this->belongsTo(City::class, 'city_id');
+    }
 }

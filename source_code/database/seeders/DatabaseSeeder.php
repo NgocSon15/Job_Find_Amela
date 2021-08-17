@@ -1,5 +1,4 @@
 <?php
-
 namespace Database\Seeders;
 
 use App\Models\Skill;
@@ -21,7 +20,8 @@ class DatabaseSeeder extends Seeder
         $this->call(CompanySizesTableSeeder::class);
         $this->call(PositionsTableSeeder::class);
         $this->call(SkillsTableSeeder::class);
-        $this->call(CompaniesTableSeeder::class);
-        $this->call(JobsTableSeeder::class);
     }
 }
+
+
+

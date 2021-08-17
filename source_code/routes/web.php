@@ -20,10 +20,15 @@ use App\Http\Controllers\HomeController;
 */
 
 
+
+Route::get('/job_list', [HomeController::class, 'getListJob'])->name('job_list');
+Route::get('/job_list/filter', [HomeController::class, 'filterJob'])->name('filter');
+
 Route::get('/', [HomeController::class, 'getHome'])->name('frontend.home');
 Route::get('/search', [HomeController::class, 'homeSearch'])->name('frontend.search');
 
-Route::get('/job', [JobController::class, 'FECreate'])->name('frontend.job.create');
+Route::get('/job', [JobController::class, 'FECreate'])->name('frontend.job.create')->middleware('checkLogin');
+Route::post('/job', [JobController::class, 'store'])->name('frontend.job.store')->middleware('checkLogin');
 
 Route::prefix('admin')->group(function() {
     Route::get('/', function () {

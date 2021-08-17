@@ -59,12 +59,13 @@ class RegisterController extends Controller
             $company = new Company;
             $company->email = $request->email;
             $company->fullname = $request->fullname;
+            $company->shortname = $request->shortname;
             $company->company_code = strtoupper(substr($request->short_name, 0, 3)) . $company->user_id . rand(1000, 9999);
             $file = $request->logo;
             $originName = pathinfo($file->getClientOriginalName());
             $extension = $originName['extension'];
             $filename = "$company->company_code.$extension";
-            // $file->move('jobfinderportal-master/assets/img/logo-company', $filename);
+            $file->move('storage/images', $filename);
             $company->logo = $filename;
 
             $company->tax_code = $request->tax_code;
@@ -78,7 +79,7 @@ class RegisterController extends Controller
             $company->city_id = $request->city_id;
             $company->size_id = $request->size_id;
             $company->save();
-            $company_id = Company::orderBy('user_id', 'desc')->first()->company_id;
+            $company_id = Company::orderBy('company_id', 'desc')->first()->company_id;
         }
 
         $user = new User;

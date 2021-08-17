@@ -142,30 +142,37 @@ Trang chủ
             </div>
             <div class="row justify-content-center">
                 <div class="col-xl-10">
-                    @foreach($jobs as $job)
-                    <!-- single-job-content -->
-                    <div class="single-job-items mb-30">
-                        <div class="job-items">
-                            <div class="company-img">
-                                <a href="job_details.html"><img src="{{ asset('storage/' . $job->company->logo) }}" style="max-height: 85px; max-width: 85px;" alt=""></a>
+                @foreach($jobs as $job)
+                            <div class="single-job-items mb-30">
+                                <div class="job-items">
+                                    <div class="company-img">
+                                        <a href="#"><img src="jobfinderportal-master/assets/img/icon/job-list1.png" alt=""></a>
+                                    </div>
+                                    <div class="job-tittle job-tittle2">
+                                        <a href="#">
+                                            <h4>{{ $job->job_title }}</h4>
+                                        </a>
+                                        <ul>
+                                            @if( $job->job_type == 1)
+                                            <li>Fulltime</li>
+                                            @else
+                                            <li>Parttime</li>
+                                            @endif
+                                            <li><i class="fas fa-map-marker-alt"></i>{{ $job->work_location}}</li>
+                                            <li>{{ number_format($job->min_salary) }}đ - {{ number_format($job->max_salary) }}đ</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="items-link items-link2 f-right">
+                                    <a href="job_details.html">Apply</a>
+                                    @if(ceil((time() - strtotime($job->created_at))/3600) < 24)
+                                    <span>{{ ceil((time() - strtotime($job->created_at))/3600)}} hour ago</span>
+                                    @else
+                                    <span>{{ ceil((time() - strtotime($job->created_at))/8400)}} day ago</span>
+                                    @endif
+                                </div>
                             </div>
-                            <div class="job-tittle">
-                                <a href="job_details.html">
-                                    <h4>{{ $job->job_title }}</h4>
-                                </a>
-                                <ul>
-                                    <li>{{ $job->job_description }}</li>
-                                    <li><i class="fas fa-map-marker-alt"></i>{{ $job->work_location }}</li>
-                                    <li>{{ $job->min_salary }} - {{ $job->max_salary }}</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="items-link f-right">
-                            <a href="job_details.html">{{ $job->job_type ? 'FullTime' : 'Parttime' }}</a>
-                            <span>7 hours ago</span>
-                        </div>
-                    </div>
-                    @endforeach
+                            @endforeach
                 </div>
             </div>
         </div>

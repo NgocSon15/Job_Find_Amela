@@ -79,10 +79,11 @@
 }
 
 .form-row .name {
-  width: 125px;
+  width: 150px;
   color: #555;
   font-size: 15px;
   font-weight: 700;
+  margin-bottom: 4px;
 }
 
 .form-row .value {
@@ -449,7 +450,7 @@ td.active {
 }
 
 input[type="date" i] {
-  padding: 14px;
+  padding-left: 20px;
 }
 
 .table-condensed td, .table-condensed th {

@@ -2,7 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="097011e4-7987-4579-851d-cf933c741605" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/source_code/app/Http/Middleware/CheckLogin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source_code/app/Http/Controllers/JobController.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/app/Http/Controllers/JobController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source_code/app/Http/Controllers/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/app/Http/Controllers/RegisterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source_code/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/app/Http/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source_code/database/migrations/2021_08_12_101630_create_companies_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/database/migrations/2021_08_12_101630_create_companies_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source_code/database/migrations/2021_08_12_103500_create_customers_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/database/migrations/2021_08_12_103500_create_customers_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source_code/database/seeders/CompaniesTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/database/seeders/CompaniesTableSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source_code/public/jobfinderportal-master/assets/css/register.css" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/public/jobfinderportal-master/assets/css/register.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source_code/resources/views/frontend/job/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/resources/views/frontend/job/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source_code/resources/views/frontend/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/resources/views/frontend/layout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source_code/resources/views/frontend/register/register_success.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/resources/views/frontend/register/register_success.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source_code/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -147,11 +158,14 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../car_seller" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/source_code/vendor/laravel/framework/src/Illuminate/Http/Middleware" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\job_find\source_code\vendor\laravel\framework\src\Illuminate\Http\Middleware" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\job_find\source_code\resources\views\frontend" />
     </key>
@@ -168,7 +182,8 @@
       <workItem from="1628842754960" duration="10246000" />
       <workItem from="1628863028170" duration="3413000" />
       <workItem from="1628911291623" duration="4113000" />
-      <workItem from="1628997483367" duration="14396000" />
+      <workItem from="1628997483367" duration="14540000" />
+      <workItem from="1629080716150" duration="13193000" />
     </task>
     <servers />
   </component>
