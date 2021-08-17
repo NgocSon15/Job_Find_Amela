@@ -15,23 +15,23 @@ class CompanySizesTableSeeder extends Seeder
     public function run()
     {
         $size = new CompanySize;
-        $size->size = ' < 20 nhân viên';
+        $size->size = ' < 20';
         $size->save();
 
         $size = new CompanySize;
-        $size->size = '20 - 99 nhân viên';
+        $size->size = '20 - 99';
         $size->save();
 
         $size = new CompanySize;
-        $size->size = '100 - 199 nhân viên';
+        $size->size = '100 - 199';
         $size->save();
 
         $size = new CompanySize;
-        $size->size = '200 - 299 nhân viên';
+        $size->size = '200 - 299';
         $size->save();
 
         $size = new CompanySize;
-        $size->size = '300 - 499 nhân viên';
+        $size->size = '300 - 499';
         $size->save();
     }
 }
