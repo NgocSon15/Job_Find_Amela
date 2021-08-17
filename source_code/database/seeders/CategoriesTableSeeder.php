@@ -16,8 +16,26 @@ class CategoriesTableSeeder extends Seeder
     {
         $category = new Category();
         $category->cat_name = 'IT';
-        $category->icon = 'cms';
-        $category->total_jobs = 5;
+        $category->icon = 'flaticon-high-tech';
+        $category->total_jobs = 255;
+        $category->save();
+
+        $category = new Category();
+        $category->cat_name = 'Design & Development';
+        $category->icon = 'flaticon-cms';
+        $category->total_jobs = 255;
+        $category->save();
+
+        $category = new Category();
+        $category->cat_name = 'Design & Creative';
+        $category->icon = 'flaticon-tour';
+        $category->total_jobs = 255;
+        $category->save();
+
+        $category = new Category();
+        $category->cat_name = 'Sales & Marketing';
+        $category->icon = 'flaticon-report';
+        $category->total_jobs = 255;
         $category->save();
     }
 }

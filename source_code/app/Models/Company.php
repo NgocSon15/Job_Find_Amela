@@ -4,14 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+
 use App\Models\Job;
 use App\Models\Field;
 use App\Models\City;
 use App\Models\CompanySize;
 
+
+
 class Company extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'company_id';
     public $timestamps = false;
 
     public function jobs()

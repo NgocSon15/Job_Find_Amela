@@ -51,7 +51,7 @@
                     <div class="col-lg-3 col-md-2">
                         <!-- Logo -->
                         <div class="logo">
-                            <a href="index.html"><img src="{{ asset('jobfinderportal-master/assets/img/logo/logo.png') }}" alt=""></a>
+                            <a href="{{ route('frontend.home') }}"><img src="{{ asset('jobfinderportal-master/assets/img/logo/logo.png') }}" alt=""></a>
                         </div>
                     </div>
                     <div class="col-lg-9 col-md-9">
@@ -61,8 +61,8 @@
                                 <nav class="d-none d-lg-block">
                                     <ul id="navigation">
                                         <li><a href="{{ route('frontend.home') }}">Home</a></li>
-                                        <li><a href="job_listing.html">Find a Jobs </a></li>
-                                        <li><a href="{{ route('frontend.job.create') }}">Add New Job</a></li>
+                                        <li><a href="{{ route('frontend.search') }}">Find a Jobs </a></li>
+                                        <li><a href="#">Add New Job</a></li>
                                         <li><a href="contact.html">Contact</a></li>
                                     </ul>
                                 </nav>

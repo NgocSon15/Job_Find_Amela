@@ -21,7 +21,12 @@ use App\Http\Controllers\CompanyController;
 */
 
 
+
+Route::get('/job_list', [HomeController::class, 'getListJob'])->name('job_list');
+Route::get('/job_list/filter', [HomeController::class, 'filterJob'])->name('filter');
+
 Route::get('/', [HomeController::class, 'getHome'])->name('frontend.home');
+Route::get('/search', [HomeController::class, 'homeSearch'])->name('frontend.search');
 
 Route::prefix('job')->group(function() {
     Route::get('/', [JobController::class, 'feCreate'])->name('frontend.job.create')->middleware('checkLogin');
