@@ -43,9 +43,15 @@
                         <td>{{ $company->description }}</td>
                         <td>{{ $company->phone }}</td>
                         <td class="d-flex">
+<<<<<<< HEAD
                             <a href="{{ route('admin.company.show', $company->id) }}" class="btn-sm btn-info mr-1">Xem</a>
                             <a href="{{ route('admin.company.edit', $company->id) }}" class="btn-sm btn-secondary mr-1">Sửa</a>
                             <a href="{{ route('admin.company.delete', $company->id) }}" class="btn-sm btn-danger">Xóa</a>
+=======
+                            {{-- <a href="{{ route('admin.company.show', $company->id) }}" class="btn-sm btn-info mr-1">Xem</a>
+                            <a href="{{ route('admin.company.edit', $company->id) }}" class="btn-sm btn-secondary mr-1">Sửa</a>
+                            <a href="{{ route('admin.company.delete', $company->id) }}" class="btn-sm btn-danger">Xóa</a> --}}
+>>>>>>> dev
                         </td>
                     </tr>
                 @endforeach

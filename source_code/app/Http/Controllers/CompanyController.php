@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Company;
-
 use App\Models\Field;
 use App\Models\City;
 use App\Models\CompanySize;
@@ -107,7 +106,6 @@ class CompanyController extends Controller
 
         Session::flash('success', 'Xóa thành công');
         return redirect()->route('admin.company.index');
-
     }
 
     public function feIndex()
@@ -152,6 +150,5 @@ class CompanyController extends Controller
         $sizes = CompanySize::all();
 
         return view('frontend.company.list', compact('companies', 'total_companies', 'fields', 'cities', 'sizes'));
-
     }    
 }
