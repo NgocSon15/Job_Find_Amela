@@ -61,11 +61,8 @@
                 @endforeach
             @endif
         </div>
-<<<<<<< HEAD
+
         {{-- <div class="form-group">
-=======
-        <div class="form-group">
->>>>>>> dev
             <label for="exampleInputFile">Ảnh:</label>
             <div class="input-group">
                 <div class="custom-file">
@@ -83,11 +80,9 @@
                     </p>
                 @endforeach
             @endif
-<<<<<<< HEAD
+
         </div> --}}
-=======
-        </div>
->>>>>>> dev
+
         <div class="form-group">
             <label for="description">Mô tả:</label>
             <textarea class="form-control" id="description" name="description">{{ old('description') }}</textarea>
