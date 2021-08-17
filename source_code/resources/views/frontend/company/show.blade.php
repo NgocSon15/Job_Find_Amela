@@ -83,9 +83,9 @@
                                 <h4>Company Overview</h4>
                             </div>
                             <ul>
-                                <li>Field : <span>{{ $company->field->field_name }}</span></li>
-                                <li>City : <span>{{ $company->city->city_name }}</span></li>
-                                <li>Company Size : <span>{{ $company->companySize->size }}</span></li>
+                                <li>Field : <span>{{ $company->field ? $company->field->field_name : null }}</span></li>
+                                <li>City : <span>{{ $company->city ? $company->city->city_name : null }}</span></li>
+                                <li>Company Size : <span>{{ $company->companySize ? $company->companySize->size_name :null }}</span></li>
                                 <li>Total Jobs : <span>{{ $company->total_jobs }}</span></li>
                                 <li>Total Employee Hiring :  <span>{{ $company->total_employees }}</span></li>
                             </ul>
