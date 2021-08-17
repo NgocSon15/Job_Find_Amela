@@ -94,7 +94,7 @@ Register Company
                                     <div class="value">
                                         <div class="input-group">
                                             <div class="rs-select2 js-select-simple select--no-search">
-                                                <select name="field">
+                                                <select name="field_id">
                                                     <option disabled="disabled" selected="selected">Choose Field of operations
                                                     </option>
                                                     @foreach($fields as $field)

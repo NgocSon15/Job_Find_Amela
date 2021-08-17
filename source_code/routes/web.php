@@ -52,7 +52,7 @@ Route::get('/register', [RegisterController::class, 'showRegisterCustomer']);
 Route::post('/register', [RegisterController::class, 'registerCustomer'])->name('register-customer');
 Route::get('/register/company', [RegisterController::class, 'showRegisterCompany']);
 Route::post('/register/company', [RegisterController::class, 'registerCompany'])->name('register-company');
-Route::get('/login', [LoginController::class, 'showLogin'])->name('show-login');
+Route::get('/login', [LoginController::class, 'showLogin'])->name('show-login')->middleware('checkLogged');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::get('/forgot-password', [LoginController::class, 'showForgotPass'])->name('forgot-password');
 Route::post('/reset-password', [LoginController::class, 'resetPass'])->name('reset-password');

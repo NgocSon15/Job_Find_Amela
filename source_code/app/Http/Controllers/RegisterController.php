@@ -28,6 +28,7 @@ class RegisterController extends Controller
         $user = new User;
         $user->email = $request->email;
         $user->password = md5($request->password);
+        $user->fullname = $request->fullname;
         // $user->password = bcrypt($request->password);
         $user->role = 'customer';
         $user->save();
@@ -49,7 +50,7 @@ class RegisterController extends Controller
         $fields = Field::all();
         return view('frontend.register.register_company', compact('cities', 'companySizes', 'fields'));
     }
-    public function registerCompany(Request $request)
+    public function registerCompany(StoreCompany $request)
     {
         $tax_code = $request->tax_code;
         $company = Company::where('tax_code', $tax_code)->first();
@@ -65,7 +66,7 @@ class RegisterController extends Controller
             $originName = pathinfo($file->getClientOriginalName());
             $extension = $originName['extension'];
             $filename = "$company->company_code.$extension";
-            $file->move('storage/images', $filename);
+            // $file->move('storage/images', $filename);
             $company->logo = $filename;
 
             $company->tax_code = $request->tax_code;
@@ -82,8 +83,21 @@ class RegisterController extends Controller
             $company_id = Company::orderBy('company_id', 'desc')->first()->company_id;
         }
 
+        if($company->city_id != null){
+            $city = City::find($request->city_id);
+            $city->total_companies = Company::count();
+            $city->save();
+        }
+
+        if($company->field_id != null){
+            $file = Field::find($request->field_id);
+            $file->total_companies = Company::count();
+            $file->save();
+        }
+
         $user = new User;
         $user->company_id = $company_id;
+        $user->fullname = $request->fullname;
         $user->email = $request->email;
         $password = Str::random(8);
         $user->password = md5($password);
