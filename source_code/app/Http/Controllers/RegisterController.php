@@ -14,6 +14,7 @@ use App\Models\City;
 use App\Models\CompanySize;
 use App\Models\Field;
 use App\Mail\NotifySuccess;
+use App\Mail\ActiveUser;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -38,9 +39,38 @@ class RegisterController extends Controller
         $customer->phone = $request->phone;
         $customer->email = $request->email;
         $customer->save();
-        Mail::to($user->email)->send(new NotifySuccess($user, $request->password));
-        return view('frontend.register.register_success');
+        $codeConfirm = Str::random(32);
+        session()->put('codeConfirm', $codeConfirm);
+        session()->put('email', $request->email);
+        session()->put('password', $request->password);
+        $activeLink = route('active', $codeConfirm);
+        Mail::to($user->email)->send(new ActiveUser($user, $activeLink));
+        return view('frontend.register.register_active');
+
     }
+
+    public function active($codeConfirm = null)
+    {
+        // dd(session()->get('codeConfirm'));
+        if (session()->has('codeConfirm')) {
+            $email = session()->get('email');
+            $password = session()->get('password');
+            if (session()->get('codeConfirm') == $codeConfirm) {
+                Mail::to($email)->send(new NotifySuccess($email, $password));
+                session()->pull('codeConfirm');
+                session()->pull('email');
+                session()->pull('password');
+                return view('frontend.register.register_success');
+            }else{
+                session()->flash('activeFail', true);
+                return view('frontend.register.register_active');
+            }
+        }else{
+            return redirect()->route('frontend.home');
+        }
+        
+    }
+
 
     public function showRegisterCompany()
     {

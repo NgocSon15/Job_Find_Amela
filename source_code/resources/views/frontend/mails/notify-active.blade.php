@@ -5,8 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 </head>
 <body>
-    <p>Bạn đã đăng ký thành công</p>
-    <p>Email đăng nhập: {{ $email }}</p>
-    <p>Mật khẩu: {{ $password }}</p>
+    <p>Để hoàn tất thủ tục đăng ký bạn click<a href="{{$activeLink}}"> vào đây</a> </p>
 </body>
 </html>
