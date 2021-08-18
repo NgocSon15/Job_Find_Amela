@@ -63,7 +63,16 @@
                                         <ul id="navigation">
                                             <li><a href="{{ route('frontend.home') }}">Home</a></li>
                                             <li><a href="{{ route('job_list') }}">Find a Jobs </a></li>
-                                            <li><a href="{{ route('frontend.job.create') }}">Add New Job</a></li>
+                                            @if(session()->has('user'))
+                                                @if(session()->get('user')->role != 'customer')
+                                                    <li><a href="{{ route('frontend.job.create') }}">Add New Job</a></li>
+                                                @endif
+                                                @if(session()->get('user')->role == 'admin')
+                                                    <li><a href="{{route('admin.home')}}">Admin</a></li>
+                                                @endif
+                                            @else
+                                                <li><a href="{{ route('login') }}">Add New Job</a></li>
+                                            @endif
                                             <li><a href="contact.html">Contact</a></li>
                                         </ul>
                                     </nav>

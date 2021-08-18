@@ -92,7 +92,7 @@ class HomeController extends Controller
         $skills = Skill::all();
         Carbon::setLocale('vi');
         $now = Carbon::now();
-        return view('frontend.job.jobs_listing', compact('jobs', 'now', 'skills'));
+        return view('frontend.job.job_listing', compact('jobs', 'now', 'skills'));
     }
 
     public function getDetailJob($id)

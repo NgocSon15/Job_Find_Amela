@@ -173,7 +173,7 @@ Trang chủ
                                     @if(ceil((time() - strtotime($job->created_at))/3600) < 24)
                                     <span>{{ ceil((time() - strtotime($job->created_at))/3600)}} hour ago</span>
                                     @else
-                                    <span>{{ ceil((time() - strtotime($job->created_at))/8400)}} day ago</span>
+                                    <span>{{ ceil((time() - strtotime($job->created_at))/86400)}} day ago</span>
                                     @endif
                                 </div>
                             </div>
