@@ -30,7 +30,7 @@
                         <div class="single-job-items mb-50">
                             <div class="job-items">
                                 <div class="company-img company-img-details">
-                                    <a href="#"><img src="{{ asset('storage/' . $company->logo) }}" alt="" style="max-height: 85px; max-width: 85px;"></a>
+                                    <a href="#"><img src="{{ asset('storage/images' . $company->logo) }}" alt="" style="max-height: 85px; max-width: 85px;"></a>
                                 </div>
                                 <div class="job-tittle">
                                     <a href="#">
@@ -90,7 +90,7 @@
                                 <li>Total Employee Hiring :  <span>{{ $company->total_employees }}</span></li>
                             </ul>
                             <div class="apply-btn2">
-                                <a href="#" class="btn">All jobs</a>
+                                <a href="{{ route('frontend.company.joblist', $company->id) }}" class="btn">All jobs</a>
                             </div>
                         </div>
                     </div>

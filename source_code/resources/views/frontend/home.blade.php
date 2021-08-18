@@ -147,10 +147,10 @@ Trang chủ
                             <div class="single-job-items mb-30">
                                 <div class="job-items">
                                     <div class="company-img">
-                                        <a href="#"><img src="{{ asset('storage/' .$job->company->logo) }}" alt="" style="max-width: 84px;"></a>
+                                        <a href="{{route('detail', $job->id)}}"><img src="{{ asset('storage/images/' .$job->company->logo) }}" alt="" style="max-width: 84px;"></a>
                                     </div>
                                     <div class="job-tittle job-tittle2">
-                                        <a href="#">
+                                        <a href="{{route('detail', $job->id)}}">
                                             <h4>{{ $job->job_title }}</h4>
                                         </a>
                                         <ul>
@@ -161,7 +161,7 @@ Trang chủ
                                             @endif
                                             <li><i class="fas fa-map-marker-alt"></i>{{ $job->work_location}}</li>
                                             @if(session()->has('user'))
-                                            <li>{{ number_format($job->min_salary) }}đ - {{ number_format($job->max_salary) }}đ</li>
+                                            <li>${{ number_format($job->min_salary) }} - ${{ number_format($job->max_salary) }}</li>
                                             @else
                                             <li><a href="{{ route('login') }}" style="color: #635c5c">Salary: đăng nhập để xem mức lương</a></li>
                                             @endif
@@ -250,10 +250,10 @@ Trang chủ
                     <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
                         <div class="single-services text-center mb-30">
                             <div class="services-ion">
-                                <img src="{{ asset('storage/' . $company->logo) }}" style="max-height: 80px;">
+                                <img src="{{ asset('storage/images/' . $company->logo) }}" style="max-height: 80px;">
                             </div>
                             <div class="services-cap">
-                                <h5><a href="{{ route('frontend.company.show', $company->company_id) }}">{{ $company->shortname }}</a></h5>
+                                <h5><a href="{{ route('frontend.company.show', $company->id) }}">{{ $company->shortname }}</a></h5>
                                 <span>({{ $company->total_jobs }})</span>
                             </div>
                         </div>
@@ -266,9 +266,7 @@ Trang chủ
                 <div class="col-lg-12">
                     <div class="browse-btn2 text-center mt-50">
                         <a href="{{ route('frontend.company.index') }}" class="border-btn2">Browse All Companies</a>
-
                     </div>
-                    </a>
                 </div>
 
             </div>

@@ -10,19 +10,18 @@ use App\Models\Field;
 use App\Models\City;
 use App\Models\CompanySize;
 
-
-
 class Company extends Model
 {
     use HasFactory;
 
     protected $primaryKey = 'id';
     public $timestamps = false;
+
     protected $table = 'companies';
 
     public function jobs()
     {
-        return $this->hasMany(Job::class, 'id', 'id');
+        return $this->hasMany(Job::class, 'company_id', 'id');
     }
 
     public function field()

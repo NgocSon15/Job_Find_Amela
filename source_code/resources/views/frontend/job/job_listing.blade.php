@@ -127,11 +127,11 @@
                                 <div class="single-job-items mb-30">
                                     <div class="job-items">
                                         <div class="company-img">
-                                            <a href="{{route('detail', $val->job_id)}}"><img src="{{asset('storage/'.$val->company->logo)}}" alt=""></a>
+                                            <a href="{{route('detail', $val->id)}}"><img src="{{asset('storage/images'.$val->company->logo)}}" alt="" style="max-width: 85px;"></a>
 
                                         </div>
                                         <div class="job-tittle job-tittle2">
-                                            <a href="{{route('detail', $val->job_id)}}">
+                                            <a href="{{route('detail', $val->id)}}">
                                                 <h4>{{$val->job_title}}</h4>
                                             </a>
                                             <ul>
@@ -168,9 +168,7 @@
                         <div class="single-wrap d-flex justify-content-center">
                             <nav aria-label="Page navigation example">
                                 <ul class="pagination justify-content-start">
-
                                     {{ $jobs->appends(request()->query()) }}
-
                                 </ul>
                             </nav>
                         </div>

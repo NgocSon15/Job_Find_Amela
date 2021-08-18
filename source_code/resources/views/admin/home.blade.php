@@ -3,5 +3,5 @@
 @section('title', 'Home')
 @section('content-name', 'Welcome')
 @section('content')
-    <p>Ngày mai nắng lên anh sẽ về!</p>
+    {{ Session::has('user') ? Session::get('user')->fullname : null }}
 @endsection

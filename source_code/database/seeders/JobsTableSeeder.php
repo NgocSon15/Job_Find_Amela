@@ -22,8 +22,8 @@ class JobsTableSeeder extends Seeder
         $job->skill_id = 1;
         $job->job_code = 'AME01000101';
         $job->category_id = 1;
-        $job->min_salary = 1000000;
-        $job->max_salary = 3000000;
+        $job->min_salary = 100;
+        $job->max_salary = 200;
         $job->work_location = 'Nam Từ Liêm, Hà Nội';
         $job->job_type = 0;
         $job->experiences = 0;
@@ -45,8 +45,8 @@ class JobsTableSeeder extends Seeder
         $job->skill_id = 2;
         $job->job_code = 'AME01000102';
         $job->category_id = 1;
-        $job->min_salary = 1000000;
-        $job->max_salary = 3000000;
+        $job->min_salary = 100;
+        $job->max_salary = 200;
         $job->work_location = 'Nam Từ Liêm, Hà Nội';
         $job->job_type = 0;
         $job->experiences = 0;
@@ -68,8 +68,8 @@ class JobsTableSeeder extends Seeder
         $job->skill_id = 3;
         $job->job_code = 'AME01000103';
         $job->category_id = 1;
-        $job->min_salary = 1000000;
-        $job->max_salary = 3000000;
+        $job->min_salary = 100;
+        $job->max_salary = 200;
         $job->work_location = 'Nam Từ Liêm, Hà Nội';
         $job->job_type = 0;
         $job->experiences = 0;
@@ -91,8 +91,8 @@ class JobsTableSeeder extends Seeder
         $job->skill_id = 1;
         $job->job_code = 'AME01000104';
         $job->category_id = 1;
-        $job->min_salary = 7000000;
-        $job->max_salary = 10000000;
+        $job->min_salary = 500;
+        $job->max_salary = 1000;
         $job->work_location = 'Nam Từ Liêm, Hà Nội';
         $job->job_type = 1;
         $job->experiences = 1;
@@ -114,8 +114,8 @@ class JobsTableSeeder extends Seeder
         $job->skill_id = 2;
         $job->job_code = 'AME01000105';
         $job->category_id = 1;
-        $job->min_salary = 7000000;
-        $job->max_salary = 10000000;
+        $job->min_salary = 500;
+        $job->max_salary = 1000;
         $job->work_location = 'Nam Từ Liêm, Hà Nội';
         $job->job_type = 1;
         $job->experiences = 1;

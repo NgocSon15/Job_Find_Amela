@@ -29,10 +29,9 @@ class CompanyRequest extends FormRequest
             'company_code' => 'required',
             'email' => 'required',
             'address' => 'required',
-<<<<<<< HEAD
-=======
+
             'logo' => 'required',
->>>>>>> dev
+
             'description' => 'required',
             'phone' => 'required'
         ];
