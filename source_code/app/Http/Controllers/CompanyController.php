@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Company;
 use App\Models\Field;
 use App\Models\City;
 use App\Models\CompanySize;
+use App\Models\Job;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\CompanyRequest;
@@ -15,7 +17,7 @@ class CompanyController extends Controller
 {
     public function index()
     {
-        $companies = Company::all();
+        $companies = Company::paginate(5);
         return view('admin.company.list', compact('companies'));
     }
 
@@ -59,7 +61,10 @@ class CompanyController extends Controller
     public function edit($id)
     {
         $company = Company::findOrFail($id);
-        return view('admin.company.edit', compact('company'));
+        $fields = Field::all();
+        $cities = City::all();
+        $sizes = CompanySize::all();
+        return view('admin.company.edit', compact('company', 'fields', 'cities', 'sizes'));
     }
 
     public function update(CompanyRequest $request, $id)
@@ -155,6 +160,9 @@ class CompanyController extends Controller
     public function getJobList($id)
     {
         $company = Company::findOrFail($id);
-        $jobs = $company->jobs;
+        $jobs = Job::where('company_id', $company->id)->paginate(7);
+        Carbon::setLocale('vi');
+        $now = Carbon::now();
+        return view('frontend.company.list_job', compact('company', 'now', 'jobs'));
     }
 }

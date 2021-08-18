@@ -32,6 +32,9 @@ Route::get('/search', [HomeController::class, 'homeSearch'])->name('frontend.sea
 Route::prefix('job')->group(function() {
     Route::get('/', [JobController::class, 'feCreate'])->name('frontend.job.create')->middleware('checkLogin');
     Route::post('/', [JobController::class, 'store'])->name('frontend.job.store')->middleware('checkLogin');
+    Route::get('/edit/{id}', [JobController::class, 'edit'])->name('frontend.job.edit')->middleware('checkLogin');
+    Route::post('/edit/{id}' ,[JobController::class, 'update'])->name('frontend.job.update')->middleware('checkLogin');
+    Route::get('/delete/{id}' ,[JobController::class, 'destroy'])->name('frontend.job.destroy')->middleware('checkLogin');
 });
 
 Route::prefix('company')->group(function() {

@@ -59,6 +59,7 @@ class RegisterController extends Controller
             $company = new Company;
             $company->email = $request->email;
             $company->fullname = $request->fullname;
+            $company->shortname = $request->short_name;
             $company->company_code = strtoupper(substr($request->short_name, 0, 3)) . $company->user_id . rand(1000, 9999);
             $file = $request->logo;
             $originName = pathinfo($file->getClientOriginalName());

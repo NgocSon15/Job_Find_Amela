@@ -59,7 +59,6 @@
                         <td>{{ $job->work_location }}</td>
                         <td>{{ $job->quantity }}</td>
                         <td class="d-flex">
-                            <a href="{{ route('admin.job.show', $job->id) }}" class="btn-sm btn-info mr-1">Xem</a>
                             <a href="{{ route('admin.job.edit', $job->id) }}" class="btn-sm btn-secondary mr-1">Sửa</a>
                             <a href="{{ route('admin.job.delete', $job->id) }}" class="btn-sm btn-danger">Xóa</a>
                         </td>
@@ -69,14 +68,10 @@
             </table>
         </div>
         <!-- /.card-body -->
-        {{-- <div class="card-footer clearfix">
+        <div class="card-footer clearfix">
             <ul class="pagination pagination-sm m-0 float-right">
-                <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                {{ $jobs->appends(request()->query()) }}
             </ul>
-        </div> --}}
+        </div>
     </div>
 @endsection

@@ -117,7 +117,7 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="count-job mb-35">
-
+                                            <span>{{ $jobs->total()}} Jobs found</span>
                                         </div>
                                     </div>
                                 </div>
@@ -127,7 +127,7 @@
                                 <div class="single-job-items mb-30">
                                     <div class="job-items">
                                         <div class="company-img">
-                                            <a href="{{route('detail', $val->id)}}"><img src="{{asset('storage/images'.$val->company->logo)}}" alt="" style="max-width: 85px;"></a>
+                                            <a href="{{route('detail', $val->id)}}"><img src="{{asset('storage/images/'.$val->company->logo)}}" alt="" style="max-width: 85px;"></a>
 
                                         </div>
                                         <div class="job-tittle job-tittle2">
@@ -135,9 +135,17 @@
                                                 <h4>{{$val->job_title}}</h4>
                                             </a>
                                             <ul>
-                                                <li>Creative Agency</li>
+                                                @if( $val->job_type == 1)
+                                                    <li>Fulltime</li>
+                                                @else
+                                                    <li>Parttime</li>
+                                                @endif
                                                 <li><i class="fas fa-map-marker-alt"></i>{{$val->work_location}}</li>
-                                                <li>${{$val->min_salary}} - ${{$val->max_salary}}</li>
+                                                @if(session()->has('user'))
+                                                    <li>${{ number_format($val->min_salary) }} - ${{ number_format($val->max_salary) }}</li>
+                                                @else
+                                                    <li><a href="{{ route('login') }}" style="color: #635c5c">Salary: đăng nhập để xem mức lương</a></li>
+                                                @endif
                                             </ul>
                                         </div>
                                     </div>

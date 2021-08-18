@@ -43,7 +43,13 @@
                                 <div class="default-select" id="default-select" style="width: 100%">
                                     <select name="category_id" style="display: none;">
                                         @foreach($categories as $category)
-                                            <option value="{{ $category->cat_id }}"> {{ $category->cat_name }} </option>
+                                            <option value="{{ $category->cat_id }}"
+                                                @if(old('category_id') == $category->cat_id)
+                                                        {{ 'selected' }}
+                                                @endif
+                                            >
+                                                {{ $category->cat_name }}
+                                            </option>
                                         @endforeach
                                     </select>
                                     <div class="nice-select" tabindex="0" style="width: 100%">
@@ -99,7 +105,13 @@
                                 <div class="default-select" id="default-select" style="width: 100%">
                                     <select name="position_id" style="display: none;">
                                         @foreach($positions as $position)
-                                            <option value="{{ $position->position_id }}"> {{ $position->position_name }} </option>
+                                            <option value="{{ $position->position_id }}"
+                                                @if(old('position_id') == $position->position_id)
+                                                    {{ 'selected' }}
+                                                @endif
+                                            >
+                                                {{ $position->position_name }}
+                                            </option>
                                         @endforeach
                                     </select>
                                     <div class="nice-select" tabindex="0" style="width: 100%">
@@ -122,7 +134,13 @@
                                 <div class="default-select" id="default-select" style="width: 100%">
                                     <select name="skill_id" style="display: none;">
                                         @foreach($skills as $skill)
-                                            <option value="{{ $skill->skill_id }}"> {{ $skill->skill_name }} </option>
+                                            <option value="{{ $skill->skill_id }}"
+                                                @if(old('skill_id') == $skill->skill_id)
+                                                    {{ 'selected' }}
+                                                @endif
+                                            >
+                                                {{ $skill->skill_name }}
+                                            </option>
                                         @endforeach
                                     </select>
                                     <div class="nice-select" tabindex="0" style="width: 100%">
@@ -157,8 +175,20 @@
                             <div class="value">
                                 <div class="default-select" id="default-select" style="width: 100%">
                                     <select name="job_type" style="display: none;">
-                                        <option value="0">Parttime</option>
-                                        <option value="1">Fulltime</option>
+                                        <option value="0"
+                                            @if(old('job_type') == 0)
+                                                {{ 'selected' }}
+                                            @endif
+                                        >
+                                            Parttime
+                                        </option>
+                                        <option value="1"
+                                            @if(old('job_type') == 1)
+                                                {{ 'selected' }}
+                                            @endif
+                                        >
+                                            Fulltime
+                                        </option>
                                     </select>
                                     <div class="nice-select" tabindex="0" style="width: 100%">
                                         <span class="current">Choose Job Type</span>
@@ -211,9 +241,21 @@
                             <div class="value">
                                 <div class="default-select" id="default-select" style="width: 100%">
                                     <select name="gender" style="display: none;">
-                                        <option value="0">Nam</option>
-                                        <option value="1">Nữ</option>
-                                        <option value="2">Khác</option>
+                                        <option value="0"
+                                            @if(old('gender') == 0)
+                                                {{ 'selected' }}
+                                            @endif
+                                        >Nam</option>
+                                        <option value="1"
+                                            @if(old('gender') == 1)
+                                                {{ 'selected' }}
+                                            @endif
+                                        >Nữ</option>
+                                        <option value="2"
+                                            @if(old('gender') == 2)
+                                                {{ 'selected' }}
+                                            @endif
+                                        >Khác</option>
                                     </select>
                                     <div class="nice-select" tabindex="0" style="width: 100%">
                                         <span class="current">Choose Gender</span>

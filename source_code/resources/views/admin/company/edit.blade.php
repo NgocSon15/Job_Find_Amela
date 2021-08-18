@@ -1,112 +1,207 @@
 @extends('admin.layout')
 
-@section('title', 'Add new company')
-@section('active2', 'active')
-@section('content-name', 'Thêm hãng')
+@section('title', 'Edit company')
+@section('content-name', 'Sửa tin thông tin doanh nghiệp')
 @section('content')
-<form method="post" action="{{ route('admin.company.update', $company->id) }}" enctype="multipart/form-data">
-    @csrf
-    <div class="form-group">
-        <label for="fullname">Tên doanh nghiệp:</label>
-        <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Nhập tên doanh nghiệp" value="{{ $company->fullname }}">
-        @if($errors->has('fullname'))
-            @foreach($errors->get('fullname') as $message)
-                <p class="text-danger">
-                    {{ $message }}
-                </p>
-            @endforeach
-        @endif
-    </div>
-    <div class="form-group">
-        <label for="tax_code">Mã só thuế:</label>
-        <input type="text" class="form-control" id="tax_code" name="tax_code" placeholder="Nhập mã só thuế" value="{{ $company->tax_code }}">
-        @if($errors->has('tax_code'))
-            @foreach($errors->get('tax_code') as $message)
-                <p class="text-danger">
-                    {{ $message }}
-                </p>
-            @endforeach
-        @endif
-    </div>
-    <div class="form-group">
-        <label for="company_code">Mã doanh nghiệp:</label>
-        <input type="text" class="form-control" id="company_code" name="company_code" placeholder="Nhập mã doanh nghiệp" value="{{ $company->company_code }}">
-        @if($errors->has('company_code'))
-            @foreach($errors->get('company_code') as $message)
-                <p class="text-danger">
-                    {{ $message }}
-                </p>
-            @endforeach
-        @endif
-    </div>
-    <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="text" class="form-control" id="email" name="email" placeholder="Nhập email" value="{{ $company->email }}">
-        @if($errors->has('email'))
-            @foreach($errors->get('email') as $message)
-                <p class="text-danger">
-                    {{ $message }}
-                </p>
-            @endforeach
-        @endif
-    </div>
-    <div class="form-group">
-        <label for="address">Địa chỉ:</label>
-        <input type="text" class="form-control" id="address" name="address" placeholder="Nhập địa chỉ" value="{{ $company->address }}">
-        @if($errors->has('address'))
-            @foreach($errors->get('address') as $message)
-                <p class="text-danger">
-                    {{ $message }}
-                </p>
-            @endforeach
-        @endif
-    </div>
-    {{-- <div class="form-group">
-        <label for="exampleInputFile">Ảnh:</label>
-        <div class="input-group">
-            <div class="custom-file">
-                <input type="file" class="custom-file-input" id="exampleInputFile" name="image" value="{{ old('image') }}">
-                <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+    <form method="post" action="{{ route('admin.company.update', $company->id) }}" enctype="multipart/form-data">
+        @csrf
+        <div class="d-flex">
+            <div class="col-lg-6" style="padding-right: 40px;">
+                <div class="form-group">
+                    <label for="fullname">Tên doanh nghiệp:</label>
+                    <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Nhập tên doanh nghiệp" value="{{ old('fullname') ?? $company->fullname}}">
+                    @if($errors->has('fullname'))
+                        @foreach($errors->get('fullname') as $message)
+                            <p class="text-danger">
+                                {{ $message }}
+                            </p>
+                        @endforeach
+                    @endif
+                </div>
+                <div class="form-group">
+                    <label for="shortname">Tên rút gọn:</label>
+                    <input type="text" class="form-control" id="shortname" name="shortname" placeholder="Nhập tên rút gọn" value="{{ old('shortname') ?? $company->shortname}}">
+                    @if($errors->has('shortname'))
+                        @foreach($errors->get('shortname') as $message)
+                            <p class="text-danger">
+                                {{ $message }}
+                            </p>
+                        @endforeach
+                    @endif
+                </div>
+                <div class="form-group">
+                    <label for="tax_code">Mã số thuế:</label>
+                    <input type="text" class="form-control" id="tax_code" name="tax_code" placeholder="Nhập mã số thuế" value="{{ old('tax_code') ?? $company->tax_code}}">
+                    @if($errors->has('tax_code'))
+                        @foreach($errors->get('tax_code') as $message)
+                            <p class="text-danger">
+                                {{ $message }}
+                            </p>
+                        @endforeach
+                    @endif
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Nhập email" value="{{ old('email') ?? $company->email}}">
+                    @if($errors->has('email'))
+                        @foreach($errors->get('email') as $message)
+                            <p class="text-danger">
+                                {{ $message }}
+                            </p>
+                        @endforeach
+                    @endif
+                </div>
+                <div class="form-group">
+                    <label for="address">Địa chỉ:</label>
+                    <input type="address" class="form-control" id="address" name="address" placeholder="Nhập địa chỉ" value="{{ old('address') ?? $company->address}}">
+                    @if($errors->has('address'))
+                        @foreach($errors->get('address') as $message)
+                            <p class="text-danger">
+                                {{ $message }}
+                            </p>
+                        @endforeach
+                    @endif
+                </div>
+                <div class="form-group">
+                    <label for="map">Link map:</label>
+                    <input type="map" class="form-control" id="map" name="map" placeholder="Nhập link google map" value="{{ old('map') ?? $company->map}}">
+                    @if($errors->has('map'))
+                        @foreach($errors->get('map') as $message)
+                            <p class="text-danger">
+                                {{ $message }}
+                            </p>
+                        @endforeach
+                    @endif
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputFile">Ảnh:</label>
+                    <div class="input-group">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="exampleInputFile" name="logo" value="{{ old('logo') }}">
+                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                        </div>
+                        <div class="input-group-append">
+                            <span class="input-group-text">Upload</span>
+                        </div>
+                    </div>
+                    @if($errors->has('logo'))
+                        @foreach($errors->get('logo') as $message)
+                            <p class="text-danger">
+                                {{ $message }}
+                            </p>
+                        @endforeach
+                    @endif
+                </div>
             </div>
-            <div class="input-group-append">
-                <span class="input-group-text">Upload</span>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="field_id">Chuyên môn:</label>
+                    <select class="form-control" name="field_id" id="field_id">
+                        <option value="" selected disabled hidden>-- Chọn chuyên môn --</option>
+                        @foreach($fields as $field)
+                            <option value="{{ $field->field_id }}"
+                            @if($company->field_id == $field->field_id)
+                                {{ 'selected' }}
+                                @endif
+                            >
+                                {{ $field->field_name }}
+                            </option>
+                        @endforeach
+                    </select>
+                    @if($errors->has('field_id'))
+                        @foreach($errors->get('field_id') as $message)
+                            <p class="text-danger">
+                                {{ $message }}
+                            </p>
+                        @endforeach
+                    @endif
+                </div>
+                <div class="form-group">
+                    <label for="city_id">Thành phố:</label>
+                    <select class="form-control" name="city_id" id="city_id">
+                        <option value="" selected disabled hidden>-- Chọn thành phố --</option>
+                        @foreach($cities as $city)
+                            <option value="{{ $city->city_id }}"
+                            @if($company->city_id == $city->city_id)
+                                {{ 'selected' }}
+                                @endif
+                            >
+                                {{ $city->city_name }}
+                            </option>
+                        @endforeach
+                    </select>
+                    @if($errors->has('city_id'))
+                        @foreach($errors->get('city_id') as $message)
+                            <p class="text-danger">
+                                {{ $message }}
+                            </p>
+                        @endforeach
+                    @endif
+                </div>
+                <div class="form-group">
+                    <label for="size_id">Quy mô công ty:</label>
+                    <select class="form-control" name="size_id" id="size_id">
+                        <option value="" selected disabled hidden>-- Chọn quy mô --</option>
+                        @foreach($sizes as $size)
+                            <option value="{{ $size->size_id }}"
+                            @if($company->size_id == $size->size_id)
+                                {{ 'selected' }}
+                                @endif
+                            >
+                                {{ $size->size }}
+                            </option>
+                        @endforeach
+                    </select>
+                    @if($errors->has('size_id'))
+                        @foreach($errors->get('size_id') as $message)
+                            <p class="text-danger">
+                                {{ $message }}
+                            </p>
+                        @endforeach
+                    @endif
+                </div>
+                <div class="form-group">
+                    <label for="website">Website:</label>
+                    <input type="text" class="form-control" id="website" name="website" value="{{ old('website') ?? $company->website }}">
+                    @if($errors->has('website'))
+                        @foreach($errors->get('website') as $message)
+                            <p class="text-danger">
+                                {{ $message }}
+                            </p>
+                        @endforeach
+                    @endif
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone number:</label>
+                    <input type="text" class="form-control" id="phone" name="phone" value="{{ old('phone') ?? $company->phone }}">
+                    @if($errors->has('phone'))
+                        @foreach($errors->get('phone') as $message)
+                            <p class="text-danger">
+                                {{ $message }}
+                            </p>
+                        @endforeach
+                    @endif
+                </div>
+                <div class="form-group">
+                    <label for="description">Mô tả:</label>
+                    <br>
+                    <textarea name="description" class="form-control">{{ old('description') ?? $company->description }}</textarea>
+
+                    @if($errors->has('description'))
+                        @foreach($errors->get('description') as $message)
+                            <p class="text-danger">
+                                {{ $message }}
+                            </p>
+                        @endforeach
+                    @endif
+                </div>
             </div>
         </div>
-        @if($errors->has('image'))
-            @foreach($errors->get('image') as $message)
-                <p class="text-danger">
-                    {{ $message }}
-                </p>
-            @endforeach
-        @endif
-    </div> --}}
-    <div class="form-group">
-        <label for="description">Mô tả:</label>
-        <textarea class="form-control" id="description" name="description">{{ $company->description }}</textarea>
-        @if($errors->has('description'))
-            @foreach($errors->get('description') as $message)
-                <p class="text-danger">
-                    {{ $message }}
-                </p>
-            @endforeach
-        @endif
-    </div>
-    <div class="form-group">
-        <label for="phone">Số điện thoại:</label>
-        <input type="text" class="form-control" id="phone" name="phone" placeholder="Nhập số điện thoại" value="{{ $company->phone }}">
-        @if($errors->has('phone'))
-            @foreach($errors->get('phone') as $message)
-                <p class="text-danger">
-                    {{ $message }}
-                </p>
-            @endforeach
-        @endif
-    </div>
-    <div class="d-flex">
-        <input type="submit" class="btn btn-success" value="Cập nhật">
-        <a href="{{ route('admin.company.index') }}" class="btn btn-default ml-2">Huỷ</a>
-    </div>
-</form>
+        <div class="d-flex col-lg-12">
+            <input type="submit" class="btn btn-success" value="Cập nhật">
+            <a href="{{ route('admin.company.index') }}" class="btn btn-default ml-2">Huỷ</a>
+        </div>
+    </form>
 @endsection
 <script src="{{ asset('adminlte/plugins/jquery/jquery.min.js') }}"></script>
 <!-- Bootstrap 4 -->
@@ -115,3 +210,11 @@
 <script src="{{ asset('adminlte/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('adminlte/dist/js/adminlte.min.js') }}"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="{{ asset('adminlte/dist/js/demo.js') }}"></script>
+<!-- Page specific script -->
+<script>
+    $(function () {
+        bsCustomFileInput.init();
+    });
+</script>
