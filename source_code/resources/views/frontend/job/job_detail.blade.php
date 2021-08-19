@@ -121,10 +121,61 @@
                             </ul>
                         </div>
                     </div>
+
                 </div>
-            </div>
+                <section class="featured-job-area feature-padding">
+{{--                    <div class="container">--}}
+                        <!-- Section Tittle -->
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="section-tittle text-center">
+                                    <h2>Đề Xuất Cho Bạn</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-xl-10">
+                                <!-- single-job-content -->
+                                @foreach($job_recommend as $key=>$job)
+                                <div class="single-job-items mb-30">
+                                    <div class="job-items">
+                                        <div class="company-img">
+                                            <a href="{{route('detail', $job->id)}}"><img src="{{asset('storage/images/'.$job->company->logo)}}" alt="" style="max-width: 85px;"></a>
+                                        </div>
+                                        <div class="job-tittle">
+                                            <a href="{{route('detail', $job->id)}}"><h4>{{$job->job_title}}</h4></a>
+                                            <ul>
+                                                <li>Creative Agency</li>
+                                                <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
+                                                <li>${{$job->min_salary}} - ${{$job->max_salary}}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="items-link f-right">
+                                        @if($job->job_type == 1)
+                                            <a href="{{route('detail', $job->id)}}">Full Time</a>
+                                        @elseif($job->job_type == 0)
+                                            <a href="{{route('detail', $job->id)}}">Part Time</a>
+                                        @endif
+
+                                            @if(ceil((time() - strtotime($job->created_at))/3600) < 24)
+                                                <span>{{ ceil((time() - strtotime($job->created_at))/3600)}} hour ago</span>
+                                            @else
+                                                <span>{{ ceil((time() - strtotime($job->created_at))/86400)}} day ago</span>
+                                            @endif
+                                    </div>
+                                </div>
+                                @endforeach
+                            </div>
+                        </div>
+{{--                    </div>--}}
+                </section>
+{{--            </div>--}}
+
         </div>
         <!-- job post company End -->
 
+
     </main>
+
 @endsection

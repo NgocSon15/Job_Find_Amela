@@ -143,4 +143,6 @@ class JobController extends Controller
         $jobs = Job::where('job_title', 'LIKE', '%' . $keyword . '%')->paginate(5);
         return view('admin.job.list', compact('jobs', 'keyword'));
     }
+
+   
 }

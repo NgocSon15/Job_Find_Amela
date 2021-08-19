@@ -98,6 +98,7 @@ class HomeController extends Controller
     public function getDetailJob($id)
     {
         $job = Job::where('id', $id)->firstOrFail();
-        return view('frontend.job.job_detail', compact('job'));
+        $job_recommend = Job::where('is_suggest', 1)->get();
+        return view('frontend.job.job_detail', compact('job','job_recommend'));
     }
 }
