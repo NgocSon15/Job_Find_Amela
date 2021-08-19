@@ -16,6 +16,7 @@ Login
             <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
                 <form class="login100-form" action="{{ route('login') }}" method="post">
                     @csrf
+                    <input type="text" hidden name="previous" value="{{ $previous }}">
                     <span class="login100-form-title p-b-49">
                         Login
                     </span>

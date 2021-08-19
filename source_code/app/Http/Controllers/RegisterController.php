@@ -32,7 +32,7 @@ class RegisterController extends Controller
         $user->fullname = $request->fullname;
         $user->role = 'customer';
         $codeConfirm = Str::random(32);
-        $user->code_confirm = $request->code_confirm;
+        $user->code_confirm = $codeConfirm;
         $user->active = 0;
         $user->save();
 
@@ -42,7 +42,7 @@ class RegisterController extends Controller
         $customer->phone = $request->phone;
         $customer->email = $request->email;
         $customer->save();
-        $confirmLink = route('active', $user->email,$codeConfirm);
+        $confirmLink = route('active', [$user->email, $codeConfirm]);
         Mail::to($user->email)->send(new ActiveUser($user, $confirmLink));
         return view('frontend.register.register_active');
     }
@@ -50,18 +50,12 @@ class RegisterController extends Controller
     public function active($email = null, $codeConfirm = null)
     {
         if($email && $codeConfirm){
-            $user = User::where('email', $email)->first();
+            $user = User::where('email', $email)->where('code_confirm', $codeConfirm)->first();
             if($user){
-                if($user->email == $codeConfirm){
                     $user->active = 1;
                     $user->save();
-                    Mail::to($email)->send(new NotifySuccess($email, $user->password));
+                    Mail::to($email)->send(new NotifySuccess($email));
                     return view('frontend.register.register_success');
-                }
-                else{
-                    session()->flash('activeFail', true);
-                    return view('frontend.register.register_active');
-                }
             }
             else{
                 session()->flash('activeFail', true);
@@ -130,6 +124,7 @@ class RegisterController extends Controller
         $user->company_id = $company_id;
         $user->fullname = $request->fullname;
         $user->email = $request->email;
+        $user->active = 0;
         $password = Str::random(8);
         $user->password = md5($password);
         $user->role = 'company';

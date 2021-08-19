@@ -17,7 +17,7 @@ class NotifySuccess extends Mailable
      *
      * @return void
      */
-    public function __construct($email, $password)
+    public function __construct($email, $password = null)
     {
         $this->email = $email;
         $this->password = $password;

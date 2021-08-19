@@ -13,7 +13,8 @@ class LoginController extends Controller
 {
     public function showLogin()
     {
-        return view('frontend.login.login');
+        $previous = session()->get('_previous.url');
+        return view('frontend.login.login', compact('previous'));
     }
     public function login(Request $request)
     {
@@ -24,21 +25,16 @@ class LoginController extends Controller
         $email = $request->email;
         $password = $request->password;
         $user = User::where('email', $email)->where('password', md5($password))->first();
+        if($user->active == 0){
+            return view('frontend.login.not-activated');
+        }
         if($user){
             session()->put('user', $user);
-            return redirect('/');
+            return redirect($request->previous);
         } else{
             session()->flash('LoginFail', true);
             return redirect()->route('login');
         }
-
-        // if(Auth::attempt(['email'=>$request->email, 'password'=>$request->password])){
-        //     session()->flash('ádđ', 'dsags');
-        //     return redirect('/check');
-        // }else {
-        //     session()->flash('LoginFail', true);
-        //     return redirect()->route('login');
-        // }
     }
     public function logout(){
         session()->pull('user');
