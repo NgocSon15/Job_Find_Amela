@@ -75,7 +75,7 @@ Route::prefix('admin')->group(function() {
 });
 
 Route::get('/register', [RegisterController::class, 'showRegisterCustomer']);
-Route::get('/active/{codeConfirm?}', [RegisterController::class, 'active'])->name('active');
+Route::get('/active/{email?}/{codeConfirm?}', [RegisterController::class, 'active'])->name('active');
 Route::post('/register', [RegisterController::class, 'registerCustomer'])->name('register-customer');
 Route::get('/register/company', [RegisterController::class, 'showRegisterCompany']);
 Route::post('/register/company', [RegisterController::class, 'registerCompany'])->name('register-company');

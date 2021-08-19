@@ -29,7 +29,7 @@
                                 <i class="fas fa-check-circle"></i>
                                 Lưu thông tin thành công
                             </p>
-                                <p class = "text-center text-warning">Vui lòng kiểm tra mail và làm theo hướng dẫn để kích hoạt tài khoản</p>
+                                <p class = "text-center text-warning">Vui lòng kiểm tra mail và làm theo hướng dẫn để hoàn tất thủ tục đăng ký</p>
                         </div>
                         @endif
                     </div>

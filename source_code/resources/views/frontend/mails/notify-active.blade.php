@@ -5,6 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 </head>
 <body>
-    <p>Để hoàn tất thủ tục đăng ký bạn click<a href="{{$activeLink}}"> vào đây</a> </p>
+    <p>Để hoàn tất thủ tục đăng ký bạn click<a href="{{$confirmLink}}"> vào đây</a> </p>
 </body>
 </html>

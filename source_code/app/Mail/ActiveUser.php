@@ -11,16 +11,16 @@ class ActiveUser extends Mailable
 {
     use Queueable, SerializesModels;
     public $user;
-    public $activeLink;
+    public $confirmLink;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($user, $activeLink)
+    public function __construct($user, $confirmLink)
     {
         $this->user = $user;
-        $this->activeLink = $activeLink;
+        $this->confirmLink = $confirmLink;
     }
 
     /**

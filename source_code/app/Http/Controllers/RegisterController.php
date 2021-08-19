@@ -31,6 +31,9 @@ class RegisterController extends Controller
         $user->password = md5($request->password);
         $user->fullname = $request->fullname;
         $user->role = 'customer';
+        $codeConfirm = Str::random(32);
+        $user->code_confirm = $request->code_confirm;
+        $user->active = 0;
         $user->save();
 
         $customer = new Customer;
@@ -39,36 +42,35 @@ class RegisterController extends Controller
         $customer->phone = $request->phone;
         $customer->email = $request->email;
         $customer->save();
-        $codeConfirm = Str::random(32);
-        session()->put('codeConfirm', $codeConfirm);
-        session()->put('email', $request->email);
-        session()->put('password', $request->password);
-        $activeLink = route('active', $codeConfirm);
-        Mail::to($user->email)->send(new ActiveUser($user, $activeLink));
+        $confirmLink = route('active', $user->email,$codeConfirm);
+        Mail::to($user->email)->send(new ActiveUser($user, $confirmLink));
         return view('frontend.register.register_active');
-
     }
 
-    public function active($codeConfirm = null)
+    public function active($email = null, $codeConfirm = null)
     {
-        // dd(session()->get('codeConfirm'));
-        if (session()->has('codeConfirm')) {
-            $email = session()->get('email');
-            $password = session()->get('password');
-            if (session()->get('codeConfirm') == $codeConfirm) {
-                Mail::to($email)->send(new NotifySuccess($email, $password));
-                session()->pull('codeConfirm');
-                session()->pull('email');
-                session()->pull('password');
-                return view('frontend.register.register_success');
-            }else{
+        if($email && $codeConfirm){
+            $user = User::where('email', $email)->first();
+            if($user){
+                if($user->email == $codeConfirm){
+                    $user->active = 1;
+                    $user->save();
+                    Mail::to($email)->send(new NotifySuccess($email, $user->password));
+                    return view('frontend.register.register_success');
+                }
+                else{
+                    session()->flash('activeFail', true);
+                    return view('frontend.register.register_active');
+                }
+            }
+            else{
                 session()->flash('activeFail', true);
                 return view('frontend.register.register_active');
             }
-        }else{
+        }
+        else{
             return redirect()->route('frontend.home');
         }
-        
     }
 
 
