@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CompanyRequest extends FormRequest
+class UpdateCompany extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,16 +24,20 @@ class CompanyRequest extends FormRequest
     public function rules()
     {
         return [
-            'fullname' => 'required',
-            'tax_code' => 'required',
-            'company_code' => 'required',
-            'email' => 'required',
-            'address' => 'required',
-
-            'logo' => 'required',
-
-            'description' => 'required',
-            'phone' => 'required'
+            "logo" => 'nullable|image',
+            "email" => 'required|email|max:100',
+            "fullname" => 'required|min:8|max:100',
+            "shortname" => 'required|max:15',
+            "phone" => 'required|numeric',
+            "size_id" => 'nullable|exists:company_sizes,size_id',
+            "field_id" => 'nullable|exists:fields,field_id',
+            "city_id" => 'nullable|exists:cities,city_id',
+            "address" => 'nullable|min:3|max:200',
+            "map" => 'nullable|url|max:400',
+            "tax_code" => 'required|numeric|min:10',
+            "website" => ['nullable', 'regex:/^((?:https?\:\/\/|www\.)(?:[-a-z0-9]+\.)*[-a-z0-9]+.*)$/i', 'max:200'],
+            "facebook" => 'nullable|url|max:200',
+            "description" => 'required|min:8',
         ];
     }
 }

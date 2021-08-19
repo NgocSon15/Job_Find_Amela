@@ -74,11 +74,11 @@
                     @endif
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputFile">Ảnh:</label>
+                    <label for="logo">Ảnh:</label>
                     <div class="input-group">
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="exampleInputFile" name="logo" value="{{ old('logo') }}">
-                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                            <input type="file" class="custom-file-input" id="logo" name="logo" value="{{ asset('storage/images/' . $company->logo) }}">
+                            <label class="custom-file-label" for="logo">{{ $company->logo }}</label>
                         </div>
                         <div class="input-group-append">
                             <span class="input-group-text">Upload</span>
@@ -203,18 +203,22 @@
         </div>
     </form>
 @endsection
-<script src="{{ asset('adminlte/plugins/jquery/jquery.min.js') }}"></script>
-<!-- Bootstrap 4 -->
-<script src="{{ asset('adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-<!-- bs-custom-file-input -->
-<script src="{{ asset('adminlte/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
-<!-- AdminLTE App -->
-<script src="{{ asset('adminlte/dist/js/adminlte.min.js') }}"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="{{ asset('adminlte/dist/js/demo.js') }}"></script>
-<!-- Page specific script -->
-<script>
-    $(function () {
-        bsCustomFileInput.init();
-    });
-</script>
+@section('script')
+    <!-- bs-custom-file-input -->
+    <script src="{{ asset('adminlte/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
+    <!-- Page specific script -->
+    <script>
+        $(function () {
+            bsCustomFileInput.init();
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#logo').on('change', function() {
+                var src = $('#logo').val();
+                $('#logo_image').attr('src', src);
+            })
+        })
+    </script>
+@endsection
+
