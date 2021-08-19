@@ -75,13 +75,44 @@
 
                                 </div>
                                 <!-- select-Categories End -->
+
+                                <div class="select-Categories pt-80 pb-40">
+                                    <div class="small-section-tittle2">
+                                        <h4>Job Location</h4>
+                                    </div>
+                                    <div class="select-job-items2">
+                                        <select name="location">
+                                            <option value="">Anywhere</option>
+                                            @foreach($city as $key => $val)
+                                                <option value="{{$val->city_id}}">{{$val->city_name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                </div>
+
+                                <div class="select-Categories pt-80 pb-40">
+                                    <div class="small-section-tittle2">
+                                        <h4>Salary range</h4>
+                                    </div>
+                                    <div class="select-job-items2">
+                                        <select name="salary">
+                                            <option value="">All salary</option>
+                                            <option value="0"><1000$</option>
+                                            <option value="1000">1000$-2000$</option>
+                                            <option value="2000">2000$-3000$</option>
+                                            <option value="3000">3000$ +</option>
+                                        </select>
+                                    </div>
+
+                                </div>
                             </div>
                             <!-- single two -->
                             <div class="single-listing">
 
                                 <!--  Select job items End-->
                                 <!-- select-Categories start -->
-                                <div class="select-Categories pt-40 pb-40" >
+                                <div class="select-Categories pt-80 pb-40" >
                                     <div class="small-section-tittle2">
                                         <h4>EXP</h4>
                                     </div>

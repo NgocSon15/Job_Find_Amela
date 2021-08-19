@@ -13,6 +13,7 @@ use App\Models\CompanySize;
 class Company extends Model
 {
     use HasFactory;
+
     protected $primaryKey = 'id';
     public $timestamps = false;
 
@@ -37,4 +38,5 @@ class Company extends Model
     {
         return $this->belongsTo(CompanySize::class, 'size_id', 'size_id');
     }
+
 }

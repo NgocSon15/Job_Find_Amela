@@ -61,8 +61,9 @@ class HomeController extends Controller
         Carbon::setLocale('vi');
         $jobs = Job::paginate(5);
         $skills = Skill::all();
+        $city = City::all();
         $now = Carbon::now();
-        return view('frontend.job.job_listing', compact('jobs', 'now', 'skills'));
+        return view('frontend.job.job_listing', compact('jobs', 'now', 'skills', 'city'));
     }
 
     public function filterJob(Request $request)
@@ -88,16 +89,30 @@ class HomeController extends Controller
             }
         }
 
+        if($request->input('salary') != null)
+        {
+
+            $salary = $request->input('salary');
+            $q->whereBetween('min_salary', [$salary, $salary + 1000]);
+        }
+
+        if($request->input('location') != null)
+        {
+            $q->join('companies', 'jobs.company_id', '=', 'companies.id')->where('companies.city_id', $request->input('location'));
+        }
+
         $jobs = $q->paginate(5);
         $skills = Skill::all();
+        $city = City::all();
         Carbon::setLocale('vi');
         $now = Carbon::now();
-        return view('frontend.job.job_listing', compact('jobs', 'now', 'skills'));
+        return view('frontend.job.job_listing', compact('jobs', 'now', 'skills', 'city'));
     }
 
     public function getDetailJob($id)
     {
         $job = Job::where('id', $id)->firstOrFail();
-        return view('frontend.job.job_detail', compact('job'));
+        $job_recommend = Job::where('is_suggest', 1)->get();
+        return view('frontend.job.job_detail', compact('job','job_recommend'));
     }
 }
