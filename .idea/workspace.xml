@@ -2,20 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="097011e4-7987-4579-851d-cf933c741605" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/source_code/resources/views/frontend/company/list_job.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source_code/app/Http/Controllers/CompanyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/app/Http/Controllers/CompanyController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source_code/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source_code/app/Http/Controllers/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/app/Http/Controllers/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source_code/app/Http/Middleware/TrustProxies.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/app/Http/Middleware/TrustProxies.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source_code/database/seeders/CompaniesTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/database/seeders/CompaniesTableSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source_code/resources/views/frontend/company/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/resources/views/frontend/company/list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source_code/resources/views/frontend/company/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/resources/views/frontend/company/show.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source_code/resources/views/frontend/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/resources/views/frontend/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source_code/resources/views/frontend/jobs-listing.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/resources/views/frontend/jobs-listing.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source_code/resources/views/frontend/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/resources/views/frontend/layout.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source_code/resources/views/frontend/register/register_success.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/resources/views/frontend/register/register_success.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source_code/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/source_code/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,6 +177,7 @@
       <workItem from="1628997483367" duration="14540000" />
       <workItem from="1629080716150" duration="13193000" />
       <workItem from="1629162835562" duration="10448000" />
+      <workItem from="1629248636828" duration="5923000" />
     </task>
     <servers />
   </component>
@@ -207,16 +198,5 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/source_code/resources/views/admin/company/create.blade.php</url>
-          <line>8</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

@@ -30,7 +30,7 @@
                         <div class="single-job-items mb-50">
                             <div class="job-items">
                                 <div class="company-img company-img-details">
-                                    <a href="#"><img src="{{ asset('storage/images' . $company->logo) }}" alt="" style="max-height: 85px; max-width: 85px;"></a>
+                                    <a href="#"><img src="{{ asset('storage/images/' . $company->logo) }}" alt="" style="max-height: 85px; max-width: 85px;"></a>
                                 </div>
                                 <div class="job-tittle">
                                     <a href="#">

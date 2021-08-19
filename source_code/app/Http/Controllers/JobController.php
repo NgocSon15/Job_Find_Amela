@@ -17,7 +17,7 @@ class JobController extends Controller
 {
     public function index()
     {
-        $jobs = Job::all();
+        $jobs = Job::paginate(5);
         return view('admin.job.list', compact('jobs'));
     }
 
@@ -61,9 +61,16 @@ class JobController extends Controller
         $job->gender = $request->input('gender');
         $job->quantity = $request->input('quantity');
         $job->save();
+        $job->company->total_jobs++;
 
         Session::flash('success', 'Thêm mới thành công');
-        return redirect()->route('admin.job.index');
+        if (Session::get('user')->role == 'admin')
+        {
+            return redirect()->route('admin.job.index');
+        } else {
+            return redirect()->route('frontend.home');
+        }
+
     }
 
     public function show($id)
@@ -75,7 +82,17 @@ class JobController extends Controller
     public function edit($id)
     {
         $job = Job::findOrFail($id);
-        return view('admin.job.edit', compact('job'));
+        $categories = Category::all();
+        $positions = Position::all();
+        $skills = Skill::all();
+        $companies = Company::all();
+        return view('admin.job.edit', compact('job', 'companies', 'categories', 'positions', 'skills'));
+    }
+
+    public function feEdit($id)
+    {
+        $job = Job::findOrFail($id);
+        return view('frontend.job.edit', compact('job'));
     }
 
     public function update(JobRequest $request, $id)
@@ -85,7 +102,6 @@ class JobController extends Controller
         $job->job_title = $request->input('job_title');
         $job->job_description = $request->input('job_description');
         $job->skill_id = $request->input('skill_id');
-        $job->job_code = $request->input('job_code');
         $job->category_id = $request->input('category_id');
         $job->min_salary = $request->input('min_salary');
         $job->max_salary = $request->input('max_salary');
@@ -96,11 +112,6 @@ class JobController extends Controller
         $job->position_id = $request->input('position_id');
         $job->gender = $request->input('gender');
         $job->quantity = $request->input('quantity');
-        $job->status = $request->input('status');
-        $job->is_hot = $request->input('is_hot');
-        $job->is_suggest = $request->input('is_suggest');
-        $job->view = $request->input('view');
-        $job->reference_ids = $request->input('reference_ids');
         $job->save();
 
         Session::flash('success', 'Sửa thông tin thành công');
@@ -117,6 +128,7 @@ class JobController extends Controller
     {
         $job = Job::findOrFail($id);
         $job->delete();
+        $job->company->total_jobs--;
 
         Session::flash('success', 'Xóa thành công');
         return redirect()->route('admin.job.index');

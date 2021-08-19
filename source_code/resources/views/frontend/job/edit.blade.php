@@ -22,15 +22,15 @@
     <div style="margin: 30px 0;">
         <div class="page-wrapper container">
             <div class="wrapper">
-                <form method="POST" class="row" action="{{ route('frontend.job.store') }}" enctype="multipart/form-data">
+                <form method="POST" class="row" action="{{ route('frontend.job.update', $job->id) }}" enctype="multipart/form-data">
                     @csrf
-                    <input type="text" name="company_id" value="@if(Session::has('user') && Session::get('user')->role == 'company'){{ Session::get('user')->company->id }}@else{{1}}@endif" hidden>
+                    <input type="text" name="company_id" value="{{ $job->company_id }}" hidden>
                     <div class="col-lg-6">
                         <div class="form-row" style="display: block;">
                             <div class="name">Job Title <span style="color: #e83e8c">*</span></div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input type="text" name="job_title" placeholder="Job Title" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Job Title'" required="" class="single-input" value="{{ old('job_title') }}">
+                                    <input type="text" name="job_title" placeholder="Job Title" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Job Title'" required="" class="single-input" value="{{ old('job_title') ?? $job->job_title }}">
                                     @if($errors->has('job_title'))
                                         <p class="text-danger">{{ $errors->first('job_title') }}</p>
                                     @endif
@@ -44,8 +44,8 @@
                                     <select name="category_id" style="display: none;">
                                         @foreach($categories as $category)
                                             <option value="{{ $category->cat_id }}"
-                                                @if(old('category_id') == $category->cat_id)
-                                                        {{ 'selected' }}
+                                                @if($job->category_id == $category->cat_id)
+                                                    {{ 'selected' }}
                                                 @endif
                                             >
                                                 {{ $category->cat_name }}
@@ -106,8 +106,8 @@
                                     <select name="position_id" style="display: none;">
                                         @foreach($positions as $position)
                                             <option value="{{ $position->position_id }}"
-                                                @if(old('position_id') == $position->position_id)
-                                                    {{ 'selected' }}
+                                            @if(old('position_id') == $position->position_id)
+                                                {{ 'selected' }}
                                                 @endif
                                             >
                                                 {{ $position->position_name }}
@@ -135,8 +135,8 @@
                                     <select name="skill_id" style="display: none;">
                                         @foreach($skills as $skill)
                                             <option value="{{ $skill->skill_id }}"
-                                                @if(old('skill_id') == $skill->skill_id)
-                                                    {{ 'selected' }}
+                                            @if(old('skill_id') == $skill->skill_id)
+                                                {{ 'selected' }}
                                                 @endif
                                             >
                                                 {{ $skill->skill_name }}
@@ -176,15 +176,15 @@
                                 <div class="default-select" id="default-select" style="width: 100%">
                                     <select name="job_type" style="display: none;">
                                         <option value="0"
-                                            @if(old('job_type') == 0)
-                                                {{ 'selected' }}
+                                        @if(old('job_type') == 0)
+                                            {{ 'selected' }}
                                             @endif
                                         >
                                             Parttime
                                         </option>
                                         <option value="1"
-                                            @if(old('job_type') == 1)
-                                                {{ 'selected' }}
+                                        @if(old('job_type') == 1)
+                                            {{ 'selected' }}
                                             @endif
                                         >
                                             Fulltime
@@ -242,18 +242,18 @@
                                 <div class="default-select" id="default-select" style="width: 100%">
                                     <select name="gender" style="display: none;">
                                         <option value="0"
-                                            @if(old('gender') == 0)
-                                                {{ 'selected' }}
+                                        @if(old('gender') == 0)
+                                            {{ 'selected' }}
                                             @endif
                                         >Nam</option>
                                         <option value="1"
-                                            @if(old('gender') == 1)
-                                                {{ 'selected' }}
+                                        @if(old('gender') == 1)
+                                            {{ 'selected' }}
                                             @endif
                                         >Nữ</option>
                                         <option value="2"
-                                            @if(old('gender') == 2)
-                                                {{ 'selected' }}
+                                        @if(old('gender') == 2)
+                                            {{ 'selected' }}
                                             @endif
                                         >Khác</option>
                                     </select>
@@ -280,3 +280,4 @@
         </div>
     </div>
 @endsection
+
