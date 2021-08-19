@@ -7,20 +7,20 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class NotifySuccess extends Mailable
+class ActiveUser extends Mailable
 {
     use Queueable, SerializesModels;
-    public $email;
-    public $password;
+    public $user;
+    public $confirmLink;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($email, $password = null)
+    public function __construct($user, $confirmLink)
     {
-        $this->email = $email;
-        $this->password = $password;
+        $this->user = $user;
+        $this->confirmLink = $confirmLink;
     }
 
     /**
@@ -31,8 +31,8 @@ class NotifySuccess extends Mailable
     public function build()
     {
         return $this->from('jobfinder@gmail.com', 'Job Finder')
-                    ->subject('Thông báo đăng ký thành công')
+                    ->subject('Xác nhận địa chỉ mail')
                     ->replyTo('JobFinder@gmail.com', 'tim viec')
-                    ->view('frontend.mails.notify-success');
+                    ->view('frontend.mails.notify-active');
     }
 }

@@ -84,15 +84,7 @@
                                         <li class="dropdown pull-right">
                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: #635c5c">
                                                 <i class="far fa-user"></i>
-                                                @if(session()->get('user')->role == 'customer')
-                                                {{session()->get('user')->customer->fullname}} <span class="caret"></span></a>
-                                            @endif
-                                            @if(session()->get('user')->role == 'company')
-                                            {{session()->get('user')->company->fullname}} <span class="caret"></span></a>
-                                            @endif
-                                            @if(session()->get('user')->role == 'admin')
-                                            {{session()->get('user')->company->email}} <span class="caret"></span></a>
-                                            @endif
+                                                {{session()->get('user')->fullname}} <span class="caret"></span></a>
                                             <ul class="dropdown-menu" role="menu">
                                                 <li><a href="#" style="color: #635c5c">
                                                         <i class="far fa-user"></i>

@@ -14,6 +14,7 @@ use App\Models\City;
 use App\Models\CompanySize;
 use App\Models\Field;
 use App\Mail\NotifySuccess;
+use App\Mail\ActiveUser;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -30,6 +31,9 @@ class RegisterController extends Controller
         $user->password = md5($request->password);
         $user->fullname = $request->fullname;
         $user->role = 'customer';
+        $codeConfirm = Str::random(32);
+        $user->code_confirm = $codeConfirm;
+        $user->active = 0;
         $user->save();
 
         $customer = new Customer;
@@ -38,9 +42,31 @@ class RegisterController extends Controller
         $customer->phone = $request->phone;
         $customer->email = $request->email;
         $customer->save();
-        Mail::to($user->email)->send(new NotifySuccess($user, $request->password));
-        return view('frontend.register.register_success');
+        $confirmLink = route('active', [$user->email, $codeConfirm]);
+        Mail::to($user->email)->send(new ActiveUser($user, $confirmLink));
+        return view('frontend.register.register_active');
     }
+
+    public function active($email = null, $codeConfirm = null)
+    {
+        if($email && $codeConfirm){
+            $user = User::where('email', $email)->where('code_confirm', $codeConfirm)->first();
+            if($user){
+                    $user->active = 1;
+                    $user->save();
+                    Mail::to($email)->send(new NotifySuccess($email));
+                    return view('frontend.register.register_success');
+            }
+            else{
+                session()->flash('activeFail', true);
+                return view('frontend.register.register_active');
+            }
+        }
+        else{
+            return redirect()->route('frontend.home');
+        }
+    }
+
 
     public function showRegisterCompany()
     {
@@ -98,6 +124,7 @@ class RegisterController extends Controller
         $user->company_id = $company_id;
         $user->fullname = $request->fullname;
         $user->email = $request->email;
+        $user->active = 0;
         $password = Str::random(8);
         $user->password = md5($password);
         $user->role = 'company';

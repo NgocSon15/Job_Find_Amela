@@ -19,11 +19,25 @@ Register Company
                                     <div class="name">Logo <span style="color: #e83e8c">*</span></div>
                                     <div class="value">
                                         <div class="input-group">
-                                            <input type="file" name="logo">
+                                            <input type="file" name="logo" id = "upload">
                                             @if($errors->has('logo'))
                                             <p class="text-danger">{{ $errors->first('logo') }}</p>
                                             @endif
-                                            <img src="{{ asset('jobfinderportal-master/assets/img/camera.png')}}" height="180px" alt="">
+                                            <img src="{{ asset('jobfinderportal-master/assets/img/camera.png')}}" id="img_upload" style="max-width: 100%; max-height: 180px">
+                                            <script>
+                                                var fileSelected = document.getElementById('upload');
+                                                if(fileSelected){
+                                                    fileSelected.onchange = function() {
+                                                        var file = fileSelected.files[0]; 
+                                                        var fileReader = new FileReader();
+                                                        fileReader.onload = function() {
+                                                            var url = fileReader.result;
+                                                            document.getElementById('img_upload').src = url;
+                                                        }
+                                                        fileReader.readAsDataURL(file);
+                                                    }
+                                                }
+                                            </script>
                                         </div>
                                     </div>
                                 </div>

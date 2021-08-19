@@ -11,7 +11,7 @@ use App\Models\CompanySize;
 use App\Models\Job;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
-use App\Http\Requests\CompanyRequest;
+use App\Http\Requests\UpdateCompany;
 
 class CompanyController extends Controller
 {
@@ -19,37 +19,6 @@ class CompanyController extends Controller
     {
         $companies = Company::paginate(5);
         return view('admin.company.list', compact('companies'));
-    }
-
-    public function create()
-    {
-        return view('admin.company.create');
-    }
-
-    public function store(CompanyRequest $request)
-    {
-        $company = new Company();
-        $company->fullname = $request->input('fullname');
-        $company->tax_code = $request->input('tax_code');
-        $company->company_code = $request->input('company_code');
-        $company->email = $request->input('email');
-        $company->address = $request->input('address');
-
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $path = $image->store('images', 'public');
-            $company->logo = $path;
-        } else{
-            $company->logo = "";
-        }
-
-        $company->description = $request->input('description');
-        $company->phone = $request->input('phone');
-
-        $company->save();
-
-        Session::flash('success', 'Thêm mới thành công');
-        return redirect()->route('admin.company.index');
     }
 
     public function show($id)
@@ -67,29 +36,32 @@ class CompanyController extends Controller
         return view('admin.company.edit', compact('company', 'fields', 'cities', 'sizes'));
     }
 
-    public function update(CompanyRequest $request, $id)
+    public function update(UpdateCompany $request, $id)
     {
         $company = Company::findOrFail($id);
-        $company->fullname = $request->input('fullname');
-        $company->tax_code = $request->input('tax_code');
-        $company->company_code = $request->input('company_code');
-        $company->email = $request->input('email');
-        $company->address = $request->input('address');
-
-        if ($request->hasFile('image')) {
-            $currentImg = $company->logo;
-            if($currentImg)
+        $company->fullname = $request->fullname;
+        $company->shortname = $request->shortname;
+        $company->tax_code = $request->tax_code;
+        $company->email = $request->email;
+        $company->address = $request->address;
+        $company->map = $request->map;
+        if($request->logo)
+        {
+            if($company->logo)
             {
-                Storage::delete('/public/'.$currentImg);
+                Storage::delete('/public/images'.$company->logo);
             }
-
-            $image = $request->file('image');
-            $path = $image->store('images', 'public');
-            $company->logo = $path;
+            $file = $request->logo;
+            $originName = pathinfo($file->getClientOriginalName());
+            $file->move('storage/images', $originName['basename']);
+            $company->logo = $originName['basename'];
         }
-
-        $company->description = $request->input('description');
-        $company->phone = $request->input('phone');
+        $company->field_id = $request->field_id;
+        $company->city_id = $request->city_id;
+        $company->size_id = $request->size_id;
+        $company->website = $request->website;
+        $company->phone = $request->phone;
+        $company->description = $request->description;
 
         $company->save();
 
