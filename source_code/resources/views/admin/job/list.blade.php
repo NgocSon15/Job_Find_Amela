@@ -16,7 +16,7 @@
             @csrf
             <div class="d-flex">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search" name="keyword"
+                    <input type="text" class="form-control" placeholder="Search" name="keyWord"
                         @if(isset($keyword))
                             value="{{$keyword}}"
                         @endif

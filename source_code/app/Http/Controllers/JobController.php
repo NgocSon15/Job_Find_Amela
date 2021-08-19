@@ -136,12 +136,28 @@ class JobController extends Controller
 
     public function search(Request $request)
     {
-        $keyword = $request->input('keyword');
-        if (!$keyword) {
-            return redirect()->route('admin.job.index');
-        }
-        $jobs = Job::where('job_title', 'LIKE', '%' . $keyword . '%')->paginate(5);
-        return view('admin.job.list', compact('jobs', 'keyword'));
+        $request->validate([
+            'city_id' => 'nullable|exists:cities,city_id',
+            'category_id' => 'exists:categories,cat_id',
+          ]);
+          $keyWord = $request->keyWord;
+          $keyWord = explode(' ', $keyWord);
+          $newKeyWord = '%';
+          foreach($keyWord as $word){
+              $newKeyWord .= "$word%";
+          }
+          
+  
+          $city_id = $request->city_id;
+         
+          $jobs = DB::table('jobs')->leftJoin('companies', 'jobs.company_id', '=', 'companies.id')
+                    ->where([
+                        ['city_id', 1],
+                        ['job_title', 'like', $newKeyWord],
+                        ])
+                      ->orWhere('fullname', 'like', $newKeyWord)
+                      ->paginate(10);
+          return view('admin.job.list', compact('jobs', 'skills'));
     }
 
    
