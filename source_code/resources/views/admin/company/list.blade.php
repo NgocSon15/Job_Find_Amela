@@ -19,11 +19,11 @@
                 <tr>
                     <th>Mã doanh nghiệp</th>
                     <th>Tên doanh nghiệp</th>
+                    <th>Logo</th>
                     <th>Mã số thuế</th>
                     <th>Email</th>
-                    <th>Địa chỉ</th>
                     <th>Số điện thoại</th>
-                    <th>Ảnh</th>
+                    <th>Thành phố</th>
                     <th>Thao tác</th>
                 </tr>
                 </thead>
@@ -32,12 +32,13 @@
                     <tr>
                         <td>{{ $company->company_code }}</td>
                         <td>{{ $company->fullname }}</td>
+                        <td><img src="{{ asset('storage/images/' . $company->logo) }}" style="max-width: 85px; max-height: 85px;"></td>
                         <td>{{ $company->tax_code }}</td>
                         <td>{{ $company->email }}</td>
-                        <td>{{ $company->address }}</td>
                         <td>{{ $company->phone }}</td>
-                        <td><img src="{{ asset('storage/images/' . $company->logo) }}" style="max-width: 85px; max-height: 85px;"></td>
+                        <td>{{ $company->city ? $company->city->city_name : null}}</td>
                         <td class="d-flex">
+                            <a href="{{ route('admin.company.show', $company->id) }}" class="btn-sm btn-success mr-1">Xem</a>
                             <a href="{{ route('admin.company.edit', $company->id) }}" class="btn-sm btn-secondary mr-1">Sửa</a>
                             <a href="{{ route('admin.company.delete', $company->id) }}" class="btn-sm btn-danger">Xóa</a>
                         </td>
