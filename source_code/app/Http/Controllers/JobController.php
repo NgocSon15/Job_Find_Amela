@@ -157,7 +157,7 @@ class JobController extends Controller
                         ])
                       ->orWhere('fullname', 'like', $newKeyWord)
                       ->paginate(10);
-          return view('admin.job.list', compact('jobs', 'skills'));
+          return view('admin.job.list', compact('jobs'));
     }
 
    
