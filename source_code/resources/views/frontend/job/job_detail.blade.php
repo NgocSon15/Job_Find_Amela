@@ -40,7 +40,11 @@
                                     <ul>
                                         <li>Creative Agency</li>
                                         <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                        <li>${{$job->min_salary}} - ${{$job->max_salary}}</li>
+                                        @if(session()->has('user'))
+                                        <li>${{number_format($job->min_salary)}} - ${{number_format($job->max_salary)}}</li>
+                                        @else
+                                        <li><a href="{{ route('login') }}" style="color: #635c5c">Salary: đăng nhập để xem</a></li>
+                                        @endif
                                     </ul>
                                 </div>
                             </div>
@@ -101,7 +105,13 @@
                                     <li>Job nature : <span>Part time</span></li>
                                 @endif
 
-                                <li>Salary :  <span> ${{$job->min_salary}} - ${{$job->max_salary}}</span></li>
+                                <li>Salary :  
+                                    @if(session()->has('user'))
+                                    <span> ${{number_format($job->min_salary)}} - ${{number_format($job->max_salary)}}</span>
+                                    @else
+                                    <span> <a href="{{ route('login') }}" style="color: #635c5c"> Đăng nhập để xem </a></span>
+                                    @endif
+                                </li>
                                 <li>Application date : <span>{{$job->expiration}}</span></li>
                             </ul>
                             <div class="apply-btn2">
