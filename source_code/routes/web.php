@@ -42,6 +42,7 @@ Route::prefix('company')->group(function() {
     Route::get('/show/{id}', [CompanyController::class, 'feShow'])->name('frontend.company.show');
     Route::post('/filter', [CompanyController::class, 'filter'])->name('frontend.company.filter');
     Route::get('/{id}/job', [CompanyController::class, 'getJobList'])->name('frontend.company.joblist');
+    Route::get('/access_deny', [CompanyController::class, 'accessDeny'])->name('frontend.company.accessDeny');
 });
 
 
@@ -71,6 +72,9 @@ Route::prefix('admin')->group(function() {
         Route::post('edit/{id}', [CompanyController::class, 'update'])->name('admin.company.update');
         Route::get('delete/{id}', [CompanyController::class, 'delete'])->name('admin.company.delete');
         Route::post('delete/{id}', [CompanyController::class, 'destroy'])->name('admin.company.destroy');
+        Route::get('verify/{id}', [CompanyController::class, 'verify'])->name('admin.company.verify');
+        Route::get('lock/{id}', [CompanyController::class, 'lock'])->name('admin.company.lock');
+        Route::get('unlock/{id}', [CompanyController::class, 'unlock'])->name('admin.company.unlock');
     });
 });
 
