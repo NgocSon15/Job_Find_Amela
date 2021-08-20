@@ -11,21 +11,19 @@
     </p>
     @endif
 </div>
-<div class="d-flex">
+<div class="" style="width: 50%">
     <form class="navbar-form navbar-left" action="{{ route('admin.job.search') }}">
-        @csrf
         <div class="d-flex">
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search" name="keyword">
-            </div>
-            <button type="submit" class="btn btn-primary mb-3 ml-1">Tìm kiếm</button>
+                <input type="text" class="form-control" placeholder="Search tiêu đề hoặc keyword" name="keyWord">
+                <select name="city_id" id="" class="form-control" style="width: 40%">
+                    <option value="">City: all</option>
+                    @foreach($cities as $city)
+                    <option value="{{ $city->city_id}}">{{ $city->city_name}}</option>
+                    @endforeach
+                </select>
+            <button  type="submit" class="btn btn-primary mb-3 ml-1">Search</button>
         </div>
     </form>
-    <div class="d-flex ml-auto">
-        <a href="{{ route('admin.job.create') }}" class="btn btn-success mb-3 ml-1">
-            Thêm mới
-        </a>
-    </div>
 </div>
 <div class="card">
     <div class="card-body p-0">
@@ -45,7 +43,7 @@
             <tbody>
                 @foreach($jobs as $key => $job)
                 <tr>
-                    <td>{{ ++$key }}</td>
+                    <td>{{ $job->id }}</td>
                     <td>{{ $job->job_title }}</td>
                     <td>{{ $job->quantity}} </td>
                     <td>{{ $job->position->position_name }}</td>

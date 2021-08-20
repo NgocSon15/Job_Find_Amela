@@ -12,13 +12,15 @@ use App\Models\Category;
 use App\Models\Position;
 use App\Models\Company;
 use App\Models\Skill;
+use App\Models\City;
 
 class JobController extends Controller
 {
     public function index()
     {
+        $cities = City::all();
         $jobs = Job::paginate(5);
-        return view('admin.job.list', compact('jobs'));
+        return view('admin.job.list', compact('jobs', 'cities'));
     }
 
     public function activeJob(Request $request)
@@ -168,28 +170,26 @@ class JobController extends Controller
 
     public function search(Request $request)
     {
-        $request->validate([
-            'city_id' => 'nullable|exists:cities,city_id',
-            'category_id' => 'exists:categories,cat_id',
-          ]);
-          $keyWord = $request->keyWord;
-          $keyWord = explode(' ', $keyWord);
-          $newKeyWord = '%';
-          foreach($keyWord as $word){
-              $newKeyWord .= "$word%";
-          }
-          
-  
-          $city_id = $request->city_id;
-         
-          $jobs = DB::table('jobs')->leftJoin('companies', 'jobs.company_id', '=', 'companies.id')
-                    ->where([
-                        ['city_id', 1],
-                        ['job_title', 'like', $newKeyWord],
+        $cities = City::all();
+        $keyWord = $request->keyWord;
+        $keyWord = explode(' ', $keyWord);
+        $newKeyWord = '%';
+        foreach($keyWord as $word){
+            $newKeyWord .= "$word%";
+        }
+       $city_id = $request->city_id;
+        $jobs = Job::leftJoin('companies', 'jobs.company_id', '=', 'companies.id')
+                ->where([
+                    ['city_id', 'like', "%$city_id%"],
+                    ['job_title', 'like', $newKeyWord],
+                    ])
+                    ->orWhere([
+                    ['city_id', 'like', "%$city_id%"],
+                    ['fullname', 'like', $newKeyWord],
                         ])
-                      ->orWhere('fullname', 'like', $newKeyWord)
-                      ->paginate(10);
-          return view('admin.job.list', compact('jobs'));
+                    ->select('jobs.*', 'companies.fullname', 'companies.id as com_id', 'city_id')
+                    ->paginate(10);
+        return view('admin.job.list', compact('jobs', 'cities'));
     }
 
    
