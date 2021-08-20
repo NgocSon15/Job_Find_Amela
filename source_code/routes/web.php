@@ -52,6 +52,10 @@ Route::prefix('admin')->group(function() {
 
     Route::prefix('job')->group(function() {
         Route::get('/', [JobController::class, 'index'])->name('admin.job.index');
+        Route::get('/active', [JobController::class, 'activeJob'])->name('admin.job.active');
+        Route::get('/lock', [JobController::class, 'lockJob'])->name('admin.job.lock');
+        Route::get('/suggest', [JobController::class, 'suggestJob'])->name('admin.job.suggest');
+        Route::get('/not-suggest', [JobController::class, 'notSuggestJob'])->name('admin.job.not_suggest');
         Route::get('/create', [JobController::class, 'create'])->name('admin.job.create');
         Route::post('/create', [JobController::class, 'store'])->name('admin.job.store');
         Route::get('show/{id}', [JobController::class, 'show'])->name('admin.job.show');
