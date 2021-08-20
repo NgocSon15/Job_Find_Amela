@@ -75,9 +75,12 @@
                 </div>
                 <div class="form-group">
                     <label for="logo">Ảnh:</label>
+                    <br>
+                    <img src="{{ asset('storage/images/' . $company->logo) }}" id="img_upload" style="max-height: 80px; max-width: 80px; margin-bottom: 10px;">
+                    <br>
                     <div class="input-group">
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="logo" name="logo" value="{{ asset('storage/images/' . $company->logo) }}">
+                            <input type="file" class="custom-file-input" id="logo" name="logo">
                             <label class="custom-file-label" for="logo">{{ $company->logo }}</label>
                         </div>
                         <div class="input-group-append">
@@ -91,6 +94,20 @@
                             </p>
                         @endforeach
                     @endif
+                    <script>
+                        var fileSelected = document.getElementById('logo');
+                        if(fileSelected){
+                            fileSelected.onchange = function() {
+                                var file = fileSelected.files[0];
+                                var fileReader = new FileReader();
+                                fileReader.onload = function() {
+                                    var url = fileReader.result;
+                                    document.getElementById('img_upload').src = url;
+                                }
+                                fileReader.readAsDataURL(file);
+                            }
+                        }
+                    </script>
                 </div>
             </div>
             <div class="col-lg-6">
@@ -211,14 +228,6 @@
         $(function () {
             bsCustomFileInput.init();
         });
-    </script>
-    <script>
-        $(document).ready(function () {
-            $('#logo').on('change', function() {
-                var src = $('#logo').val();
-                $('#logo_image').attr('src', src);
-            })
-        })
     </script>
 @endsection
 

@@ -45,6 +45,9 @@
                                         @endif
                                         <li>{{ $company->total_jobs }} jobs</li>
                                     </ul>
+                                    @if($company->is_suggest)
+                                        <p class="text-danger">Khuyến khích làm việc ở đây</p>
+                                    @endif
                                 </div>
                             </div>
                         </div>

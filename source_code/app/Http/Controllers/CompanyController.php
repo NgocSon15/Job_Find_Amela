@@ -69,12 +69,6 @@ class CompanyController extends Controller
         return redirect()->route('admin.company.index');
     }
 
-    public function delete($id)
-    {
-        $company = Company::findOrFail($id);
-        return view('admin.company.delete', compact('company'));
-    }
-
     public function destroy($id)
     {
         $company = Company::findOrFail($id);
@@ -87,8 +81,8 @@ class CompanyController extends Controller
 
     public function feIndex()
     {
-        $total_companies = Company::count();
-        $companies = Company::paginate(7);
+        $total_companies = Company::where('status', 1)->count();
+        $companies = Company::where('status', 1)->paginate(7);
         $fields = Field::all();
         $cities = City::all();
         $sizes = CompanySize::all();
@@ -105,7 +99,7 @@ class CompanyController extends Controller
 
     public function filter(Request $request)
     {
-        $query = Company::query();
+        $query = Company::query()->where('status', 1);
 
         if(isset($request->field_id))
         {
@@ -136,5 +130,63 @@ class CompanyController extends Controller
         Carbon::setLocale('vi');
         $now = Carbon::now();
         return view('frontend.company.list_job', compact('company', 'now', 'jobs'));
+    }
+
+    public function accessDeny()
+    {
+        return view('frontend.company.accessDeny');
+    }
+
+    public function verify($id)
+    {
+        $company = Company::findOrFail($id);
+        $company->status = 1;
+        $company->save();
+
+        if(session()->has('user') && session()->get('user')->role == 'company')
+        {
+            session()->get('user')->company->status = $company->status;
+        }
+
+        session()->flash('success', 'Đã duyệt công ty ' . $company->fullname);
+        return redirect()->route('admin.company.index');
+    }
+
+    public function lock($id)
+    {
+        $company = Company::findOrFail($id);
+        $company->status = 2;
+        $company->save();
+
+        if(session()->has('user') && session()->get('user')->role == 'company')
+        {
+            session()->get('user')->company->status = $company->status;
+        }
+
+        session()->flash('success', 'Đã khóa công ty ' . $company->fullname);
+        return redirect()->route('admin.company.index');
+    }
+
+    public function unlock($id)
+    {
+        $company = Company::findOrFail($id);
+        $company->status = 1;
+        $company->save();
+
+        if(session()->has('user') && session()->get('user')->role == 'company')
+        {
+            session()->get('user')->company->status = $company->status;
+        }
+
+        session()->flash('success', 'Đã mở khóa công ty ' . $company->fullname);
+        return redirect()->route('admin.company.index');
+    }
+
+    public function suggest(Request $request)
+    {
+        $id = $request->id;
+        $company = Company::findOrFail($id);
+        $company->is_suggest = $request->isSuggest;
+        $company->save();
     }
 }

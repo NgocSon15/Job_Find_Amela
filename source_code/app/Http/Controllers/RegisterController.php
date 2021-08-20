@@ -124,7 +124,7 @@ class RegisterController extends Controller
         $user->company_id = $company_id;
         $user->fullname = $request->fullname;
         $user->email = $request->email;
-        $user->active = 0;
+        $user->active = 1;
         $password = Str::random(8);
         $user->password = md5($password);
         $user->role = 'company';
