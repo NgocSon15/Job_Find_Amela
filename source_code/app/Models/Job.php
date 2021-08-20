@@ -19,4 +19,9 @@ class Job extends Model
     {
         return $this->belongsTo(Skill::class, 'skill_id', 'skill_id');
     }
+
+    public function position()
+    {
+        return $this->belongsTo(Position::class, 'position_id');
+    }
 }

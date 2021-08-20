@@ -130,7 +130,7 @@ class RegisterController extends Controller
         $user->role = 'company';
         $user->save();
 
-        Mail::to($user->email)->send(new NotifySuccess($user, $password));
+        Mail::to($user->email)->send(new NotifySuccess($user->email, $password));
         session()->flash('companySuccess', true);
         return view('frontend.register.register_success');
     }

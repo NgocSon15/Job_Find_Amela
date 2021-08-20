@@ -21,6 +21,38 @@ class JobController extends Controller
         return view('admin.job.list', compact('jobs'));
     }
 
+    public function activeJob(Request $request)
+    {
+        $job_id = $request->id;
+        $job = Job::findOrFail($job_id);
+        $job->status = 1;
+        $job->save();
+    }
+
+    public function lockJob(Request $request)
+    {
+        $job_id = $request->id;
+        $job = Job::findOrFail($job_id);
+        $job->status = 0;
+        $job->save();
+    }
+
+    public function suggestJob(Request $request)
+    {
+        $job_id = $request->id;
+        $job = Job::findOrFail($job_id);
+        $job->is_suggest = 1;
+        $job->save();
+    }
+
+    public function notSuggestJob(Request $request)
+    {
+        $job_id = $request->id;
+        $job = Job::findOrFail($job_id);
+        $job->is_suggest = 0;
+        $job->save();
+    }
+
     public function feCreate()
     {
         $categories = Category::all();
@@ -143,4 +175,6 @@ class JobController extends Controller
         $jobs = Job::where('job_title', 'LIKE', '%' . $keyword . '%')->paginate(5);
         return view('admin.job.list', compact('jobs', 'keyword'));
     }
+
+   
 }
