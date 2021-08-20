@@ -23,6 +23,7 @@
                     <th>Email</th>
                     <th>Số điện thoại</th>
                     <th>Thành phố</th>
+                    <th>Đề xuất</th>
                     <th>Trạng thái</th>
                     <th>Thao tác</th>
                 </tr>
@@ -36,6 +37,17 @@
                         <td>{{ $company->email }}</td>
                         <td>{{ $company->phone }}</td>
                         <td>{{ $company->city ? $company->city->city_name : null}}</td>
+                        <td>
+                            <div class="icheck-success d-inline">
+                                <input type="checkbox" id="suggest_{{$company->id}}" name="suggest_{{$company->id}}" class="check" value="{{$company->id}}"
+                                       @if($company->is_suggest == 1)
+                                       checked
+                                    @endif
+                                >
+                                <label for="suggest_{{$company->id}}">
+                                </label>
+                            </div>
+                        </td>
                         <td>@if($company->status == 2) Đã bị khóa @elseif($company->status == 0) Đang đợi duyệt @else Đang hoạt động @endif</td>
                         <td class="d-flex">
                             <a href="{{ route('admin.company.show', $company->id) }}" class="btn-sm btn-success mr-1"><i class="fas fa-book"></i></a>
@@ -61,4 +73,39 @@
             </ul>
         </div>
     </div>
+@endsection
+@section('script')
+    <script>
+        $(document).ready(function() {
+            $('.check').on('change', function() {
+                if(this.checked)
+                {
+                    var id = $(this).val();
+                    console.log(id);
+                    var isSuggest = 1;
+                    suggestCompany(id, isSuggest);
+                } else {
+                    var id = $(this).val();
+                    console.log(id);
+                    var isSuggest = 0;
+                    suggestCompany(id, isSuggest);
+                }
+            })
+
+            function suggestCompany(id, isSuggest) {
+                $.ajax({
+                    type: 'post',
+                    url: '{{ route('admin.company.suggest') }}',
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        id: id,
+                        isSuggest: isSuggest,
+                    },
+                    success: function (res) {
+
+                    }
+                })
+            }
+        })
+    </script>
 @endsection

@@ -139,13 +139,13 @@
 
                     <hr>
 
-                    <strong>Đề xuất</strong>
+                    <strong class="mr-2">Đề xuất</strong>
                     <br>
                     <p class="text-muted">
-                        @if($company->is_suggest == 0)
-                            Không được đề xuất
+                        @if($company->is_suggest)
+                            Được đề xuất
                         @else
-                            Đang được đề xuất
+                            Không được đề xuất
                         @endif
                     </p>
                 </div>

@@ -181,4 +181,12 @@ class CompanyController extends Controller
         session()->flash('success', 'Đã mở khóa công ty ' . $company->fullname);
         return redirect()->route('admin.company.index');
     }
+
+    public function suggest(Request $request)
+    {
+        $id = $request->id;
+        $company = Company::findOrFail($id);
+        $company->is_suggest = $request->isSuggest;
+        $company->save();
+    }
 }
