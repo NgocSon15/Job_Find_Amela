@@ -39,21 +39,22 @@ class HomeController extends Controller
         $category_id = $request->category_id;
 
         $city_id = $request->city_id;
-        $companies = Company::where('city_id', $city_id)->get();
-        if($city_id == null){
-            $companies = Company::all();
-        }
-        $company_ids = [];
-        foreach($companies as $company){
-            $company_ids[] = $company->id;
-        }
-        $jobs = Job::whereIn('company_id', $company_ids)
-                    ->where('job_title', 'like', $newKeyWord)
-                    ->where('category_id', 'like', "%$category_id%")
-                    ->paginate(10);
+       $city = City::all();
+        $jobs = $jobs = Job::leftJoin('companies', 'jobs.company_id', '=', 'companies.id')
+                                    ->where([
+                                        ['category_id', 'like', "%$category_id%"],
+                                        ['city_id', 'like', "%$city_id%"],
+                                        ['job_title', 'like', $newKeyWord],
+                                    ])
+                                    ->orWhere([
+                                        ['city_id', 'like', "%$city_id%"],
+                                        ['fullname', 'like', $newKeyWord],
+                                    ])
+                                    ->select('jobs.*', 'companies.fullname', 'companies.id as com_id', 'city_id')
+                                        ->paginate(10);
         Carbon::setLocale('vi');
         $now = Carbon::now();
-        return view('frontend.job.job_listing', compact('jobs', 'skills', 'now'));
+        return view('frontend.job.job_listing', compact('jobs', 'skills', 'now', 'city'));
     }
 
     public function getListJob()
