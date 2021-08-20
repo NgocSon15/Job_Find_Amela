@@ -69,12 +69,6 @@ class CompanyController extends Controller
         return redirect()->route('admin.company.index');
     }
 
-    public function delete($id)
-    {
-        $company = Company::findOrFail($id);
-        return view('admin.company.delete', compact('company'));
-    }
-
     public function destroy($id)
     {
         $company = Company::findOrFail($id);
@@ -105,7 +99,7 @@ class CompanyController extends Controller
 
     public function filter(Request $request)
     {
-        $query = Company::query();
+        $query = Company::query()->where('status', 1);
 
         if(isset($request->field_id))
         {
