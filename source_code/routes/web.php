@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\ConfigController;
 
 /*
 |--------------------------------------------------------------------------
@@ -80,6 +81,10 @@ Route::prefix('admin')->group(function() {
         Route::get('lock/{id}', [CompanyController::class, 'lock'])->name('admin.company.lock');
         Route::get('unlock/{id}', [CompanyController::class, 'unlock'])->name('admin.company.unlock');
         Route::post('suggest', [CompanyController::class, 'suggest'])->name('admin.company.suggest');
+    });
+
+    Route::prefix('config')->group(function () {
+        Route::get('/', [ConfigController::class, 'index'])->name('admin.config.index');
     });
 });
 

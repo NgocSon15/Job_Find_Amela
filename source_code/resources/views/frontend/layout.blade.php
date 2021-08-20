@@ -190,6 +190,40 @@
                                             <div class="mt-10 info"></div>
                                         </form>
                                     </div>
+                                    <div id="mc_embed_signup">
+                                        <h3 style="color: #fff; font-size: 20px; text-transform: uppercase">App mobile</h3>
+                                        <div class="app-img">
+                                            <div class="playstore">
+                                                <a href="https://play.google.com/store" data-target="#playstore" data-toggle="modal">
+                                                    <img src="{{ asset('jobfinderportal-master/assets/img/playstore.png')}}" width="50%" alt="">
+                                                </a>
+                                                <div class="modal fade" tabindex="-1" id = "playstore">
+                                                    <div class="modal-dialog " style="margin: 250px auto;">
+                                                        <div class="modal-content">
+                                                            <div class="modal-body">
+                                                                <p>Chức năng đang hoàn thiện</p>
+                                                            </div>
+                                                           
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="appstore">
+                                                <a href="https://www.apple.com/app-store/" data-target="#appstore" data-toggle="modal">
+                                                    <img src="{{ asset('jobfinderportal-master/assets/img/appstore.png')}}" width="50%" alt="">
+                                                </a>
+                                                <div class="modal fade" tabindex="-1" id = "appstore">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content" style="margin: 250px auto;">
+                                                            <div class="modal-body">
+                                                                <p>Chức năng đang hoàn thiện</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
