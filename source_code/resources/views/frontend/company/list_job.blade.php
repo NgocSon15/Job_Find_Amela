@@ -59,11 +59,7 @@
                                                 </div>
                                             </div>
                                             <div class="items-link items-link2 f-right" style="padding: 0">
-                                                @if($val->job_type == 1)
-                                                    <a href="#">Full Time</a>
-                                                @elseif($val->job_type == 0)
-                                                    <a href="#">Part Time</a>
-                                                @endif
+                                                <a href="{{route('detail', $val->id)}}">Apply</a>
                                                 <span>{{$val->created_at->diffForHumans($now)}}</span>
                                             </div>
                                         </div>
