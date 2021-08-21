@@ -18,8 +18,8 @@ class HomeController extends Controller
         $categories = Category::all();
         $jobs = Job::orderByDesc('created_at')->limit(5)->get();
         $most_hired_companies = Company::orderByDesc('total_jobs')->limit(8)->get();
-
-        return view('frontend.home', compact('jobs', 'most_hired_companies', 'cities', 'categories'));
+        $skills = Skill::all();
+        return view('frontend.home', compact('jobs', 'most_hired_companies', 'cities', 'categories', 'skills'));
 
     }
 

@@ -51,3 +51,10 @@
  form.search-box .select-form .nice-select::after{
      right: 15px;
  }
+ #skill .nice-select{
+     display: none !important;
+ }
+ #select_skill_old{
+     display: none !important;
+ }
+

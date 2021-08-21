@@ -74,6 +74,7 @@ class JobController extends Controller
 
     public function store(JobRequest $request)
     {
+        dd($request->all());
         $max_id = DB::select("SELECT `AUTO_INCREMENT` FROM  INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'job_find' AND   TABLE_NAME   = 'jobs'");
         $max_id = $max_id[0]->AUTO_INCREMENT;
         $job = new Job();
@@ -81,7 +82,7 @@ class JobController extends Controller
         $job->company_id = $request->input('company_id');
         $job->job_title = $request->input('job_title');
         $job->job_description = $request->input('job_description');
-        $job->skill_id = $request->input('skill_id');
+        $job->skill_id = implode(',',$request->skill_id);
         $company = Company::findOrFail($job->company_id)->first();
         $job->job_code = $company->company_code . $max_id;
         $job->category_id = $request->input('category_id');
