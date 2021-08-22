@@ -155,7 +155,11 @@
                                         <div class="job-tittle">
                                             <a href="{{route('detail', $job->id)}}"><h4>{{$job->job_title}}</h4></a>
                                             <ul>
-                                                <li>Creative Agency</li>
+                                                <li>Skill: 
+                                                    @foreach(explode(',',substr($val->skill_id, 0,3)) as $skill_id)
+                                                        {{ $skills->find($skill_id)->skill }}
+                                                    @endforeach
+                                                </li>
                                                 <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
                                                 <li>${{$job->min_salary}} - ${{$job->max_salary}}</li>
                                             </ul>
