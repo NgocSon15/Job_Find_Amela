@@ -65,15 +65,9 @@
                                             <li><a href="{{ route('job_list') }}">Find a Jobs </a></li>
                                             @if(session()->has('user'))
                                                 @if(session()->get('user')->role != 'customer')
-                                                    <li><a href="
-                                                        @if(session()->get('user')->company->status == 1)
-                                                            {{ route('frontend.job.create') }}
-                                                        @else
-                                                            {{ route('frontend.company.accessDeny') }}
-                                                        @endif
-                                                        ">Add New Job</a></li>
+                                                    <li><a href="{{ route('frontend.job.create') }}">Add New Job</a></li>
                                                 @endif
-                                                @if(session()->get('user')->role == 'admin')
+                                                @if(session()->get('user')->role == 'admin')    
                                                     <li><a href="{{route('admin.home')}}">Admin</a></li>
                                                 @endif
                                             @else

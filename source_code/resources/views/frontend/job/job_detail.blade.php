@@ -162,12 +162,7 @@
                                         </div>
                                     </div>
                                     <div class="items-link f-right">
-                                        @if($job->job_type == 1)
-                                            <a href="{{route('detail', $job->id)}}">Full Time</a>
-                                        @elseif($job->job_type == 0)
-                                            <a href="{{route('detail', $job->id)}}">Part Time</a>
-                                        @endif
-
+                                            <a href="{{route('detail', $job->id)}}">Apply</a>
                                             @if(ceil((time() - strtotime($job->created_at))/3600) < 24)
                                                 <span>{{ ceil((time() - strtotime($job->created_at))/3600)}} hour ago</span>
                                             @else
