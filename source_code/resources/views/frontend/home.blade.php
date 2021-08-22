@@ -155,8 +155,9 @@ Trang chủ
                                         </a>
                                         <ul>
                                             <li>Skill: 
-                                                {{$skills->find(explode(',',$job->skill_id)[0])->skill}},
-                                                {{$skills->find(explode(',',$job->skill_id)[1])->skill}}
+                                                @foreach(explode(',',substr($job->skill_id, 0,3)) as $skill_id)
+                                                    {{ $skills->find($skill_id)->skill }}
+                                                @endforeach
                                             </li>
                                             <li><i class="fas fa-map-marker-alt"></i>{{ $job->work_location}}</li>
                                             @if(session()->has('user'))

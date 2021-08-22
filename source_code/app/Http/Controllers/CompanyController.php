@@ -9,6 +9,7 @@ use App\Models\Field;
 use App\Models\City;
 use App\Models\CompanySize;
 use App\Models\Job;
+use App\Models\Skill;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UpdateCompany;
@@ -125,11 +126,12 @@ class CompanyController extends Controller
 
     public function getJobList($id)
     {
+        $skills = Skill::all();
         $company = Company::findOrFail($id);
         $jobs = Job::where('company_id', $company->id)->paginate(7);
         Carbon::setLocale('vi');
         $now = Carbon::now();
-        return view('frontend.company.list_job', compact('company', 'now', 'jobs'));
+        return view('frontend.company.list_job', compact('company', 'now', 'jobs', 'skills'));
     }
 
     public function accessDeny()
