@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use App\Models\Job;
 use App\Models\Skill;
@@ -9,7 +10,10 @@ use Carbon\Carbon;
 use App\Models\Category;
 use App\Models\City;
 use App\Models\Company;
-
+use Illuminate\Support\Facades\Session;
+use App\Models\User;
+use App\Models\Customer;
+use App\Models\Experience;
 class HomeController extends Controller
 {
     public function getHome()
@@ -114,5 +118,27 @@ class HomeController extends Controller
         $job = Job::where('id', $id)->firstOrFail();
         $job_recommend = Job::where('is_suggest', 1)->get();
         return view('frontend.job.job_detail', compact('job','job_recommend'));
+    }
+
+    public function getProfile()
+    {
+//        dd(session()->get('user')->experience->exp_year);
+        $id = session()->get('user')->user_id;
+        $exp = Experience::where('id', $id)->firstOrFail();
+
+        return view('frontend.user.user-profile', compact('exp'));
+    }
+    public function updateProfileUser(Request $request)
+    {
+        $id = session()->get('user')->user_id;
+        $exp = Experience::where('id', $id)->firstOrFail();
+//        dd($user->exp);
+        $exp->exp_year = $request->exp;
+        $exp->content = $request->process;
+        $exp->save();
+        Session::flash('success', 'Update experience success');
+        return view('frontend.user.user-profile', compact('exp'));
+//        return redirect()->route('frontend.user-profile');
+
     }
 }
