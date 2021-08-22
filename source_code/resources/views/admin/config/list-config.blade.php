@@ -23,7 +23,6 @@
                     <th>Tiêu đề</th>
                     <th>Mô tả</th>
                     <th>Nội dung</th>
-                    <th>Thao tác</th>
                 </tr>
             </thead>
             <tbody>
@@ -33,14 +32,40 @@
                     <td>{{$config->name}}</td>
                     <td>{{$config->description}}</td>
                     <td>
-                        {{$config->content}}
+                        <p contenteditable="true" class="config" data-id = "{{$config->config_id}}">{{$config->content}}</p>
+                        <p class="text-danger"></p>
                     </td>
-                    <td>sửa</td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
+    <script>
+        var content = document.querySelectorAll('.config');
+        for(var i = 0; i < content.length; i++){
+            content[i].style = "cursor: pointer"
+            content[i].onblur = function (){
+                var id = this.getAttribute('data-id');
+                var data = this.innerHTML;
+                $.ajax({
+                    method: 'get',
+                    url: "{{route('admin.config.update')}}",
+                    data:{
+                        'id': id,
+                        'content': data
+                    }
+                }).fail(function(data){
+                    if(content[id-1].parentElement.querySelector('.text-danger')){
+                        content[id-1].parentElement.querySelector('.text-danger').remove()
+                    }
+                    p = document.createElement("p");
+                    p.classList.add('text-danger');
+                    p.innerHTML = data.responseJSON.errors.content[0];
+                    content[id-1].parentElement.appendChild(p);
+                })
+            }
+        }
+    </script>
     <!-- /.card-body -->
     <div class="card-footer clearfix">
         <ul class="pagination pagination-sm m-0 float-right">

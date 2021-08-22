@@ -85,6 +85,7 @@ Route::prefix('admin')->group(function() {
 
     Route::prefix('config')->group(function () {
         Route::get('/', [ConfigController::class, 'index'])->name('admin.config.index');
+        Route::get('/update', [ConfigController::class, 'update'])->name('admin.config.update');
     });
 });
 

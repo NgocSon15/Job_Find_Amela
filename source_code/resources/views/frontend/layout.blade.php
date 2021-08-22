@@ -194,7 +194,7 @@
                                         <h3 style="color: #fff; font-size: 20px; text-transform: uppercase">App mobile</h3>
                                         <div class="app-img">
                                             <div class="playstore">
-                                                <a href="https://play.google.com/store" data-target="#playstore" data-toggle="modal">
+                                                <a href="{{$appAndroid}}" data-target="#playstore" data-toggle="modal">
                                                     <img src="{{ asset('jobfinderportal-master/assets/img/playstore.png')}}" width="50%" alt="">
                                                 </a>
                                                 <div class="modal fade" tabindex="-1" id = "playstore">
@@ -209,7 +209,7 @@
                                                 </div>
                                             </div>
                                             <div class="appstore">
-                                                <a href="https://www.apple.com/app-store/" data-target="#appstore" data-toggle="modal">
+                                                <a href="{{$appIos}}" data-target="#appstore" data-toggle="modal">
                                                     <img src="{{ asset('jobfinderportal-master/assets/img/appstore.png')}}" width="50%" alt="">
                                                 </a>
                                                 <div class="modal fade" tabindex="-1" id = "appstore">
