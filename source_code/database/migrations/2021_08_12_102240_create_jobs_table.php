@@ -18,7 +18,7 @@ class CreateJobsTable extends Migration
             $table->integer('company_id');
             $table->string('job_title');
             $table->string('job_description');
-            $table->integer('skill_id');
+            $table->string('skill_id');
             $table->string('job_code');
             $table->integer('category_id');
             $table->integer('min_salary');

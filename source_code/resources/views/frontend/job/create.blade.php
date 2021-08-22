@@ -135,7 +135,14 @@
                                 <div class="value" id="skill">
                                      <select name="skill_id[]" id="skill_id" style="width: 100%;" multiple="multiple">
                                         @foreach($skills as $skill)
-                                        <option value="{{$skill->skill_id}}">{{$skill->skill}}</option>
+                                        
+                                        <option value="{{$skill->skill_id}}"
+                                            @if(old('skill_id'))
+                                                @if(in_array($skill->skill_id, old('skill_id')))
+                                                {{'selected'}}
+                                                @endif
+                                            @endif
+                                        >{{$skill->skill}}</option>
                                         @endforeach
                                     </select>
                                     @if($errors->has('skill_id'))

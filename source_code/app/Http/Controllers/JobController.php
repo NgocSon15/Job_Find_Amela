@@ -74,7 +74,6 @@ class JobController extends Controller
 
     public function store(JobRequest $request)
     {
-        dd($request->all());
         $max_id = DB::select("SELECT `AUTO_INCREMENT` FROM  INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'job_find' AND   TABLE_NAME   = 'jobs'");
         $max_id = $max_id[0]->AUTO_INCREMENT;
         $job = new Job();
