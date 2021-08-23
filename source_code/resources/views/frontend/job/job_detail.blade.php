@@ -6,7 +6,8 @@
     <main>
 
         {{--layout apply--}}
-        <div  id="cityModal" class="modal fade" role="dialog">
+        @if(session()->has('user'))
+        <div  id="applyModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-lg">
                 <!-- Modal content filter-->
                 <form action="{{route('frontend.apply')}}" method="post">
@@ -22,6 +23,7 @@
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Email address</label>
                                     <input type="email" name="email" class="form-control" id="exampleFormControlInput1" value="{{session()->get('user')->email}}">
+                                    <div></div>
                                     @if($errors->has('email'))
                                         <p class="text-danger">{{ $errors->first('email') }}</p>
                                     @endif
@@ -30,6 +32,7 @@
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Phone Number</label>
                                     <input type="text" name="phone" class="form-control" id="exampleFormControlInput1" placeholder="phone number">
+                                    <div></div>
                                     @if($errors->has('phone'))
                                         <p class="text-danger">{{ $errors->first('phone') }}</p>
                                     @endif
@@ -53,6 +56,47 @@
                 </form>
             </div>
         </div>
+        <script>
+            window.onload = function(){
+            var submit = document.querySelector('#submitAjax');
+            submit.onclick = function (event){
+                event.preventDefault();
+                var email = document.querySelector('input[name=email]');
+                var phone = document.querySelector('input[name=phone]');
+                var job_id = document.querySelector('input[name=job_id]').value;
+                var user_id = document.querySelector('input[name=user_id]').value;
+                var token = document.querySelector('input[name=_token]').value;
+                $.ajax({
+                    url: "{{route('frontend.apply')}}",
+                    type: 'POST',
+                    data: {
+                        'email': email.value,
+                        'phone': phone.value,
+                        'job_id': job_id,
+                        'user_id': user_id,
+                        '_token': token
+                    }
+                }).done(function (){
+                        document.querySelector('.modal-backdrop.fade.show')
+                        document.querySelector('#applyModal').style = 'display: none';
+                        document.querySelector('#success').innerHTML = '<p class="text-success"><i class="fa fa-check" aria-hidden="true"></i>Apply thành công</p>'
+                }).fail(function (data){
+                    var errors = data.responseJSON.errors;
+                    if(errors.email !== undefined){
+                        var emailError = errors.email[0];
+                        email.nextElementSibling.innerHTML = '<p class="text-danger">'+emailError+'</p>';
+                    }
+                    if(errors.phone !== undefined){
+                        var phoneError = errors.phone[0];
+                        phone.nextElementSibling.innerHTML = '<p class="text-danger">'+phoneError+'</p>';
+                    }
+                })
+                
+            }
+            console.log(submit);
+            }
+        </script>
+        @endif
     {{--hết layout apply--}}
 
         <!-- Hero Area Start-->
@@ -73,6 +117,7 @@
         <!-- job post company Start -->
         <div class="job-post-company pt-120 pb-120">
             <div class="container">
+                <div id="success"></div>
                 @if (Session::has('success'))
                     <p class="text-success">
                         <i class="fa fa-check" aria-hidden="true"></i>
@@ -172,7 +217,7 @@
                             </ul>
                             <div class="apply-btn2">
                                 @if(session()->has('user'))
-                                    <a class="btn " href="" data-toggle="modal" data-target="#cityModal">
+                                    <a class="btn " href="" data-toggle="modal" data-target="#applyModal">
                                         Apply Now
                                     </a>
                                 @else
