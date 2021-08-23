@@ -52,18 +52,18 @@
                                                         <h4>{{$val->job_title}}</h4>
                                                     </a>
                                                     <ul>
-                                                        <li>Creative Agency</li>
+                                                        <li>Skill: 
+                                                            @foreach(explode(',',substr($val->skill_id, 0,3)) as $skill_id)
+                                                                {{ $skills->find($skill_id)->skill }}
+                                                            @endforeach
+                                                        </li>
                                                         <li><i class="fas fa-map-marker-alt"></i>{{$val->work_location}}</li>
                                                         <li>${{$val->min_salary}} - ${{$val->max_salary}}</li>
                                                     </ul>
                                                 </div>
                                             </div>
                                             <div class="items-link items-link2 f-right" style="padding: 0">
-                                                @if($val->job_type == 1)
-                                                    <a href="#">Full Time</a>
-                                                @elseif($val->job_type == 0)
-                                                    <a href="#">Part Time</a>
-                                                @endif
+                                                <a href="{{route('detail', $val->id)}}">Apply</a>
                                                 <span>{{$val->created_at->diffForHumans($now)}}</span>
                                             </div>
                                         </div>

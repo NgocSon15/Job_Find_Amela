@@ -155,19 +155,22 @@
                                         <div class="job-tittle">
                                             <a href="{{route('detail', $job->id)}}"><h4>{{$job->job_title}}</h4></a>
                                             <ul>
-                                                <li>Creative Agency</li>
+                                                <li>Skill: 
+                                                    @foreach(explode(',',substr($job->skill_id, 0,3)) as $skill_id)
+                                                        {{ $skills->find($skill_id)->skill }}
+                                                    @endforeach
+                                                </li>
                                                 <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                                <li>${{$job->min_salary}} - ${{$job->max_salary}}</li>
+                                                @if(session()->has('user'))
+                                                    <li>${{ number_format($job->min_salary) }} - ${{ number_format($job->max_salary) }}</li>
+                                                @else
+                                                    <li><a href="{{ route('login') }}" style="color: #635c5c">Salary: đăng nhập để xem</a></li>
+                                                @endif
                                             </ul>
                                         </div>
                                     </div>
                                     <div class="items-link f-right">
-                                        @if($job->job_type == 1)
-                                            <a href="{{route('detail', $job->id)}}">Full Time</a>
-                                        @elseif($job->job_type == 0)
-                                            <a href="{{route('detail', $job->id)}}">Part Time</a>
-                                        @endif
-
+                                            <a href="{{route('detail', $job->id)}}">Apply</a>
                                             @if(ceil((time() - strtotime($job->created_at))/3600) < 24)
                                                 <span>{{ ceil((time() - strtotime($job->created_at))/3600)}} hour ago</span>
                                             @else

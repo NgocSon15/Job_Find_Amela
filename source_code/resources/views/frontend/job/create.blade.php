@@ -4,6 +4,7 @@
 @endsection
 @section('link')
     <link rel="stylesheet" href="{{ asset('jobfinderportal-master/assets/css/responsive.css') }}">
+    <link rel="stylesheet" href="{{ asset('jobfinderportal-master/assets/css/select-skill.css') }}">
 @endsection
 @section('content')
     @if(session()->get('user')->company->status == 1)
@@ -131,31 +132,27 @@
                             </div>
                             <div class="form-row" style="display: block;">
                                 <div class="name">Skill <span style="color: #e83e8c">*</span></div>
-                                <div class="value">
-                                    <div class="default-select" id="default-select" style="width: 100%">
-                                        <select name="skill_id" style="display: none;">
-                                            @foreach($skills as $skill)
-                                                <option value="{{ $skill->skill_id }}"
-                                                @if(old('skill_id') == $skill->skill_id)
-                                                    {{ 'selected' }}
-                                                    @endif
-                                                >
-                                                    {{ $skill->skill_name }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                        <div class="nice-select" tabindex="0" style="width: 100%">
-                                            <span class="current">Choose Skill</span>
-                                            <ul class="list">
-                                                @foreach($skills as $skill)
-                                                    <li data-value="{{ $skill->skill_id }}" class="option">{{ $skill->skill }}</li>
-                                                @endforeach
-                                            </ul>
-                                        </div>
-                                        @if($errors->has('skill_id'))
-                                            <p class="text-danger">{{ $errors->first('skill_id') }}</p>
-                                        @endif
-                                    </div>
+                                <div class="value" id="skill">
+                                     <select name="skill_id[]" id="skill_id" style="width: 100%;" multiple="multiple">
+                                        @foreach($skills as $skill)
+                                        
+                                        <option value="{{$skill->skill_id}}"
+                                            @if(old('skill_id'))
+                                                @if(in_array($skill->skill_id, old('skill_id')))
+                                                {{'selected'}}
+                                                @endif
+                                            @endif
+                                        >{{$skill->skill}}</option>
+                                        @endforeach
+                                    </select>
+                                    @if($errors->has('skill_id'))
+                                        <p class="text-danger">{{ $errors->first('skill_id') }}</p>
+                                    @endif
+                                    <script>
+                                        window.onload = function() {
+                                            $('#skill_id').select2();
+                                            };
+                                    </script>
                                 </div>
                             </div>
                         </div>
@@ -308,4 +305,7 @@
             </div>
         </main>
     @endif
+@endsection
+@section('script')
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 @endsection

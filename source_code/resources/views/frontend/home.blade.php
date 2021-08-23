@@ -154,11 +154,11 @@ Trang chủ
                                             <h4>{{ $job->job_title }}</h4>
                                         </a>
                                         <ul>
-                                            @if( $job->job_type == 1)
-                                            <li>Fulltime</li>
-                                            @else
-                                            <li>Parttime</li>
-                                            @endif
+                                            <li>Skill: 
+                                                @foreach(explode(',',substr($job->skill_id, 0,3)) as $skill_id)
+                                                    {{ $skills->find($skill_id)->skill }}
+                                                @endforeach
+                                            </li>
                                             <li><i class="fas fa-map-marker-alt"></i>{{ $job->work_location}}</li>
                                             @if(session()->has('user'))
                                             <li>${{ number_format($job->min_salary) }} - ${{ number_format($job->max_salary) }}</li>
@@ -169,7 +169,7 @@ Trang chủ
                                     </div>
                                 </div>
                                 <div class="items-link items-link2 f-right">
-                                    <a href="job_details.html">Apply</a>
+                                    <a href="{{route('detail', $job->id)}}">Apply</a>
                                     @if(ceil((time() - strtotime($job->created_at))/3600) < 24)
                                     <span>{{ ceil((time() - strtotime($job->created_at))/3600)}} hour ago</span>
                                     @else
