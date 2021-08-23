@@ -67,7 +67,7 @@
                                                 @if(session()->get('user')->role != 'customer')
                                                     <li><a href="{{ route('frontend.job.create') }}">Add New Job</a></li>
                                                 @endif
-                                                @if(session()->get('user')->role == 'admin')    
+                                                @if(session()->get('user')->role == 'admin')
                                                     <li><a href="{{route('admin.home')}}">Admin</a></li>
                                                 @endif
                                             @else

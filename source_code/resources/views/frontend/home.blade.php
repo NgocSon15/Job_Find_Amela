@@ -184,7 +184,7 @@ Trang chủ
     </section>
     <!-- Featured_job_end -->
     <!-- How  Apply Process Start-->
-    <div class="apply-process-area apply-bg pt-150 pb-150" data-background="assets/img/gallery/how-applybg.png">
+    <div class="apply-process-area apply-bg pt-150 pb-150" data-background="{{ asset('jobfinderportal-master/assets/img/gallery/how-applybg.png') }}">
         <div class="container">
             <!-- Section Tittle -->
             <div class="row">
@@ -203,8 +203,8 @@ Trang chủ
                             <span class="flaticon-search"></span>
                         </div>
                         <div class="process-cap">
-                            <h5>1. Search a job</h5>
-                            <p>Sorem spsum dolor sit amsectetur adipisclit, seddo eiusmod tempor incididunt ut laborea.</p>
+                            <h5>1. Tìm kiếm công việc</h5>
+                            <p>Tìm một công việc phù hợp với bạn.</p>
 
                         </div>
                     </div>
@@ -215,8 +215,8 @@ Trang chủ
                             <span class="flaticon-curriculum-vitae"></span>
                         </div>
                         <div class="process-cap">
-                            <h5>2. Apply for job</h5>
-                            <p>Sorem spsum dolor sit amsectetur adipisclit, seddo eiusmod tempor incididunt ut laborea.</p>
+                            <h5>2. Apply công việc</h5>
+                            <p>Apply cho công việc mà bạn thấy phù hợp.</p>
                         </div>
                     </div>
                 </div>
@@ -226,8 +226,8 @@ Trang chủ
                             <span class="flaticon-tour"></span>
                         </div>
                         <div class="process-cap">
-                            <h5>3. Get your job</h5>
-                            <p>Sorem spsum dolor sit amsectetur adipisclit, seddo eiusmod tempor incididunt ut laborea.</p>
+                            <h5>3. Nhận việc</h5>
+                            <p>Nhận việc làm của bạn khi được tuyển.</p>
                         </div>
                     </div>
                 </div>

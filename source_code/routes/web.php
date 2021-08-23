@@ -28,6 +28,7 @@ Route::get('/job_detail/{id}', [HomeController::class, 'getDetailJob'])->name('d
 
 Route::get('/', [HomeController::class, 'getHome'])->name('frontend.home');
 Route::get('/search', [HomeController::class, 'homeSearch'])->name('frontend.search');
+Route::get('profile', [UserController::class, 'profile'])->name('frontend.profile');
 
 Route::prefix('job')->group(function() {
     Route::get('/', [JobController::class, 'feCreate'])->name('frontend.job.create')->middleware('checkLogin');
@@ -42,7 +43,10 @@ Route::prefix('company')->group(function() {
     Route::get('/show/{id}', [CompanyController::class, 'feShow'])->name('frontend.company.show');
     Route::post('/filter', [CompanyController::class, 'filter'])->name('frontend.company.filter');
     Route::get('/{id}/job', [CompanyController::class, 'getJobList'])->name('frontend.company.joblist');
-    Route::get('/access_deny', [CompanyController::class, 'accessDeny'])->name('frontend.company.accessDeny');
+});
+
+Route::prefix('customer')->group(function() {
+
 });
 
 

@@ -132,11 +132,6 @@ class CompanyController extends Controller
         return view('frontend.company.list_job', compact('company', 'now', 'jobs'));
     }
 
-    public function accessDeny()
-    {
-        return view('frontend.company.accessDeny');
-    }
-
     public function verify($id)
     {
         $company = Company::findOrFail($id);
