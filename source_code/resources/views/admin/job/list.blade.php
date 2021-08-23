@@ -1,6 +1,7 @@
 @extends('admin.layout')
 
 @section('title', 'Job List')
+@section('active1', 'active')
 @section('content-name', 'Danh sách tin tuyển dụng')
 @section('content')
 <div class="col-12">

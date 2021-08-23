@@ -139,14 +139,11 @@
                     <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
                         <div class="single-footer-caption mb-50">
                             <div class="footer-tittle">
-                                <h4>Contact Info</h4>
+                                <h4>Hot categories</h4>
                                 <ul>
-                                    <li>
-                                        <p>Address :Your address goes
-                                            here, your demo address.</p>
-                                    </li>
-                                    <li><a href="#">Phone : +8880 44338899</a></li>
-                                    <li><a href="#">Email : info@colorlib.com</a></li>
+                                    @foreach($hotCategories as $category)
+                                    <li><a href="{{route('frontend.search', ['category_id' => $category->cat_id])}}">{{$category->cat_name}}</a></li>
+                                    @endforeach
                                 </ul>
                             </div>
 
@@ -155,13 +152,11 @@
                     <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
                         <div class="single-footer-caption mb-50">
                             <div class="footer-tittle">
-                                <h4>Important Link</h4>
+                                <h4>Hot Fields</h4>
                                 <ul>
-                                    <li><a href="#"> View Project</a></li>
-                                    <li><a href="#">Contact Us</a></li>
-                                    <li><a href="#">Testimonial</a></li>
-                                    <li><a href="#">Proparties</a></li>
-                                    <li><a href="#">Support</a></li>
+                                    @foreach($hotFields as $field)
+                                    <li>{{$field->field_name}}</li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
@@ -183,6 +178,40 @@
                                             </div>
                                             <div class="mt-10 info"></div>
                                         </form>
+                                    </div>
+                                    <div id="mc_embed_signup">
+                                        <h3 style="color: #fff; font-size: 20px; text-transform: uppercase">App mobile</h3>
+                                        <div class="app-img">
+                                            <div class="playstore">
+                                                <a href="{{$appAndroid}}" data-target="#playstore" data-toggle="modal">
+                                                    <img src="{{ asset('jobfinderportal-master/assets/img/playstore.png')}}" width="50%" alt="">
+                                                </a>
+                                                <div class="modal fade" tabindex="-1" id = "playstore">
+                                                    <div class="modal-dialog " style="margin: 250px auto;">
+                                                        <div class="modal-content">
+                                                            <div class="modal-body">
+                                                                <p>Chức năng đang hoàn thiện</p>
+                                                            </div>
+                                                           
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="appstore">
+                                                <a href="{{$appIos}}" data-target="#appstore" data-toggle="modal">
+                                                    <img src="{{ asset('jobfinderportal-master/assets/img/appstore.png')}}" width="50%" alt="">
+                                                </a>
+                                                <div class="modal fade" tabindex="-1" id = "appstore">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content" style="margin: 250px auto;">
+                                                            <div class="modal-body">
+                                                                <p>Chức năng đang hoàn thiện</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
