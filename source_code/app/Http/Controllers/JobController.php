@@ -35,7 +35,7 @@ class JobController extends Controller
     {
         $job_id = $request->id;
         $job = Job::findOrFail($job_id);
-        $job->status = 0;
+        $job->status = 2;
         $job->save();
     }
 

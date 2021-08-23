@@ -52,7 +52,11 @@
                                                         <h4>{{$val->job_title}}</h4>
                                                     </a>
                                                     <ul>
-                                                        <li>Creative Agency</li>
+                                                        <li>Skill: 
+                                                            @foreach(explode(',',substr($val->skill_id, 0,3)) as $skill_id)
+                                                                {{ $skills->find($skill_id)->skill }}
+                                                            @endforeach
+                                                        </li>
                                                         <li><i class="fas fa-map-marker-alt"></i>{{$val->work_location}}</li>
                                                         <li>${{$val->min_salary}} - ${{$val->max_salary}}</li>
                                                     </ul>
@@ -63,13 +67,49 @@
                                                 <span>{{$val->created_at->diffForHumans($now)}}</span>
                                             </div>
                                         </div>
-                                        <div>
-                                            <a href="{{ route('frontend.job.edit', $val->id) }}" class="btn head-btn2 medium genric-btn circle">Edit</a>
-                                            <a href="{{ route('frontend.job.destroy', $val->id) }}" class="btn head-btn2 medium genric-btn circle">Delete</a>
+                                        <div style="margin-top: 7px;">
+                                            <a href="{{ route('frontend.job.edit', $val->id) }}" style="color: #38a4ff;font-weight:600" >Edit</a>
+                                            |
+                                            <a href="{{ route('frontend.job.destroy', $val->id) }}" class="text-danger" style="font-weight:600" >Delete</a>
+                                            |
+                                            <span class="icon__feature-lock job{{$val->id}}">
+                                                    @if($val->status == 1)
+                                                    <i class="fas fa-unlock" onclick="lockJob({{$val->id}})" data-id="{{$val->id}}" id="open-{{$val->id}}" title="activated" style="cursor: pointer; color: #4eaf56;"></i>
+                                                    @elseif($val->status == 2)
+                                                    <i class="fas fa-lock" onclick="openJob({{$val->id}})" data-id="{{$val->id}}" id="lock-{{$val->id}}" title="Admin locked" style="cursor: pointer; color: #435052;"></i>
+                                                    @else
+                                                    <i class="fas fa-lock" onclick="openJob({{$val->id}})" data-id="{{$val->id}}" id="lock-{{$val->id}}" title="locked" style="cursor: pointer; color: #ffc107;"></i>
+                                                    @endif
+                                                </span>
                                         </div>
                                     </div>
                                 @endforeach
+                                <script>
+                                    function openJob(id) {
+                                        $.ajax({
+                                            'url': '{{route("admin.company.unlockJob")}}?id='+id,
+                                        }).done(function (data){
+                                            if(data == 'success'){
+                                                document.querySelector('.icon__feature-lock.job' + id).style = 'color: #4eaf56'
+                                                document.querySelector('.icon__feature-lock.job' + id).innerHTML = '<i class="fas fa-unlock" onclick ="lockJob(' + id + ')" data-id="' + id + '" id = "open-' + id + '" title="activated" style="cursor: pointer;color: #4eaf56;"></i>'
+                                            }else {
+                                                alert("admin đã khóa tin này")
+                                            }
+                                        });
+                                    }
 
+                                    function lockJob(id) {
+                                        $.ajax({
+                                            'url': '{{route("admin.company.lockJob")}}?id='+id,
+                                        }).done(function (data){
+                                            if(data == 'success'){
+                                                document.querySelector('.icon__feature-lock.job' + id).style = 'color: #435052'
+                                                document.querySelector('.icon__feature-lock.job' + id).innerHTML = '<i class="fas fa-lock" onclick ="openJob(' + id + ')" data-id="' + id + '" id = "lock-' + id + '" title="locked" style="cursor: pointer; color: #ffc107;"></i>'
+                                            }
+
+                                        });
+                                    }
+                                </script>
                             </div>
                         </section>
                         <!-- Featured_job_end -->

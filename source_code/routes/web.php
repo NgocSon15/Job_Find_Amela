@@ -29,6 +29,8 @@ Route::get('/job_detail/{id}', [HomeController::class, 'getDetailJob'])->name('d
 
 Route::get('/', [HomeController::class, 'getHome'])->name('frontend.home');
 Route::get('/search', [HomeController::class, 'homeSearch'])->name('frontend.search');
+Route::get('/user-profile', [HomeController::class, 'getProfile'])->name('frontend.user-profile');
+Route::post('/user-profile' ,[HomeController::class, 'updateProfileUser'])->name('frontend.user-profile.update');
 
 Route::prefix('job')->group(function() {
     Route::get('/', [JobController::class, 'feCreate'])->name('frontend.job.create')->middleware('checkLogin');
@@ -80,6 +82,8 @@ Route::prefix('admin')->group(function() {
         Route::get('verify/{id}', [CompanyController::class, 'verify'])->name('admin.company.verify');
         Route::get('lock/{id}', [CompanyController::class, 'lock'])->name('admin.company.lock');
         Route::get('unlock/{id}', [CompanyController::class, 'unlock'])->name('admin.company.unlock');
+        Route::get('/lockJob', [CompanyController::class, 'lockJob'])->name('admin.company.lockJob');
+        Route::get('/unlockJob', [CompanyController::class, 'unlockJob'])->name('admin.company.unlockJob');
         Route::post('suggest', [CompanyController::class, 'suggest'])->name('admin.company.suggest');
     });
 
@@ -99,3 +103,4 @@ Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::get('/forgot-password', [LoginController::class, 'showForgotPass'])->name('forgot-password');
 Route::post('/reset-password', [LoginController::class, 'resetPass'])->name('reset-password');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+

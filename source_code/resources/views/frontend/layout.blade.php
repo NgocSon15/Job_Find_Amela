@@ -86,7 +86,7 @@
                                                 <i class="far fa-user"></i>
                                                 {{session()->get('user')->fullname}} <span class="caret"></span></a>
                                             <ul class="dropdown-menu" role="menu">
-                                                <li><a href="#" style="color: #635c5c">
+                                                <li><a href="{{route('frontend.user-profile')}}" style="color: #635c5c">
                                                         <i class="far fa-user"></i>
                                                         Hồ sơ</a></li>
                                                 <li><a href="{{route('logout')}}" style="color: #635c5c">
