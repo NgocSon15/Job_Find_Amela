@@ -115,7 +115,7 @@ Trang chủ
     </div>
     <!-- Our Services End -->
     <!-- Online CV Area Start -->
-    <div class="online-cv cv-bg section-overly pt-90 pb-120"  data-background="{{ asset('jobfinderportal-master/assets/img/gallery/cv_bg.jpg') }}">
+    <div class="online-cv cv-bg section-overly pt-50 pb-50"  data-background="{{ asset('jobfinderportal-master/assets/img/gallery/cv_bg.jpg') }}">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-10">
@@ -184,7 +184,7 @@ Trang chủ
     </section>
     <!-- Featured_job_end -->
     <!-- How  Apply Process Start-->
-    <div class="apply-process-area apply-bg pt-150 pb-150" data-background="{{ asset('jobfinderportal-master/assets/img/gallery/how-applybg.png') }}">
+    <div class="apply-process-area apply-bg pt-70 pb-70" data-background="{{ asset('jobfinderportal-master/assets/img/gallery/how-applybg.png') }}">
         <div class="container">
             <!-- Section Tittle -->
             <div class="row">

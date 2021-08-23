@@ -47,7 +47,7 @@ class HomeController extends Controller
 
         $city_id = $request->city_id;
        $city = City::all();
-        $jobs = $jobs = Job::leftJoin('companies', 'jobs.company_id', '=', 'companies.id')
+        $jobs = Job::leftJoin('companies', 'jobs.company_id', '=', 'companies.id')
                                     ->where([
                                         ['category_id', 'like', "%$category_id%"],
                                         ['city_id', 'like', "%$city_id%"],

@@ -21,7 +21,7 @@
         </div>
         <!-- Hero Area End -->
         <!-- job post company Start -->
-        <div class="job-post-company pt-120 pb-120">
+        <div class="job-post-company pt-70">
             <div class="container">
                 <div class="row justify-content-between">
                     <!-- Left Content -->
@@ -38,7 +38,11 @@
                                         <h4>{{$job->job_title}}</h4>
                                     </a>
                                     <ul>
-                                        <li>Creative Agency</li>
+                                        <li>Skill: 
+                                                @foreach(explode(',',substr($job->skill_id, 0,3)) as $skill_id)
+                                                    {{ $skills->find($skill_id)->skill }}
+                                                @endforeach
+                                        </li>
                                         <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
                                         @if(session()->has('user'))
                                         <li>${{number_format($job->min_salary)}} - ${{number_format($job->max_salary)}}</li>
@@ -57,33 +61,7 @@
                                 <div class="small-section-tittle">
                                     <h4>Job Description</h4>
                                 </div>
-                                <p>{{$job->job_description}}</p>
-                            </div>
-                            <div class="post-details2  mb-50">
-                                <!-- Small Section Tittle -->
-                                <div class="small-section-tittle">
-                                    <h4>Required Knowledge, Skills, and Abilities</h4>
-                                </div>
-                                <ul>
-                                    <li>System Software Development</li>
-                                    <li>{{$job->skill->skill}}</li>
-                                    <li>Research and code , libraries, APIs and frameworks</li>
-                                    <li>Strong knowledge on software development life cycle</li>
-                                    <li>Strong problem solving and debugging skills</li>
-                                </ul>
-                            </div>
-                            <div class="post-details2  mb-50">
-                                <!-- Small Section Tittle -->
-                                <div class="small-section-tittle">
-                                    <h4>Education + Experience</h4>
-                                </div>
-                                <ul>
-                                    <li>{{$job->experiences}} or more years of professional design experience</li>
-                                    <li>Direct response email experience</li>
-                                    <li>Ecommerce website design experience</li>
-                                    <li>Familiarity with mobile and web apps preferred</li>
-                                    <li>Experience using Invision a plus</li>
-                                </ul>
+                                <?php echo $job->job_description;?>
                             </div>
                         </div>
 
