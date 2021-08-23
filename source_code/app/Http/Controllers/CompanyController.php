@@ -166,6 +166,7 @@ class CompanyController extends Controller
         $jobs = Job::where('company_id', $company->id)->paginate(7);
         Carbon::setLocale('vi');
         $now = Carbon::now();
+        $skills = Skill::all();
         return view('frontend.company.list_job', compact('company', 'now', 'jobs', 'skills'));
     }
 
@@ -220,5 +221,30 @@ class CompanyController extends Controller
         $company = Company::findOrFail($id);
         $company->is_suggest = $request->isSuggest;
         $company->save();
+    }
+
+    public function lockJob(Request $request)
+    {
+        
+        $job_id = $request->id;
+        $job = Job::find($job_id);
+        if($job->status == 2){
+            return 'Không có quyền khóa';
+        }
+        $job->status = 0;
+        $job->save();
+        return 'success';
+    }
+
+    public function unlockJob(Request $request)
+    {
+        $job_id = $request->id;
+        $job = Job::find($job_id);
+        if($job->status == 2){
+            return 'Không có quyền mở khóa';
+        }
+        $job->status = 1;
+        $job->save();
+        return 'success';
     }
 }

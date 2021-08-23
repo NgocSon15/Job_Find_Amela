@@ -87,6 +87,8 @@ Route::prefix('admin')->group(function() {
         Route::get('verify/{id}', [CompanyController::class, 'verify'])->name('admin.company.verify');
         Route::get('lock/{id}', [CompanyController::class, 'lock'])->name('admin.company.lock');
         Route::get('unlock/{id}', [CompanyController::class, 'unlock'])->name('admin.company.unlock');
+        Route::get('/lockJob', [CompanyController::class, 'lockJob'])->name('admin.company.lockJob');
+        Route::get('/unlockJob', [CompanyController::class, 'unlockJob'])->name('admin.company.unlockJob');
         Route::post('suggest', [CompanyController::class, 'suggest'])->name('admin.company.suggest');
     });
 });

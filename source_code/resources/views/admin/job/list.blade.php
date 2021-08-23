@@ -56,11 +56,13 @@
                     <td class="text-success">Tài trợ</td>
                     <td class="d-flex">
                         <div class="icon__feature">
-                            <span class="icon__feature-lock job{{$job->id}}" style="color: #435052;">
-                                @if($job->status == 0)
-                                <i class="fas fa-lock" onclick="openJob({{$job->id}})" data-id="{{$job->id}}" id="lock-{{$job->id}}" title="locked" style="cursor: pointer; color: #435052;"></i>
-                                @else
+                            <span class="icon__feature-lock job{{$job->id}}">
+                                @if($job->status == 1)
                                 <i class="fas fa-unlock" onclick="lockJob({{$job->id}})" data-id="{{$job->id}}" id="open-{{$job->id}}" title="activated" style="cursor: pointer; color: #4eaf56;"></i>
+                                @elseif($job->status == 2)
+                                <i class="fas fa-lock" onclick="openJob({{$job->id}})" data-id="{{$job->id}}" id="lock-{{$job->id}}" title="Admin locked" style="cursor: pointer; color: #435052;"></i>
+                                @else
+                                <i class="fas fa-lock" onclick="openJob({{$job->id}})" data-id="{{$job->id}}" id="lock-{{$job->id}}" title="locked" style="cursor: pointer; color: #ffc107;"></i>
                                 @endif
                             </span>
 
@@ -109,7 +111,7 @@
             'url': '{{route("admin.job.lock")}}?id='+id,
         }).done(function (){
             document.querySelector('.icon__feature-lock.job' + id).style = 'color: #435052'
-            document.querySelector('.icon__feature-lock.job' + id).innerHTML = '<i class="fas fa-lock" onclick ="openJob(' + id + ')" data-id="' + id + '" id = "lock-' + id + '" title="locked" style="cursor: pointer; color: #435052;"></i>'
+            document.querySelector('.icon__feature-lock.job' + id).innerHTML = '<i class="fas fa-lock" onclick ="openJob(' + id + ')" data-id="' + id + '" id = "lock-' + id + '" title="Admin locked" style="cursor: pointer; color: #435052;"></i>'
 
         });
     }
