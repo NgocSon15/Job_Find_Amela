@@ -28,6 +28,8 @@ Route::get('/job_detail/{id}', [HomeController::class, 'getDetailJob'])->name('d
 
 Route::get('/', [HomeController::class, 'getHome'])->name('frontend.home');
 Route::get('/search', [HomeController::class, 'homeSearch'])->name('frontend.search');
+Route::get('/user-profile', [HomeController::class, 'getProfile'])->name('frontend.user-profile');
+Route::post('/user-profile' ,[HomeController::class, 'updateProfileUser'])->name('frontend.user-profile.update');
 
 Route::prefix('job')->group(function() {
     Route::get('/', [JobController::class, 'feCreate'])->name('frontend.job.create')->middleware('checkLogin');
@@ -95,3 +97,4 @@ Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::get('/forgot-password', [LoginController::class, 'showForgotPass'])->name('forgot-password');
 Route::post('/reset-password', [LoginController::class, 'resetPass'])->name('reset-password');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+

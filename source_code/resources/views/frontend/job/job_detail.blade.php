@@ -155,9 +155,17 @@
                                         <div class="job-tittle">
                                             <a href="{{route('detail', $job->id)}}"><h4>{{$job->job_title}}</h4></a>
                                             <ul>
-                                                <li>Creative Agency</li>
+                                                <li>Skill: 
+                                                    @foreach(explode(',',substr($job->skill_id, 0,3)) as $skill_id)
+                                                        {{ $skills->find($skill_id)->skill }}
+                                                    @endforeach
+                                                </li>
                                                 <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                                <li>${{$job->min_salary}} - ${{$job->max_salary}}</li>
+                                                @if(session()->has('user'))
+                                                    <li>${{ number_format($job->min_salary) }} - ${{ number_format($job->max_salary) }}</li>
+                                                @else
+                                                    <li><a href="{{ route('login') }}" style="color: #635c5c">Salary: đăng nhập để xem</a></li>
+                                                @endif
                                             </ul>
                                         </div>
                                     </div>

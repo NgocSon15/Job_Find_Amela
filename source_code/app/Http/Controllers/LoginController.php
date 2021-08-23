@@ -25,12 +25,16 @@ class LoginController extends Controller
         $email = $request->email;
         $password = $request->password;
         $user = User::where('email', $email)->where('password', md5($password))->first();
-        if($user->active == 0){
-            return view('frontend.login.not-activated');
-        }
         if($user){
+            if($user->active == 0){
+                return view('frontend.login.not-activated');
+            }
             session()->put('user', $user);
-            return redirect($request->previous);
+            $previous = $request->previous;
+            if($previous == route('logout')){
+                $previous = route('frontend.home');
+            }
+            return redirect($previous);
         } else{
             session()->flash('LoginFail', true);
             return redirect()->route('login');

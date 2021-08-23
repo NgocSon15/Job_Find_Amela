@@ -167,8 +167,9 @@
                                             </a>
                                             <ul>
                                                 <li>Skill: 
-                                                    {{$skills->find(explode(',',$val->skill_id)[0])->skill}},
-                                                    {{$skills->find(explode(',',$val->skill_id)[1])->skill}}
+                                                    @foreach(explode(',',substr($val->skill_id, 0,3)) as $skill_id)
+                                                        {{ $skills->find($skill_id)->skill }}
+                                                    @endforeach
                                                 </li>
                                                 <li><i class="fas fa-map-marker-alt"></i>{{$val->work_location}}</li>
                                                 @if(session()->has('user'))

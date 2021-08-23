@@ -126,6 +126,7 @@ class CompanyController extends Controller
 
     public function getJobList($id)
     {
+        $skills = Skill::all();
         $company = Company::findOrFail($id);
         $jobs = Job::where('company_id', $company->id)->paginate(7);
         Carbon::setLocale('vi');
