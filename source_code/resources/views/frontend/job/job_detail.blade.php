@@ -5,6 +5,56 @@
 @section('content')
     <main>
 
+        {{--layout apply--}}
+        <div  id="cityModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <!-- Modal content filter-->
+                <form action="{{route('frontend.apply')}}" method="post">
+                    @csrf
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="select-by-program">
+                                <h3 class="text-center mb-50" >Bạn đang ứng tuyển cho vị trí {{$job->job_title}}  </h3>
+                                <h3 class="text-center mb-50" >{{session()->get('user')->fullname}} </h3>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                                    <input type="email" name="email" class="form-control" id="exampleFormControlInput1" value="{{session()->get('user')->email}}">
+                                    @if($errors->has('email'))
+                                        <p class="text-danger">{{ $errors->first('email') }}</p>
+                                    @endif
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Phone Number</label>
+                                    <input type="text" name="phone" class="form-control" id="exampleFormControlInput1" placeholder="phone number">
+                                    @if($errors->has('phone'))
+                                        <p class="text-danger">{{ $errors->first('phone') }}</p>
+                                    @endif
+                                </div>
+
+                                <input type="hidden" name="job_id"  value="{{$job->id}}">
+                                <input type="hidden" name="user_id"  value="{{session()->get('user')->user_id}}">
+
+
+                                <!-- </form> -->
+                            </div>
+                            <!--End-->
+
+                        </div>
+                        <div class="modal-footer">
+                            <button id="submitAjax"   type="submit" class="btn" >Apply</button>
+
+                            <button type="button" class="btn" data-dismiss="modal">Hủy</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    {{--hết layout apply--}}
+
         <!-- Hero Area Start-->
         <div class="slider-area ">
             <div class="single-slider section-overly slider-height2 d-flex align-items-center" data-background="{{ asset('jobfinderportal-master/assets/img/hero/about.jpg') }}">
@@ -23,6 +73,12 @@
         <!-- job post company Start -->
         <div class="job-post-company pt-120 pb-120">
             <div class="container">
+                @if (Session::has('success'))
+                    <p class="text-success">
+                        <i class="fa fa-check" aria-hidden="true"></i>
+                        {{ Session::get('success') }}
+                    </p>
+                @endif
                 <div class="row justify-content-between">
                     <!-- Left Content -->
                     <div class="col-xl-7 col-lg-8">
@@ -105,7 +161,7 @@
                                     <li>Job nature : <span>Part time</span></li>
                                 @endif
 
-                                <li>Salary :  
+                                <li>Salary :
                                     @if(session()->has('user'))
                                     <span> ${{number_format($job->min_salary)}} - ${{number_format($job->max_salary)}}</span>
                                     @else
@@ -115,8 +171,17 @@
                                 <li>Application date : <span>{{$job->expiration}}</span></li>
                             </ul>
                             <div class="apply-btn2">
-                                <a href="#" class="btn">Apply Now</a>
+                                @if(session()->has('user'))
+                                    <a class="btn " href="" data-toggle="modal" data-target="#cityModal">
+                                        Apply Now
+                                    </a>
+                                @else
+
+                                    <a href="{{route('login')}}" class="btn">Đăng nhập để Apply</a>
+                                @endif
                             </div>
+
+
                         </div>
                         <div class="post-details4  mb-50">
                             <!-- Small Section Tittle -->
@@ -178,8 +243,8 @@
 {{--            </div>--}}
 
         </div>
-        <!-- job post company End -->
 
+        </div>
 
     </main>
 

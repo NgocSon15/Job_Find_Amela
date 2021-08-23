@@ -24,4 +24,8 @@ class Job extends Model
     {
         return $this->belongsTo(Position::class, 'position_id');
     }
+    public function apply()
+    {
+        return $this->belongsTo(Experience::class, 'job_id');
+    }
 }

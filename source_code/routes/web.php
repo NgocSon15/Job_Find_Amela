@@ -30,6 +30,8 @@ Route::get('/', [HomeController::class, 'getHome'])->name('frontend.home');
 Route::get('/search', [HomeController::class, 'homeSearch'])->name('frontend.search');
 Route::get('/user-profile', [HomeController::class, 'getProfile'])->name('frontend.user-profile');
 Route::post('/user-profile' ,[HomeController::class, 'updateProfileUser'])->name('frontend.user-profile.update');
+//Route::get('/apply-now', [JobController::class, 'showApplyNow'])->name('frontend.apply-now');
+Route::post('/apply-now' ,[JobController::class, 'ApplyNow'])->name('frontend.apply');
 
 Route::prefix('job')->group(function() {
     Route::get('/', [JobController::class, 'feCreate'])->name('frontend.job.create')->middleware('checkLogin');

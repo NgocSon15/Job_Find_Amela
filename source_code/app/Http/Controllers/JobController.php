@@ -13,7 +13,7 @@ use App\Models\Position;
 use App\Models\Company;
 use App\Models\Skill;
 use App\Models\City;
-
+use App\Models\Apply;
 class JobController extends Controller
 {
     public function index()
@@ -192,5 +192,29 @@ class JobController extends Controller
         return view('admin.job.list', compact('jobs', 'cities'));
     }
 
-   
+//    public function showApplyNow()
+//    {
+//        return view('frontend.job.apply-now');
+//    }
+
+    public function ApplyNow(Request $request)
+    {
+        $this->validate($request, [
+            'email'=>'required',
+            'phone'=>'required'
+        ]);
+
+        $apply = new Apply();
+        $apply->job_id = $request->input('job_id');
+        $apply->user_id = $request->input('user_id');
+        $apply->email = $request->input('email');
+        $apply->phone = $request->input('phone');
+        $apply->save();
+        Session::flash('success', 'Apply thành công');
+        return redirect()->back();
+
+
+    }
+
+
 }
