@@ -67,30 +67,30 @@
 
 
 
-                                <div class="form-group row">
-                                    <label for="select" class="col-4 col-form-label">Experience year</label>
-                                    <div class="col-8">
-                                        <select id="select" name="exp" class="form-select" aria-label="Default select example">
-                                            <option value="0" @if($exp->exp_year == 0)
-                                                {{"selected"}}
-                                                @endif>No experience</option>
-                                            <option value="1" @if($exp->exp_year == 1)
-                                                {{"selected"}}
-                                                @endif>1 year</option>
-                                            <option value="2" @if($exp->exp_year == 2)
-                                                {{"selected"}}
-                                                @endif>2 year</option>
-                                            <option value="3" @if($exp->exp_year >= 3)
-                                                {{"selected"}}
-                                                @endif>3 year or more</option>
-                                        </select>
-                                    </div>
-                                </div>
+{{--                                <div class="form-group row">--}}
+{{--                                    <label for="select" class="col-4 col-form-label">Experience year</label>--}}
+{{--                                    <div class="col-8">--}}
+{{--                                        <select id="select" name="exp" class="form-select" aria-label="Default select example">--}}
+{{--                                            <option value="0" @if($exp->exp_year == 0)--}}
+{{--                                                {{"selected"}}--}}
+{{--                                                @endif>No experience</option>--}}
+{{--                                            <option value="1" @if($exp->exp_year == 1)--}}
+{{--                                                {{"selected"}}--}}
+{{--                                                @endif>1 year</option>--}}
+{{--                                            <option value="2" @if($exp->exp_year == 2)--}}
+{{--                                                {{"selected"}}--}}
+{{--                                                @endif>2 year</option>--}}
+{{--                                            <option value="3" @if($exp->exp_year >= 3)--}}
+{{--                                                {{"selected"}}--}}
+{{--                                                @endif>3 year or more</option>--}}
+{{--                                        </select>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
 
                                 <div class="form-group row">
                                     <label for="publicinfo" class="col-4 col-form-label">Working Process</label>
                                     <div class="col-8">
-{{--                                        <input id="username" name="process" placeholder="Username" class="form-control here"  type="text" value="{{$exp->content}}">--}}
+                                        <input id="username" name="process" placeholder="Username" class="form-control here"  type="text" value="{{$exp->content}}">
                                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" name="process">{{$exp->content}}</textarea>
                                     </div>
                                 </div>

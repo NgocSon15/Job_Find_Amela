@@ -70,6 +70,41 @@ class CompanyController extends Controller
         return redirect()->route('admin.company.index');
     }
 
+    public function feUpdate(UpdateCompany $request, $id)
+    {
+        $company = Company::findOrFail($id);
+        $company->fullname = $request->fullname;
+        $company->shortname = $request->shortname;
+        $company->tax_code = $request->tax_code;
+        $company->email = $request->email;
+        $company->address = $request->address;
+        $company->map = $request->map;
+        if($request->logo)
+        {
+            if($company->logo)
+            {
+                Storage::delete('/public/images'.$company->logo);
+            }
+            $file = $request->logo;
+            $originName = pathinfo($file->getClientOriginalName());
+            $file->move('storage/images', $originName['basename']);
+            $company->logo = $originName['basename'];
+        }
+        $company->field_id = $request->field_id;
+        $company->city_id = $request->city_id;
+        $company->size_id = $request->size_id;
+        $company->website = $request->website;
+        $company->phone = $request->phone;
+        $company->description = $request->description;
+
+        $company->save();
+
+        session()->get('user')->company = $company;
+
+        Session::flash('success', 'Cập nhật thông tin thành công');
+        return redirect()->back();
+    }
+
     public function destroy($id)
     {
         $company = Company::findOrFail($id);

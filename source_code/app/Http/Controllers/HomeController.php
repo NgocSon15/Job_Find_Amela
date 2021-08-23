@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Session;
 use App\Models\User;
 use App\Models\Customer;
 use App\Models\Experience;
+use App\Models\CompanySize;
+use App\Models\Field;
+
 class HomeController extends Controller
 {
     public function getHome()
@@ -126,9 +129,19 @@ class HomeController extends Controller
     {
 //        dd(session()->get('user')->experience->exp_year);
         $id = session()->get('user')->user_id;
-        $exp = Experience::where('id', $id)->firstOrFail();
+        if (session()->get('user')->role == 'customer')
+        {
+            $exp = Experience::where('id', $id)->firstOrFail();
 
-        return view('frontend.user.user-profile', compact('exp'));
+            return view('frontend.user.user-profile', compact('exp'));
+        }
+
+        $cities = City::all();
+        $companySizes = CompanySize::all();
+        $fields = Field::all();
+        $company = session()->get('user')->company;
+        return view('frontend.user.company-information', compact('cities', 'companySizes', 'fields', 'company'));
+
     }
     public function updateProfileUser(Request $request)
     {

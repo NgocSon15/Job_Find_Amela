@@ -36,7 +36,6 @@ class UpdateCompany extends FormRequest
             "map" => 'nullable|url|max:400',
             "tax_code" => 'required|numeric|min:10',
             "website" => ['nullable', 'regex:/^((?:https?\:\/\/|www\.)(?:[-a-z0-9]+\.)*[-a-z0-9]+.*)$/i', 'max:200'],
-            "facebook" => 'nullable|url|max:200',
             "description" => 'required|min:8',
         ];
     }
