@@ -77,8 +77,7 @@
                         '_token': token
                     }
                 }).done(function (){
-                        document.querySelector('.modal-backdrop.fade.show')
-                        document.querySelector('#applyModal').style = 'display: none';
+                        $('#applyModal').modal('hide');
                         document.querySelector('#success').innerHTML = '<p class="text-success"><i class="fa fa-check" aria-hidden="true"></i>Apply thành công</p>'
                 }).fail(function (data){
                     var errors = data.responseJSON.errors;
