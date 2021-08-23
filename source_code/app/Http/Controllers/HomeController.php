@@ -58,7 +58,7 @@ class HomeController extends Controller
                                         ['fullname', 'like', $newKeyWord],
                                     ])
                                     ->select('jobs.*', 'companies.fullname', 'companies.id as com_id', 'city_id')
-                                        ->paginate(10);
+                                        ->paginate(20);
         Carbon::setLocale('vi');
         $now = Carbon::now();
         return view('frontend.job.job_listing', compact('jobs', 'skills', 'now', 'city'));
@@ -67,7 +67,7 @@ class HomeController extends Controller
     public function getListJob()
     {
         Carbon::setLocale('vi');
-        $jobs = Job::paginate(5);
+        $jobs = Job::paginate(20);
         $skills = Skill::all();
         $city = City::all();
         $now = Carbon::now();
