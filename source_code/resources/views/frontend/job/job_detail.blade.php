@@ -57,7 +57,7 @@
             </div>
         </div>
         <script>
-            window.onload = function(){
+        window.onload = function(){
             var submit = document.querySelector('#submitAjax');
             submit.onclick = function (event){
                 event.preventDefault();
@@ -92,8 +92,7 @@
                 })
                 
             }
-            console.log(submit);
-            }
+        }
         </script>
         @endif
     {{--hết layout apply--}}
