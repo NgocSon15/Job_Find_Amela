@@ -156,8 +156,11 @@
                                             <a href="{{route('detail', $job->id)}}"><h4>{{$job->job_title}}</h4></a>
                                             <ul>
                                                 <li>Skill: 
-                                                    @foreach(explode(',',substr($job->skill_id, 0,3)) as $skill_id)
+                                                    @foreach(explode(',',$job->skill_id) as $skill_id)
                                                         {{ $skills->find($skill_id)->skill }}
+                                                        @if($loop->index == 1)
+                                                        @break
+                                                        @endif
                                                     @endforeach
                                                 </li>
                                                 <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
