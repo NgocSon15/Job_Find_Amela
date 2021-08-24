@@ -19,7 +19,7 @@
                 <select name="city_id" id="" class="form-control" style="width: 40%">
                     <option value="">City: all</option>
                     @foreach($cities as $city)
-                    <option value="{{ $city->city_id}}">{{ $city->city_name}}</option>
+                    <option value="{{ $city->city_id}}">{{ $city->city_name }}</option>
                     @endforeach
                 </select>
             <button  type="submit" class="btn btn-primary mb-3 ml-1">Search</button>

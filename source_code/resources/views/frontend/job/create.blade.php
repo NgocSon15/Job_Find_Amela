@@ -5,6 +5,7 @@
 @section('link')
     <link rel="stylesheet" href="{{ asset('jobfinderportal-master/assets/css/responsive.css') }}">
     <link rel="stylesheet" href="{{ asset('jobfinderportal-master/assets/css/select-skill.css') }}">
+    <link rel="stylesheet" href="{{ asset('adminlte/plugins/summernote/summernote-bs4.min.css') }}">
 @endsection
 @section('content')
     @if(session()->get('user')->company->status == 1)
@@ -44,6 +45,7 @@
                                 <div class="value">
                                     <div class="default-select" id="default-select" style="width: 100%">
                                         <select name="category_id" style="display: none;">
+                                            <option value="" selected hidden disabled>Choose Category</option>
                                             @foreach($categories as $category)
                                                 <option value="{{ $category->cat_id }}"
                                                 @if(old('category_id') == $category->cat_id)
@@ -55,17 +57,27 @@
                                             @endforeach
                                         </select>
                                         <div class="nice-select" tabindex="0" style="width: 100%">
-                                            <span class="current">Choose Category</span>
+                                            <span class="current">
+                                                @if(old('category_id') == null)
+                                                    Choose Category
+                                                @else
+                                                    @foreach($categories as $category)
+                                                        @if(old('category_id') == $category->cat_id)
+                                                            {{ $category->cat_name }}
+                                                        @endif
+                                                    @endforeach
+                                                @endif
+                                            </span>
                                             <ul class="list">
                                                 @foreach($categories as $category)
                                                     <li data-value="{{ $category->cat_id }}" class="option">{{ $category->cat_name }}</li>
                                                 @endforeach
                                             </ul>
                                         </div>
-                                        @if($errors->has('category_id'))
-                                            <p class="text-danger">{{ $errors->first('category_id') }}</p>
-                                        @endif
                                     </div>
+                                    @if($errors->has('category_id'))
+                                        <p class="text-danger">{{ $errors->first('category_id') }}</p>
+                                    @endif
                                 </div>
                             </div>
                             <div class="form-row" style="display: block;">
@@ -106,10 +118,11 @@
                                 <div class="value">
                                     <div class="default-select" id="default-select" style="width: 100%">
                                         <select name="position_id" style="display: none;">
+                                            <option value="" selected disabled hidden>Choose Position</option>
                                             @foreach($positions as $position)
                                                 <option value="{{ $position->position_id }}"
-                                                @if(old('position_id') == $position->position_id)
-                                                    {{ 'selected' }}
+                                                    @if(old('position_id') == $position->position_id)
+                                                        {{ 'selected' }}
                                                     @endif
                                                 >
                                                     {{ $position->position_name }}
@@ -117,17 +130,27 @@
                                             @endforeach
                                         </select>
                                         <div class="nice-select" tabindex="0" style="width: 100%">
-                                            <span class="current">Choose Position</span>
+                                            <span class="current">
+                                                @if(old('position_id') == null)
+                                                    Choose Position
+                                                @else
+                                                    @foreach($positions as $position)
+                                                        @if(old('position_id') == $position->position_id)
+                                                            {{ $position->position_name }}
+                                                        @endif
+                                                    @endforeach
+                                                @endif
+                                            </span>
                                             <ul class="list">
                                                 @foreach($positions as $position)
                                                     <li data-value="{{ $position->position_id }}" class="option">{{ $position->position_name }}</li>
                                                 @endforeach
                                             </ul>
                                         </div>
-                                        @if($errors->has('position_id'))
-                                            <p class="text-danger">{{ $errors->first('position_id') }}</p>
-                                        @endif
                                     </div>
+                                    @if($errors->has('position_id'))
+                                        <p class="text-danger">{{ $errors->first('position_id') }}</p>
+                                    @endif
                                 </div>
                             </div>
                             <div class="form-row" style="display: block;">
@@ -135,7 +158,7 @@
                                 <div class="value" id="skill">
                                      <select name="skill_id[]" id="skill_id" style="width: 100%;" multiple="multiple">
                                         @foreach($skills as $skill)
-                                        
+
                                         <option value="{{$skill->skill_id}}"
                                             @if(old('skill_id'))
                                                 @if(in_array($skill->skill_id, old('skill_id')))
@@ -148,11 +171,6 @@
                                     @if($errors->has('skill_id'))
                                         <p class="text-danger">{{ $errors->first('skill_id') }}</p>
                                     @endif
-                                    <script>
-                                        window.onload = function() {
-                                            $('#skill_id').select2();
-                                            };
-                                    </script>
                                 </div>
                             </div>
                         </div>
@@ -173,15 +191,16 @@
                                 <div class="value">
                                     <div class="default-select" id="default-select" style="width: 100%">
                                         <select name="job_type" style="display: none;">
-                                            <option value="0"
-                                            @if(old('job_type') == 0)
+                                            <option value="" selected disabled hidden>Choose Gender</option>
+                                            <option value="1"
+                                            @if(old('job_type') == 1)
                                                 {{ 'selected' }}
                                                 @endif
                                             >
                                                 Parttime
                                             </option>
-                                            <option value="1"
-                                            @if(old('job_type') == 1)
+                                            <option value="2"
+                                            @if(old('job_type') == 2)
                                                 {{ 'selected' }}
                                                 @endif
                                             >
@@ -189,16 +208,26 @@
                                             </option>
                                         </select>
                                         <div class="nice-select" tabindex="0" style="width: 100%">
-                                            <span class="current">Choose Job Type</span>
+                                            <span class="current">
+                                                @if(old('job_type') == null)
+                                                    Choose Job Type
+                                                @else
+                                                    @if(old('job_type') == 1)
+                                                        Parttime
+                                                    @else
+                                                        Fulltime
+                                                    @endif
+                                                @endif
+                                            </span>
                                             <ul class="list">
-                                                <li data-value="0" class="option">Parttime</li>
-                                                <li data-value="1" class="option">Fulltime</li>
+                                                <li data-value="1" class="option">Parttime</li>
+                                                <li data-value="2" class="option">Fulltime</li>
                                             </ul>
                                         </div>
-                                        @if($errors->has('job_type'))
-                                            <p class="text-danger">{{ $errors->first('job_type') }}</p>
-                                        @endif
                                     </div>
+                                    @if($errors->has('job_type'))
+                                        <p class="text-danger">{{ $errors->first('job_type') }}</p>
+                                    @endif
                                 </div>
                             </div>
                             <div class="form-row" style="display: block;">
@@ -216,10 +245,20 @@
                                 <div class="name">Description <span style="color: #e83e8c">*</span></div>
                                 <div class="value">
                                     <div class="input-group">
-                                        <input type="text" name="job_description" placeholder="Description" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Description'" required="" class="single-input" value="{{ old('job_description') }}">
+                                        <textarea id="job_description" class="single-textarea" name="job_description" placeholder="Description" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Description'" required="">{{ old('job_description') }}</textarea>
                                         @if($errors->has('job_description'))
                                             <p class="text-danger">{{ $errors->first('job_description') }}</p>
                                         @endif
+                                        <script> window.onload = function() {
+                                                $('#skill_id').select2();
+                                                $('#job_description').summernote();
+                                                var btn = document.querySelectorAll('.note-btn-group button')
+                                                for(var i = 0; i < btn.length; i++){
+                                                    btn[i].classList.remove('btn');
+                                                }
+
+                                            };
+                                        </script>
                                     </div>
                                 </div>
                             </div>
@@ -239,34 +278,47 @@
                                 <div class="value">
                                     <div class="default-select" id="default-select" style="width: 100%">
                                         <select name="gender" style="display: none;">
-                                            <option value="0"
-                                            @if(old('gender') == 0)
-                                                {{ 'selected' }}
-                                                @endif
-                                            >Nam</option>
+                                            <option disabled hidden selected></option>
                                             <option value="1"
                                             @if(old('gender') == 1)
                                                 {{ 'selected' }}
                                                 @endif
-                                            >Nữ</option>
+                                            >Nam</option>
                                             <option value="2"
                                             @if(old('gender') == 2)
+                                                {{ 'selected' }}
+                                                @endif
+                                            >Nữ</option>
+                                            <option value="3"
+                                            @if(old('gender') == 3)
                                                 {{ 'selected' }}
                                                 @endif
                                             >Khác</option>
                                         </select>
                                         <div class="nice-select" tabindex="0" style="width: 100%">
-                                            <span class="current">Choose Gender</span>
+                                            <span class="current">
+                                                @if(old('gender') == null)
+                                                    Choose Gender
+                                                @else
+                                                    @if(old('gender') == 1)
+                                                        Nam
+                                                    @elseif(old('gender') == 2)
+                                                        Nữ
+                                                    @else
+                                                        Khác
+                                                    @endif
+                                                @endif
+                                            </span>
                                             <ul class="list">
-                                                <li data-value="0" class="option">Nam</li>
-                                                <li data-value="1" class="option">Nữ</li>
-                                                <li data-value="2" class="option">Khác</li>
+                                                <li data-value="1" class="option">Nam</li>
+                                                <li data-value="2" class="option">Nữ</li>
+                                                <li data-value="3" class="option">Khác</li>
                                             </ul>
                                         </div>
-                                        @if($errors->has('gender'))
-                                            <p class="text-danger">{{ $errors->first('gender') }}</p>
-                                        @endif
                                     </div>
+                                    @if($errors->has('gender'))
+                                        <p class="text-danger">{{ $errors->first('gender') }}</p>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -308,4 +360,5 @@
 @endsection
 @section('script')
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="{{ asset('adminlte/plugins/summernote/summernote-bs4.min.js') }}"></script>
 @endsection

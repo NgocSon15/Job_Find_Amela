@@ -5,6 +5,7 @@
 @section('content')
     <form method="post" action="{{ route('admin.job.update', $job->id) }}" enctype="multipart/form-data">
         @csrf
+        <input value="{{$job->id}}" hidden disabled name="id">
         <div class="d-flex">
             <div class="col-lg-6" style="padding-right: 40px;">
                 <div class="form-group">

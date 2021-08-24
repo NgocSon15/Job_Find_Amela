@@ -52,7 +52,7 @@
                                                         <h4>{{$val->job_title}}</h4>
                                                     </a>
                                                     <ul>
-                                                        <li>Skill: 
+                                                        <li>Skill:
                                                             @foreach(explode(',',$val->skill_id) as $skill_id)
                                                                 {{ $skills->find($skill_id)->skill }}
                                                                 @if($loop->index == 1)
@@ -60,7 +60,9 @@
                                                                 @endif
                                                             @endforeach
                                                         </li>
+                                                        @if($val->company->city)
                                                         <li><i class="fas fa-map-marker-alt"></i>{{ $val->company->city->city_name}}</li>
+                                                        @endif
                                                     @if(session()->has('user'))
                                                         <li>${{ number_format($val->min_salary) }} - ${{ number_format($val->max_salary) }}</li>
                                                     @else
@@ -79,7 +81,7 @@
                                         <div style="margin-top: 7px;">
                                             <a href="{{ route('frontend.job.edit', $val->id) }}" style="color: #38a4ff;font-weight:600" >Edit</a>
                                             |
-                                            <a href="{{ route('frontend.job.destroy', $val->id) }}" class="text-danger" style="font-weight:600" >Delete</a>
+                                            <a onclick="return confirm('Bạn có chắc chắn muốn xóa tin này')" href="{{ route('frontend.job.destroy', $val->id) }}" class="text-danger" style="font-weight:600" >Delete</a>
                                             |
                                             <span class="icon__feature-lock job{{$val->id}}">
                                                     @if($val->status == 1)

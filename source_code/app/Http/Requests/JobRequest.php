@@ -32,11 +32,11 @@ class JobRequest extends FormRequest
             'min_salary' => 'required|integer|min:0',
             'max_salary' => 'required|integer|gt:min_salary',
             'work_location' => 'required',
-            'job_type' => 'required|integer|min:0|max:1',
+            'job_type' => 'required|integer|min:0|max:2',
             'experiences' => 'required|integer|min:0',
             'expiration' => 'required',
             'position_id' => 'required|exists:positions,position_id',
-            'gender' => 'integer|min:0|max:2',
+            'gender' => 'integer|min:0|max:3',
             'quantity' => 'required|integer|min:0',
         ];
     }

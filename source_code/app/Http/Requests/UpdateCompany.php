@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateCompany extends FormRequest
 {
@@ -25,8 +26,8 @@ class UpdateCompany extends FormRequest
     {
         return [
             "logo" => 'nullable|image',
-            "email" => 'required|email|max:100',
-            "fullname" => 'required|min:8|max:100',
+            "email" => ['required', 'email', 'max:100', Rule::unique('companies', 'email')->ignore($this->id)],
+            "fullname" => ['required', 'min:8', 'max:100', Rule::unique('companies', 'fullname')->ignore($this->id)],
             "shortname" => 'required|max:15',
             "phone" => 'required|numeric',
             "size_id" => 'nullable|exists:company_sizes,size_id',

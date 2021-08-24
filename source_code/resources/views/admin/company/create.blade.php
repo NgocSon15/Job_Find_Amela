@@ -64,7 +64,7 @@
 
         <div class="form-group">
             <label for="description">Mô tả:</label>
-            <textarea class="form-control" id="description" name="description">{{ old('description') }}</textarea>
+            <textarea id="summernote" class="form-control" id="description" name="description">{{ old('description') }}</textarea>
             @if($errors->has('description'))
                 @foreach($errors->get('description') as $message)
                     <p class="text-danger">
@@ -90,10 +90,18 @@
         </div>
     </form>
 @endsection
-<script src="{{ asset('adminlte/plugins/jquery/jquery.min.js') }}"></script>
-<!-- Bootstrap 4 -->
-<script src="{{ asset('adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-<!-- bs-custom-file-input -->
-<script src="{{ asset('adminlte/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
-<!-- AdminLTE App -->
-<script src="{{ asset('adminlte/dist/js/adminlte.min.js') }}"></script>
+@section('script')
+    <!-- bs-custom-file-input -->
+    <script src="{{ asset('adminlte/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
+    <!-- Page specific script -->
+    <script>
+        $(function () {
+            bsCustomFileInput.init();
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#summernote').summernote();
+        });
+    </script>
+@endsection

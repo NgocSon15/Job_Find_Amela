@@ -95,7 +95,8 @@ class JobController extends Controller
         $job->gender = $request->input('gender');
         $job->quantity = $request->input('quantity');
         $job->save();
-        $job->company->total_jobs++;
+        $company->total_jobs += 1;
+        $company->save();
 
         Session::flash('success', 'Thêm mới thành công');
         if (Session::get('user')->role == 'admin')
@@ -126,7 +127,11 @@ class JobController extends Controller
     public function feEdit($id)
     {
         $job = Job::findOrFail($id);
-        return view('frontend.job.edit', compact('job'));
+        $categories = Category::all();
+        $positions = Position::all();
+        $skills = Skill::all();
+        $job_skills = explode(',', $job->skill_id);
+        return view('frontend.job.edit', compact('job', 'categories', 'positions', 'skills', 'job_skills'));
     }
 
     public function update(JobRequest $request, $id)
@@ -135,7 +140,7 @@ class JobController extends Controller
         $job->company_id = $request->input('company_id');
         $job->job_title = $request->input('job_title');
         $job->job_description = $request->input('job_description');
-        $job->skill_id = $request->input('skill_id');
+        $job->skill_id = implode(',',$request->skill_id);
         $job->category_id = $request->input('category_id');
         $job->min_salary = $request->input('min_salary');
         $job->max_salary = $request->input('max_salary');
@@ -149,7 +154,12 @@ class JobController extends Controller
         $job->save();
 
         Session::flash('success', 'Sửa thông tin thành công');
-        return redirect()->route('admin.job.index');
+        if (Session::get('user')->role == 'admin')
+        {
+            return redirect()->route('admin.job.index');
+        } else {
+            return redirect()->back();
+        }
     }
 
     public function delete($id)
@@ -162,10 +172,12 @@ class JobController extends Controller
     {
         $job = Job::findOrFail($id);
         $job->delete();
-        $job->company->total_jobs--;
+        $company = $job->company;
+        $company->total_jobs -= 1;
+        $company->save();
 
         Session::flash('success', 'Xóa thành công');
-        return redirect()->route('admin.job.index');
+        return redirect()->back();
     }
 
     public function search(Request $request)
@@ -192,5 +204,5 @@ class JobController extends Controller
         return view('admin.job.list', compact('jobs', 'cities'));
     }
 
-   
+
 }
