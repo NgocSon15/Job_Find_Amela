@@ -54,7 +54,7 @@ class User extends Authenticatable
 
     public function experience()
     {
-        return $this->hasOne(Experience::class, 'id');
+        return $this->belongsTo(Experience::class, 'id');
     }
     public function apply()
     {

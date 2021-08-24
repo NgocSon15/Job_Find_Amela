@@ -125,21 +125,87 @@ class HomeController extends Controller
     {
 //        dd(session()->get('user')->experience->exp_year);
         $id = session()->get('user')->user_id;
-        $exp = Experience::where('id', $id)->firstOrFail();
-
-        return view('frontend.user.user-profile', compact('exp'));
+        $exp = Experience::where('id', $id)->get();
+        $customer = Customer::where('user_id', $id)->firstOrFail();
+        return view('frontend.user.user-profile', compact('exp', 'customer'));
     }
-    public function updateProfileUser(Request $request)
+    public function addExp(Request $request)
     {
+        $this->validate($request, [
+            'company'=>'required',
+            'title'=>'required'
+        ]);
         $id = session()->get('user')->user_id;
-        $exp = Experience::where('id', $id)->firstOrFail();
-//        dd($user->exp);
-        $exp->exp_year = $request->exp;
-        $exp->content = $request->process;
+//        $exp = Experience::where('id', $id)->firstOrFail();
+        $exp = new Experience();
+        $exp->id = $id;
+        $exp->position = $request->title;
+        $exp->company = $request->company;
+        $exp->since = $request->from;
+        $exp->to_date = $request->to;
+        $exp->content = $request->content_a;
         $exp->save();
         Session::flash('success', 'Update experience success');
-        return view('frontend.user.user-profile', compact('exp'));
-//        return redirect()->route('frontend.user-profile');
+        return redirect()->back();
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $this->validate($request, [
+            'email'=>'required',
+            'phone'=>'required',
+            'birth'=>'required'
+        ]);
+        $id = session()->get('user')->user_id;
+        $customer = Customer::where('user_id', $id)->firstOrFail();
+//        dd($customer);
+        $customer->email = $request->email;
+        $customer->phone = $request->phone;
+        $customer->birth = $request->birth;
+        $customer->sex = $request->sex;
+        $customer->address = $request->add;
+        $customer->marry = $request->marry;
+        $customer->save();
+        Session::flash('success_profile', 'Update profile success');
+        $exp = Experience::where('id', $id)->firstOrFail();
+//        return view('frontend.user.user-profile', compact('exp', 'customer'));
+        return redirect()->route('frontend.user-profile');
 
     }
+
+    public function getExp($id)
+    {
+
+        $id_user = session()->get('user')->user_id;
+        $exp = Experience::where('exp_id',$id)->firstOrFail();
+        return view('frontend.user.show-exp', compact('exp'));
+    }
+
+    public function updateExp(Request $request,$id)
+    {
+
+        $id_user = session()->get('user')->user_id;
+        $exp = Experience::where('exp_id',$id)->firstOrFail();
+        $exp->position = $request->title;
+        $exp->company = $request->company;
+        $exp->since = $request->from;
+        $exp->to_date = $request->to;
+        $exp->content = $request->content_a;
+        $exp->save();
+        Session::flash('success', 'Update experience success');
+        return redirect()->back();
+//        return redirect()->route('frontend.getExp');
+    }
+
+    public function destroyExp($id)
+    {
+        $exp = Experience::where('exp_id',$id)->firstOrFail();
+        $exp->delete();
+
+        //dung session de dua ra thong bao
+        Session::flash('success', 'Xóa kinh nghiệm thành công');
+        
+        return redirect()->back();
+    }
+
 }
