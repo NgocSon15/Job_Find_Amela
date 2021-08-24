@@ -7,19 +7,13 @@
  }
  .single-job-items .job-tittle ul li{
     margin-right: 15px;
-    
+    flex: 1;
  }
- .single-job-items .job-tittle ul li:first-child{
-     width: 18%;
- }
- .single-job-items .job-tittle ul li:last-child{
-}
  .single-job-items .job-tittle ul li:nth-child(2){
     overflow: hidden;
     -webkit-line-clamp: 2;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-     width: 40%;
  }
 
  .job-tittle.job-tittle2{

@@ -162,7 +162,7 @@ Trang chủ
                                                     @endif
                                                 @endforeach
                                             </li>
-                                            <li><i class="fas fa-map-marker-alt"></i>{{ $job->work_location}}</li>
+                                            <li><i class="fas fa-map-marker-alt"></i>{{ $job->company->city->city_name}}</li>
                                             @if(session()->has('user'))
                                             <li>${{ number_format($job->min_salary) }} - ${{ number_format($job->max_salary) }}</li>
                                             @else

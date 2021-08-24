@@ -60,8 +60,12 @@
                                                                 @endif
                                                             @endforeach
                                                         </li>
-                                                        <li><i class="fas fa-map-marker-alt"></i>{{$val->work_location}}</li>
-                                                        <li>${{$val->min_salary}} - ${{$val->max_salary}}</li>
+                                                        <li><i class="fas fa-map-marker-alt"></i>{{ $val->company->city->city_name}}</li>
+                                                    @if(session()->has('user'))
+                                                        <li>${{ number_format($val->min_salary) }} - ${{ number_format($val->max_salary) }}</li>
+                                                    @else
+                                                        <li><a href="{{ route('login') }}" style="color: #635c5c">Salary: đăng nhập để xem</a></li>
+                                                    @endif
                                                     </ul>
                                                 </div>
                                             </div>

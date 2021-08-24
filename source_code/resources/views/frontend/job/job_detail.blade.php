@@ -130,7 +130,7 @@
                                         <div class="company-img">
                                             <a href="{{route('detail', $job->id)}}"><img src="{{asset('storage/images/'.$job->company->logo)}}" alt="" style="max-width: 85px;"></a>
                                         </div>
-                                        <div class="job-tittle">
+                                        <div class="job-tittle job-tittle2">
                                             <a href="{{route('detail', $job->id)}}"><h4>{{$job->job_title}}</h4></a>
                                             <ul>
                                                 <li>Skill: 
@@ -141,7 +141,7 @@
                                                         @endif
                                                     @endforeach
                                                 </li>
-                                                <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
+                                                <li><i class="fas fa-map-marker-alt"></i>{{ $job->company->city->city_name}}</li>
                                                 @if(session()->has('user'))
                                                     <li>${{ number_format($job->min_salary) }} - ${{ number_format($job->max_salary) }}</li>
                                                 @else
