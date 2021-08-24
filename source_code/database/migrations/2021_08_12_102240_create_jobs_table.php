@@ -17,7 +17,7 @@ class CreateJobsTable extends Migration
             $table->integer('id')->autoIncrement();
             $table->integer('company_id');
             $table->string('job_title');
-            $table->string('job_description');
+            $table->longText('job_description');
             $table->string('skill_id');
             $table->string('job_code');
             $table->integer('category_id');

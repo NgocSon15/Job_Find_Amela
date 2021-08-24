@@ -154,7 +154,7 @@ Trang chủ
                                             <h4>{{ $job->job_title }}</h4>
                                         </a>
                                         <ul>
-                                            <li>Skill: 
+                                            <li>Skill:
                                                 @foreach(explode(',',$job->skill_id) as $skill_id)
                                                     {{ $skills->find($skill_id)->skill }}
                                                     @if($loop->index == 1)
@@ -162,7 +162,9 @@ Trang chủ
                                                     @endif
                                                 @endforeach
                                             </li>
-                                            <li><i class="fas fa-map-marker-alt"></i>{{ $job->company->city->city_name}}</li>
+                                            @if($job->company->city)
+                                                <li><i class="fas fa-map-marker-alt"></i>{{  $job->company->city->city_name }}</li>
+                                            @endif
                                             @if(session()->has('user'))
                                             <li>${{ number_format($job->min_salary) }} - ${{ number_format($job->max_salary) }}</li>
                                             @else

@@ -126,7 +126,11 @@ class JobController extends Controller
     public function feEdit($id)
     {
         $job = Job::findOrFail($id);
-        return view('frontend.job.edit', compact('job'));
+        $categories = Category::all();
+        $positions = Position::all();
+        $skills = Skill::all();
+        $job_skills = explode(',', $job->skill_id);
+        return view('frontend.job.edit', compact('job', 'categories', 'positions', 'skills', 'job_skills'));
     }
 
     public function update(JobRequest $request, $id)
@@ -135,7 +139,7 @@ class JobController extends Controller
         $job->company_id = $request->input('company_id');
         $job->job_title = $request->input('job_title');
         $job->job_description = $request->input('job_description');
-        $job->skill_id = $request->input('skill_id');
+        $job->skill_id = implode(',',$request->skill_id);
         $job->category_id = $request->input('category_id');
         $job->min_salary = $request->input('min_salary');
         $job->max_salary = $request->input('max_salary');
@@ -192,5 +196,5 @@ class JobController extends Controller
         return view('admin.job.list', compact('jobs', 'cities'));
     }
 
-   
+
 }
