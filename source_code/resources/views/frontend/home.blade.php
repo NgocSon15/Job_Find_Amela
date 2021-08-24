@@ -255,7 +255,7 @@ Trang chủ
                     <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
                         <div class="single-services text-center mb-30">
                             <div class="services-ion">
-                                <img src="{{ asset('storage/images/' . $company->logo) }}" style="max-height: 80px;">
+                                <img src="{{ asset('storage/images/' . $company->logo) }}" style="height: 80px;">
                             </div>
                             <div class="services-cap">
                                 <h5><a href="{{ route('frontend.company.show', $company->id) }}">{{ $company->shortname }}</a></h5>
