@@ -172,11 +172,6 @@
                                     @if($errors->has('skill_id'))
                                         <p class="text-danger">{{ $errors->first('skill_id') }}</p>
                                     @endif
-                                    <script>
-                                        window.onload = function() {
-                                            $('#skill_id').select2();
-                                        };
-                                    </script>
                                 </div>
                             </div>
                         </div>
@@ -251,10 +246,20 @@
                                 <div class="name">Description <span style="color: #e83e8c">*</span></div>
                                 <div class="value">
                                     <div class="input-group">
-                                        <textarea id="summernote" class="single-textarea" placeholder="Description" name="job_description" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Description'" required="">{{ $job->job_description }}</textarea>
+                                        <textarea id="job_description" class="single-textarea" placeholder="Description" name="job_description" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Description'" required="">{{ $job->job_description }}</textarea>
                                         @if($errors->has('job_description'))
                                             <p class="text-danger">{{ $errors->first('job_description') }}</p>
                                         @endif
+                                        <script> window.onload = function() {
+                                                $('#skill_id').select2();
+                                                $('#job_description').summernote();
+                                                var btn = document.querySelectorAll('.note-btn-group button')
+                                                for(var i = 0; i < btn.length; i++){
+                                                    btn[i].classList.remove('btn');
+                                                }
+
+                                            };
+                                        </script>
                                     </div>
                                 </div>
                             </div>
@@ -357,9 +362,4 @@
 @section('script')
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="{{ asset('adminlte/plugins/summernote/summernote-bs4.min.js') }}"></script>
-    <script>
-        $(document).ready(function() {
-            $('#summernote').summernote();
-        });
-    </script>
 @endsection

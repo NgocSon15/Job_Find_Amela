@@ -95,7 +95,8 @@ class JobController extends Controller
         $job->gender = $request->input('gender');
         $job->quantity = $request->input('quantity');
         $job->save();
-        $job->company->total_jobs += 1;
+        $company->total_jobs += 1;
+        $company->save();
 
         Session::flash('success', 'Thêm mới thành công');
         if (Session::get('user')->role == 'admin')
@@ -153,7 +154,12 @@ class JobController extends Controller
         $job->save();
 
         Session::flash('success', 'Sửa thông tin thành công');
-        return redirect()->route('admin.job.index');
+        if (Session::get('user')->role == 'admin')
+        {
+            return redirect()->route('admin.job.index');
+        } else {
+            return redirect()->back();
+        }
     }
 
     public function delete($id)
@@ -166,7 +172,9 @@ class JobController extends Controller
     {
         $job = Job::findOrFail($id);
         $job->delete();
-        $job->company->total_jobs--;
+        $company = $job->company;
+        $company->total_jobs -= 1;
+        $company->save();
 
         Session::flash('success', 'Xóa thành công');
         return redirect()->back();
