@@ -56,7 +56,7 @@
                                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="content_a">{{$exp->content}}</textarea>
                                     </div>
                                     <div class="col-12 pt-50">
-                                        <button class="btn" type="submit">Update</button>
+                                        <button class="btn" type="submit" style="float: right">Update</button>
                                     </div>
 
                                 </form>

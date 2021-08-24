@@ -167,10 +167,9 @@ class HomeController extends Controller
         $customer->marry = $request->marry;
         $customer->save();
         Session::flash('success_profile', 'Update profile success');
-        $exp = Experience::where('id', $id)->firstOrFail();
 //        return view('frontend.user.user-profile', compact('exp', 'customer'));
-        return redirect()->route('frontend.user-profile');
-
+//        return redirect()->route('frontend.user-profile');
+        return redirect()->back();
     }
 
     public function getExp($id)
@@ -204,7 +203,7 @@ class HomeController extends Controller
 
         //dung session de dua ra thong bao
         Session::flash('success', 'Xóa kinh nghiệm thành công');
-        
+
         return redirect()->back();
     }
 

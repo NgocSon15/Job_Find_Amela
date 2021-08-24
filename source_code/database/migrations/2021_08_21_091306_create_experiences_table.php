@@ -14,9 +14,13 @@ class CreateExperiencesTable extends Migration
     public function up()
     {
         Schema::create('experiences', function (Blueprint $table) {
-            $table->integer('id')->autoIncrement();
-            $table->tinyInteger('exp_year');
+            $table->integer('id');
+            $table->integer('user_id')->autoIncrement();
+            $table->string('position');
+            $table->string('company');
             $table->string('content');
+            $table->date('since');
+            $table->date('to_date');
         });
     }
 
