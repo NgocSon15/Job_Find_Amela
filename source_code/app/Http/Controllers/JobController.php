@@ -82,7 +82,7 @@ class JobController extends Controller
         $job->job_title = $request->input('job_title');
         $job->job_description = $request->input('job_description');
         $job->skill_id = implode(',',$request->skill_id);
-        $company = Company::findOrFail($job->company_id)->first();
+        $company = Company::findOrFail($job->company_id);
         $job->job_code = $company->company_code . $max_id;
         $job->category_id = $request->input('category_id');
         $job->min_salary = $request->input('min_salary');
@@ -97,6 +97,13 @@ class JobController extends Controller
         $job->save();
         $company->total_jobs += 1;
         $company->save();
+
+        if($company->city)
+        {
+            $city = $company->city;
+            $city->total_jobs += 1;
+            $city->save();
+        }
 
         Session::flash('success', 'Thêm mới thành công');
         if (Session::get('user')->role == 'admin')
@@ -137,7 +144,6 @@ class JobController extends Controller
     public function update(JobRequest $request, $id)
     {
         $job = Job::findOrFail($id);
-        $job->company_id = $request->input('company_id');
         $job->job_title = $request->input('job_title');
         $job->job_description = $request->input('job_description');
         $job->skill_id = implode(',',$request->skill_id);
@@ -175,6 +181,13 @@ class JobController extends Controller
         $company = $job->company;
         $company->total_jobs -= 1;
         $company->save();
+
+        if($company->city)
+        {
+            $city = $company->city;
+            $city->total_jobs += 1;
+            $city->save();
+        }
 
         Session::flash('success', 'Xóa thành công');
         return redirect()->back();

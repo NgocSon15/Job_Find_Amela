@@ -27,7 +27,7 @@
                 <div class="wrapper">
                     <form method="POST" class="row" action="{{ route('frontend.job.store') }}" enctype="multipart/form-data">
                         @csrf
-                        <input type="text" name="company_id" value="@if(Session::has('user') && Session::get('user')->role == 'company'){{ Session::get('user')->company->id }}@else{{1}}@endif" hidden>
+                        <input type="text" name="company_id" value="{{ Session::get('user')->company->id }}" hidden>
                         <div class="col-lg-6">
                             <div class="form-row" style="display: block;">
                                 <div class="name">Job Title <span style="color: #e83e8c">*</span></div>
