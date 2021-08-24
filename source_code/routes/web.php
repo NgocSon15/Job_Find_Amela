@@ -29,9 +29,13 @@ Route::get('/job_detail/{id}', [HomeController::class, 'getDetailJob'])->name('d
 Route::get('/', [HomeController::class, 'getHome'])->name('frontend.home');
 Route::get('/search', [HomeController::class, 'homeSearch'])->name('frontend.search');
 Route::get('/user-profile', [HomeController::class, 'getProfile'])->name('frontend.user-profile');
-Route::post('/user-profile' ,[HomeController::class, 'updateProfileUser'])->name('frontend.user-profile.update');
-//Route::get('/apply-now', [JobController::class, 'showApplyNow'])->name('frontend.apply-now');
+Route::post('/user-profile' ,[HomeController::class, 'updateProfile'])->name('frontend.user-profile.update');
+
 Route::post('/apply-now' ,[JobController::class, 'ApplyNow'])->name('frontend.apply');
+Route::post('/user-profile/exp' ,[HomeController::class, 'addExp'])->name('frontend.exp');
+Route::get('/user-profile/{id}/detail-exp', [HomeController::class, 'getExp'])->name('frontend.getExp');
+Route::post('/user-profile/{id}/detail-exp', [HomeController::class, 'updateExp'])->name('frontend.updateExp');
+Route::get('/user-profile/{id}/delete-exp', [HomeController::class, 'destroyExp'])->name('frontend.deleteExp');
 
 Route::prefix('job')->group(function() {
     Route::get('/', [JobController::class, 'feCreate'])->name('frontend.job.create')->middleware('checkLogin');

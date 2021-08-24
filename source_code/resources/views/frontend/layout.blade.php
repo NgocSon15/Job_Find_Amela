@@ -25,6 +25,11 @@
     <link rel="stylesheet" href="{{ asset('jobfinderportal-master/assets/css/register.css') }}">
     <link rel="stylesheet" href="{{ asset('jobfinderportal-master/assets/css/style.css') }}">
     @yield('link')
+    <style>
+        #display_none {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -67,7 +72,7 @@
                                                 @if(session()->get('user')->role != 'customer')
                                                     <li><a href="{{ route('frontend.job.create') }}">Add New Job</a></li>
                                                 @endif
-                                                @if(session()->get('user')->role == 'admin')    
+                                                @if(session()->get('user')->role == 'admin')
                                                     <li><a href="{{route('admin.home')}}">Admin</a></li>
                                                 @endif
                                             @else

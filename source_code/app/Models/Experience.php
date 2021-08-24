@@ -10,4 +10,5 @@ class Experience extends Model
     use HasFactory;
     protected $table = 'experiences';
     public $timestamps = false;
+    protected $primaryKey = 'exp_id';
 }
