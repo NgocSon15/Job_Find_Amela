@@ -129,19 +129,19 @@ class HomeController extends Controller
     public function getProfile()
     {
 //        dd(session()->get('user')->experience->exp_year);
-        $id = session()->get('user')->user_id;
-        if (session()->get('user')->role == 'customer')
-        {
-            $exp = Experience::where('id', $id)->firstOrFail();
-
-            return view('frontend.user.user-profile', compact('exp'));
+//        $id = session()->get('user')->user_id;
+        if (session()->get('user')->role == 'customer') {
+            $id = session()->get('user')->user_id;
+            $exp = Experience::where('id', $id)->get();
+            $customer = Customer::where('user_id', $id)->firstOrFail();
+            return view('frontend.user.user-profile', compact('exp', 'customer'));
         }
+            $cities = City::all();
+            $companySizes = CompanySize::all();
+            $fields = Field::all();
+            $company = session()->get('user')->company;
+            return view('frontend.user.company-information', compact('cities', 'companySizes', 'fields', 'company'));
 
-        $cities = City::all();
-        $companySizes = CompanySize::all();
-        $fields = Field::all();
-        $company = session()->get('user')->company;
-        return view('frontend.user.company-information', compact('cities', 'companySizes', 'fields', 'company'));
 
 
     }
