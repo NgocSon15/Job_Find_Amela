@@ -5,6 +5,7 @@
 @section('link')
     <link rel="stylesheet" href="{{ asset('jobfinderportal-master/assets/css/responsive.css') }}">
     <link rel="stylesheet" href="{{ asset('jobfinderportal-master/assets/css/select-skill.css') }}">
+    <link rel="stylesheet" href="{{ asset('adminlte/plugins/summernote/summernote-bs4.min.css') }}">
 @endsection
 @section('content')
     @if(session()->get('user')->company->status == 1)
@@ -249,7 +250,7 @@
                                 <div class="name">Description <span style="color: #e83e8c">*</span></div>
                                 <div class="value">
                                     <div class="input-group">
-                                        <textarea class="single-textarea" name="job_description" placeholder="Description" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Description'" required="">{{ old('job_description') }}</textarea>
+                                        <textarea id="summernote" class="single-textarea" name="job_description" placeholder="Description" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Description'" required="">{{ old('job_description') }}</textarea>
                                         @if($errors->has('job_description'))
                                             <p class="text-danger">{{ $errors->first('job_description') }}</p>
                                         @endif
@@ -354,4 +355,10 @@
 @endsection
 @section('script')
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="{{ asset('adminlte/plugins/summernote/summernote-bs4.min.js') }}"></script>
+<script>
+    $(document).ready(function() {
+        $('#summernote').summernote();
+    });
+</script>
 @endsection

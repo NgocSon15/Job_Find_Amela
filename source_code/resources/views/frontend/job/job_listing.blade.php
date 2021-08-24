@@ -166,7 +166,7 @@
                                                 <h4>{{$val->job_title}}</h4>
                                             </a>
                                             <ul>
-                                                <li>Skill: 
+                                                <li>Skill:
                                                     @foreach(explode(',',$val->skill_id) as $skill_id)
                                                         {{ $skills->find($skill_id)->skill }}
                                                         @if($loop->index == 1)
@@ -174,7 +174,9 @@
                                                         @endif
                                                     @endforeach
                                                 </li>
-                                                <li><i class="fas fa-map-marker-alt"></i>{{ $val->company->city->city_name}}</li>
+                                                @if($val->company->city)
+                                                    <li><i class="fas fa-map-marker-alt"></i>{{ $val->company->city->city_name}}</li>
+                                                @endif
                                                 @if(session()->has('user'))
                                                     <li>${{ number_format($val->min_salary) }} - ${{ number_format($val->max_salary) }}</li>
                                                 @else

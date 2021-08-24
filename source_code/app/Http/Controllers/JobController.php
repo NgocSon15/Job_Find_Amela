@@ -95,7 +95,7 @@ class JobController extends Controller
         $job->gender = $request->input('gender');
         $job->quantity = $request->input('quantity');
         $job->save();
-        $job->company->total_jobs++;
+        $job->company->total_jobs += 1;
 
         Session::flash('success', 'Thêm mới thành công');
         if (Session::get('user')->role == 'admin')

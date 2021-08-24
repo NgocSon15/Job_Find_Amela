@@ -202,7 +202,7 @@
                 <div class="form-group">
                     <label for="description">Mô tả:</label>
                     <br>
-                    <textarea name="description" class="form-control">{{ old('description') ?? $company->description }}</textarea>
+                    <textarea name="description" id="summernote" class="form-control">{{ old('description') ?? $company->description }}</textarea>
 
                     @if($errors->has('description'))
                         @foreach($errors->get('description') as $message)
@@ -227,6 +227,11 @@
     <script>
         $(function () {
             bsCustomFileInput.init();
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#summernote').summernote();
         });
     </script>
 @endsection

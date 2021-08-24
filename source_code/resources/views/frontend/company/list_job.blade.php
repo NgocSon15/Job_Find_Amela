@@ -60,7 +60,9 @@
                                                                 @endif
                                                             @endforeach
                                                         </li>
+                                                        @if($val->company->city)
                                                         <li><i class="fas fa-map-marker-alt"></i>{{ $val->company->city->city_name}}</li>
+                                                        @endif
                                                     @if(session()->has('user'))
                                                         <li>${{ number_format($val->min_salary) }} - ${{ number_format($val->max_salary) }}</li>
                                                     @else

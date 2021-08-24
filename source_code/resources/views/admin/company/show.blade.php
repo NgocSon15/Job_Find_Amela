@@ -19,9 +19,10 @@
 
                     <h3 class="profile-username text-center">{{ $company->fullname }}</h3>
 
-                    <p class="text-muted text-center">{{ $company->field ? $company->field->field_name : null }}</p>
-
                     <ul class="list-group list-group-unbordered mb-3">
+                        <li class="list-group-item">
+                            <b>Chuyên ngành</b> <a class="float-right">{{ $company->field ? $company->field->field_name : null }}</a>
+                        </li>
                         <li class="list-group-item">
                             <b>Quy mô nhân viên</b> <a class="float-right">{{ $company->companySize ? $company->companySize->size : null }}</a>
                         </li>
