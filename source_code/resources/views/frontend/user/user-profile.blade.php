@@ -3,26 +3,6 @@
     User profile
 @endsection
 @section('content')
-
-{{--        <div class="col-md-3 ">--}}
-{{--            <div class="list-group ">--}}
-{{--                <a href="#" class="list-group-item list-group-item-action active">Dashboard</a>--}}
-{{--                <a href="#" class="list-group-item list-group-item-action">User Management</a>--}}
-{{--                <a href="#" class="list-group-item list-group-item-action">Used</a>--}}
-{{--                <a href="#" class="list-group-item list-group-item-action">Enquiry</a>--}}
-{{--                <a href="#" class="list-group-item list-group-item-action">Dealer</a>--}}
-{{--                <a href="#" class="list-group-item list-group-item-action">Media</a>--}}
-{{--                <a href="#" class="list-group-item list-group-item-action">Post</a>--}}
-{{--                <a href="#" class="list-group-item list-group-item-action">Category</a>--}}
-{{--                <a href="#" class="list-group-item list-group-item-action">New</a>--}}
-{{--                <a href="#" class="list-group-item list-group-item-action">Comments</a>--}}
-{{--                <a href="#" class="list-group-item list-group-item-action">Appearance</a>--}}
-{{--                <a href="#" class="list-group-item list-group-item-action">Reports</a>--}}
-{{--                <a href="#" class="list-group-item list-group-item-action">Settings</a>--}}
-
-
-{{--            </div>--}}
-{{--        </div>--}}
 <div class="container">
 <div class="row">
         <div class="col-md-12 ">
@@ -30,7 +10,96 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <h4>Your Experience</h4>
+                            <h2 class="text-center">Your Profiles</h2>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            @if (Session::has('success_profile'))
+                                <p class="text-success">
+                                    <i class="fa fa-check" aria-hidden="true"></i>
+                                    {{ Session::get('success_profile') }}
+                                </p>
+                            @endif
+
+
+                                <form class="row g-3 needs-validation" novalidate action="{{route('frontend.user-profile.update')}}" method="post">
+                                    @csrf
+
+
+                                    <div class="col-md-6 position-relative">
+                                        <label for="validationTooltip01" class="form-label">Họ Và Tên</label>
+                                        <input type="text" class="form-control" name="name" id="validationTooltip01" value="{{session()->get('user')->fullname}}" disabled>
+                                    </div>
+                                    <div class="col-md-6 position-relative">
+                                        <label for="validationTooltip02" class="form-label">Ngày Tháng Năm Sinh</label>
+                                        <input type="date" class="form-control" name="birth" id="validationTooltip02" value="{{$customer->birth}}" required>
+                                        @if($errors->has('birth'))
+                                            <p class="text-danger">{{ $errors->first('birth') }}</p>
+                                        @endif
+                                    </div>
+
+                                    <div class="col-md-6 position-relative">
+                                        <label for="validationTooltipUsername" class="form-label">Username</label>
+                                        <div class="input-group has-validation">
+                                            <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
+                                            <input type="text" class="form-control" name="email" id="validationTooltipUsername" aria-describedby="validationTooltipUsernamePrepend" value="{{session()->get('user')->email}}">
+                                            @if($errors->has('email'))
+                                                <p class="text-danger">{{ $errors->first('email') }}</p>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 position-relative">
+                                        <label for="validationTooltip03" class="form-label">Số điện thoại</label>
+                                        <input type="text" class="form-control" name="phone" id="validationTooltip03" value="{{$customer->phone}}">
+                                        @if($errors->has('phone'))
+                                            <p class="text-danger">{{ $errors->first('phone') }}</p>
+                                        @endif
+                                    </div>
+
+                                    <div class="col-md-6 position-relative">
+                                        <label for="validationTooltip03" class="form-label">Địa Chỉ</label>
+                                        <input type="text" class="form-control" name="add" id="validationTooltip03" value="{{$customer->address}}">
+
+                                    </div>
+                                    <div class="col-md-3 position-relative">
+                                        <label for="validationTooltip04" class="form-label">Giới Tính</label>
+                                        <select class="form-select" id="validationTooltip04" name="sex">
+                                            <option value="1" @if($customer->sex == 1)
+                                                {{"selected"}}
+                                                @endif
+                                                >Nam</option>
+                                            <option value="0" @if($customer->sex == 0)
+                                                {{"selected"}}
+                                                @endif>Nữ</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3 position-relative">
+                                        <label for="validationTooltip04" class="form-label">Tình trạng hôn nhân</label>
+                                        <select class="form-select" id="validationTooltip04" name="marry">
+                                            <option value="0" @if($customer->marry == 0)
+                                                {{"selected"}}
+                                                @endif>Chưa kết hôn</option>
+                                            <option value="1" @if($customer->marry == 1)
+                                                {{"selected"}}
+                                                @endif>Đã kết hôn</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-12 pt-50">
+                                        <button class="btn" type="submit">Update</button>
+                                    </div>
+                                </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2 class="text-center">Your Experience</h2>
                             <hr>
                         </div>
                     </div>
@@ -42,74 +111,113 @@
                                     {{ Session::get('success') }}
                                 </p>
                             @endif
-                            <form action="{{route('frontend.user-profile.update')}}" method="post">
+                            @if(count($exp) == 0)
+                                <p class="text-center">Bạn Chưa cập nhật kinh nghiệm của mình</p>
+                            @else
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Từ</th>
+                                    <th scope="col">Đến</th>
+                                    <th scope="col">Công Ty</th>
+                                    <th scope="col">Chức Vụ</th>
+                                    <th scope="col"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($exp as $key=>$val)
+                                    <tr>
+                                        <th scope="row">{{++$key}}</th>
+                                        <td>{{$val->since}}</td>
+                                        <td>{{$val->to_date}}</td>
+                                        <td>{{$val->company}}</td>
+                                        <td>{{$val->position}}</td>
+                                        <td>
+                                            <a href="{{route('frontend.getExp', $val->exp_id)}}" class="genric-btn primary-border small" >Chi tiết</a>
+                                            <a href="{{route('frontend.deleteExp', $val->exp_id)}}" class="genric-btn primary-border small" onclick="return confirm('Bạn chắc chắn muốn xóa kinh nghiệm')">Xóa</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                            @endif
+
+
+                        </div>
+                    </div>
+                    <div class="col-12 pt-50">
+                        <button class="btn" onclick="myFunction()" >Thêm Kinh nghiệm</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card" id="display_none">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2 class="text-center">Add your Experience</h2>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+
+
+                            <form class="row g-3 needs-validation" novalidate action="{{route('frontend.exp')}}" method="post">
                                 @csrf
-                                <div class="form-group row">
-                                    <label for="username" class="col-4 col-form-label">Email*</label>
-                                    <div class="col-8">
-                                        <input id="username" name="email" placeholder="Username" class="form-control here"  type="text" value="{{session()->get('user')->email}}" disabled>
-                                    </div>
+                                <div class="col-md-6 position-relative">
+                                    <label for="validationTooltip01" class="form-label">Chức Danh *</label>
+                                    <input type="text" class="form-control" id="validationTooltip01" value="" name="title">
+                                    @if($errors->has('title'))
+                                        <p class="text-danger">{{ $errors->first('title') }}</p>
+                                    @endif
+                                </div>
+                                <div class="col-md-6 position-relative">
+                                    <label for="validationTooltip02" class="form-label">Công Ty *</label>
+                                    <input type="text" class="form-control" id="validationTooltip02" value="" name="company">
+                                    @if($errors->has('company'))
+                                        <p class="text-danger">{{ $errors->first('company') }}</p>
+                                    @endif
+
+                                </div>
+                                <div class="col-md-6 position-relative">
+                                    <label for="validationTooltip03" class="form-label">Từ</label>
+                                    <input type="date" class="form-control" id="validationTooltip03" name="from">
+                                </div>
+                                <div class="col-md-6 position-relative">
+                                    <label for="validationTooltip03" class="form-label">Đến</label>
+                                    <input type="date" class="form-control" id="validationTooltip03" name="to">
+                                </div>
+                                <div class="col-12">
+                                    <label for="exampleFormControlTextarea1" class="form-label">Mô tả </label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="content_a"></textarea>
+                                </div>
+                                <div class="col-12 pt-50">
+                                    <button class="btn" type="submit">Add</button>
                                 </div>
 
-                                <div class="form-group row">
-                                    <label for="username" class="col-4 col-form-label">User Name*</label>
-                                    <div class="col-8">
-                                        <input id="username" name="name" placeholder="Username" class="form-control here"  type="text" value="{{session()->get('user')->fullname}}" disabled>
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label for="username" class="col-4 col-form-label">Phone number*</label>
-                                    <div class="col-8">
-                                        <input id="username" name="phone" placeholder="Username" class="form-control here"  type="text" value="{{session()->get('user')->customer->phone}}" disabled>
-                                    </div>
-                                </div>
-
-
-
-{{--                                <div class="form-group row">--}}
-{{--                                    <label for="select" class="col-4 col-form-label">Experience year</label>--}}
-{{--                                    <div class="col-8">--}}
-{{--                                        <select id="select" name="exp" class="form-select" aria-label="Default select example">--}}
-{{--                                            <option value="0" @if($exp->exp_year == 0)--}}
-{{--                                                {{"selected"}}--}}
-{{--                                                @endif>No experience</option>--}}
-{{--                                            <option value="1" @if($exp->exp_year == 1)--}}
-{{--                                                {{"selected"}}--}}
-{{--                                                @endif>1 year</option>--}}
-{{--                                            <option value="2" @if($exp->exp_year == 2)--}}
-{{--                                                {{"selected"}}--}}
-{{--                                                @endif>2 year</option>--}}
-{{--                                            <option value="3" @if($exp->exp_year >= 3)--}}
-{{--                                                {{"selected"}}--}}
-{{--                                                @endif>3 year or more</option>--}}
-{{--                                        </select>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-
-                                <div class="form-group row">
-                                    <label for="publicinfo" class="col-4 col-form-label">Working Process</label>
-                                    <div class="col-8">
-                                        <input id="username" name="process" placeholder="Username" class="form-control here"  type="text" value="{{$exp->content}}">
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" name="process">{{$exp->content}}</textarea>
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <div class="offset-4 col-8">
-                                        <button name="submit" type="submit" class="btn ">Update My Experience</button>
-                                    </div>
-                                </div>
                             </form>
+
+
                         </div>
                     </div>
 
                 </div>
             </div>
+
         </div>
+
+
 </div>
 </div>
+
+
 
 
 
 @endsection
+<script>
+    function myFunction() {
+        document.getElementById("display_none").style.display = "block";
+    }
+</script>

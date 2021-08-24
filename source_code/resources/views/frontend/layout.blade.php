@@ -25,6 +25,11 @@
     <link rel="stylesheet" href="{{ asset('jobfinderportal-master/assets/css/register.css') }}">
     <link rel="stylesheet" href="{{ asset('jobfinderportal-master/assets/css/style.css') }}">
     @yield('link')
+    <style>
+        #display_none {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
