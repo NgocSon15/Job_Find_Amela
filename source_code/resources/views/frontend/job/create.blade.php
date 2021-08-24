@@ -153,19 +153,21 @@
                                     @endif
                                 </div>
                             </div>
+                        </div>
+                        <div class="col-lg-6">
                             <div class="form-row" style="display: block;">
                                 <div class="name">Skill <span style="color: #e83e8c">*</span></div>
                                 <div class="value" id="skill">
-                                     <select name="skill_id[]" id="skill_id" style="width: 100%;" multiple="multiple">
+                                    <select name="skill_id[]" id="skill_id" style="width: 100%;" multiple="multiple">
                                         @foreach($skills as $skill)
 
-                                        <option value="{{$skill->skill_id}}"
+                                            <option value="{{$skill->skill_id}}"
                                             @if(old('skill_id'))
                                                 @if(in_array($skill->skill_id, old('skill_id')))
-                                                {{'selected'}}
+                                                    {{'selected'}}
+                                                    @endif
                                                 @endif
-                                            @endif
-                                        >{{$skill->skill}}</option>
+                                            >{{$skill->skill}}</option>
                                         @endforeach
                                     </select>
                                     @if($errors->has('skill_id'))
@@ -173,8 +175,6 @@
                                     @endif
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-6">
                             <div class="form-row" style="display: block;">
                                 <div class="name">Year Of Experience <span style="color: #e83e8c">*</span></div>
                                 <div class="value">
@@ -242,27 +242,6 @@
                                 </div>
                             </div>
                             <div class="form-row" style="display: block;">
-                                <div class="name">Description <span style="color: #e83e8c">*</span></div>
-                                <div class="value">
-                                    <div class="input-group">
-                                        <textarea id="job_description" class="single-textarea" name="job_description" placeholder="Description" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Description'" required="">{{ old('job_description') }}</textarea>
-                                        @if($errors->has('job_description'))
-                                            <p class="text-danger">{{ $errors->first('job_description') }}</p>
-                                        @endif
-                                        <script> window.onload = function() {
-                                                $('#skill_id').select2();
-                                                $('#job_description').summernote();
-                                                var btn = document.querySelectorAll('.note-btn-group button')
-                                                for(var i = 0; i < btn.length; i++){
-                                                    btn[i].classList.remove('btn');
-                                                }
-
-                                            };
-                                        </script>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-row" style="display: block;">
                                 <div class="name">Quantity <span style="color: #e83e8c">*</span></div>
                                 <div class="value">
                                     <div class="input-group">
@@ -319,6 +298,27 @@
                                     @if($errors->has('gender'))
                                         <p class="text-danger">{{ $errors->first('gender') }}</p>
                                     @endif
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row" style="display: block; padding-left: 15px; width: 100%">
+                            <div class="name">Description <span style="color: #e83e8c">*</span></div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <textarea id="job_description" class="single-textarea" name="job_description" placeholder="Description" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Description'" required="">{{ old('job_description') }}</textarea>
+                                    @if($errors->has('job_description'))
+                                        <p class="text-danger">{{ $errors->first('job_description') }}</p>
+                                    @endif
+                                    <script> window.onload = function() {
+                                            $('#skill_id').select2();
+                                            $('#job_description').summernote();
+                                            var btn = document.querySelectorAll('.note-btn-group button')
+                                            for(var i = 0; i < btn.length; i++){
+                                                btn[i].classList.remove('btn');
+                                            }
+
+                                        };
+                                    </script>
                                 </div>
                             </div>
                         </div>
