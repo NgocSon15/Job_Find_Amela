@@ -155,9 +155,13 @@ Trang chủ
                                         </a>
                                         <ul>
                                             <li>Skill: 
-                                                {{$skills->find(explode(',',$job->skill_id)[0])->skill}},
-                                                {{$skills->find(explode(',',$job->skill_id)[1])->skill}}
-                                            </li>
+                                                    @foreach(explode(',',$job->skill_id) as $skill_id)
+                                                        {{ $skills->find($skill_id)->skill }}
+                                                        @if($loop->index == 1)
+                                                        @break
+                                                        @endif
+                                                    @endforeach
+                                                </li>
                                             <li><i class="fas fa-map-marker-alt"></i>{{ $job->work_location}}</li>
                                             @if(session()->has('user'))
                                             <li>${{ number_format($job->min_salary) }} - ${{ number_format($job->max_salary) }}</li>
