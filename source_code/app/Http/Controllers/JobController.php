@@ -169,7 +169,7 @@ class JobController extends Controller
         $job->company->total_jobs--;
 
         Session::flash('success', 'Xóa thành công');
-        return redirect()->route('admin.job.index');
+        return redirect()->back();
     }
 
     public function search(Request $request)
