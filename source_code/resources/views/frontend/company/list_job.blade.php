@@ -40,7 +40,7 @@
                                 <!-- Count of Job list End -->
                                 <!-- single-job-content -->
                                 @foreach($jobs as $key => $val)
-                                    <div class="single-job-items mb-30">
+                                    <div class="single-job-items mb-30" style = "width: 850px; margin: 10px auto">
                                         <div class="d-flex" style="width: 100%">
                                             <div class="job-items" style="width: 100%">
                                                 <div class="company-img">
@@ -76,6 +76,8 @@
                                                 <span>{{$val->created_at->diffForHumans($now)}}</span>
                                             </div>
                                         </div>
+                                        @if(session()->has('user'))
+                                        @if(session()->get('user')->role == 'company')
                                         <div style="margin-top: 7px;">
                                             <a href="{{ route('frontend.job.edit', $val->id) }}" style="color: #38a4ff;font-weight:600" >Edit</a>
                                             |
@@ -91,6 +93,8 @@
                                                     @endif
                                                 </span>
                                         </div>
+                                        @endif
+                                        @endif
                                     </div>
                                 @endforeach
                                 <script>

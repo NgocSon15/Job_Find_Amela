@@ -54,6 +54,7 @@ class HomeController extends Controller
                                         ['job_title', 'like', $newKeyWord],
                                     ])
                                     ->orWhere([
+                                        ['category_id', 'like', "%$category_id%"],
                                         ['city_id', 'like', "%$city_id%"],
                                         ['fullname', 'like', $newKeyWord],
                                     ])
