@@ -15,7 +15,9 @@
     display: -webkit-box;
     -webkit-box-orient: vertical;
  }
-
+ .job-tittle{
+    flex: 1;
+}
  .job-tittle.job-tittle2{
      flex: 1;
      padding-right: 15px;

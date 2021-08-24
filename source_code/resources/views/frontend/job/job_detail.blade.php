@@ -25,7 +25,7 @@
             <div class="container">
                 <div class="row justify-content-between">
                     <!-- Left Content -->
-                    <div class="col-xl-7 col-lg-8">
+                    <div class="col-xl-8 col-lg-8">
                         <!-- job single -->
                         <div class="single-job-items mb-50">
                             <div class="job-items">
@@ -39,11 +39,14 @@
                                     </a>
                                     <ul>
                                         <li>Skill: 
-                                                @foreach(explode(',',substr($job->skill_id, 0,3)) as $skill_id)
-                                                    {{ $skills->find($skill_id)->skill }}
-                                                @endforeach
+                                            @foreach(explode(',',$job->skill_id) as $skill_id)
+                                                {{ $skills->find($skill_id)->skill }}
+                                                @if($loop->index == 1)
+                                                @break
+                                                @endif
+                                            @endforeach
                                         </li>
-                                        <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
+                                        <li><i class="fas fa-map-marker-alt"></i>{{ $job->work_location}}</li>
                                         @if(session()->has('user'))
                                         <li>${{number_format($job->min_salary)}} - ${{number_format($job->max_salary)}}</li>
                                         @else
@@ -74,8 +77,8 @@
                                 <h4>Job Overview</h4>
                             </div>
                             <ul>
-                                <li>Posted date : <span>12 Aug 2019</span></li>
-                                <li>Location : <span>{{$job->work_location}}</span></li>
+                                <li>Posted date : <span>{{ date('Y-m-d',strtotime($job->created_at))}}</span></li>
+                                <li>Location: <span style="margin-left: 5px">{{$job->work_location}}</span></li>
                                 <li>Vacancy : <span>{{$job->quantity}}</span></li>
                                 @if($job->job_type == 1)
                                     <li>Job nature : <span>Full time</span></li>
@@ -90,7 +93,7 @@
                                     <span> <a href="{{ route('login') }}" style="color: #635c5c"> Đăng nhập để xem </a></span>
                                     @endif
                                 </li>
-                                <li>Application date : <span>{{$job->expiration}}</span></li>
+                                <li>Application date : <span class="text-danger">{{$job->expiration}}</span></li>
                             </ul>
                             <div class="apply-btn2">
                                 <a href="#" class="btn">Apply Now</a>
