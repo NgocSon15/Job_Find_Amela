@@ -247,4 +247,22 @@ class CompanyController extends Controller
         $job->save();
         return 'success';
     }
+
+    public function suggestToAdmin(Request $request)
+    {
+        $job_id = $request->id;
+        $job = Job::findOrFail($job_id);
+        $job->suggestion_to_admin = 1;
+        $job->is_suggest = 2;
+        $job->save();
+    }
+    public function delSuggestToAdmin(Request $request)
+    {
+        $job_id = $request->id;
+        $job = Job::findOrFail($job_id);
+        $job->suggestion_to_admin = null;
+        $job->is_suggest = 0;
+        $job->save();
+    }
+
 }

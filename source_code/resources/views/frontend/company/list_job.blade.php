@@ -92,6 +92,16 @@
                                                     <i class="fas fa-lock" onclick="openJob({{$val->id}})" data-id="{{$val->id}}" id="lock-{{$val->id}}" title="locked" style="cursor: pointer; color: #ffc107;"></i>
                                                     @endif
                                                 </span>
+                                            |
+                                            <span class="icon__feature-suggest job{{$val->id}}">
+                                            @if($val->is_suggest == 0)
+                                            <i class="fas fa-check-circle" onclick="suggestToAdmin({{$val->id}})" id="suggest-{{$val->id}}" data-id="{{$val->id}}" title="Not suggest" style="cursor: pointer;font-size: 15px;"></i>
+                                            @elseif($val->is_suggest == 1)
+                                            <i class="fas fa-check-circle" id="notSuggest-{{$val->id}}" data-id="{{$val->id}}" title="Suggested" style="cursor: pointer; color: #28a745;font-size: 15px;"></i>
+                                            @else($val->is_suggest == 2)
+                                            <i class="fas fa-check-circle" onclick="delSuggestToAdmin({{$val->id}})" id="notSuggest-{{$val->id}}" data-id="{{$val->id}}" title="Sent to admin" style="cursor: pointer; color: #0072ff;font-size: 15px;"></i>
+                                            @endif
+                            </span>
                                         </div>
                                         @endif
                                         @endif
@@ -100,7 +110,7 @@
                                 <script>
                                     function openJob(id) {
                                         $.ajax({
-                                            'url': '{{route("admin.company.unlockJob")}}?id='+id,
+                                            'url': '{{route("frontend.company.unlockJob")}}?id='+id,
                                         }).done(function (data){
                                             if(data == 'success'){
                                                 document.querySelector('.icon__feature-lock.job' + id).style = 'color: #4eaf56'
@@ -113,7 +123,7 @@
 
                                     function lockJob(id) {
                                         $.ajax({
-                                            'url': '{{route("admin.company.lockJob")}}?id='+id,
+                                            'url': '{{route("frontend.company.lockJob")}}?id='+id,
                                         }).done(function (data){
                                             if(data == 'success'){
                                                 document.querySelector('.icon__feature-lock.job' + id).style = 'color: #435052'
@@ -122,6 +132,25 @@
 
                                         });
                                     }
+
+                                    function suggestToAdmin(id){
+                                        $.ajax({
+                                            'url': '{{route("frontend.company.sentSuggest")}}?id='+id,
+                                        }).done(function (){
+                                            document.querySelector('.icon__feature-suggest.job' + id).innerHTML = '<i class="fas fa-check-circle" onclick="delSuggestToAdmin('+id+')" id="suggest-'+id+'" data-id="'+id+'" title="Sent to admin" style="cursor: pointer;color: #0072ff"></i>'
+
+                                        });
+                                    }
+                                    function delSuggestToAdmin(id){
+                                        $.ajax({
+                                            'url': '{{route("frontend.company.delSentSuggest")}}?id='+id,
+                                        }).done(function (){
+                                            document.querySelector('.icon__feature-suggest.job' + id).innerHTML = '<i class="fas fa-check-circle" onclick="suggestToAdmin('+id+')" id="suggest-'+id+'" data-id="'+id+'" title="Sent to admin" style="cursor: pointer;"></i>'
+
+                                        });
+                                    }
+
+
                                 </script>
                             </div>
                         </section>

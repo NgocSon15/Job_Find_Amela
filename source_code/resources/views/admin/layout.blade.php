@@ -100,6 +100,11 @@
                                 </a>
                             </li>
                             <li class="nav-item">
+                                <a href="{{ route('admin.list.suggest') }}" class="nav-link @yield('active4')">
+                                    <p>Doanh nghiệp đề xuất</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="{{ route('admin.config.index') }}" class="nav-link @yield('active3')">
                                     <p>Cấu hình</p>
                                 </a>
