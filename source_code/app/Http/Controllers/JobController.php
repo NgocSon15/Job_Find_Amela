@@ -19,7 +19,7 @@ class JobController extends Controller
     public function index()
     {
         $cities = City::all();
-        $jobs = Job::paginate(5);
+        $jobs = Job::orderBy('id', 'desc')->paginate(20);
         return view('admin.job.list', compact('jobs', 'cities'));
     }
 

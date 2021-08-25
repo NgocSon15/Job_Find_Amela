@@ -75,11 +75,11 @@
                                 @endif
                             </span>
 
-                            <span class="icon__feature-edit">
+                            <!-- <span class="icon__feature-edit">
                                 <a href="{{route('admin.job.edit', $job->id)}}">
                                     <i class="far fa-edit" data-id="{{$job->id}}" title="detail" style="cursor: pointer"></i>
                                 </a>
-                            </span>
+                            </span> -->
                         </div>
                         <!-- <a href="{{ route('admin.job.edit', $job->id) }}" class="btn-sm btn-secondary mr-1">khóa</a>
                         <a href="{{ route('admin.job.delete', $job->id) }}" class="btn-sm btn-s mr-1">đề xuất</a>
