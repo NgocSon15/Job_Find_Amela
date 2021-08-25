@@ -32,7 +32,7 @@
             <thead>
                 <tr>
                     <th style="width: 10px">#</th>
-                    <th>Tiêu đề</th>
+                    <th class="text-center">Tiêu đề</th>
                     <th>Số lượng</th>
                     <th>Vị trí</th>
                     <th>Kinh nghiệm</th>
@@ -45,7 +45,7 @@
                 @foreach($jobs as $key => $job)
                 <tr>
                     <td>{{ $job->id }}</td>
-                    <td>{{ $job->job_title }}</td>
+                    <td style="max-width: 320px;">{{ $job->job_title }}</td>
                     <td>{{ $job->quantity}} </td>
                     <td>{{ $job->position->position_name }}</td>
                     @if($job->experiences > 0)
@@ -129,7 +129,7 @@
         $.ajax({
             'url': '{{route("admin.job.suggest")}}?id='+id,
         }).done(function (){
-            document.querySelector('.icon__feature-suggest.job' + id).innerHTML = '<i class="fas fa-check-circle" onclick="notSuggestJob('+id+')" id="suggest-'+id+'" data-id="'+id+'" title="Not suggest" style="cursor: pointer;color: #28a745"></i>'
+            document.querySelector('.icon__feature-suggest.job' + id).innerHTML = '<i class="fas fa-check-circle" onclick="notSuggestJob('+id+')" id="suggest-'+id+'" data-id="'+id+'" title="Suggested" style="cursor: pointer;color: #28a745"></i>'
 
         });
     }
