@@ -1,37 +1,16 @@
 @extends('admin.layout')
 
 @section('title', 'Job List')
-@section('active1', 'active')
-@section('content-name', 'Danh sách tin tuyển dụng')
+@section('active4', 'active')
+@section('content-name', 'Danh sách tin đề xuất của Company')
 @section('content')
-<div class="col-12">
-    @if (Session::has('success'))
-    <p class="text-success">
-        <i class="fa fa-check" aria-hidden="true"></i>
-        {{ Session::get('success') }}
-    </p>
-    @endif
-</div>
-<div class="" style="width: 50%">
-    <form class="navbar-form navbar-left" action="{{ route('admin.job.search') }}">
-        <div class="d-flex">
-                <input type="text" class="form-control" placeholder="Search tiêu đề hoặc keyword" name="keyWord">
-                <select name="city_id" id="" class="form-control" style="width: 40%">
-                    <option value="">City: all</option>
-                    @foreach($cities as $city)
-                    <option value="{{ $city->city_id}}">{{ $city->city_name }}</option>
-                    @endforeach
-                </select>
-            <button  type="submit" class="btn btn-primary mb-3 ml-1">Search</button>
-        </div>
-    </form>
-</div>
+<div style="margin-top: 30px"></div>
 <div class="card">
     <div class="card-body p-0">
         <table class="table table-striped table-hover">
             <thead>
                 <tr>
-                    <th style="width: 10px">#</th>
+                    <th style="width: 10px">ID</th>
                     <th class="text-center">Tiêu đề</th>
                     <th>Số lượng</th>
                     <th>Vị trí</th>
@@ -68,9 +47,9 @@
                             </span>
 
                             <span class="icon__feature-suggest job{{$job->id}}">
-                                @if($job->is_suggest == 0)
-                                <i class="fas fa-check-circle" onclick="suggestJob({{$job->id}})" id="suggest-{{$job->id}}" data-id="{{$job->id}}" title="Not suggest" style="cursor: pointer;"></i>
-                                @else
+                                @if($job->is_suggest == 2)
+                                <i class="fas fa-check-circle" onclick="suggestJob({{$job->id}})" id="notSuggest-{{$job->id}}" data-id="{{$job->id}}" title="Company suggest job" style="cursor: pointer; color: #0072ff;font-size: 15px;"></i>
+                                @elseif($job->is_suggest == 1)
                                 <i class="fas fa-check-circle" onclick="notSuggestJob({{$job->id}})" id="notSuggest-{{$job->id}}" data-id="{{$job->id}}" title="Suggested" style="cursor: pointer; color: #28a745"></i>
                                 @endif
                             </span>

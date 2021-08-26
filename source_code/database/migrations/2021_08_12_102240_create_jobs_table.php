@@ -34,6 +34,7 @@ class CreateJobsTable extends Migration
             $table->tinyInteger('is_hot')->default(0);
             $table->tinyInteger('is_suggest')->default(0);
             $table->integer('view')->default(0);
+            $table->tinyInteger('suggestion_to_admin')->nullable();
             $table->string('reference_ids')->nullable();
             $table->timestamps();
         });

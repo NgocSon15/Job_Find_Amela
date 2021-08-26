@@ -217,6 +217,12 @@ class JobController extends Controller
         return view('admin.job.list', compact('jobs', 'cities'));
     }
 
+    public function showListSuggest()
+    {
+        $cities = City::all();
+        $jobs = Job::whereNotNull('suggestion_to_admin')->orderBy('updated_at', 'desc')->paginate(20);
+        return view('admin.job.list-suggest', compact('jobs', 'cities'));
+    }
 
 
     public function ApplyNow(Request $request)

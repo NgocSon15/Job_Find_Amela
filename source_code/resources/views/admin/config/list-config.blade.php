@@ -62,6 +62,10 @@
                     p.classList.add('text-danger');
                     p.innerHTML = data.responseJSON.errors.content[0];
                     content[id-1].parentElement.appendChild(p);
+                }).done(function(){
+                    if(content[id-1].parentElement.querySelector('.text-danger')){
+                        content[id-1].parentElement.querySelector('.text-danger').remove()
+                    }
                 })
             }
         }

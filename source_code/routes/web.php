@@ -54,6 +54,10 @@ Route::prefix('company')->group(function() {
     Route::post('/filter', [CompanyController::class, 'filter'])->name('frontend.company.filter');
     Route::get('/{id}/job', [CompanyController::class, 'getJobList'])->name('frontend.company.joblist');
     Route::post('/edit/{id}', [CompanyController::class, 'feUpdate'])->name('frontend.company.update');
+    Route::get('/lockJob', [CompanyController::class, 'lockJob'])->name('frontend.company.lockJob');
+    Route::get('/unlockJob', [CompanyController::class, 'unlockJob'])->name('frontend.company.unlockJob');
+    Route::get('/suggestToAdmin', [CompanyController::class, 'suggestToAdmin'])->name('frontend.company.sentSuggest');
+    Route::get('/delSuggestToAdmin', [CompanyController::class, 'delSuggestToAdmin'])->name('frontend.company.delSentSuggest');
 });
 
 Route::prefix('customer')->group(function() {
@@ -80,6 +84,7 @@ Route::prefix('admin')->group(function() {
         Route::get('delete/{id}', [JobController::class, 'delete'])->name('admin.job.delete');
         Route::post('delete/{id}', [JobController::class, 'destroy'])->name('admin.job.destroy');
         Route::get('/search', [JobController::class, 'search'])->name('admin.job.search');
+        Route::get('/list-suggestion', [JobController::class, 'showListSuggest'])->name('admin.list.suggest');
     });
 
     Route::prefix('company')->group(function () {
@@ -94,8 +99,6 @@ Route::prefix('admin')->group(function() {
         Route::get('verify/{id}', [CompanyController::class, 'verify'])->name('admin.company.verify');
         Route::get('lock/{id}', [CompanyController::class, 'lock'])->name('admin.company.lock');
         Route::get('unlock/{id}', [CompanyController::class, 'unlock'])->name('admin.company.unlock');
-        Route::get('/lockJob', [CompanyController::class, 'lockJob'])->name('admin.company.lockJob');
-        Route::get('/unlockJob', [CompanyController::class, 'unlockJob'])->name('admin.company.unlockJob');
         Route::post('suggest', [CompanyController::class, 'suggest'])->name('admin.company.suggest');
     });
 
