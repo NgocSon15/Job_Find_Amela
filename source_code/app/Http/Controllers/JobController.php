@@ -14,6 +14,7 @@ use App\Models\Company;
 use App\Models\Skill;
 use App\Models\City;
 use App\Models\Apply;
+
 class JobController extends Controller
 {
     public function index()
@@ -238,10 +239,17 @@ class JobController extends Controller
         $apply->email = $request->input('email');
         $apply->phone = $request->input('phone');
          $apply->save();
-        Session::flash('success', 'Apply thành công');
-        return 'success';//redirect()->back();
+        Session::flash('success_apply', 'Apply thành công');
+        return 'success_apply';//redirect()->back();
 
+    }
 
+    public function showApply($id)
+    {
+        $applies = Apply::where('job_id', $id)->paginate(5);
+        $job = Job::findOrFail($id);
+
+        return view('frontend.job.apply-list', compact('applies', 'job'));
     }
 
 

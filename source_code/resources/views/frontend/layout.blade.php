@@ -29,6 +29,7 @@
         #display_none {
             display: none;
         }
+
     </style>
 </head>
 
@@ -91,13 +92,16 @@
                                                 <i class="far fa-user"></i>
                                                 {{session()->get('user')->fullname}} <span class="caret"></span></a>
                                             <ul class="dropdown-menu" role="menu">
-                                                <li><a href="{{route('frontend.user-profile')}}" style="color: #635c5c">
+                                                <li><a href="{{route('frontend.user-profile')}}">
                                                         <i class="far fa-user"></i>
-                                                        Hồ sơ</a></li>
-                                                <li><a href="{{route('customer.list.followed')}}" style="color: #635c5c">
+                                                        User profile</a></li>
+                                                <li><a href="{{route('frontend.listJobApply')}}">
+                                                        <i class="fas fa-list-ul"></i>
+                                                        Job application</a></li>
+                                                <li><a href="{{route('customer.list.followed')}}">
                                                         <i class="far fa-list-alt"></i>
-                                                        Đang theo dõi</a></li>
-                                                <li><a href="{{route('logout')}}" style="color: #635c5c">
+                                                        Jobs Followed</a></li>
+                                                <li><a href="{{route('logout')}}">
                                                         <i class="fas fa-sign-out-alt"></i>
                                                         Đăng xuất</a></li>
                                             </ul>
@@ -200,7 +204,7 @@
                                                             <div class="modal-body">
                                                                 <p>Chức năng đang hoàn thiện</p>
                                                             </div>
-                                                           
+
                                                         </div>
                                                     </div>
                                                 </div>

@@ -40,6 +40,7 @@ Route::get('/user-profile/{id}/detail-exp', [HomeController::class, 'getExp'])->
 Route::post('/user-profile/{id}/detail-exp', [HomeController::class, 'updateExp'])->name('frontend.updateExp');
 Route::get('/user-profile/{id}/delete-exp', [HomeController::class, 'destroyExp'])->name('frontend.deleteExp');
 
+Route::get('/list-job-apply', [HomeController::class, 'listJobApply'])->name('frontend.listJobApply');
 
 Route::prefix('job')->group(function() {
     Route::get('/', [JobController::class, 'feCreate'])->name('frontend.job.create')->middleware('checkLogin');
@@ -47,6 +48,7 @@ Route::prefix('job')->group(function() {
     Route::get('/edit/{id}', [JobController::class, 'feEdit'])->name('frontend.job.edit')->middleware('checkLogin');
     Route::post('/edit/{id}' ,[JobController::class, 'update'])->name('frontend.job.update')->middleware('checkLogin');
     Route::get('/delete/{id}' ,[JobController::class, 'destroy'])->name('frontend.job.destroy')->middleware('checkLogin');
+    Route::get('/{id}/apply', [JobController::class, 'showApply'])->name('frontend.job.showApply')->middleware('checkLogin');
 });
 
 Route::prefix('company')->group(function() {

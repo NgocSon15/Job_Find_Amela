@@ -174,19 +174,29 @@ Trang chủ
                                     </div>
                                 </div>
                                 <div class="items-link items-link2 f-right">
-                                    <a href="{{route('detail', $job->id)}}">Apply</a>
+                                    <div class="apply-btn2">
+{{--                                    <a href="{{route('detail', $job->id)}}">Apply</a>--}}
                                     @if(session()->has('user'))
-                                        @if(session()->get('user')->role == 'customer')
-                                            @if(in_array($job->id,explode(',',session()->get('follow'))))
-                                            <span class="follow_job active" data-id="{{ $job->id }}"><i class="fas fa-heart"></i></span>
-                                            @else
-                                            <span class="follow_job" data-id="{{ $job->id }}"><i class="fas fa-heart"></i></span>
-                                            @endif
-                                        @endif
+                                        <a href="" data-toggle="modal" data-target="#applyModal">
+                                            Apply Now
+                                        </a>
                                     @else
-                                    <a href="{{route('login')}}" class="follow"><i class="fas fa-heart"></i></a>
+
+                                        <a href="{{route('login')}}">Đăng nhập để Apply</a>
                                     @endif
-                                    <span style="text-align: center;">{{$job->created_at->diffForHumans($now)}}</span>
+                                    </div>
+                                    @if(session()->has('user'))
+                                            @if(session()->get('user')->role == 'customer')
+                                                @if(in_array($job->id,explode(',',session()->get('follow'))))
+                                                <span class="follow_job active" data-id="{{ $job->id }}"><i class="fas fa-heart"></i></span>
+                                                @else
+                                                <span class="follow_job" data-id="{{ $job->id }}"><i class="fas fa-heart"></i></span>
+                                                @endif
+                                            @endif
+                                        @else
+                                        <a href="{{route('login')}}" class="follow"><i class="fas fa-heart"></i></a>
+                                        @endif
+                                    <span class = "text-center">{{$job->created_at->diffForHumans($now)}}</span>
                                 </div>
                             </div>
                             @endforeach
