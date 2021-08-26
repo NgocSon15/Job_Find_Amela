@@ -95,12 +95,14 @@
                                                 <li><a href="{{route('frontend.user-profile')}}">
                                                         <i class="far fa-user"></i>
                                                         User profile</a></li>
+                                                @if(session()->get('user')->role == 'customer')
                                                 <li><a href="{{route('frontend.listJobApply')}}">
                                                         <i class="fas fa-list-ul"></i>
                                                         Job application</a></li>
                                                 <li><a href="{{route('customer.list.followed')}}">
                                                         <i class="far fa-list-alt"></i>
                                                         Jobs Followed</a></li>
+                                                @endif
                                                 <li><a href="{{route('logout')}}">
                                                         <i class="fas fa-sign-out-alt"></i>
                                                         Đăng xuất</a></li>
