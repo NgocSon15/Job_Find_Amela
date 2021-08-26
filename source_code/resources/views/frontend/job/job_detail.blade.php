@@ -116,10 +116,10 @@
         <div class="job-post-company pt-70">
             <div class="container">
                 <div id="success"></div>
-                @if (Session::has('success'))
+                @if (Session::has('success_apply'))
                     <p class="text-success">
                         <i class="fa fa-check" aria-hidden="true"></i>
-                        {{ Session::get('success') }}
+                        {{ Session::get('success_apply') }}
                     </p>
                 @endif
                 <div class="row justify-content-between">
@@ -225,9 +225,66 @@
                     </div>
 
                 </div>
-                <section class="featured-job-area feature-padding">
+{{--                <section class="featured-job-area feature-padding">--}}
 {{--                    <div class="container">--}}
-                        <!-- Section Tittle -->
+{{--                        <!-- Section Tittle -->--}}
+{{--                        <div class="row">--}}
+{{--                            <div class="col-lg-12">--}}
+{{--                                <div class="section-tittle text-center">--}}
+{{--                                    <h2>Đề Xuất Cho Bạn</h2>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="row justify-content-center">--}}
+{{--                            <div class="col-xl-10">--}}
+{{--                                <!-- single-job-content -->--}}
+{{--                                @foreach($job_recommend as $key=>$job)--}}
+{{--                                <div class="single-job-items mb-30">--}}
+{{--                                    <div class="job-items">--}}
+{{--                                        <div class="company-img">--}}
+{{--                                            <a href="{{route('detail', $job->id)}}"><img src="{{asset('storage/images/'.$job->company->logo)}}" alt="" style="max-width: 85px;"></a>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="job-tittle job-tittle2">--}}
+{{--                                            <a href="{{route('detail', $job->id)}}"><h4>{{$job->job_title}}</h4></a>--}}
+{{--                                            <ul>--}}
+{{--                                                <li>Skill:--}}
+{{--                                                    @foreach(explode(',',$job->skill_id) as $skill_id)--}}
+{{--                                                        {{ $skills->find($skill_id)->skill }}--}}
+{{--                                                        @if($loop->index == 1)--}}
+{{--                                                        @break--}}
+{{--                                                        @endif--}}
+{{--                                                    @endforeach--}}
+{{--                                                </li>--}}
+{{--                                                @if($job->company->city)--}}
+{{--                                                    <li><i class="fas fa-map-marker-alt"></i>{{ $job->company->city->city_name}}</li>--}}
+{{--                                                @endif--}}
+{{--                                                @if(session()->has('user'))--}}
+{{--                                                    <li>${{ number_format($job->min_salary) }} - ${{ number_format($job->max_salary) }}</li>--}}
+{{--                                                @else--}}
+{{--                                                    <li><a href="{{ route('login') }}" style="color: #635c5c">Salary: đăng nhập để xem</a></li>--}}
+{{--                                                @endif--}}
+{{--                                            </ul>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="items-link f-right">--}}
+{{--                                            <a href="{{route('detail', $job->id)}}">Apply</a>--}}
+{{--                                            @if(ceil((time() - strtotime($job->created_at))/3600) < 24)--}}
+{{--                                                <span>{{ ceil((time() - strtotime($job->created_at))/3600)}} hour ago</span>--}}
+{{--                                            @else--}}
+{{--                                                <span>{{ ceil((time() - strtotime($job->created_at))/86400)}} day ago</span>--}}
+{{--                                            @endif--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                @endforeach--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </section>--}}
+{{--            </div>--}}
+
+                <div class="testimonial-area testimonial-padding">
+                    <div class="container">
+                        <!-- Testimonial contents -->
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="section-tittle text-center">
@@ -235,24 +292,32 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row justify-content-center">
-                            <div class="col-xl-10">
-                                <!-- single-job-content -->
-                                @foreach($job_recommend as $key=>$job)
-                                <div class="single-job-items mb-30">
-                                    <div class="job-items">
-                                        <div class="company-img">
-                                            <a href="{{route('detail', $job->id)}}"><img src="{{asset('storage/images/'.$job->company->logo)}}" alt="" style="max-width: 85px;"></a>
-                                        </div>
-                                        <div class="job-tittle job-tittle2">
-                                            <a href="{{route('detail', $job->id)}}"><h4>{{$job->job_title}}</h4></a>
-                                            <ul>
-                                                <li>Skill:
-                                                    @foreach(explode(',',$job->skill_id) as $skill_id)
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-xl-12 col-lg-12 col-md-12">
+                                <div class="h1-testimonial-active dot-style">
+                                    <!-- Single Testimonial -->
+                                    @foreach($job_recommend as $key=>$job)
+                                        <div class="single-testimonial text-center">
+                                        <!-- Testimonial Content -->
+                                        <div class="testimonial-caption ">
+                                            <!-- founder -->
+                                            <div class="testimonial-founder  ">
+                                                <div class="founder-img mb-30">
+                                                    <img src="{{asset('storage/images/'.$job->company->logo)}}" alt="" style="border-radius: 50%" width="150px" height="150px">
+                                                    <span>{{$job->job_title}}</span>
+                                                    <p>${{ number_format($job->min_salary) }} - ${{ number_format($job->max_salary) }}</p>
+                                                </div>
+                                            </div>
+                                            <div class="testimonial-top-cap">
+{{--                                                <p>{{$job->job_description}}</p>--}}
+                                                <p style="font-size: medium">
+                                                    Word location:{{$job->work_location}} <br>
+                                                    Skill :@foreach(explode(',',$job->skill_id) as $skill_id)
                                                         {{ $skills->find($skill_id)->skill }}
                                                         @if($loop->index == 1)
-                                                        @break
+                                                            @break
                                                         @endif
+
                                                     @endforeach
                                                 </li>
                                                 @if($job->company->city)
@@ -267,23 +332,19 @@
                                             @if(strtotime($job->expiration) < time())
                                                 <p class="text-warning">Tin tuyển dụng hết hạn</p>
                                             @endif
+
                                         </div>
                                     </div>
-                                    <div class="items-link f-right">
-                                            <a href="{{route('detail', $job->id)}}">Apply</a>
-                                            @if(ceil((time() - strtotime($job->created_at))/3600) < 24)
-                                                <span>{{ ceil((time() - strtotime($job->created_at))/3600)}} hour ago</span>
-                                            @else
-                                                <span>{{ ceil((time() - strtotime($job->created_at))/86400)}} day ago</span>
-                                            @endif
-                                    </div>
+                                    @endforeach
+                                    <!-- Single Testimonial -->
+
                                 </div>
-                                @endforeach
                             </div>
                         </div>
-{{--                    </div>--}}
-                </section>
-{{--            </div>--}}
+                    </div>
+                </div>
+
+
 
         </div>
 
@@ -292,3 +353,5 @@
     </main>
 
 @endsection
+
+

@@ -29,6 +29,7 @@
         #display_none {
             display: none;
         }
+
     </style>
 </head>
 
@@ -93,7 +94,10 @@
                                             <ul class="dropdown-menu" role="menu">
                                                 <li><a href="{{route('frontend.user-profile')}}" style="color: #635c5c">
                                                         <i class="far fa-user"></i>
-                                                        Hồ sơ</a></li>
+                                                        User profile</a></li>
+                                                <li><a href="{{route('frontend.listJobApply')}}" style="color: #635c5c">
+                                                        <i class="fas fa-list-ul"></i>
+                                                        Job application</a></li>
                                                 <li><a href="{{route('logout')}}" style="color: #635c5c">
                                                         <i class="fas fa-sign-out-alt"></i>
                                                         Đăng xuất</a></li>
@@ -197,7 +201,7 @@
                                                             <div class="modal-body">
                                                                 <p>Chức năng đang hoàn thiện</p>
                                                             </div>
-                                                           
+
                                                         </div>
                                                     </div>
                                                 </div>
