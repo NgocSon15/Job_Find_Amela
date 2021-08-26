@@ -333,15 +333,13 @@
         if(follow){
             for(var i = 0; i < follow.length; i++){
                 follow[i].onclick = function () {
-                  var a =  this.classList.toggle('active');
+                  var active =  this.classList.toggle('active');
                   var job_id = this.getAttribute('data-id');
-                  if(a){
-                      console.log('follow')
+                  if(active){
                       $.ajax({
                           url: "{{ route('customer.follow.job') }}?id="+job_id,
                       })
                   }else{
-                      console.log('bỏ follow')
                       $.ajax({
                           url: "{{ route('customer.unFollow.job') }}?id="+job_id,
                       })
