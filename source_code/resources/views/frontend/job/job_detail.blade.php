@@ -90,7 +90,7 @@
                         phone.nextElementSibling.innerHTML = '<p class="text-danger">'+phoneError+'</p>';
                     }
                 })
-                
+
             }
         }
         </script>
@@ -152,6 +152,9 @@
                                         <li><a href="{{ route('login') }}" style="color: #635c5c">Salary: đăng nhập để xem</a></li>
                                         @endif
                                     </ul>
+                                    @if(strtotime($job->expiration) < time())
+                                        <p class="text-warning">Tin tuyển dụng hết hạn</p>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -261,6 +264,9 @@
                                                     <li><a href="{{ route('login') }}" style="color: #635c5c">Salary: đăng nhập để xem</a></li>
                                                 @endif
                                             </ul>
+                                            @if(strtotime($val->expiration) < time())
+                                                <p class="text-warning">Tin tuyển dụng hết hạn</p>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="items-link f-right">
