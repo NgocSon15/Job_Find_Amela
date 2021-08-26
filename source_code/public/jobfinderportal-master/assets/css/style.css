@@ -102,3 +102,12 @@
     color: #fb246a;
 }
 
+.user-menu ul>li{
+    margin-bottom: 12px;
+}
+.user-menu ul>li a{
+    color: #635c5c;
+}
+.user-menu ul>li a:hover{
+    color: #fb246a;
+}
