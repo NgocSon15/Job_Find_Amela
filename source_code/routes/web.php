@@ -46,6 +46,7 @@ Route::prefix('job')->group(function() {
     Route::get('/edit/{id}', [JobController::class, 'feEdit'])->name('frontend.job.edit')->middleware('checkLogin');
     Route::post('/edit/{id}' ,[JobController::class, 'update'])->name('frontend.job.update')->middleware('checkLogin');
     Route::get('/delete/{id}' ,[JobController::class, 'destroy'])->name('frontend.job.destroy')->middleware('checkLogin');
+    Route::get('/{id}/apply', [JobController::class, 'showApply'])->name('frontend.job.showApply')->middleware('checkLogin');
 });
 
 Route::prefix('company')->group(function() {

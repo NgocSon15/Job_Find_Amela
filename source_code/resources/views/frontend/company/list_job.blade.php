@@ -75,13 +75,17 @@
                                                 </div>
                                             </div>
                                             <div class="items-link items-link2 f-right" style="padding: 0">
-                                                <a href="{{route('detail', $val->id)}}">Apply</a>
+                                                @if(count($val->applies) <= 1)
+                                                    <a href="{{ route('frontend.job.showApply', $val->id) }}">{{ count($val->applies) }} apply</a>
+                                                @else
+                                                    <a href="{{ route('frontend.job.showApply', $val->id) }}">{{ count($val->applies) }} applies</a>
+                                                @endif
                                                 <span>{{$val->created_at->diffForHumans($now)}}</span>
                                             </div>
                                         </div>
                                         @if(session()->has('user'))
                                         @if(session()->get('user')->role == 'company')
-                                        <div style="margin-top: 7px;">
+                                        <div style="margin-top: 7px; width: 100%">
                                             <a href="{{ route('frontend.job.edit', $val->id) }}" style="color: #38a4ff;font-weight:600" >Edit</a>
                                             |
                                             <a onclick="return confirm('Bạn có chắc chắn muốn xóa tin này')" href="{{ route('frontend.job.destroy', $val->id) }}" class="text-danger" style="font-weight:600" >Delete</a>
@@ -104,7 +108,7 @@
                                             @else($val->is_suggest == 2)
                                             <i class="fas fa-check-circle" onclick="delSuggestToAdmin({{$val->id}})" id="notSuggest-{{$val->id}}" data-id="{{$val->id}}" title="Sent to admin" style="cursor: pointer; color: #0072ff;font-size: 15px;"></i>
                                             @endif
-                            </span>
+                                            </span>
                                         </div>
                                         @endif
                                         @endif
