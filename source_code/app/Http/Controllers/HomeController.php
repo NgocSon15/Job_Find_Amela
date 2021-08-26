@@ -119,13 +119,33 @@ class HomeController extends Controller
         return view('frontend.job.job_listing', compact('jobs', 'now', 'skills', 'city'));
     }
 
-    public function getDetailJob($id)
+    public function getDetailJob(Request $request, $id)
     {
         $skills = Skill::all();
         $job = Job::where('id', $id)->firstOrFail();
         $job_recommend = Job::where('is_suggest', 1)->get();
-        return view('frontend.job.job_detail', compact('job','job_recommend', 'skills'));
+        $category_id = $job->category_id;
+//        dd($category_id);
+        $job_same = Job::where('category_id', $category_id)->paginate(3);
+
+        if($request->ajax()){
+            return view('frontend.job.list-data', compact('job','job_recommend', 'skills', 'job_same'));
+        }
+        return view('frontend.job.job_detail', compact('job','job_recommend', 'skills', 'job_same'));
     }
+
+//    public function fetch_data(Request $request, $id)
+//    {
+//        if($request->ajax())
+//        {
+//            $skills = Skill::all();
+//            $job = Job::where('id', $id)->firstOrFail();
+//            $job_recommend = Job::where('is_suggest', 1)->get();
+//            $category_id = $job->category_id;
+//            $job_same = Job::where('category_id', $category_id)->paginate(3);
+//            return view('frontend.job.list-data', compact('job','job_recommend', 'skills', 'job_same'));
+//        }
+//    }
 
     public function getProfile()
     {
