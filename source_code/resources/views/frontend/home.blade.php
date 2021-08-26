@@ -175,11 +175,18 @@ Trang chủ
                                 </div>
                                 <div class="items-link items-link2 f-right">
                                     <a href="{{route('detail', $job->id)}}">Apply</a>
-                                    @if(ceil((time() - strtotime($job->created_at))/3600) < 24)
-                                    <span>{{ ceil((time() - strtotime($job->created_at))/3600)}} hour ago</span>
+                                    @if(session()->has('user'))
+                                        @if(session()->get('user')->role == 'customer')
+                                            @if(in_array($job->id,explode(',',session()->get('follow'))))
+                                            <span class="follow_job active" data-id="{{ $job->id }}"><i class="fas fa-heart"></i></span>
+                                            @else
+                                            <span class="follow_job" data-id="{{ $job->id }}"><i class="fas fa-heart"></i></span>
+                                            @endif
+                                        @endif
                                     @else
-                                    <span>{{ ceil((time() - strtotime($job->created_at))/86400)}} day ago</span>
+                                    <a href="{{route('login')}}" class="follow"><i class="fas fa-heart"></i></a>
                                     @endif
+                                    <span style="text-align: center;">{{$job->created_at->diffForHumans($now)}}</span>
                                 </div>
                             </div>
                             @endforeach

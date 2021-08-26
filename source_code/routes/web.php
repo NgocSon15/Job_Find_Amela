@@ -9,6 +9,7 @@ use App\Http\Controllers\JobController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ConfigController;
+use App\Http\Controllers\CustomerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,7 +62,8 @@ Route::prefix('company')->group(function() {
 });
 
 Route::prefix('customer')->group(function() {
-
+    Route::get('/follow', [CustomerController::class, 'followJob'])->name('customer.follow.job');
+    Route::get('/unfollow', [CustomerController::class, 'unFollowJob'])->name('customer.unFollow.job');
 });
 
 

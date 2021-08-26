@@ -320,7 +320,29 @@
     <!-- Jquery Plugins, main Jquery -->
     <script src="{{ asset('jobfinderportal-master/assets/js/plugins.js') }}"></script>
     <script src="{{ asset('jobfinderportal-master/assets/js/main.js') }}"></script>
-
+    
+    <script>
+        var follow = document.querySelectorAll('.follow_job');
+        if(follow){
+            for(var i = 0; i < follow.length; i++){
+                follow[i].onclick = function () {
+                  var a =  this.classList.toggle('active');
+                  var job_id = this.getAttribute('data-id');
+                  if(a){
+                      console.log('follow')
+                      $.ajax({
+                          url: "{{ route('customer.follow.job') }}?id="+job_id,
+                      })
+                  }else{
+                      console.log('bỏ follow')
+                      $.ajax({
+                          url: "{{ route('customer.unFollow.job') }}?id="+job_id,
+                      })
+                      }
+                }
+            }
+        }
+    </script>
     @yield('script')
 
 </body>
