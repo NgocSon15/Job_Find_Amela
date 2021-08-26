@@ -317,21 +317,10 @@
                                                         @if($loop->index == 1)
                                                             @break
                                                         @endif
-
-                                                    @endforeach
-                                                </li>
-                                                @if($job->company->city)
-                                                    <li><i class="fas fa-map-marker-alt"></i>{{ $job->company->city->city_name}}</li>
-                                                @endif
-                                                @if(session()->has('user'))
-                                                    <li>${{ number_format($job->min_salary) }} - ${{ number_format($job->max_salary) }}</li>
-                                                @else
-                                                    <li><a href="{{ route('login') }}" style="color: #635c5c">Salary: đăng nhập để xem</a></li>
-                                                @endif
-                                            </ul>
-                                            @if(strtotime($job->expiration) < time())
-                                                <p class="text-warning">Tin tuyển dụng hết hạn</p>
-                                            @endif
+                                                    @endforeach <br>
+                                                    It is a long established fact that a reader will beff distracted by vbthe creadable content of a page when looking at its layout. The pointf of using Lorem Ipsum is that it has ahf mcore or-lgess normal distribution of letters, as opposed to using, Content here content here making it look like readable.
+                                                </p>
+                                            </div>
 
                                         </div>
                                     </div>
