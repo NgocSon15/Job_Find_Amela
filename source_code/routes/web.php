@@ -39,6 +39,7 @@ Route::get('/user-profile/{id}/detail-exp', [HomeController::class, 'getExp'])->
 Route::post('/user-profile/{id}/detail-exp', [HomeController::class, 'updateExp'])->name('frontend.updateExp');
 Route::get('/user-profile/{id}/delete-exp', [HomeController::class, 'destroyExp'])->name('frontend.deleteExp');
 
+Route::get('/list-job-apply', [HomeController::class, 'listJobApply'])->name('frontend.listJobApply');
 
 Route::prefix('job')->group(function() {
     Route::get('/', [JobController::class, 'feCreate'])->name('frontend.job.create')->middleware('checkLogin');

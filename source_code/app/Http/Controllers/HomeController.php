@@ -16,6 +16,7 @@ use App\Models\Customer;
 use App\Models\Experience;
 use App\Models\CompanySize;
 use App\Models\Field;
+use App\Models\Apply;
 
 class HomeController extends Controller
 {
@@ -221,6 +222,21 @@ class HomeController extends Controller
         Session::flash('success', 'Xóa kinh nghiệm thành công');
 
         return redirect()->back();
+    }
+
+    public function listJobApply()
+    {
+        $id_user = session()->get('user')->user_id;
+        $job_apply = Apply::where('user_id',$id_user)->get();
+//        dd($job_apply);
+        $list_job = [];
+        foreach ($job_apply as $value){
+            $list_job[] = $value->job_id;
+        }
+//        dd($list_job);
+        $job = Job::whereIn('id', $list_job)->get();
+        $skills = Skill::all();
+        return view('frontend.user.job-apply', compact('job_apply', 'job','skills'));
     }
 
 }

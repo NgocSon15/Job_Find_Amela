@@ -232,8 +232,8 @@ class JobController extends Controller
         $apply->email = $request->input('email');
         $apply->phone = $request->input('phone');
          $apply->save();
-        Session::flash('success', 'Apply thành công');
-        return 'success';//redirect()->back();
+        Session::flash('success_apply', 'Apply thành công');
+        return 'success_apply';//redirect()->back();
 
 
     }
