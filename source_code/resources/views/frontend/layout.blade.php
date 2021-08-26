@@ -94,6 +94,9 @@
                                                 <li><a href="{{route('frontend.user-profile')}}" style="color: #635c5c">
                                                         <i class="far fa-user"></i>
                                                         Hồ sơ</a></li>
+                                                <li><a href="{{route('customer.list.followed')}}" style="color: #635c5c">
+                                                        <i class="far fa-list-alt"></i>
+                                                        Đang theo dõi</a></li>
                                                 <li><a href="{{route('logout')}}" style="color: #635c5c">
                                                         <i class="fas fa-sign-out-alt"></i>
                                                         Đăng xuất</a></li>

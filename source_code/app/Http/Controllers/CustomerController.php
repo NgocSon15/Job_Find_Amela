@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Customer;
+use App\Models\Job;
+use Carbon\Carbon;
+use App\Models\Skill;
 class CustomerController extends Controller
 {
     public function followJob(Request $request)
@@ -40,5 +43,17 @@ class CustomerController extends Controller
             session()->put('follow',$customer->follow);
             $customer->save();
         return 'đã bỏ theo dõi';
+    }
+
+    public function listJobFollowed()
+    {
+        $user_id = session()->get('user')->user_id;
+        $customer = Customer::where('user_id', $user_id)->first();
+        $job_ids = $customer->follow;
+        $jobs = Job::whereIn('id',explode(',', $job_ids))->paginate(10);
+        $skills = Skill::all();
+        Carbon::setLocale('vi');
+        $now = Carbon::now();
+        return view('frontend.user.list-job-followed', compact('jobs', 'skills', 'now'));
     }
 }

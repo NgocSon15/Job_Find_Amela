@@ -62,6 +62,7 @@ Route::prefix('company')->group(function() {
 });
 
 Route::prefix('customer')->group(function() {
+    Route::get('/list-job-followed', [CustomerController::class, 'listJobFollowed'])->name('customer.list.followed');
     Route::get('/follow', [CustomerController::class, 'followJob'])->name('customer.follow.job');
     Route::get('/unfollow', [CustomerController::class, 'unFollowJob'])->name('customer.unFollow.job');
 });
