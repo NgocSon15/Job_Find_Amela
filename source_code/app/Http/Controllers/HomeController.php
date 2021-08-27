@@ -193,7 +193,8 @@ class HomeController extends Controller
         $this->validate($request, [
             'email'=>'required',
             'phone'=>'required',
-            'birth'=>'required'
+            'birth'=>'required',
+            'cv'=>'mimes:pdf'
         ]);
         $id = session()->get('user')->user_id;
         $customer = Customer::where('user_id', $id)->firstOrFail();

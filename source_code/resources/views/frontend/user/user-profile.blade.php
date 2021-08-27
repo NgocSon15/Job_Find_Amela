@@ -97,6 +97,9 @@
 
                                     <div class="col-sm-12">
                                         <label for="input-file-now">Upload Your CV</label>
+                                        @if($errors->has('cv'))
+                                            <p class="text-danger">{{ $errors->first('cv') }}</p>
+                                        @endif
                                         <input type="file" id="input-file-now" class="dropify" data-default-file="" name="cv"/>
                                     </div>
                                     <div class="col-12 pt-50">
