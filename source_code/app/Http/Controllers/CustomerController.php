@@ -65,6 +65,6 @@ class CustomerController extends Controller
 
         $headers = array('Content-Type: application/pdf');
 
-        return \Illuminate\Support\Facades\Response::download($file, $customer->cv . '.pdf', $headers);
+        return \Illuminate\Support\Facades\Response::download($file, $customer->cv, $headers);
     }
 }
