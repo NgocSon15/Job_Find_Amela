@@ -15,20 +15,44 @@
                     <div class="single-job-items mb-30">
                         <div class="job-items">
                             <div class="company-img">
-                                <a href=""><img src="assets/img/icon/job-list1.png" alt=""></a>
+                                <a href="{{route('detail', $val->id)}}"><img src="{{asset('storage/images/'.$val->company->logo)}}" alt="" style="max-width: 85px;"></a>
                             </div>
                             <div class="job-tittle">
-                                <a href="job_details.html"><h4>Digital Marketer</h4></a>
+                                <a href="{{route('detail', $val->id)}}"><h4>{{$val->job_title}}</h4></a>
                                 <ul>
-                                    <li>Creative Agency</li>
-                                    <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                    <li>$3500 - $4000</li>
+                                    <li>Skill:
+                                        @foreach(explode(',',$val->skill_id) as $skill_id)
+                                            {{ $skills->find($skill_id)->skill }}
+                                            @if($loop->index == 1)
+                                                @break
+                                            @endif
+                                        @endforeach
+                                    </li>
+                                    @if($val->company->city)
+                                        <li><i class="fas fa-map-marker-alt"></i>{{ $val->company->city->city_name}}</li>
+                                    @endif
+                                    @if(session()->has('user'))
+                                        <li>${{ number_format($val->min_salary) }} - ${{ number_format($val->max_salary) }}</li>
+                                    @else
+                                        <li><a href="{{ route('login') }}" style="color: #635c5c">Salary: đăng nhập để xem</a></li>
+                                    @endif
                                 </ul>
+                                @if(strtotime($val->expiration) < time())
+                                    <p class="text-warning">Tin tuyển dụng hết hạn</p>
+                                    @endif
                             </div>
                         </div>
                         <div class="items-link f-right">
-                            <a href="job_details.html">Full Time</a>
-                            <span>7 hours ago</span>
+                            @if($val->job_type)
+                                <a href="{{route('detail', $val->id)}}">Full Time</a>
+                            @else
+                                <a href="{{route('detail', $val->id)}}">Part Time</a>
+                            @endif
+                                @if(ceil((time() - strtotime($val->created_at))/3600) < 24)
+                                    <span>{{ ceil((time() - strtotime($val->created_at))/3600)}} hour ago</span>
+                                @else
+                                    <span>{{ ceil((time() - strtotime($val->created_at))/86400)}} day ago</span>
+                                @endif
                         </div>
                     </div>
             @endforeach
@@ -40,9 +64,9 @@
                                 <div class="single-wrap d-flex justify-content-center">
                                     <nav aria-label="Page navigation example">
                                         <ul class="pagination justify-content-start">
-{{--                                                                                {{ $job_same->appends(request()->query()) }}--}}
+                                                                                {{ $job_same->appends(request()->query()) }}
 {{--                                            {{$job_same->links()}}--}}
-                                            {!! $job_same->links() !!}
+{{--                                            {!! $job_same->links() !!}--}}
                                         </ul>
                                     </nav>
                                 </div>
@@ -80,5 +104,7 @@
     }
 
 </script>
+
+
 
 

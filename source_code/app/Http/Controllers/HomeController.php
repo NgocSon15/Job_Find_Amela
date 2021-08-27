@@ -196,12 +196,23 @@ class HomeController extends Controller
         $id = session()->get('user')->user_id;
         $customer = Customer::where('user_id', $id)->firstOrFail();
 //        dd($customer);
+//        dd($request->cv);
+
         $customer->email = $request->email;
         $customer->phone = $request->phone;
         $customer->birth = $request->birth;
         $customer->sex = $request->sex;
         $customer->address = $request->add;
         $customer->marry = $request->marry;
+
+        if ($request->hasFile('cv')) {
+            $destinaton = 'jobfinderportal-master/assets/cv';
+            $cv = $request->file('cv');
+            $cv_name = $cv->getClientOriginalName();
+//           $path = $request->file('image')->storeAs($destinaton, $img_name );
+            $cv->move($destinaton,$cv_name);
+            $customer->cv = $cv_name;
+        }
         $customer->save();
         Session::flash('success_profile', 'Update profile success');
 //        return view('frontend.user.user-profile', compact('exp', 'customer'));
