@@ -32,6 +32,8 @@ class AppServiceProvider extends ServiceProvider
         Paginator::useBootstrap();
         View::share('appAndroid', Config::find(1)->content);
         View::share('appIos', Config::find(2)->content);
+        View::share('bannerText', explode('|',Config::find(3)->content)[0]);
+        View::share('bannerImg', explode('|',Config::find(3)->content)[1]);
         View::share('hotCategories', Category::orderBy('total_jobs', 'desc')->limit(10)->get());
         View::share('hotFields', Field::orderBy('total_companies', 'desc')->limit(10)->get());
     }
