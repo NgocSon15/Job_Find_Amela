@@ -228,10 +228,16 @@ class JobController extends Controller
 
     public function ApplyNow(Request $request)
     {
+        $this->validate($request, [
+            'email'=>'required',
+            'phone'=>'required'
+        ]);
 
         $apply = new Apply();
         $apply->job_id = $request->input('job_id');
         $apply->user_id = $request->input('user_id');
+        $apply->email = $request->input('email');
+        $apply->phone = $request->input('phone');
          $apply->save();
         Session::flash('success_apply', 'Apply thành công');
         return redirect()->back();
