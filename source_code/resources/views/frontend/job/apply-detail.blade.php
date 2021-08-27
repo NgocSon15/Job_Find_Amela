@@ -42,10 +42,10 @@
                                         <li>Ngày sinh: <span>{{ $apply->user->customer->birth }}</span></li>
                                     @endif
                                     @if($apply->user->customer->sex)
-                                        <li>Giới tính: <span>{{ $apply->user->customer->sex }}</span></li>
+                                        <li>Giới tính: <span>{{ $apply->user->customer->sex == 1 ? 'Nam' : 'Nữ' }}</span></li>
                                     @endif
                                     @if($apply->user->customer->marry)
-                                        <li>Tình trạng hôn nhân: <span>{{ $apply->user->customer->marry }}</span></li>
+                                        <li>Tình trạng hôn nhân: <span>{{ $apply->user->customer->marry == 1 ? 'Đã kết hôn' : 'Chưa kết hôn'}}</span></li>
                                     @endif
                                 </ul>
                             </div>
