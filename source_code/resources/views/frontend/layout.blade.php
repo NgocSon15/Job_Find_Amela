@@ -329,7 +329,8 @@
     <!-- Jquery Plugins, main Jquery -->
     <script src="{{ asset('jobfinderportal-master/assets/js/plugins.js') }}"></script>
     <script src="{{ asset('jobfinderportal-master/assets/js/main.js') }}"></script>
-    
+    <script src="https://unpkg.com/sweetalert2@7.18.0/dist/sweetalert2.all.js"></script>
+
     <script>
         var follow = document.querySelectorAll('.follow_job');
         if(follow){
