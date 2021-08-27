@@ -92,13 +92,13 @@
                                 <h4>Thông tin liên hệ</h4>
                             </div>
                             <ul>
-                                <li>Số điện thoại : <span>{{ $user->phone }}</span></li>
-                                <li>Email : <span>{{ $user->email }}</span></li>
+                                <li>Số điện thoại : <span>{{ $user->customer->phone }}</span></li>
+                                <li>Email : <span>{{ $user->customer->email }}</span></li>
                                 <li>Địa chỉ : <span>{{ $user->customer->address }}</span></li>
                             </ul>
                             <div class="apply-btn2">
                                 @if($user->customer->cv)
-                                <a href="{{-- route('customer.cv.download', $apply->user->customer->user_id) --}}" class="btn">Download CV</a>
+                                <a href="{{-- route('customer.cv.download', $user->customer->user_id) --}}" class="btn">Download CV</a>
                                 @endif
                             </div>
                         </div>
