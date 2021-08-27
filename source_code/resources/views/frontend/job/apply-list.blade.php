@@ -1,6 +1,6 @@
 @extends('frontend.layout')
 @section('title')
-    Danh sách tin tuyển dụng
+    Danh sách apply
 @endsection
 @section('content')
     <main>
@@ -39,11 +39,11 @@
                                             <div class="d-flex" style="width: 100%">
                                                 <div class="job-items" style="width: 100%">
                                                     <div class="company-img">
-                                                        <a href=""><img src="{{asset('storage/images/default-avt.png')}}" alt="" style="max-width: 85px;"></a>
+                                                        <a href="{{ route('frontend.apply.show', $val->id) }}"><img src="{{asset('storage/images/default-avt.png')}}" alt="" style="max-width: 85px;"></a>
 
                                                     </div>
                                                     <div class="job-tittle job-tittle2">
-                                                        <a href="">
+                                                        <a href="{{ route('frontend.apply.show', $val->id) }}">
                                                             <h4>{{$val->user->customer->fullname}}</h4>
                                                         </a>
                                                         <ul>
@@ -53,7 +53,7 @@
                                                         </ul>
                                                     </div>
                                                     <div class="items-link items-link2 f-right" style="padding: 0">
-                                                        <a href="">Detail</a>
+                                                        <a href="{{ route('frontend.apply.show', $val->id) }}">Detail</a>
                                                     </div>
                                                 </div>
                                             </div>
