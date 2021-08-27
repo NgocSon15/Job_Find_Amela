@@ -240,7 +240,7 @@ class JobController extends Controller
         $apply->phone = $request->input('phone');
          $apply->save();
         Session::flash('success_apply', 'Apply thành công');
-        return 'success_apply';//redirect()->back();
+        return redirect()->back();
 
     }
 

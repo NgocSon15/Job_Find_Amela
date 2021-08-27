@@ -38,7 +38,7 @@ Trang danh sách tin tuyển dụng
                                             <i class="fas fa-user"></i>
                                         </div>
                                         <div class="job-tittle job-tittle2">
-                                            <a href="">
+                                            <a href="{{route('show.candidate', ['id' => $user->user_id ])}}">
                                                 <h4>{{$user->customer->fullname}}</h4>
                                             </a>
                                             <ul>

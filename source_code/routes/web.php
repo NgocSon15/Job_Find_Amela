@@ -66,6 +66,8 @@ Route::prefix('company')->group(function() {
     Route::get('/show-candidate', [CompanyController::class, 'showCandidate'])->name('show.candidate');
 });
 
+Route::get('customer/{id}/cv', [CustomerController::class, 'downloadCV'])->name('customer.cv.download');
+
 Route::group(['prefix' => 'customer', 'middleware' => ['checkLogin', 'checkCustomer']],function() {
     Route::get('/list-job-followed', [CustomerController::class, 'listJobFollowed'])->name('customer.list.followed');
     Route::get('/follow', [CustomerController::class, 'followJob'])->name('customer.follow.job');
@@ -74,7 +76,6 @@ Route::group(['prefix' => 'customer', 'middleware' => ['checkLogin', 'checkCusto
     Route::get('/unblock-company', [CustomerController::class, 'unblockCompany'])->name('customer.unblock.company');
     Route::get('/list-blocked', [CustomerController::class, 'listBlocked'])->name('customer.list.block');
     Route::get('/search-company', [CustomerController::class, 'searchCompany'])->name('customer.search.company');
-    Route::get('/{id}/cv', [CustomerController::class, 'downloadCV'])->name('customer.cv.download');
 });
 
 
