@@ -61,7 +61,8 @@ Route::prefix('company')->group(function() {
     Route::get('/unlockJob', [CompanyController::class, 'unlockJob'])->name('frontend.company.unlockJob');
     Route::get('/suggestToAdmin', [CompanyController::class, 'suggestToAdmin'])->name('frontend.company.sentSuggest');
     Route::get('/delSuggestToAdmin', [CompanyController::class, 'delSuggestToAdmin'])->name('frontend.company.delSentSuggest');
-    Route::get('/list-candidates', [CompanyController::class, 'showCandidates'])->name('show.candidates');
+    Route::get('/list-candidates', [CompanyController::class, 'listCandidates'])->name('list.candidates');
+    Route::get('/show-candidate', [CompanyController::class, 'showCandidate'])->name('show.candidate');
 });
 
 Route::group(['prefix' => 'customer', 'middleware' => ['checkLogin', 'checkCustomer']],function() {

@@ -10,6 +10,7 @@ use App\Models\City;
 use App\Models\CompanySize;
 use App\Models\Job;
 use App\Models\Skill;
+use App\Models\User;
 use App\Models\Customer;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
@@ -266,10 +267,24 @@ class CompanyController extends Controller
         $job->save();
     }
 
-    public function showCandidates()
+    public function listCandidates()
     {
-        $candidates = Customer::paginate(20);
-        return view('frontend.user.list-candidates', compact('candidates'));
+        $users = User::where('role', 'customer')->paginate(20);
+        return view('frontend.user.list-candidates', compact('users'));
+    }
+
+    public function showCandidate(Request $request)
+    {
+        $user_id = $request->id;
+        $user = User::find($user_id);
+        $listBlock = $user->customer->block;
+        $listBlock = explode(',', $listBlock);
+        $company_id = session()->get('user')->company_id;
+        if(in_array($company_id, $listBlock)){
+            return abort(403, __('ứng viên đã chặn công ty bạn'));
+        }else{
+            return view('frontend.user.candidate-detail', compact('user'));
+        }
     }
 
 }

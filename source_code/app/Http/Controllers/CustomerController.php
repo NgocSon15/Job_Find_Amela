@@ -106,9 +106,9 @@ class CustomerController extends Controller
         $user_id = session()->get('user')->user_id;
         $customer = Customer::find($user_id);
         $company_ids = explode(',',$customer->block);
-            $key = array_search($company_id, $company_ids);
-            unset($company_ids[$key]);
-            $customer->block = implode(',', $company_ids);
-            $customer->save();
+        $key = array_search($company_id, $company_ids);
+        unset($company_ids[$key]);
+        $customer->block = implode(',', $company_ids);
+        $customer->save();
     }
 }

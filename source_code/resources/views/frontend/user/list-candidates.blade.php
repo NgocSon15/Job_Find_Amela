@@ -11,7 +11,7 @@ Trang danh sách tin tuyển dụng
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="hero-cap text-center">
-                            <h2>Candidates</h2>
+                            <h2>Candidates List</h2>
                         </div>
                     </div>
                 </div>
@@ -30,7 +30,7 @@ Trang danh sách tin tuyển dụng
                         <div class="container">
                             <h2 style="margin-left: 145px;">Candidates List</h2>
                             <!-- single-job-content -->
-                            @foreach($candidates as $candidate)
+                            @foreach($users as $user)
                             <div class="single-job-items mb-30" style="width: 850px; margin: 10px auto">
                                 <div class="d-flex" style="width: 100%">
                                     <div class="job-items" style="width: 100%">
@@ -39,15 +39,15 @@ Trang danh sách tin tuyển dụng
                                         </div>
                                         <div class="job-tittle job-tittle2">
                                             <a href="">
-                                                <h4>{{$candidate->fullname}}</h4>
+                                                <h4>{{$user->customer->fullname}}</h4>
                                             </a>
                                             <ul>
-                                                <li><i class="fas fa-envelope"></i>{{ $candidate->email }}</li>
-                                                <li><i class="fas fa-map-marker-alt"></i>{{ $candidate->address }}</li>
+                                                <li><i class="fas fa-envelope"></i>{{ $user->customer->email }}</li>
+                                                <li><i class="fas fa-map-marker-alt"></i>{{ $user->customer->address }}</li>
                                             </ul>
                                         </div>
                                         <div class="items-link items-link2 f-right" style="padding: 0">
-                                            <a href="">Detail</a>
+                                            <a href="{{route('show.candidate', ['id' => $user->user_id ])}}">Detail</a>
                                         </div>
                                     </div>
                                 </div>
@@ -69,7 +69,7 @@ Trang danh sách tin tuyển dụng
                     <div class="single-wrap d-flex justify-content-center">
                         <nav aria-label="Page navigation example">
                             <ul class="pagination justify-content-start">
-                                {{ $candidates->appends(request()->query()) }}
+                                {{ $users->appends(request()->query()) }}
                             </ul>
                         </nav>
                     </div>

@@ -18,7 +18,7 @@ List Companies Blocked
             <div id = "form_search" style="width: 50%; margin-bottom: 15px">
                 <div class="d-flex" >
                    <input type="text" name="keyword" class="form-control" autocomplete="off" placeholder="Search Company">
-                    <button type="submit" class="btn head-btn2 medium genric-btn">Block</button>
+                    <!-- <button type="submit" class="btn head-btn2 medium genric-btn">Block</button> -->
                 </div>
                 <div id="results" style="display:none">
                     <ul>
