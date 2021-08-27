@@ -96,9 +96,13 @@
                                 <li>Email : <span>{{ $apply->email }}</span></li>
                                 <li>Địa chỉ : <span>{{ $apply->user->customer->address }}</span></li>
                             </ul>
-                            <div class="apply-btn2">
-                                <a href="{{ route('customer.cv.download', $apply->user->customer->user_id) }}" class="btn">Download CV</a>
-                            </div>
+                            @if($apply->user->customer->cv)
+                                <div class="apply-btn2">
+                                    <a href="{{ route('customer.cv.download', $apply->user->customer->user_id) }}" class="btn">Download CV</a>
+                                </div>
+                            @else
+                                <p class="text-danger">Ứng viên này chưa có CV</p>
+                            @endif
                         </div>
                     </div>
                 </div>
