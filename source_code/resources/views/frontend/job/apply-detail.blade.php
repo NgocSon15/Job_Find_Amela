@@ -96,6 +96,9 @@
                                 <li>Email : <span>{{ $apply->email }}</span></li>
                                 <li>Địa chỉ : <span>{{ $apply->user->customer->address }}</span></li>
                             </ul>
+                            <div class="apply-btn2">
+                                <a href="#" class="btn">Download CV</a>
+                            </div>
                         </div>
                     </div>
                 </div>
