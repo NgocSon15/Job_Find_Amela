@@ -196,7 +196,7 @@ Trang chủ
                                         @else
                                         <a href="{{route('login')}}" class="follow"><i class="fas fa-heart"></i></a>
                                         @endif
-{{--                                    <span class = "text-center">{{$job->created_at->diffForHumans($now)}}</span>--}}
+                                    <span class = "text-center">{{$job->created_at->diffForHumans($now)}}</span>
                                 </div>
                             </div>
                             @endforeach

@@ -101,6 +101,10 @@
                                             <p class="text-danger">{{ $errors->first('cv') }}</p>
                                         @endif
                                         <input type="file" id="input-file-now" class="dropify" data-default-file="" name="cv"/>
+                                        @if($customer->cv != null)
+                                            <embed src="{{asset('jobfinderportal-master/assets/cv/'.$customer->cv)}}" width="50%" height="300px" />
+{{--                                            <iframe src="{{asset('jobfinderportal-master/assets/cv/'.$customer->cv)}}" style="width: 100%;height: 100%;border: none;"></iframe>--}}
+                                        @endif
                                     </div>
                                     <div class="col-12 pt-50">
                                         <button class="btn" type="submit">Update</button>
