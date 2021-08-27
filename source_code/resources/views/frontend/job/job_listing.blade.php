@@ -190,6 +190,17 @@
                                     </div>
                                     <div class="items-link items-link2 f-right">
                                         <a href="{{route('detail', $val->id)}}">Apply</a>
+                                        @if(session()->has('user'))
+                                            @if(session()->get('user')->role == 'customer')
+                                                @if(in_array($val->id,explode(',',session()->get('follow'))))
+                                                <span class="follow_job active" data-id="{{ $val->id }}"><i class="fas fa-heart"></i></span>
+                                                @else
+                                                <span class="follow_job" data-id="{{ $val->id }}"><i class="fas fa-heart"></i></span>
+                                                @endif
+                                            @endif
+                                        @else
+                                        <a href="{{route('login')}}" class="follow"><i class="fas fa-heart"></i></a>
+                                        @endif
                                         <span>{{$val->created_at->diffForHumans($now)}}</span>
                                     </div>
                                 </div>

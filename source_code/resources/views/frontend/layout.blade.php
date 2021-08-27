@@ -92,13 +92,18 @@
                                                 <i class="far fa-user"></i>
                                                 {{session()->get('user')->fullname}} <span class="caret"></span></a>
                                             <ul class="dropdown-menu" role="menu">
-                                                <li><a href="{{route('frontend.user-profile')}}" style="color: #635c5c">
+                                                <li><a href="{{route('frontend.user-profile')}}">
                                                         <i class="far fa-user"></i>
                                                         User profile</a></li>
-                                                <li><a href="{{route('frontend.listJobApply')}}" style="color: #635c5c">
+                                                @if(session()->get('user')->role == 'customer')
+                                                <li><a href="{{route('frontend.listJobApply')}}">
                                                         <i class="fas fa-list-ul"></i>
                                                         Job application</a></li>
-                                                <li><a href="{{route('logout')}}" style="color: #635c5c">
+                                                <li><a href="{{route('customer.list.followed')}}">
+                                                        <i class="far fa-list-alt"></i>
+                                                        Jobs Followed</a></li>
+                                                @endif
+                                                <li><a href="{{route('logout')}}">
                                                         <i class="fas fa-sign-out-alt"></i>
                                                         Đăng xuất</a></li>
                                             </ul>
@@ -324,7 +329,27 @@
     <!-- Jquery Plugins, main Jquery -->
     <script src="{{ asset('jobfinderportal-master/assets/js/plugins.js') }}"></script>
     <script src="{{ asset('jobfinderportal-master/assets/js/main.js') }}"></script>
-
+    
+    <script>
+        var follow = document.querySelectorAll('.follow_job');
+        if(follow){
+            for(var i = 0; i < follow.length; i++){
+                follow[i].onclick = function () {
+                  var active =  this.classList.toggle('active');
+                  var job_id = this.getAttribute('data-id');
+                  if(active){
+                      $.ajax({
+                          url: "{{ route('customer.follow.job') }}?id="+job_id,
+                      })
+                  }else{
+                      $.ajax({
+                          url: "{{ route('customer.unFollow.job') }}?id="+job_id,
+                      })
+                      }
+                }
+            }
+        }
+    </script>
     @yield('script')
 
 </body>

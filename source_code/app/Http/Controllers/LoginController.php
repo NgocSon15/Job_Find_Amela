@@ -30,6 +30,9 @@ class LoginController extends Controller
                 return view('frontend.login.not-activated');
             }
             session()->put('user', $user);
+            if($user->role == 'customer'){
+                session()->put('follow', $user->customer->follow);
+            }
             $previous = $request->previous;
             if($previous == route('logout')){
                 $previous = route('frontend.home');
@@ -42,6 +45,7 @@ class LoginController extends Controller
     }
     public function logout(){
         session()->pull('user');
+        session()->pull('follow');
         return redirect()->route('login');
     }
 
