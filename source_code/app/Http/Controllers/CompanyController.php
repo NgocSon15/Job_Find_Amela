@@ -281,7 +281,7 @@ class CompanyController extends Controller
         $listBlock = explode(',', $listBlock);
         $company_id = session()->get('user')->company_id;
         if(in_array($company_id, $listBlock)){
-            return abort(403, __('ứng viên đã chặn công ty bạn'));
+            return abort(404);
         }else{
             return view('frontend.user.candidate-detail', compact('user'));
         }
