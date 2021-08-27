@@ -10,6 +10,7 @@ use App\Models\City;
 use App\Models\CompanySize;
 use App\Models\Job;
 use App\Models\Skill;
+use App\Models\Customer;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UpdateCompany;
@@ -263,6 +264,12 @@ class CompanyController extends Controller
         $job->suggestion_to_admin = null;
         $job->is_suggest = 0;
         $job->save();
+    }
+
+    public function showCandidates()
+    {
+        $candidates = Customer::paginate(20);
+        return view('frontend.user.list-candidates', compact('candidates'));
     }
 
 }

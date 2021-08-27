@@ -23,6 +23,7 @@ class CreateCustomersTable extends Migration
             $table->integer('sex')->nullable();
             $table->integer('marry')->nullable();
             $table->string('follow')->nullable();
+            $table->string('block')->nullable();
         });
     }
 

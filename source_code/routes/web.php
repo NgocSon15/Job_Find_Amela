@@ -61,12 +61,17 @@ Route::prefix('company')->group(function() {
     Route::get('/unlockJob', [CompanyController::class, 'unlockJob'])->name('frontend.company.unlockJob');
     Route::get('/suggestToAdmin', [CompanyController::class, 'suggestToAdmin'])->name('frontend.company.sentSuggest');
     Route::get('/delSuggestToAdmin', [CompanyController::class, 'delSuggestToAdmin'])->name('frontend.company.delSentSuggest');
+    Route::get('/list-candidates', [CompanyController::class, 'showCandidates'])->name('show.candidates');
 });
 
-Route::prefix('customer')->group(function() {
+Route::group(['prefix' => 'customer', 'middleware' => ['checkLogin', 'checkCustomer']],function() {
     Route::get('/list-job-followed', [CustomerController::class, 'listJobFollowed'])->name('customer.list.followed');
     Route::get('/follow', [CustomerController::class, 'followJob'])->name('customer.follow.job');
     Route::get('/unfollow', [CustomerController::class, 'unFollowJob'])->name('customer.unFollow.job');
+    Route::get('/block-company', [CustomerController::class, 'blockCompany'])->name('customer.block.company');
+    Route::get('/unblock-company', [CustomerController::class, 'unblockCompany'])->name('customer.unblock.company');
+    Route::get('/list-blocked', [CustomerController::class, 'listBlocked'])->name('customer.list.block');
+    Route::get('/search-company', [CustomerController::class, 'searchCompany'])->name('customer.search.company');
 });
 
 
