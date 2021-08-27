@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use http\Env\Response;
 use Illuminate\Http\Request;
 use App\Models\Customer;
 use App\Models\Job;
@@ -55,5 +56,15 @@ class CustomerController extends Controller
         Carbon::setLocale('vi');
         $now = Carbon::now();
         return view('frontend.user.list-job-followed', compact('jobs', 'skills', 'now'));
+    }
+
+    public function downloadCV($id)
+    {
+        $customer = Customer::where('user_id', $id)->first();
+        $file = public_path(). '/jobfinderportal-master/assets/cv/' . $customer->cv;
+
+        $headers = array('Content-Type: application/pdf');
+
+        return \Illuminate\Support\Facades\Response::download($file, $customer->cv, $headers);
     }
 }
