@@ -49,6 +49,7 @@ Route::prefix('job')->group(function() {
     Route::post('/edit/{id}' ,[JobController::class, 'update'])->name('frontend.job.update')->middleware('checkLogin');
     Route::get('/delete/{id}' ,[JobController::class, 'destroy'])->name('frontend.job.destroy')->middleware('checkLogin');
     Route::get('/{id}/apply', [JobController::class, 'showApply'])->name('frontend.job.showApply')->middleware('checkLogin');
+    Route::get('/apply/{id}', [JobController::class, 'applyDetail'])->name('frontend.apply.show')->middleware('checkLogin');
 });
 
 Route::prefix('company')->group(function() {
@@ -67,6 +68,7 @@ Route::prefix('customer')->group(function() {
     Route::get('/list-job-followed', [CustomerController::class, 'listJobFollowed'])->name('customer.list.followed');
     Route::get('/follow', [CustomerController::class, 'followJob'])->name('customer.follow.job');
     Route::get('/unfollow', [CustomerController::class, 'unFollowJob'])->name('customer.unFollow.job');
+    Route::get('/{id}/cv', [CustomerController::class, 'downloadCV'])->name('customer.cv.download');
 });
 
 

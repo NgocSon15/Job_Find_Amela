@@ -52,9 +52,9 @@ class User extends Authenticatable
         return $this->belongsTo(Company::class, 'company_id');
     }
 
-    public function experience()
+    public function experiences()
     {
-        return $this->belongsTo(Experience::class, 'id');
+        return $this->hasMany(Experience::class, 'id');
     }
     public function apply()
     {

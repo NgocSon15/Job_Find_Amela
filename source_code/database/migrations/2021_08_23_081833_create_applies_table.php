@@ -14,6 +14,7 @@ class CreateAppliesTable extends Migration
     public function up()
     {
         Schema::create('applies', function (Blueprint $table) {
+            $table->integer('id')->autoIncrement();
             $table->integer('user_id');
             $table->integer('job_id');
             $table->string('email');
