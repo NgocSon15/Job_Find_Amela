@@ -102,6 +102,9 @@
     color: #fb246a;
 }
 
+.user-menu ul{
+    width: 190px;
+}
 .user-menu ul>li{
     margin-bottom: 12px;
 }
