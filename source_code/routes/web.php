@@ -118,7 +118,8 @@ Route::prefix('admin')->group(function() {
 
     Route::prefix('config')->group(function () {
         Route::get('/', [ConfigController::class, 'index'])->name('admin.config.index');
-        Route::get('/update', [ConfigController::class, 'update'])->name('admin.config.update');
+        Route::get('/update-footer', [ConfigController::class, 'updateFooter'])->name('admin.config.update.footer');
+        Route::post('/update-banner', [ConfigController::class, 'updateBanner'])->name('admin.config.update.banner');
     });
 });
 
