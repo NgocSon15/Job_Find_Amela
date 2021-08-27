@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use http\Env\Response;
 use Illuminate\Http\Request;
 use App\Models\Customer;
 use App\Models\Job;
@@ -110,5 +111,14 @@ class CustomerController extends Controller
         unset($company_ids[$key]);
         $customer->block = implode(',', $company_ids);
         $customer->save();
+    }
+    public function downloadCV($id)
+    {
+        $customer = Customer::where('user_id', $id)->first();
+        $file = public_path(). '/jobfinderportal-master/assets/cv/' . $customer->cv;
+
+        $headers = array('Content-Type: application/pdf');
+
+        return \Illuminate\Support\Facades\Response::download($file, $customer->cv, $headers);
     }
 }

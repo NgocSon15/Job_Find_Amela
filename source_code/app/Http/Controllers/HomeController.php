@@ -121,13 +121,33 @@ class HomeController extends Controller
         return view('frontend.job.job_listing', compact('jobs', 'now', 'skills', 'city'));
     }
 
-    public function getDetailJob($id)
+    public function getDetailJob(Request $request, $id)
     {
         $skills = Skill::all();
         $job = Job::where('id', $id)->firstOrFail();
         $job_recommend = Job::where('is_suggest', 1)->get();
-        return view('frontend.job.job_detail', compact('job','job_recommend', 'skills'));
+        $category_id = $job->category_id;
+//        dd($category_id);
+        $job_same = Job::where('category_id', $category_id)->paginate(3);
+
+        if($request->ajax()){
+            return view('frontend.job.list-data', compact('job','job_recommend', 'skills', 'job_same'));
+        }
+        return view('frontend.job.job_detail', compact('job','job_recommend', 'skills', 'job_same'));
     }
+
+//    public function fetch_data(Request $request, $id)
+//    {
+//        if($request->ajax())
+//        {
+//            $skills = Skill::all();
+//            $job = Job::where('id', $id)->firstOrFail();
+//            $job_recommend = Job::where('is_suggest', 1)->get();
+//            $category_id = $job->category_id;
+//            $job_same = Job::where('category_id', $category_id)->paginate(3);
+//            return view('frontend.job.list-data', compact('job','job_recommend', 'skills', 'job_same'));
+//        }
+//    }
 
     public function getProfile()
     {
@@ -173,17 +193,29 @@ class HomeController extends Controller
         $this->validate($request, [
             'email'=>'required',
             'phone'=>'required',
-            'birth'=>'required'
+            'birth'=>'required',
+            'cv'=>'mimes:pdf'
         ]);
         $id = session()->get('user')->user_id;
         $customer = Customer::where('user_id', $id)->firstOrFail();
 //        dd($customer);
+//        dd($request->cv);
+
         $customer->email = $request->email;
         $customer->phone = $request->phone;
         $customer->birth = $request->birth;
         $customer->sex = $request->sex;
         $customer->address = $request->add;
         $customer->marry = $request->marry;
+
+        if ($request->hasFile('cv')) {
+            $destinaton = 'jobfinderportal-master/assets/cv';
+            $cv = $request->file('cv');
+            $cv_name = $cv->getClientOriginalName();
+//           $path = $request->file('image')->storeAs($destinaton, $img_name );
+            $cv->move($destinaton,$cv_name);
+            $customer->cv = $cv_name;
+        }
         $customer->save();
         Session::flash('success_profile', 'Update profile success');
 //        return view('frontend.user.user-profile', compact('exp', 'customer'));

@@ -252,6 +252,11 @@ class JobController extends Controller
         return view('frontend.job.apply-list', compact('applies', 'job'));
     }
 
+    public function applyDetail($id)
+    {
+        $apply = Apply::findOrFail($id);
 
+        return view('frontend.job.apply-detail', compact('apply'));
+    }
 
 }
