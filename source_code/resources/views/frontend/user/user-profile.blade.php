@@ -2,6 +2,10 @@
 @section('title')
     User profile
 @endsection
+@section('link')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.css">
+@endsection
+
 @section('content')
 
 <div class="container">
@@ -28,7 +32,7 @@
                             @endif
 
 
-                                <form class="row g-3 needs-validation" novalidate action="{{route('frontend.user-profile.update')}}" method="post">
+                                <form class="row g-3 needs-validation" novalidate action="{{route('frontend.user-profile.update')}}" method="post" enctype="multipart/form-data">
                                     @csrf
 
 
@@ -90,9 +94,18 @@
                                                 @endif>Đã kết hôn</option>
                                         </select>
                                     </div>
+
+                                    <div class="col-sm-12">
+                                        <label for="input-file-now">Upload Your CV</label>
+                                        @if($errors->has('cv'))
+                                            <p class="text-danger">{{ $errors->first('cv') }}</p>
+                                        @endif
+                                        <input type="file" id="input-file-now" class="dropify" data-default-file="" name="cv"/>
+                                    </div>
                                     <div class="col-12 pt-50">
                                         <button class="btn" type="submit">Update</button>
                                     </div>
+
                                 </form>
                         </div>
                     </div>
@@ -225,3 +238,12 @@
         document.getElementById("display_none").style.display = "block";
     }
 </script>
+@section('script')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.css"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js"></script>
+    <script>
+        $(document).ready(function (){
+            $(".dropify").dropify();
+        })
+    </script>
+@endsection
