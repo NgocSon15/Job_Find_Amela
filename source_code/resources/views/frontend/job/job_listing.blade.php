@@ -6,6 +6,7 @@
     <main>
 
         {{--    apply modal--}}
+        @if(session()->has('user'))
         @foreach($jobs as $job)
             <div  id="applyModal.{{$job->id}}" class="modal fade" role="dialog">
                 <div class="modal-dialog modal-lg">
@@ -35,6 +36,7 @@
                 </div>
             </div>
     @endforeach
+    @endif
     {{--hết applymodal--}}
 
         <!-- Hero Area Start-->

@@ -7,6 +7,7 @@ Trang chủ
 <main>
 
 {{--    apply modal--}}
+    @if(session()->has('user'))
     @foreach($jobs as $job)
     <div  id="applyModal.{{$job->id}}" class="modal fade" role="dialog">
         <div class="modal-dialog modal-lg">
@@ -21,8 +22,10 @@ Trang chủ
                         <div class="select-by-program">
                             <h3 class="text-center mb-50" >Bạn đang ứng tuyển cho vị trí {{$job->job_title}}  </h3>
                             <input type="hidden" name="job_id"  value="{{$job->id}}">
+                            @if(session()->get('user')->user_id != null)
                             <input type="hidden" name="user_id"  value="{{session()->get('user')->user_id}}">
-                            <!-- </form> -->
+                        @endif
+{{--                            <!-- </form> -->--}}
                         </div>
                         <!--End-->
                     </div>
@@ -36,6 +39,7 @@ Trang chủ
         </div>
     </div>
 @endforeach
+@endif
 {{--hết applymodal--}}
     <!-- slider Area Start-->
     <div class="slider-area ">
