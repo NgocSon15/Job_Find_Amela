@@ -67,6 +67,7 @@ Route::prefix('company')->group(function() {
 });
 
 Route::get('customer/{id}/cv', [CustomerController::class, 'downloadCV'])->name('customer.cv.download');
+Route::get('customer/forward', [CustomerController::class, 'forward'])->name('customer.forward');
 
 Route::group(['prefix' => 'customer', 'middleware' => ['checkLogin', 'checkCustomer']],function() {
     Route::get('/list-job-followed', [CustomerController::class, 'listJobFollowed'])->name('customer.list.followed');
