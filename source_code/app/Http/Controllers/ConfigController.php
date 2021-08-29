@@ -12,7 +12,7 @@ class ConfigController extends Controller
         return view('admin.config.list-config', compact('configs'));
     }
 
-    public function update(Request $request)
+    public function updateFooter(Request $request)
     {   
         $request->validate([
             'content' => 'url'
@@ -22,6 +22,27 @@ class ConfigController extends Controller
         $config->content= $request->content;
         $config->save();
         return 'success';
-        
+    }
+
+    public function updateBanner(Request $request)
+    {
+        $banner = Config::find(3);
+        $content = trim($banner->content);
+        $content = explode('|',$content);
+        $content[0] = $request->text;
+        if($request->img){
+            $file = $request->img;
+            $originName = pathinfo($file->getClientOriginalName());
+            $extension = $originName['extension'];
+            $filename = $originName['filename'];
+            $path = date('Ymdhis')."$filename.$extension";
+            $file->move('jobfinderportal-master/assets/img/hero/', $path);
+            $content[1] = $path;
+        }
+        $content = trim(implode('|', $content));
+        $banner->content = $content;
+        $banner->save();
+        session()->flash('success', 'success');
+        return redirect()->back();
     }
 }
