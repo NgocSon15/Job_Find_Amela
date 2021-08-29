@@ -124,30 +124,27 @@ class HomeController extends Controller
     public function getDetailJob(Request $request, $id)
     {
         $skills = Skill::all();
+        Job::where('id', $id)->increment('view');
         $job = Job::where('id', $id)->firstOrFail();
         $job_recommend = Job::where('is_suggest', 1)->get();
         $category_id = $job->category_id;
 //        dd($category_id);
         $job_same = Job::where('category_id', $category_id)->paginate(3);
 
-        if($request->ajax()){
-            return view('frontend.job.list-data', compact('job','job_recommend', 'skills', 'job_same'));
-        }
+//        if($request->ajax()){
+//            return view('frontend.job.list-data', compact('job','job_recommend', 'skills', 'job_same'));
+//        }
         return view('frontend.job.job_detail', compact('job','job_recommend', 'skills', 'job_same'));
     }
 
-//    public function fetch_data(Request $request, $id)
-//    {
-//        if($request->ajax())
-//        {
-//            $skills = Skill::all();
-//            $job = Job::where('id', $id)->firstOrFail();
-//            $job_recommend = Job::where('is_suggest', 1)->get();
-//            $category_id = $job->category_id;
-//            $job_same = Job::where('category_id', $category_id)->paginate(3);
-//            return view('frontend.job.list-data', compact('job','job_recommend', 'skills', 'job_same'));
-//        }
-//    }
+    public function getSameJob($id)
+    {
+        $skills = Skill::all();
+        $jobs = Job::where('category_id', $id)->get();
+        $now = Carbon::now();
+        return view('frontend.job.list-data', compact('jobs', 'skills', 'now'));
+    }
+
 
     public function getProfile()
     {
@@ -198,8 +195,7 @@ class HomeController extends Controller
         ]);
         $id = session()->get('user')->user_id;
         $customer = Customer::where('user_id', $id)->firstOrFail();
-//        dd($customer);
-//        dd($request->cv);
+
 
         $customer->email = $request->email;
         $customer->phone = $request->phone;
@@ -252,7 +248,6 @@ class HomeController extends Controller
         $exp = Experience::where('exp_id',$id)->firstOrFail();
         $exp->delete();
 
-        //dung session de dua ra thong bao
         Session::flash('success', 'Xóa kinh nghiệm thành công');
 
         return redirect()->back();

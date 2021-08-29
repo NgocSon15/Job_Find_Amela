@@ -199,6 +199,9 @@
                                             <a href="{{route('detail', $val->id)}}">
                                                 <h4>{{$val->job_title}}</h4>
                                             </a>
+                                            @if(session()->has('user') && session()->get('user')->role == 'company' && session()->get('user')->company_id == $val->company_id)
+                                                <span><i class="fas fa-eye"></i>{{' '. $val->view}}</span>
+                                            @endif
                                             <ul>
                                                 <li>Skill:
                                                     @foreach(explode(',',$val->skill_id) as $skill_id)

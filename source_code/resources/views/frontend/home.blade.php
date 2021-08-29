@@ -188,7 +188,11 @@ Trang chủ
                                     <div class="job-tittle job-tittle2">
                                         <a href="{{route('detail', $job->id)}}">
                                             <h4>{{ $job->job_title }}</h4>
+
                                         </a>
+                                        @if(session()->has('user') && session()->get('user')->role == 'company' && session()->get('user')->company_id == $job->company_id)
+                                            <span><i class="fas fa-eye"></i>{{' '. $job->view}}</span>
+                                        @endif
                                         <ul>
                                             <li>Skill:
                                                 @foreach(explode(',',$job->skill_id) as $skill_id)
@@ -206,6 +210,8 @@ Trang chủ
                                             @else
                                             <li><a href="{{ route('login') }}" style="color: #635c5c">Salary: đăng nhập để xem mức lương</a></li>
                                             @endif
+
+
                                         </ul>
                                     </div>
                                 </div>
@@ -233,7 +239,10 @@ Trang chủ
                                         <a href="{{route('login')}}" class="follow"><i class="fas fa-heart"></i></a>
                                         @endif
                                     <span class = "text-center">{{$job->created_at->diffForHumans($now)}}</span>
+
+
                                 </div>
+
                             </div>
                             @endforeach
                 </div>
