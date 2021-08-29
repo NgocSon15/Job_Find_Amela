@@ -109,6 +109,10 @@
                                             <i class="fas fa-check-circle" onclick="delSuggestToAdmin({{$val->id}})" id="notSuggest-{{$val->id}}" data-id="{{$val->id}}" title="Sent to admin" style="cursor: pointer; color: #0072ff;font-size: 15px;"></i>
                                             @endif
                                             </span>
+                                            |
+                                            @if(session()->get('user')->company_id == $val->company_id)
+                                                <span><i class="fas fa-eye"></i>{{' '. $val->view}}</span>
+                                            @endif
                                         </div>
                                         @endif
                                         @endif
