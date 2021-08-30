@@ -25,12 +25,22 @@ class HomeController extends Controller
         $cities = City::all();
         $categories = Category::all();
         $jobs = Job::orderByDesc('created_at')->limit(5)->get();
-        $most_hired_companies = Company::orderByDesc('total_jobs')->limit(8)->get();
+        $most_hired_companies = Company::where('status', 1)->orderByDesc('total_jobs')->limit(8)->get();
         $skills = Skill::all();
         Carbon::setLocale('vi');
         $now = Carbon::now();
         return view('frontend.home', compact('jobs', 'most_hired_companies', 'cities', 'categories', 'skills', 'now'));
+    }
 
+    public function getAdminHome()
+    {
+        if (!$this->userCan('view-page-admin')) {
+
+            abort('403', __('Bạn không có quyền thực hiện thao tác này'));
+
+        }
+
+        return view('admin.home');
     }
 
     public function homeSearch(Request $request)

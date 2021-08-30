@@ -5,6 +5,40 @@
 @section('content')
     <main>
 
+        @if(session()->has('user'))
+            @foreach($jobs as $job)
+                <div  id="applyModal.{{$job->id}}" class="modal fade" role="dialog">
+                    <div class="modal-dialog modal-lg">
+                        <!-- Modal content filter-->
+                        <form action="{{route('frontend.apply')}}" method="post">
+                            @csrf
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="select-by-program">
+                                        <h3 class="text-center mb-50" >Bạn đang ứng tuyển cho vị trí {{$job->job_title}}  </h3>
+                                        <input type="hidden" name="job_id"  value="{{$job->id}}">
+                                        @if(session()->get('user')->user_id != null)
+                                            <input type="hidden" name="user_id"  value="{{session()->get('user')->user_id}}">
+                                        @endif
+                                        {{--                            <!-- </form> -->--}}
+                                    </div>
+                                    <!--End-->
+                                </div>
+                                <div class="modal-footer">
+                                    <button id="submitAjax"   type="submit" class="btn" >Apply</button>
+
+                                    <button type="button" class="btn" data-dismiss="modal">Hủy</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            @endforeach
+        @endif
+
         <!-- Hero Area Start-->
         <div class="slider-area ">
             <div class="single-slider section-overly slider-height2 d-flex align-items-center" data-background="{{ asset('jobfinderportal-master/assets/img/hero/about.jpg') }}">
@@ -75,10 +109,18 @@
                                                 </div>
                                             </div>
                                             <div class="items-link items-link2 f-right" style="padding: 0">
-                                                @if(count($val->applies) <= 1)
-                                                    <a href="{{ route('frontend.job.showApply', $val->id) }}">{{ count($val->applies) }} apply</a>
+                                                @if(session()->has('user'))
+                                                    @if(session()->get('user')->role == 'customer')
+                                                        <a href="" data-toggle="modal" data-target="#applyModal.{{$val->id}}">Apply</a>
+                                                    @elseif(session()->get('user')->role == 'company' && session()->get('user')->company->id == $company->id)
+                                                        @if(count($val->applies) <= 1)
+                                                            <a href="{{ route('frontend.job.showApply', $val->id) }}">{{ count($val->applies) }} apply</a>
+                                                        @else
+                                                            <a href="{{ route('frontend.job.showApply', $val->id) }}">{{ count($val->applies) }} applies</a>
+                                                        @endif
+                                                    @endif
                                                 @else
-                                                    <a href="{{ route('frontend.job.showApply', $val->id) }}">{{ count($val->applies) }} applies</a>
+                                                    <a href="{{ route('show-login') }}">Đăng nhập để apply</a>
                                                 @endif
                                                 <span>{{$val->created_at->diffForHumans($now)}}</span>
                                             </div>

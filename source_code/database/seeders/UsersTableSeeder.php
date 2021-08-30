@@ -16,11 +16,11 @@ class UsersTableSeeder extends Seeder
     {
 
         $user = new User();
-        $user->company_id = 1;
-        $user->email = 'contact@amela.vn';
-        $user->fullname = 'Amela';
-        $user->password = '12345678';
-        $user->role = 'company';
+        $user->company_id = 0;
+        $user->email = 'admin@example.com';
+        $user->fullname = 'Admin';
+        $user->password = '25d55ad283aa400af464c76d713c07ad';
+        $user->role = 'admin';
         $user->save();
 
     }

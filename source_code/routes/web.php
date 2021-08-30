@@ -81,9 +81,7 @@ Route::group(['prefix' => 'customer', 'middleware' => ['checkLogin', 'checkCusto
 
 
 Route::prefix('admin')->group(function() {
-    Route::get('/', function () {
-        return view('admin.home');
-    })->name('admin.home');
+    Route::get('/', [HomeController::class, 'getAdminHome'])->name('admin.home');
 
     Route::prefix('job')->group(function() {
         Route::get('/', [JobController::class, 'index'])->name('admin.job.index');
