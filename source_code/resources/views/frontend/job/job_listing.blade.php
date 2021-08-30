@@ -5,6 +5,40 @@
 @section('content')
     <main>
 
+        {{--    apply modal--}}
+        @if(session()->has('user'))
+        @foreach($jobs as $job)
+            <div  id="applyModal.{{$job->id}}" class="modal fade" role="dialog">
+                <div class="modal-dialog modal-lg">
+                    <!-- Modal content filter-->
+                    <form action="{{route('frontend.apply')}}" method="post">
+                        @csrf
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="select-by-program">
+                                    <h3 class="text-center mb-50" >Bạn đang ứng tuyển cho vị trí {{$job->job_title}}  </h3>
+                                    <input type="hidden" name="job_id"  value="{{$job->id}}">
+                                    <input type="hidden" name="user_id"  value="{{session()->get('user')->user_id}}">
+                                    <!-- </form> -->
+                                </div>
+                                <!--End-->
+                            </div>
+                            <div class="modal-footer">
+                                <button id="submitAjax"   type="submit" class="btn" >Apply</button>
+
+                                <button type="button" class="btn" data-dismiss="modal">Hủy</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+    @endforeach
+    @endif
+    {{--hết applymodal--}}
+
         <!-- Hero Area Start-->
         <div class="slider-area ">
             <div class="single-slider section-overly slider-height2 d-flex align-items-center" data-background="{{ asset('jobfinderportal-master/assets/img/hero/about.jpg') }}">
@@ -165,6 +199,9 @@
                                             <a href="{{route('detail', $val->id)}}">
                                                 <h4>{{$val->job_title}}</h4>
                                             </a>
+                                            @if(session()->has('user'))
+                                                <span><i class="fas fa-eye"></i>{{' '. $val->view}}</span>
+                                            @endif
                                             <ul>
                                                 <li>Skill:
                                                     @foreach(explode(',',$val->skill_id) as $skill_id)
