@@ -194,6 +194,42 @@
 
 
                         </div>
+                        <div class="form_forward">
+                            <h3>Forward to Email</h3>
+                            <div>
+                                <form action="{{route('customer.forward')}}" method="get">
+                                    <input type="text" name="id" value="{{$job->id}}" hidden>
+                                    <input type="email" name="email" placeholder="Email Address" class="placeholder hide-on-focus">
+                                    <div class="form-icon">
+                                        <button type="submit" id="forward_mail"><img src="{{ asset('jobfinderportal-master/assets/img/icon/form.png') }}" alt=""></button>
+                                    </div>
+                                    <div class="info"></div>
+                                </form>
+                            </div>
+                        </div>
+                        <script>
+                            var inputEmail = document.querySelector('.form_forward input[name=email]');
+                            var inputId = document.querySelector('input[name=id]');
+                            var submit = document.querySelector('#forward_mail');
+                            var info = document.querySelector('.form_forward div.info');
+                            submit.onclick = function(e) {
+                                e.preventDefault();
+                                email = inputEmail.value;
+                                job_id = inputId.value;
+                                $.ajax({
+                                    url: "{{route('customer.forward')}}",
+                                    data: {
+                                        email: email,
+                                        id: job_id
+                                    }
+                                }).fail(function(data) {
+                                    var error = data.responseJSON.errors.email[0]
+                                    info.innerHTML = `<p class="text-danger">${error}</p>`;
+                                }).done(function() {
+                                    info.innerHTML = '<p class="text-success"><i class="fas fa-check"></i> Sent Success</p>'
+                                })
+                            }
+                        </script>
                         <div class="post-details4  mb-50">
                             <!-- Small Section Tittle -->
                             <div class="small-section-tittle">

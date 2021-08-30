@@ -140,3 +140,32 @@
 #results li p{
     font-size: 18px;
 }
+.form_forward{
+    margin-bottom: 40px;
+}
+.form_forward h3{
+    margin-bottom: 10px;
+}
+.form_forward form {
+    position: relative;
+}
+.form_forward form input {
+    width: 100%;
+    height: 43px;
+    padding: 10px 20px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    background: #e0e1e4;
+}
+.form_forward form .form-icon button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    padding: 13px 22px;
+    background: #fb246a;
+    line-height: 1;
+    border-radius: 0 3px 3px 0;
+}

@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use http\Env\Response;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use App\Models\Customer;
 use App\Models\Job;
 use Carbon\Carbon;
 use App\Models\Skill;
 use App\Models\Company;
+use App\Mail\ForwardJob;
 
 class CustomerController extends Controller
 {
@@ -121,5 +123,18 @@ class CustomerController extends Controller
         $headers = array('Content-Type: application/pdf');
 
         return \Illuminate\Support\Facades\Response::download($file, $customer->cv, $headers);
+    }
+    public function forward(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email'
+        ]);
+        if($request->ajax()){
+            $email = $request->email;
+            $link = route('detail', $request->id);
+            $job = Job::find($request->id);
+            Mail::to($email)->send(new ForwardJob($link, $job));
+            return 'success';
+        }
     }
 }
