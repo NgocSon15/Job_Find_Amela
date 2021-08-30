@@ -56,7 +56,9 @@ Thông tin website
                             <label>Text:</label>
                                 <input class="form-control" name="text" id="bannerText" value="{{ explode('|',$configs[2]->content)[0]}}" />
                             <label >Background:</label>
+                            <div>
                                 <input style="display: block; margin-bottom: 10px" type="file" name="img" id="background">
+                                <p id = "error_validate" class = "text-danger"></p>
                             </div>
                             <button type="submit" id="update-banner" class="btn btn-info btn-sm">Update Banner</button>
                         </form>
@@ -99,14 +101,20 @@ Thông tin website
             document.querySelector('.banner h1').innerHTML = this.value;
         }
         var background = document.querySelector('#background');
+        var error = document.querySelector('#error_validate');
         background.onchange = function() {
             var img = background.files[0];
-            var fileReader = new FileReader();
-            fileReader.onload = function() {
-                var url = fileReader.result;
-                document.getElementById('img_upload').src = url;
+            if(img.type.slice(0,5) == 'image'){
+                error.innerHTML = '';
+                var fileReader = new FileReader();
+                fileReader.onload = function() {
+                    var url = fileReader.result;
+                    document.getElementById('img_upload').src = url;
+                }
+                fileReader.readAsDataURL(img);
+            }else{
+                error.innerHTML = 'The file must be an image';
             }
-            fileReader.readAsDataURL(img);
         }
     </script>
     <!-- /.card-body -->
