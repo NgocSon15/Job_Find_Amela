@@ -10,6 +10,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ConfigController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -81,7 +82,7 @@ Route::group(['prefix' => 'customer', 'middleware' => ['checkLogin', 'checkCusto
 });
 
 
-Route::prefix('admin')->group(function() {
+Route::group(['prefix' => 'admin', 'middleware' => 'checkAdmin'], function() {
     Route::get('/', [HomeController::class, 'getAdminHome'])->name('admin.home');
 
     Route::prefix('job')->group(function() {

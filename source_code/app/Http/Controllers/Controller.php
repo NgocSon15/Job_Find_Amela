@@ -15,7 +15,6 @@ class Controller extends BaseController
     public function userCan($action, $option = NULL)
 
     {
-
         $user = session()->get('user');
 
         return Gate::forUser($user)->allows($action, $option);
