@@ -85,6 +85,9 @@
                                                     <a href="{{route('detail', $val->id)}}">
                                                         <h4>{{$val->job_title}}</h4>
                                                     </a>
+                                                    @if(session()->has('user'))
+                                                        <span><i class="fas fa-eye"></i>{{' '. $val->view}}</span>
+                                                    @endif
                                                     <ul>
                                                         <li>Skill:
                                                             @foreach(explode(',',$val->skill_id) as $skill_id)
@@ -126,7 +129,7 @@
                                             </div>
                                         </div>
                                         @if(session()->has('user'))
-                                        @if(session()->get('user')->role == 'company')
+                                        @if(session()->get('user')->role == 'company' && session()->get('user')->company->id == $company->id)
                                         <div style="margin-top: 7px; width: 100%">
                                             <a href="{{ route('frontend.job.edit', $val->id) }}" style="color: #38a4ff;font-weight:600" >Edit</a>
                                             |
@@ -151,8 +154,6 @@
                                             <i class="fas fa-check-circle" onclick="delSuggestToAdmin({{$val->id}})" id="notSuggest-{{$val->id}}" data-id="{{$val->id}}" title="Sent to admin" style="cursor: pointer; color: #0072ff;font-size: 15px;"></i>
                                             @endif
                                             </span>
-                                            |
-                                                <span><i class="fas fa-eye"></i>{{' '. $val->view}}</span>
 
                                         </div>
                                         @endif
