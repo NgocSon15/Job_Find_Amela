@@ -110,9 +110,8 @@
                                             @endif
                                             </span>
                                             |
-                                            @if(session()->get('user')->company_id == $val->company_id)
                                                 <span><i class="fas fa-eye"></i>{{' '. $val->view}}</span>
-                                            @endif
+
                                         </div>
                                         @endif
                                         @endif

@@ -190,7 +190,7 @@ Trang chủ
                                             <h4>{{ $job->job_title }}</h4>
 
                                         </a>
-                                        @if(session()->has('user') && session()->get('user')->role == 'company' && session()->get('user')->company_id == $job->company_id)
+                                        @if(session()->has('user'))
                                             <span><i class="fas fa-eye"></i>{{' '. $job->view}}</span>
                                         @endif
                                         <ul>
