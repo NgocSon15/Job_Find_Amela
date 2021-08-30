@@ -29,7 +29,12 @@
                         <!-- Featured_job_start -->
                         <section class="featured-job-area">
                             <div class="container">
-                                <h2 style="margin-left: 145px;">Danh sách Apply</h2>
+                                <div class="d-flex" style="margin-bottom: 40px;">
+                                    <h2 style="margin-left: 145px;">Danh sách Apply</h2>
+                                    @if($applies->total() > 0)
+                                        <a class="btn" style="position: absolute; right: 350px;" href="{{ route('frontend.job.cv.download.all', $job->id) }}">Download All CV</a>
+                                    @endif
+                                </div>
                                 @if($applies->total() == 0)
                                     <p style="margin-left: 145px;">Hiện tại chưa có ứng viên apply tin này</p>
                                 @else

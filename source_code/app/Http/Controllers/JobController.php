@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Job;
 use Illuminate\Support\Facades\DB;
@@ -241,7 +242,6 @@ class JobController extends Controller
          $apply->save();
         Session::flash('success_apply', 'Apply thành công');
         return redirect()->back();
-
     }
 
     public function showApply($id)
@@ -257,6 +257,34 @@ class JobController extends Controller
         $apply = Apply::findOrFail($id);
 
         return view('frontend.job.apply-detail', compact('apply'));
+    }
+
+    public function downloadAllCV($id)
+    {
+        $job = Job::findOrFail($id);
+        $zip = new \ZipArchive();
+
+        $now = Carbon::now()->format('dmYHis');
+
+        $fileName = 'job_' . $id . '_' . $now . '.zip';
+
+
+        if($zip->open(public_path('jobfinderportal-master/assets/cv/' . $fileName), \ZipArchive::CREATE) === true)
+        {
+            foreach ($job->applies as $apply) {
+                if ($apply->user->customer->cv)
+                {
+                    $file = public_path() . '/jobfinderportal-master/assets/cv/' . $apply->user->customer->cv;
+                    $baseName = basename($file);
+
+                    $zip->addFile($file, $baseName);
+                }
+            }
+        }
+
+        $zip->close();
+
+        return response()->download(public_path('jobfinderportal-master/assets/cv/' . $fileName));
     }
 
 }

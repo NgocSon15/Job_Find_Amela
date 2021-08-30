@@ -50,6 +50,7 @@ Route::prefix('job')->group(function() {
     Route::get('/delete/{id}' ,[JobController::class, 'destroy'])->name('frontend.job.destroy')->middleware('checkLogin');
     Route::get('/{id}/apply', [JobController::class, 'showApply'])->name('frontend.job.showApply')->middleware('checkLogin');
     Route::get('/apply/{id}', [JobController::class, 'applyDetail'])->name('frontend.apply.show')->middleware('checkLogin');
+    Route::get('/{id}/cv', [JobController::class, 'downloadAllCV'])->name('frontend.job.cv.download.all')->middleware('checkLogin');
 });
 
 Route::prefix('company')->group(function() {

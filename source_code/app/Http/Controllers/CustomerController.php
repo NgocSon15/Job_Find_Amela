@@ -112,6 +112,7 @@ class CustomerController extends Controller
         $customer->block = implode(',', $company_ids);
         $customer->save();
     }
+
     public function downloadCV($id)
     {
         $customer = Customer::where('user_id', $id)->first();
