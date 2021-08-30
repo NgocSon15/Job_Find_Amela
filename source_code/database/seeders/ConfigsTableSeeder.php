@@ -23,5 +23,10 @@ class ConfigsTableSeeder extends Seeder
             'description' => 'Đặt đường dẫn đến trang tải app ios ở footer',
             'content' => 'https://www.apple.com/app-store',
         ]);
+        DB::table('configs')->insert([
+            'name' => 'ios',
+            'description' => 'Chỉnh sửa nội dung banner',
+            'content' => 'Find the most exciting startup jobs|h1_hero.jpg',
+        ]);
     }
 }

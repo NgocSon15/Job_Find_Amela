@@ -1,3 +1,4 @@
+@include('sweetalert::alert')
 @extends('frontend.layout')
 @section('title')
 Trang chủ
@@ -5,6 +6,41 @@ Trang chủ
 @section('content')
 <main>
 
+{{--    apply modal--}}
+    @if(session()->has('user'))
+    @foreach($jobs as $job)
+    <div  id="applyModal.{{$job->id}}" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <!-- Modal content filter-->
+            <form action="{{route('frontend.apply')}}" method="post">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="select-by-program">
+                            <h3 class="text-center mb-50" >Bạn đang ứng tuyển cho vị trí {{$job->job_title}}  </h3>
+                            <input type="hidden" name="job_id"  value="{{$job->id}}">
+                            @if(session()->get('user')->user_id != null)
+                            <input type="hidden" name="user_id"  value="{{session()->get('user')->user_id}}">
+                        @endif
+{{--                            <!-- </form> -->--}}
+                        </div>
+                        <!--End-->
+                    </div>
+                    <div class="modal-footer">
+                        <button id="submitAjax"   type="submit" class="btn" >Apply</button>
+
+                        <button type="button" class="btn" data-dismiss="modal">Hủy</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+@endforeach
+@endif
+{{--hết applymodal--}}
     <!-- slider Area Start-->
     <div class="slider-area ">
         <!-- Mobile Menu -->
@@ -152,7 +188,11 @@ Trang chủ
                                     <div class="job-tittle job-tittle2">
                                         <a href="{{route('detail', $job->id)}}">
                                             <h4>{{ $job->job_title }}</h4>
+
                                         </a>
+                                        @if(session()->has('user'))
+                                            <span><i class="fas fa-eye"></i>{{' '. $job->view}}</span>
+                                        @endif
                                         <ul>
                                             <li>Skill:
                                                 @foreach(explode(',',$job->skill_id) as $skill_id)
@@ -170,6 +210,8 @@ Trang chủ
                                             @else
                                             <li><a href="{{ route('login') }}" style="color: #635c5c">Salary: đăng nhập để xem mức lương</a></li>
                                             @endif
+
+
                                         </ul>
                                     </div>
                                 </div>
@@ -177,7 +219,7 @@ Trang chủ
                                     <div class="apply-btn2">
 {{--                                    <a href="{{route('detail', $job->id)}}">Apply</a>--}}
                                     @if(session()->has('user'))
-                                        <a href="" data-toggle="modal" data-target="#applyModal">
+                                        <a href="" data-toggle="modal" data-target="#applyModal.{{$job->id}}">
                                             Apply Now
                                         </a>
                                     @else
@@ -197,7 +239,10 @@ Trang chủ
                                         <a href="{{route('login')}}" class="follow"><i class="fas fa-heart"></i></a>
                                         @endif
                                     <span class = "text-center">{{$job->created_at->diffForHumans($now)}}</span>
+
+
                                 </div>
+
                             </div>
                             @endforeach
                 </div>
@@ -298,4 +343,12 @@ Trang chủ
     </div>
 
 </main>
+@endsection
+@section('script')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    @if(Session::has('success_apply'))
+    <script>
+        swal("Good job!", "Upload Cv Success!", "success")
+    </script>
+    @endif
 @endsection

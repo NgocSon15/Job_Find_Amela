@@ -6,6 +6,7 @@
     <main>
 
         {{--layout apply--}}
+
         @if(session()->has('user'))
         <div  id="applyModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-lg">
@@ -19,27 +20,10 @@
                         <div class="modal-body">
                             <div class="select-by-program">
                                 <h3 class="text-center mb-50" >Bạn đang ứng tuyển cho vị trí {{$job->job_title}}  </h3>
-                                <h3 class="text-center mb-50" >{{session()->get('user')->fullname}} </h3>
-                                <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                                    <input type="email" name="email" class="form-control" id="exampleFormControlInput1" value="{{session()->get('user')->email}}">
-                                    <div></div>
-                                    @if($errors->has('email'))
-                                        <p class="text-danger">{{ $errors->first('email') }}</p>
-                                    @endif
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Phone Number</label>
-                                    <input type="text" name="phone" class="form-control" id="exampleFormControlInput1" placeholder="phone number">
-                                    <div></div>
-                                    @if($errors->has('phone'))
-                                        <p class="text-danger">{{ $errors->first('phone') }}</p>
-                                    @endif
-                                </div>
-
                                 <input type="hidden" name="job_id"  value="{{$job->id}}">
+                                @if(session()->get('user')->user_id != null)
                                 <input type="hidden" name="user_id"  value="{{session()->get('user')->user_id}}">
+                            @endif
 
 
                                 <!-- </form> -->
@@ -56,44 +40,44 @@
                 </form>
             </div>
         </div>
-        <script>
-        window.onload = function(){
-            var submit = document.querySelector('#submitAjax');
-            submit.onclick = function (event){
-                event.preventDefault();
-                var email = document.querySelector('input[name=email]');
-                var phone = document.querySelector('input[name=phone]');
-                var job_id = document.querySelector('input[name=job_id]').value;
-                var user_id = document.querySelector('input[name=user_id]').value;
-                var token = document.querySelector('input[name=_token]').value;
-                $.ajax({
-                    url: "{{route('frontend.apply')}}",
-                    type: 'POST',
-                    data: {
-                        'email': email.value,
-                        'phone': phone.value,
-                        'job_id': job_id,
-                        'user_id': user_id,
-                        '_token': token
-                    }
-                }).done(function (){
-                        $('#applyModal').modal('hide');
-                        document.querySelector('#success').innerHTML = '<p class="text-success"><i class="fa fa-check" aria-hidden="true"></i>Apply thành công</p>'
-                }).fail(function (data){
-                    var errors = data.responseJSON.errors;
-                    if(errors.email !== undefined){
-                        var emailError = errors.email[0];
-                        email.nextElementSibling.innerHTML = '<p class="text-danger">'+emailError+'</p>';
-                    }
-                    if(errors.phone !== undefined){
-                        var phoneError = errors.phone[0];
-                        phone.nextElementSibling.innerHTML = '<p class="text-danger">'+phoneError+'</p>';
-                    }
-                })
+{{--        <script>--}}
+{{--        window.onload = function(){--}}
+{{--            var submit = document.querySelector('#submitAjax');--}}
+{{--            submit.onclick = function (event){--}}
+{{--                event.preventDefault();--}}
+{{--                var email = document.querySelector('input[name=email]');--}}
+{{--                var phone = document.querySelector('input[name=phone]');--}}
+{{--                var job_id = document.querySelector('input[name=job_id]').value;--}}
+{{--                var user_id = document.querySelector('input[name=user_id]').value;--}}
+{{--                var token = document.querySelector('input[name=_token]').value;--}}
+{{--                $.ajax({--}}
+{{--                    url: "{{route('frontend.apply')}}",--}}
+{{--                    type: 'POST',--}}
+{{--                    data: {--}}
+{{--                        'email': email.value,--}}
+{{--                        'phone': phone.value,--}}
+{{--                        'job_id': job_id,--}}
+{{--                        'user_id': user_id,--}}
+{{--                        '_token': token--}}
+{{--                    }--}}
+{{--                }).done(function (){--}}
+{{--                        $('#applyModal').modal('hide');--}}
+{{--                        document.querySelector('#success').innerHTML = '<p class="text-success"><i class="fa fa-check" aria-hidden="true"></i>Apply thành công</p>'--}}
+{{--                }).fail(function (data){--}}
+{{--                    var errors = data.responseJSON.errors;--}}
+{{--                    if(errors.email !== undefined){--}}
+{{--                        var emailError = errors.email[0];--}}
+{{--                        email.nextElementSibling.innerHTML = '<p class="text-danger">'+emailError+'</p>';--}}
+{{--                    }--}}
+{{--                    if(errors.phone !== undefined){--}}
+{{--                        var phoneError = errors.phone[0];--}}
+{{--                        phone.nextElementSibling.innerHTML = '<p class="text-danger">'+phoneError+'</p>';--}}
+{{--                    }--}}
+{{--                })--}}
 
-            }
-        }
-        </script>
+{{--            }--}}
+{{--        }--}}
+{{--        </script>--}}
         @endif
     {{--hết layout apply--}}
 
@@ -353,9 +337,73 @@
             </div>
         </div>
 
-        <div id="list-data">
-            @include('frontend.job.list-data')
-        </div>
+        <section class="featured-job-area feature-padding">
+            <div class="container">
+                <!-- Section Tittle -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-tittle text-center">
+                            <h2>Featured Jobs</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-xl-10" >
+                        <!-- single-job-content -->
+                        @foreach($job_same as $key=>$val)
+                            <div class="single-job-items mb-30">
+                                <div class="job-items">
+                                    <div class="company-img">
+                                        <a href="{{route('detail', $val->id)}}"><img src="{{asset('storage/images/'.$val->company->logo)}}" alt="" style="max-width: 85px;"></a>
+                                    </div>
+                                    <div class="job-tittle">
+                                        <a href="{{route('detail', $val->id)}}"><h4>{{$val->job_title}}</h4></a>
+                                        <ul>
+                                            <li>Skill:
+                                                @foreach(explode(',',$val->skill_id) as $skill_id)
+                                                    {{ $skills->find($skill_id)->skill }}
+                                                    @if($loop->index == 1)
+                                                        @break
+                                                    @endif
+                                                @endforeach
+                                            </li>
+                                            @if($val->company->city)
+                                                <li><i class="fas fa-map-marker-alt"></i>{{ $val->company->city->city_name}}</li>
+                                            @endif
+                                            @if(session()->has('user'))
+                                                <li>${{ number_format($val->min_salary) }} - ${{ number_format($val->max_salary) }}</li>
+                                            @else
+                                                <li><a href="{{ route('login') }}" style="color: #635c5c">Salary: đăng nhập để xem</a></li>
+                                            @endif
+                                        </ul>
+                                        @if(strtotime($val->expiration) < time())
+                                            <p class="text-warning">Tin tuyển dụng hết hạn</p>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="items-link f-right">
+                                    @if($val->job_type)
+                                        <a href="{{route('detail', $val->id)}}">Full Time</a>
+                                    @else
+                                        <a href="{{route('detail', $val->id)}}">Part Time</a>
+                                    @endif
+                                    @if(ceil((time() - strtotime($val->created_at))/3600) < 24)
+                                        <span>{{ ceil((time() - strtotime($val->created_at))/3600)}} hour ago</span>
+                                    @else
+                                        <span>{{ ceil((time() - strtotime($val->created_at))/86400)}} day ago</span>
+                                    @endif
+                                </div>
+                            </div>
+                    @endforeach
+                    <!-- single-job-content -->
+                        <div style="padding-left: 45%">
+                        <a href="{{route('frontend.getSameJob', $job->category_id)}}" class="genric-btn primary-border" style="margin: 0 auto;">Xem thêm</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
 
 {{--        {!! $job_same->links() !!}--}}
 
@@ -363,7 +411,7 @@
 
     </main>
 
- 
+
 
 @endsection
 
