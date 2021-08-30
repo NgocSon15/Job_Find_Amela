@@ -21,8 +21,8 @@
                                         <h4>{{$apply->user->customer->fullname}}</h4>
                                     </a>
                                     <ul>
-                                        <li><i class="fas fa-mobile"></i>{{ $apply->phone }}</li>
-                                        <li><i class="fas fa-envelope"></i>{{ $apply->email }}</li>
+                                        <li><i class="fas fa-mobile"></i>{{ $apply->user->customer->phone }}</li>
+                                        <li><i class="fas fa-envelope"></i>{{ $apply->user->customer->email }}</li>
                                         <li><i class="fas fa-map-marker-alt"></i>{{ $apply->user->customer->address }}</li>
                                     </ul>
                                 </div>
@@ -92,8 +92,8 @@
                                 <h4>Thông tin liên hệ</h4>
                             </div>
                             <ul>
-                                <li>Số điện thoại : <span>{{ $apply->phone }}</span></li>
-                                <li>Email : <span>{{ $apply->email }}</span></li>
+                                <li>Số điện thoại : <span>{{ $apply->user->customer->phone }}</span></li>
+                                <li>Email : <span>{{ $apply->user->customer->email }}</span></li>
                                 <li>Địa chỉ : <span>{{ $apply->user->customer->address }}</span></li>
                             </ul>
                             @if($apply->user->customer->cv)

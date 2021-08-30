@@ -52,8 +52,8 @@
                                                             <h4>{{$val->user->customer->fullname}}</h4>
                                                         </a>
                                                         <ul>
-                                                            <li><i class="fas fa-mobile"></i>{{ $val->phone }}</li>
-                                                            <li><i class="fas fa-envelope"></i>{{ $val->email }}</li>
+                                                            <li><i class="fas fa-mobile"></i>{{ $val->user->customer->phone }}</li>
+                                                            <li><i class="fas fa-envelope"></i>{{ $val->user->customer->email }}</li>
                                                             <li><i class="fas fa-map-marker-alt"></i>{{ $val->user->customer->address }}</li>
                                                         </ul>
                                                     </div>
