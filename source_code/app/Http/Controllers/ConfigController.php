@@ -26,6 +26,9 @@ class ConfigController extends Controller
 
     public function updateBanner(Request $request)
     {
+        $request->validate([
+            'img' => 'nullable|image'
+        ]);
         $banner = Config::find(3);
         $content = trim($banner->content);
         $content = explode('|',$content);
