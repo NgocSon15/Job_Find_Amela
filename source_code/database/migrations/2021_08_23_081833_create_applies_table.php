@@ -17,8 +17,6 @@ class CreateAppliesTable extends Migration
             $table->integer('id')->autoIncrement();
             $table->integer('user_id');
             $table->integer('job_id');
-            $table->string('email');
-            $table->string('phone');
             $table->timestamps();
         });
     }
